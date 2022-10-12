@@ -15,11 +15,11 @@ public class JeongTestMain : MonoBehaviour
         //this.PlayerCenter.GetComponent<Player>();
         GameObjectSetting();
 
-        this.player.onLevelUp = (amount) =>
-        {
-            Pause();
-            Debug.Log("레벨업!");
-        };
+        //this.player.onLevelUp = (amount) =>
+        //{
+        //    Pause();
+        //    Debug.Log("레벨업!");
+        //};
         this.player.onHit = (n1, n2) =>
         {
 
