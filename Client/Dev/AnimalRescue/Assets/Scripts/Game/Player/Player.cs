@@ -41,15 +41,24 @@ public class Player : MonoBehaviour
         this.playerMove = GetComponent<PlayerMove>();
         this.playerMove.Move();
 
-        this.playerStats = GetComponent<PlayerStats>();
-        this.playerStats.Init(0, 0, 0);
 
         this.playerMove.onMove = () =>
         {
             SetState(eStateType.Run);
         };
 
+
+        this.playerStats = GetComponent<PlayerStats>();
+        this.playerStats.Init(0, 0, 0);
+
+        this.playerStats.onLevelUp = (level) => 
+        { 
+            
+        };
+
         this.onUpdateMove(this.hpGaugePoint.position);
+
+        
 
         //this.basicWeapon = GameObject.Find("BasicWeapon").GetComponent<BasicWeapon>();
         //DataManager.instance.onDataLoadFinished.AddListener(() =>
