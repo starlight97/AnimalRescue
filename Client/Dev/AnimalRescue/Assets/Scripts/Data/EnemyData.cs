@@ -1,5 +1,5 @@
 public class EnemyData : RawData
-{    
+{
     public string monstername;
     
     public int damage;
@@ -8,5 +8,9 @@ public class EnemyData : RawData
     
     public int maxhp;
     
+    public int experience;
+    
     public float attackspeed;
+    
+    public string prefab_name;
 }

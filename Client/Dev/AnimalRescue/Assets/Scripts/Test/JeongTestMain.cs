@@ -6,6 +6,7 @@ public class JeongTestMain : MonoBehaviour
 {
     private Player player;
     private EnemySpawner enemySpawner;
+    private WaveManager waveManager;
     private bool isPause = false;
 
     public CottonCandy cottonCandy;
@@ -29,6 +30,10 @@ public class JeongTestMain : MonoBehaviour
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
         };
+        this.waveManager.onWaveStart = (wave) =>
+        {
+            enemySpawner.StartWave(wave);
+        };
 
 
         DataManager.instance.onDataLoadComplete.AddListener((n1, n2) =>
@@ -39,9 +44,14 @@ public class JeongTestMain : MonoBehaviour
         {
             var data = DataManager.instance.GetData<WeaponData>(2001);
             cottonCandy.Init(data, player.transform, 5);
+            this.enemySpawner.Init(30);
+            this.player.Init();
+            this.waveManager.Init();
         });
         DataManager.instance.Init();
         DataManager.instance.LoadAllData(this);
+
+
     }
 
     // Update is called once per frame
@@ -60,9 +70,9 @@ public class JeongTestMain : MonoBehaviour
     {
         this.player = GameObject.FindObjectOfType<Player>();
         this.enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
+        this.waveManager = GameObject.FindObjectOfType<WaveManager>();
 
-        this.player.Init();
-        this.enemySpawner.Init(50);
+
     }
 
     public void Resume()

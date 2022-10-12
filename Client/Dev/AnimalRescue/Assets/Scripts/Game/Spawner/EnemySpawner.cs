@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -11,6 +12,7 @@ public class EnemySpawner : MonoBehaviour
     private Vector3[] spawnPoints;
     private int spawnCount;
     private int maxSpawnCount;
+    private List<EnemyData> enemyDataList;
     public List<Enemy> EnemyList
     {
         get;
@@ -27,16 +29,21 @@ public class EnemySpawner : MonoBehaviour
         this.spawnPoints[3] = new Vector3(73, 0, 73);
         this.spawnCount = 0;
         this.maxSpawnCount = maxSpawnCount;
-        SpawnEnemy();
+        this.enemyDataList = new List<EnemyData>();
+        this.enemyDataList = DataManager.instance.GetDataList<EnemyData>().ToList();
     }
 
-    private void SpawnEnemy()
+    public void StartWave(int wave)
     {
-
-        StartCoroutine(this.SpawnEnemyRoutine());
+        SpawnEnemy(wave);
     }
 
-    private IEnumerator SpawnEnemyRoutine()
+    private void SpawnEnemy(int wave)
+    {
+        StartCoroutine(this.SpawnEnemyRoutine(wave));
+    }
+
+    private IEnumerator SpawnEnemyRoutine(int wave)
     {
         while(true)
         {
@@ -57,15 +64,18 @@ public class EnemySpawner : MonoBehaviour
             pos.y = 0;
             pos.z = Random.Range(spawnPoints[randPoint1].z, spawnPoints[randPoint2].z);
 
-            GameObject enemyGo = Instantiate<GameObject>(enemyPrefabs[0]);
+            var randIdx = Random.Range(0, enemyDataList.Count - 1);
+            EnemyData enemyData = enemyDataList[randIdx];
+            enemyData.maxhp = wave * enemyData.maxhp;
+            enemyData.damage = wave * enemyData.damage;
+            GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyData.prefab_name),pos, Quaternion.identity);
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
-            enemyGo.transform.position = pos;
-            enemy.Init(100, 1);
+            enemy.Init(enemyData);
             enemy.onDie = (dieEnemy) =>
             {
                 EnemyList.Remove(dieEnemy);
-                this.onDieEnemy(dieEnemy.experience);
+                this.onDieEnemy(dieEnemy.enemyData.experience);
                 Destroy(dieEnemy.gameObject);
             };
             spawnCount++;
