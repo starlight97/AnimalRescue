@@ -7,6 +7,7 @@ public class ShootingStarProjectile : PlayerProjectile
     public GameObject star;
     [SerializeField]
     private float speed;
+    private Vector3 dir;
 
     public override void Init(int damage)
     {
@@ -21,6 +22,12 @@ public class ShootingStarProjectile : PlayerProjectile
             Destroy(this.gameObject);
     }
 
+    private void Start()
+    {
+
+        Debug.Log(dir);
+    }
+
     public void StarMove()
     {
         StartCoroutine(StarMoveRoutine());
@@ -30,9 +37,9 @@ public class ShootingStarProjectile : PlayerProjectile
     {
         while (true)
         {
-            var groundPos = new Vector3(this.star.transform.position.x, this.star.transform.position.y, -5);
-            var dir = groundPos - this.star.transform.position;
-            this.star.transform.Translate(dir * Time.deltaTime * speed);
+            var groundPos = new Vector3(0, 0, -5);
+            this.dir = this.star.transform.localPosition - groundPos;
+            this.star.transform.Translate(this.dir * Time.deltaTime * speed);
             if (this.star.transform.position.y <= 0)
             {
                 Destroy(this.gameObject);

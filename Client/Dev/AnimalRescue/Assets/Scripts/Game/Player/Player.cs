@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
 
     public Transform hpGaugePoint;
     public UnityAction<Vector3> onUpdateMove;
+    public UnityAction<int> onLevelUp;
     public UnityAction<int, int> onHit;
 
     public void Init()
@@ -51,9 +52,9 @@ public class Player : MonoBehaviour
         this.playerStats = GetComponent<PlayerStats>();
         this.playerStats.Init(0, 0, 0);
 
-        this.playerStats.onLevelUp = (level) => 
-        { 
-            
+        this.playerStats.onLevelUp = (amount) => 
+        {
+            this.onLevelUp(amount);
         };
 
         this.onUpdateMove(this.hpGaugePoint.position);
