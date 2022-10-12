@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     }
 
     private PlayerMove playerMove;
+    
     private CottonCandy weapon01;
     private BasicWeapon basicWeapon;
 
@@ -47,12 +48,12 @@ public class Player : MonoBehaviour
 
         this.onUpdateMove(this.hpGaugePoint.position);
 
-        this.basicWeapon = GameObject.Find("BasicWeapon").GetComponent<BasicWeapon>();
-        DataManager.instance.onDataLoadFinished.AddListener(() =>
-        {
-            var data = DataManager.instance.GetData<WeaponData>(2000);
-            basicWeapon.Init(data, this.modelTrans);
-        });
+        //this.basicWeapon = GameObject.Find("BasicWeapon").GetComponent<BasicWeapon>();
+        //DataManager.instance.onDataLoadFinished.AddListener(() =>
+        //{
+        //    var data = DataManager.instance.GetData<WeaponData>(2000);
+        //    basicWeapon.Init(data, this.modelTrans);
+        //});
     }
 
     private void Update()

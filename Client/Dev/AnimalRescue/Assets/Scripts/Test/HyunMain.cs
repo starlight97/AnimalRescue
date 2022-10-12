@@ -7,6 +7,7 @@ public class HyunMain : MonoBehaviour
     private Player player;
     private EnemySpawner enemySpawner;
     public BasicWeapon basicWeapon;
+    public ShootingStar shootingStar;
     public UIGame uiGame;
     
 
@@ -37,6 +38,12 @@ public class HyunMain : MonoBehaviour
         {
 
         };
+
+        DataManager.instance.onDataLoadFinished.AddListener(() =>
+        {
+            var data = DataManager.instance.GetData<WeaponData>(2002);
+            shootingStar.Init(data);
+        });
 
         DataManager.instance.Init();
         DataManager.instance.LoadAllData(this);

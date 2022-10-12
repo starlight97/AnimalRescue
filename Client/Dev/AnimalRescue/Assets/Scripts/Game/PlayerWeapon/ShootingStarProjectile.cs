@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class ShootingStarProjectile : PlayerProjectile
 {
-    private Vector3 dir;
-    private GameObject star;
-    private Coroutine starMoveRoutine;
+    public GameObject star;
 
-    public override void Init(int damage, float moveSpeed)
+    public override void Init(int damage)
     {
-        base.Init(damage, moveSpeed, dir);
-        this.star = GameObject.Find("Star").GetComponent<GameObject>();
-        MoveStar();
+        base.Init(damage);
+        StarMove();
     }
 
     public override void Attack(Collider collider)
@@ -22,27 +19,23 @@ public class ShootingStarProjectile : PlayerProjectile
             Destroy(this.gameObject);
     }
 
-    public void MoveStar()
+    public void StarMove()
     {
-        if (starMoveRoutine != null)
-        {
-            StopCoroutine(this.starMoveRoutine);
-        }
-        this.starMoveRoutine = StartCoroutine(MoveStarRoutine());
+        StartCoroutine(StarMoveRoutine());
     }
 
-    private IEnumerator MoveStarRoutine()
+    private IEnumerator StarMoveRoutine()
     {
         while (true)
         {
-            this.dir = Vector3.down - this.star.transform.position;
-            this.star.transform.Translate(dir * Time.deltaTime);
-            this.star.transform.rotation = this.gameObject.transform.localRotation;
-            if (this.star.transform.position.z == 5)
+            var groundPos = new Vector3(this.star.transform.position.x, this.star.transform.position.y, -5);
+            var dir = this.star.transform.localPosition - groundPos;
+            this.star.transform.Translate(dir * Time.deltaTime * 1.7f);
+            if (this.star.transform.position.y <= 0)
             {
                 Destroy(this.gameObject);
             }
-            yield return new WaitForSeconds(1f);
+            yield return null;
         }
     }
 }
