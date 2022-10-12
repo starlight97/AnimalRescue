@@ -12,7 +12,7 @@ public class Player : MonoBehaviour
     }
 
     private PlayerMove playerMove;
-    
+    private PlayerStats playerStats;
     private CottonCandy weapon01;
     private BasicWeapon basicWeapon;
 
@@ -40,6 +40,9 @@ public class Player : MonoBehaviour
         this.hp = this.maxHp; 
         this.playerMove = GetComponent<PlayerMove>();
         this.playerMove.Move();
+
+        this.playerStats = GetComponent<PlayerStats>();
+        this.playerStats.Init(0, 0, 0);
 
         this.playerMove.onMove = () =>
         {
