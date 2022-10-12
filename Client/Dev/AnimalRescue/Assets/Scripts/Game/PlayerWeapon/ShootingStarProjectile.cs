@@ -22,12 +22,6 @@ public class ShootingStarProjectile : PlayerProjectile
             Destroy(this.gameObject);
     }
 
-    private void Start()
-    {
-
-        Debug.Log(dir);
-    }
-
     public void StarMove()
     {
         StartCoroutine(StarMoveRoutine());
@@ -40,8 +34,9 @@ public class ShootingStarProjectile : PlayerProjectile
             var groundPos = new Vector3(0, 0, -5);
             this.dir = this.star.transform.localPosition - groundPos;
             this.star.transform.Translate(this.dir * Time.deltaTime * speed);
-            if (this.star.transform.position.y <= 0)
+            if (this.star.transform.position.y <= -1f)
             {
+                yield return new WaitForSeconds(1f);
                 Destroy(this.gameObject);
             }
             yield return null;
