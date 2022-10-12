@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1000,
+    "monstername": "Badger",
+    "damage": 10,
+    "movespeed": 10.0,
+    "maxhp": 100,
+    "attackspeed": 0.9
+  },
+  {
+    "id": 1001,
+    "monstername": "Dear",
+    "damage": 20,
+    "movespeed": 10.0,
+    "maxhp": 150,
+    "attackspeed": 1.0
+  },
+  {
+    "id": 1002,
+    "monstername": "Dog",
+    "damage": 30,
+    "movespeed": 10.0,
+    "maxhp": 200,
+    "attackspeed": 1.1
+  },
+  {
+    "id": 1003,
+    "monstername": "Lion",
+    "damage": 40,
+    "movespeed": 10.0,
+    "maxhp": 250,
+    "attackspeed": 1.2
+  },
+  {
+    "id": 1004,
+    "monstername": "Lizard",
+    "damage": 50,
+    "movespeed": 10.0,
+    "maxhp": 300,
+    "attackspeed": 1.3
+  },
+  {
+    "id": 1005,
+    "monstername": "Owl",
+    "damage": 60,
+    "movespeed": 10.0,
+    "maxhp": 350,
+    "attackspeed": 1.4
+  },
+  {
+    "id": 1006,
+    "monstername": "Rabbit",
+    "damage": 70,
+    "movespeed": 10.0,
+    "maxhp": 400,
+    "attackspeed": 1.5
+  },
+  {
+    "id": 1007,
+    "monstername": "Rat",
+    "damage": 80,
+    "movespeed": 10.0,
+    "maxhp": 450,
+    "attackspeed": 1.6
+  }
+]

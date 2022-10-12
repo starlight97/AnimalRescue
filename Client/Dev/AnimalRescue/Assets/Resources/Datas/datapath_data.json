@@ -1,0 +1,12 @@
+[
+  {
+    "id": 0,
+    "res_name": "enemy_data",
+    "type": "EnemyData"
+  },
+  {
+    "id": 1,
+    "res_name": "weapon_data",
+    "type": "WeaponData"
+  }
+]
