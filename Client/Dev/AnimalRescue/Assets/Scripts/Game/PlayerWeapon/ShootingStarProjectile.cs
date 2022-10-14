@@ -18,8 +18,6 @@ public class ShootingStarProjectile : PlayerProjectile
     public override void Attack(Collider collider)
     {
         base.Attack(collider);
-        if (collider.CompareTag("Enemy"))
-            Destroy(this.gameObject);
     }
 
     public void StarMove()

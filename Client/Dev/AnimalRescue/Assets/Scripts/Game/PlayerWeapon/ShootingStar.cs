@@ -32,4 +32,11 @@ public class ShootingStar : PlayerWeapon
             yield return new WaitForSeconds(3f);
         }
     }
+
+    public override void Upgrade()
+    {
+        base.Upgrade();
+
+
+    }
 }
