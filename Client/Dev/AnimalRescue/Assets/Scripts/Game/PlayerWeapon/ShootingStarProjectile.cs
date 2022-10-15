@@ -17,7 +17,6 @@ public class ShootingStarProjectile : PlayerProjectile
         base.Attack(collider);
         if (collider.CompareTag("Enemy"))
         {
-            Debug.Log("크아아아아아앗");
             Destroy(this.gameObject);
         }
     }
@@ -29,7 +28,6 @@ public class ShootingStarProjectile : PlayerProjectile
 
         if (this.transform.position.y <= -2)
         {
-            Debug.Log("밍야옹");
             Destroy(this.particleGo.gameObject);
         }
     }
