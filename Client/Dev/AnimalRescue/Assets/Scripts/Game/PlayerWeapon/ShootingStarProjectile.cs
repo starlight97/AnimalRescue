@@ -31,7 +31,7 @@ public class ShootingStarProjectile : PlayerProjectile
         {
             var groundPos = new Vector3(0, 0, -5);
             this.dir = this.star.transform.localPosition - groundPos;
-            this.star.transform.Translate(this.dir * Time.deltaTime * speed);
+            this.star.transform.Translate(Vector3.up * Time.deltaTime * speed);
             if (this.star.transform.position.y <= -1f)
             {
                 yield return new WaitForSeconds(1f);

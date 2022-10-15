@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
             this.onLevelUp(amount);
         };
 
+
         this.onUpdateMove(this.hpGaugePoint.position);
 
         

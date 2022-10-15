@@ -7,6 +7,7 @@ public class JeongTestMain : MonoBehaviour
     private Player player;
     private EnemySpawner enemySpawner;
     private WaveManager waveManager;
+    public UIGame uiGame;
     private bool isPause = false;
 
     public CottonCandy cottonCandy;
@@ -16,11 +17,15 @@ public class JeongTestMain : MonoBehaviour
         //this.PlayerCenter.GetComponent<Player>();
         GameObjectSetting();
 
-        //this.player.onLevelUp = (amount) =>
-        //{
-        //    Pause();
-        //    Debug.Log("레벨업!");
-        //};
+        this.player.onLevelUp = (amount) =>
+        {
+            Pause();
+            Debug.Log("레벨업!");
+        };
+        this.player.onUpdateMove = (worldPos) =>
+        {
+            this.uiGame.uiHpGauge.UpdatePosition(worldPos);
+        };
         this.player.onHit = (n1, n2) =>
         {
 
@@ -32,6 +37,7 @@ public class JeongTestMain : MonoBehaviour
         };
         this.waveManager.onWaveStart = (wave) =>
         {
+            Debug.Log(wave + " : wave start");
             enemySpawner.StartWave(wave);
         };
 

@@ -4,7 +4,7 @@
     "monstername": "Badger",
     "damage": 11,
     "movespeed": 10.0,
-    "maxhp": 75,
+    "maxhp": 100,
     "experience": 10,
     "attackspeed": 0.9,
     "prefab_name": "Prefabs\\Enemy\\Badger"

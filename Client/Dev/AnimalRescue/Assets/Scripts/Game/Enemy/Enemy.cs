@@ -10,8 +10,12 @@ public class Enemy : MonoBehaviour
         Run, Attack, Hit, Die
     }
 
-    public EnemyData enemyData;
+    private int maxHp;
     public int currentHp;
+    private int damage;
+    public int experience;
+    private float movespeed;
+    private float attackspeed;
     private GameObject playerGo;
     private Animator anim;
 
@@ -21,10 +25,14 @@ public class Enemy : MonoBehaviour
     public UnityAction<Enemy> onDie;
     public float attackRange;
 
-    public void Init(EnemyData enemyData)
+    public void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed)
     {
-        this.enemyData = enemyData;
-        this.currentHp = this.enemyData.maxhp;
+        this.maxHp = maxHp;
+        this.currentHp = this.maxHp;
+        this.damage = damage;
+        this.experience = experience;
+        this.movespeed = movespeed;
+        this.attackspeed = attackspeed;
 
         this.playerGo = GameObject.Find("Player").gameObject;
         this.anim = this.GetComponent<Animator>();
@@ -45,7 +53,7 @@ public class Enemy : MonoBehaviour
             {
                 this.transform.LookAt(this.playerGo.transform.position);
 
-                transform.Translate(Vector3.forward * Time.deltaTime * this.enemyData.movespeed);
+                transform.Translate(Vector3.forward * Time.deltaTime * this.movespeed);
             }
             else
             {
@@ -114,9 +122,9 @@ public class Enemy : MonoBehaviour
         SetState(eState.Run);
         // 플레이어 공격
         var player = playerGo.GetComponent<Player>();
-        player.Hit(this.enemyData.damage);
+        player.Hit(this.damage);
 
-        yield return this.enemyData.attackspeed;
+        yield return this.attackspeed;
         this.attackRoutine = null;
     }
 

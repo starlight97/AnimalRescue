@@ -8,7 +8,6 @@ public class EnemySpawner : MonoBehaviour
 {
     public UnityAction<int> onDieEnemy;
     public float spawnDelay;
-    public GameObject[] enemyPrefabs;
     private Vector3[] spawnPoints;
     private int spawnCount;
     private int maxSpawnCount;
@@ -45,7 +44,8 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemyRoutine(int wave)
     {
-        while(true)
+        this.spawnCount = 0;
+        while (true)
         {
             if (spawnCount == maxSpawnCount)
                 break;
@@ -65,17 +65,18 @@ public class EnemySpawner : MonoBehaviour
             pos.z = Random.Range(spawnPoints[randPoint1].z, spawnPoints[randPoint2].z);
 
             var randIdx = Random.Range(0, enemyDataList.Count - 1);
-            EnemyData enemyData = enemyDataList[randIdx];
-            enemyData.maxhp = wave * enemyData.maxhp;
-            enemyData.damage = wave * enemyData.damage;
-            GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyData.prefab_name),pos, Quaternion.identity);
+            int maxhp = wave * enemyDataList[0].maxhp;
+            int damage = wave * enemyDataList[0].damage;
+
+            GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyDataList[0].prefab_name),pos, Quaternion.identity);
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
-            enemy.Init(enemyData);
+            enemy.Init(maxhp, damage, enemyDataList[0].experience, enemyDataList[0].movespeed, enemyDataList[0].attackspeed);
+
             enemy.onDie = (dieEnemy) =>
             {
                 EnemyList.Remove(dieEnemy);
-                this.onDieEnemy(dieEnemy.enemyData.experience);
+                this.onDieEnemy(dieEnemy.experience);
                 Destroy(dieEnemy.gameObject);
             };
             spawnCount++;

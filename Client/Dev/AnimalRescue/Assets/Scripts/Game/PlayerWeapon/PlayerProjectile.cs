@@ -36,7 +36,6 @@ public class PlayerProjectile : MonoBehaviour
     {
         if (collider.tag == "Enemy")
         {
-            Debug.Log("DAMAGE : " +  this.damage);
             Enemy enemy = collider.gameObject.GetComponent<Enemy>();
             enemy.Hit(this.damage);
         }
