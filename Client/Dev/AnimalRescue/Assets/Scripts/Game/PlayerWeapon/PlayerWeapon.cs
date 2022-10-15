@@ -46,7 +46,7 @@ public class PlayerWeapon : MonoBehaviour
         {
             // 10 -> - 10 -> 0 
             this.current_damage = (int)((this.level - (this.weaponData.projectile_count - 1)) * this.weaponData.increase_damage_per) * weaponData.damage;
-            Debug.Log(this.current_damage);
+            Debug.LogFormat("current damage: {0}",  this.current_damage);
             //this.weaponData.damage = (this.level - (this.weaponData.projectile_count - 1)) * this.weaponData.damage;
         }
     }

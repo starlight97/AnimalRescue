@@ -41,6 +41,12 @@ public class HyunMain : MonoBehaviour
 
         };
 
+        this.enemySpawner.onDieEnemy = (experience) =>
+        {
+            PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
+            playerStats.GetExp(experience);
+        };
+
         this.waveManager.onWaveStart = (wave) =>
         {
             enemySpawner.StartWave(wave);
@@ -49,7 +55,7 @@ public class HyunMain : MonoBehaviour
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             var data = DataManager.instance.GetData<WeaponData>(2002);
-            shootingStar.Init(data);
+            shootingStar.Init(data, this.player.transform);
             enemySpawner.Init(30);
             this.player.Init();
             waveManager.Init();
@@ -65,5 +71,7 @@ public class HyunMain : MonoBehaviour
         {
             basicWeapon.Upgrade();
         }
+        if (Input.GetKeyDown(KeyCode.X))
+            shootingStar.Upgrade();
     }
 }
