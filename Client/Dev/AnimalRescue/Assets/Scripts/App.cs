@@ -1,3 +1,4 @@
+using GooglePlayGames;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,6 @@ public class App : MonoBehaviour
     }
 
     public static App instance;
-
     private UIApp uiApp;
 
     private void Awake()
@@ -25,8 +25,14 @@ public class App : MonoBehaviour
     {
         this.uiApp = GameObject.FindObjectOfType<UIApp>();
         this.uiApp.Init();
+        GPGSManager.instance.Init();
 
-        this.LoadScene<LogoMain>(eSceneType.LogoScene);
+        GPGSManager.instance.onGPGSConnect = (status) =>
+        {
+            this.LoadScene<LogoMain>(eSceneType.LogoScene);
+        };
+
+        
     }
 
     public void LoadScene<T>(eSceneType sceneType) where T : SceneMain

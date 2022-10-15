@@ -1,0 +1,9 @@
+lastUpgrade=01101
+proj.pluginVersion=0.11.01
+proj.AppId=950205076986
+and.BundleId=com.subingo.animalrescue
+proj.classDir=Assets
+proj.ConstantsClassName=GPGSIds
+and.ResourceData=%3c%3fxml+version%3d%221.0%22+encoding%3d%22utf-8%22%3f%3e%0d%0a%3c%21--Google+Play+game+services+IDs.+Save+this+file+as+res%2fvalues%2fgames-ids.xml+in+your+project.--%3e%0d%0a%3cresources%3e%0d%0a++%3c%21--app_id--%3e%0d%0a++%3cstring+name%3d%22app_id%22+translatable%3d%22false%22%3e950205076986%3c%2fstring%3e%0d%0a++%3c%21--package_name--%3e%0d%0a++%3cstring+name%3d%22package_name%22+translatable%3d%22false%22%3ecom.subingo.animalrescue%3c%2fstring%3e%0d%0a++%3c%21--achievement+%ed%99%98%ec%98%81%ed%95%a9%eb%8b%88%eb%8b%a4.--%3e%0d%0a++%3cstring+name%3d%22achievement_.%22+translatable%3d%22false%22%3eCgkI-quL5dMbEAIQAg%3c%2fstring%3e%0d%0a%3c%2fresources%3e
+and.ClientId=950205076986-0ngd8hkljjgi2v0j4p00afdi2t2voojl.apps.googleusercontent.com
+android.SetupDone=true
