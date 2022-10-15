@@ -43,7 +43,7 @@ public class PlayerMove : MonoBehaviour
             {
                 this.modelGo.transform.rotation = Quaternion.LookRotation(this.dir);
                 this.transform.Translate(this.dir.normalized * moveSpeed * Time.deltaTime);
-                this.onMove();
+                //this.onMove();
             }
 
             yield return null;

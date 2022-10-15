@@ -4,40 +4,33 @@ using UnityEngine;
 
 public class ShootingStarProjectile : PlayerProjectile
 {
-    public GameObject star;
-    [SerializeField]
-    private float speed;
-    private Vector3 dir;
+    public GameObject particlePrefab;
+    private GameObject particleGo;
 
-    public override void Init(int damage)
+    public override void Init(int damage, float moveSpeed, Vector3 dir)
     {
-        base.Init(damage);
-        StarMove();
+        base.Init(damage, moveSpeed, dir);
     }
 
     public override void Attack(Collider collider)
     {
         base.Attack(collider);
-    }
-
-    public void StarMove()
-    {
-        StartCoroutine(StarMoveRoutine());
-    }
-
-    private IEnumerator StarMoveRoutine()
-    {
-        while (true)
+        if (collider.CompareTag("Enemy"))
         {
-            var groundPos = new Vector3(0, 0, -5);
-            this.dir = this.star.transform.localPosition - groundPos;
-            this.star.transform.Translate(Vector3.up * Time.deltaTime * speed);
-            if (this.star.transform.position.y <= -1f)
-            {
-                yield return new WaitForSeconds(1f);
-                Destroy(this.gameObject);
-            }
-            yield return null;
+            Debug.Log("크아아아아아앗");
+            Destroy(this.gameObject);
+        }
+    }
+
+    public void CreateParticle(Transform trans)
+    {
+        this.particleGo = Instantiate<GameObject>(particlePrefab);
+        this.particleGo.transform.position = trans.position;
+
+        if (this.transform.position.y <= -2)
+        {
+            Debug.Log("밍야옹");
+            Destroy(this.particleGo.gameObject);
         }
     }
 }

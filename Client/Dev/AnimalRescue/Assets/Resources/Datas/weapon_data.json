@@ -23,7 +23,7 @@
     "id": 2002,
     "weapon_name": "ShootingStar",
     "damage": 7,
-    "attack_speed": 1.0,
+    "attack_speed": 8.0,
     "projectile_count": 4,
     "projectile_speed": 1.0,
     "increase_damage_per": 2.0,
