@@ -13,8 +13,6 @@ public class Player : MonoBehaviour
 
     private PlayerMove playerMove;
     private PlayerStats playerStats;
-    private CottonCandy weapon01;
-    private BasicWeapon basicWeapon;
 
     [SerializeField]
     private int hp;
@@ -57,15 +55,7 @@ public class Player : MonoBehaviour
             this.onLevelUp(amount);
         };
 
-
         this.onUpdateMove(this.hpGaugePoint.position);
-
-        this.basicWeapon = GameObject.Find("BasicWeapon").GetComponent<BasicWeapon>();
-        DataManager.instance.onDataLoadFinished.AddListener(() =>
-        {
-            var data = DataManager.instance.GetData<WeaponData>(2000);
-            basicWeapon.Init(data, this.modelTrans);
-        });
     }
 
     private void Update()

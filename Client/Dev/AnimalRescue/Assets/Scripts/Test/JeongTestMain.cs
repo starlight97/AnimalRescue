@@ -7,10 +7,9 @@ public class JeongTestMain : MonoBehaviour
     private Player player;
     private EnemySpawner enemySpawner;
     private WaveManager waveManager;
+    private WeaponManager weaponManager;
     public UIJeongTest uiJeongTest;
-    private bool isPause = false;
 
-    public CottonCandy cottonCandy;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +43,7 @@ public class JeongTestMain : MonoBehaviour
         this.uiJeongTest.onWeaponSelect = (id) =>
         {
             this.Resume();
+            this.weaponManager.WeaponUpgrade(id);
             Debug.Log(id + " : Level Up 선택!~@!@~");
         };
 
@@ -55,11 +55,12 @@ public class JeongTestMain : MonoBehaviour
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             var data = DataManager.instance.GetData<WeaponData>(2001);
-            cottonCandy.Init(data, player.transform, 5);
+
             this.enemySpawner.Init(30);
             this.player.Init();
             this.waveManager.Init();
             this.uiJeongTest.Init();
+            this.weaponManager.Init();
         });
         DataManager.instance.Init();
         DataManager.instance.LoadAllData(this);
@@ -73,18 +74,17 @@ public class JeongTestMain : MonoBehaviour
         this.enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
         this.waveManager = GameObject.FindObjectOfType<WaveManager>();
         this.uiJeongTest = GameObject.FindObjectOfType<UIJeongTest>();
+        this.weaponManager = GameObject.FindObjectOfType<WeaponManager>();
     }
 
     public void Resume()
     {
         Time.timeScale = 1f;
-        isPause = false;
     }
 
     public void Pause()
     {
         Time.timeScale = 0f;
-        isPause = true;
     }
 
 

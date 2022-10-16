@@ -55,7 +55,7 @@ public class HyunMain : MonoBehaviour
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             var data = DataManager.instance.GetData<WeaponData>(2002);
-            shootingStar.Init(data, this.player.transform);
+            //shootingStar.Init(data);
             enemySpawner.Init(30);
             this.player.Init();
             waveManager.Init();

@@ -10,10 +10,10 @@ public class GameMain : SceneMain
     public UIGame uiGame;
     private bool isPause = false;
 
-    public CottonCandy cottonCandy;
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
+
 
         GameObjectSetting();
 
@@ -56,7 +56,6 @@ public class GameMain : SceneMain
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             var data = DataManager.instance.GetData<WeaponData>(2001);
-            cottonCandy.Init(data, player.transform, 5);
             this.enemySpawner.Init(30);
             this.player.Init();
             this.waveManager.Init();

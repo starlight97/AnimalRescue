@@ -10,15 +10,13 @@ public class BasicWeapon : PlayerWeapon
     public GameObject doughnutProjectilePrefab;
 
     private Coroutine createRoutine;
-    private Transform modelTrans;
     private DoughnutProjectile doughnut;
 
     private float size = 1;
 
-    public override void Init(WeaponData weaponData, Transform trans)
+    public override void Init(WeaponData weaponData, Transform playerTrans)
     {
-        base.Init(weaponData, trans);
-        modelTrans = trans;
+        base.Init(weaponData, playerTrans);
         this.Create();
     }
 
@@ -35,7 +33,7 @@ public class BasicWeapon : PlayerWeapon
             var projectileGo = Instantiate<GameObject>(doughnutProjectilePrefab);
             projectileGo.transform.position = this.transform.position;
             doughnut = projectileGo.GetComponent<DoughnutProjectile>();
-            this.transform.rotation = this.modelTrans.transform.rotation;
+            this.transform.rotation = this.playerTrans.transform.rotation;
             doughnut.Init(this.current_damage, 10, this.transform.forward);
             doughnut.transform.localScale = new Vector3(size, size, size);
             projectileList.Add(projectileGo);

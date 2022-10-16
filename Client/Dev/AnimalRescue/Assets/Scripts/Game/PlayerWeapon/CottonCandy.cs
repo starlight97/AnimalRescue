@@ -14,11 +14,9 @@ public class CottonCandy : PlayerWeapon
     public float deg; //각도
 
 
-    public override void Init(WeaponData weaponData, Transform trans, float circleR)
+    public override void Init(WeaponData weaponData, Transform playerTrans)
     {
-        base.Init(weaponData, trans, circleR);
-        this.circleR = circleR;
-        this.centerTrans = trans;
+        base.Init(weaponData, playerTrans);
         this.Attack();
     }
 
@@ -57,7 +55,7 @@ public class CottonCandy : PlayerWeapon
     {
         base.Upgrade();
 
-        if(projectile_current_count <= this.weaponData.projectile_count)
+        if(projectile_current_count <= this.weaponData.projectile_max_state)
         {
             projectile_current_count++;
             var projectTileGo = Instantiate<GameObject>(cottonCandyProjectilePrefab);

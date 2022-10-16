@@ -11,14 +11,14 @@
 
 
 public class WeaponData : RawData
-{    
+{
     public string weapon_name;
     
     public int damage;
     
     public float attack_speed;
     
-    public int projectile_count;
+    public int projectile_max_state;
     
     public float projectile_speed;
     

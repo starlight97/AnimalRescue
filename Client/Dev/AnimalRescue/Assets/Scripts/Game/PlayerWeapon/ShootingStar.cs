@@ -7,24 +7,24 @@ public class ShootingStar : PlayerWeapon
     public GameObject projectilePrefab;
     public List<ShootingStarProjectile> projectileList;
 
-    public override void Init(WeaponData weaponData, Transform trans)
+    public override void Init(WeaponData weaponData, Transform playerTrans)
     {
-        base.Init(weaponData, trans);
-        Create(trans);
+        base.Init(weaponData, playerTrans);
+        Create();
     }
 
-    public void Create(Transform trans)
+    public void Create()
     {
-        StartCoroutine(CreateRoutine(trans));
+        StartCoroutine(CreateRoutine());
     }
 
-    private IEnumerator CreateRoutine(Transform trans)
+    private IEnumerator CreateRoutine()
     {
         while (true)
         {
             var projectileGo = Instantiate<GameObject>(projectilePrefab);
-            float randX = trans.position.x + Random.Range(-5, 6);
-            float randZ = trans.position.z + Random.Range(-5, 6);
+            float randX = playerTrans.position.x + Random.Range(-5, 6);
+            float randZ = playerTrans.position.z + Random.Range(-5, 6);
             projectileGo.transform.position = new Vector3(randX, 10, randZ);
             var projectile = projectileGo.GetComponent<ShootingStarProjectile>();
             projectile.Init(current_damage, current_attack_speed, Vector3.down);
@@ -39,12 +39,12 @@ public class ShootingStar : PlayerWeapon
     {
         base.Upgrade();
 
-        if (projectile_current_count <= weaponData.projectile_count)
+        if (projectile_current_count <= weaponData.projectile_max_state)
         {
             projectile_current_count++;
 
             Transform trans = GameObject.Find("Player").GetComponent<Transform>();
-            Create(trans);
+            Create();
         }
     }
 }
