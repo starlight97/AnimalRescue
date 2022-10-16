@@ -20,6 +20,7 @@ public class JeongTestMain : MonoBehaviour
         this.player.onLevelUp = (amount) =>
         {
             Pause();
+            uiJeongTest.ShowWeaponLevelUp();
             Debug.Log("레벨업!");
         };
         this.player.onUpdateMove = (worldPos) =>
@@ -42,6 +43,7 @@ public class JeongTestMain : MonoBehaviour
         };
         this.uiJeongTest.onWeaponSelect = (id) =>
         {
+            this.Resume();
             Debug.Log(id + " : Level Up 선택!~@!@~");
         };
 
@@ -63,20 +65,6 @@ public class JeongTestMain : MonoBehaviour
         DataManager.instance.LoadAllData(this);
 
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            //if (isPause == true)
-            //    Resume();
-
-            //cottonCandy.Upgrade();
-
-            uiJeongTest.ShowWeaponLevelUp();
-        }
     }
 
     private void GameObjectSetting()

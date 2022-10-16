@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerWeapon : MonoBehaviour
 {
     public int id;
-    protected int projectile_current_count;
-    protected int current_damage;
-    protected float current_attack_speed;
-    protected int level;
+    public int projectile_current_count;
+    public int current_damage;
+    public float current_attack_speed;
+    public int level;
 
     protected WeaponData weaponData;
 
@@ -46,7 +46,6 @@ public class PlayerWeapon : MonoBehaviour
         {
             // 10 -> - 10 -> 0 
             this.current_damage = (int)((this.level - (this.weaponData.projectile_count - 1)) * this.weaponData.increase_damage_per) * weaponData.damage;
-            Debug.LogFormat("current damage: {0}",  this.current_damage);
             //this.weaponData.damage = (this.level - (this.weaponData.projectile_count - 1)) * this.weaponData.damage;
         }
     }

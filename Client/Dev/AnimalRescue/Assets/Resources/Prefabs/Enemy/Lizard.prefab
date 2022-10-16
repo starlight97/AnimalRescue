@@ -4732,6 +4732,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHp: 0
+  experience: 0
   attackRange: 0
 --- !u!135 &5461626993879857147
 SphereCollider:
@@ -4760,7 +4761,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1001 &129821128023766908
 PrefabInstance:

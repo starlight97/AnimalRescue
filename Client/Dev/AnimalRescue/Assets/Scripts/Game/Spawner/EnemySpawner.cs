@@ -68,10 +68,10 @@ public class EnemySpawner : MonoBehaviour
             int maxhp = wave * enemyDataList[0].maxhp;
             int damage = wave * enemyDataList[0].damage;
 
-            GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyDataList[0].prefab_name),pos, Quaternion.identity);
+            GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyDataList[randIdx].prefab_name),pos, Quaternion.identity);
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
-            enemy.Init(maxhp, damage, enemyDataList[0].experience, enemyDataList[0].movespeed, enemyDataList[0].attackspeed);
+            enemy.Init(maxhp, damage, enemyDataList[0].experience, enemyDataList[randIdx].movespeed, enemyDataList[randIdx].attackspeed);
 
             enemy.onDie = (dieEnemy) =>
             {

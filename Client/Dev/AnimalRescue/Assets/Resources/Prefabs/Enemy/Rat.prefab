@@ -2268,6 +2268,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHp: 0
+  experience: 0
   attackRange: 0
 --- !u!135 &7894457213560091725
 SphereCollider:
@@ -2296,7 +2297,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!1 &8497478290085214835
 GameObject:

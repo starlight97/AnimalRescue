@@ -7,7 +7,8 @@
     "projectile_count": 1,
     "projectile_speed": 3.0,
     "increase_damage_per": 2.0,
-    "decrease_attack_speed_per": 0.1
+    "decrease_attack_speed_per": 0.1,
+    "prefab_name": "Prefabs\\PlayerWeapon\\BasicWeapon"
   },
   {
     "id": 2001,
@@ -17,7 +18,8 @@
     "projectile_count": 4,
     "projectile_speed": 100.0,
     "increase_damage_per": 2.0,
-    "decrease_attack_speed_per": 0.1
+    "decrease_attack_speed_per": 0.1,
+    "prefab_name": "Prefabs\\PlayerWeapon\\CottonCandy"
   },
   {
     "id": 2002,
@@ -27,6 +29,7 @@
     "projectile_count": 4,
     "projectile_speed": 1.0,
     "increase_damage_per": 2.0,
-    "decrease_attack_speed_per": 0.1
+    "decrease_attack_speed_per": 0.1,
+    "prefab_name": "Prefabs\\PlayerWeapon\\ShootingStar"
   }
 ]

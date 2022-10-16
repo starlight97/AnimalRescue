@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public PlayerWeapon[] arrPlayerWeapon;
+    public List<PlayerWeapon> playerWeaponList;
 
-    public void SpawnPlayerWeapon()
+    public void Init()
     {
+        this.SpawnPlayerWeapon(2000);
+        //this.playerWeaponList;
+    }
 
+    public void SpawnPlayerWeapon(int id)
+    {
+        var weaponData = DataManager.instance.GetData<WeaponData>(id);
+        GameObject weaponGo = Instantiate(Resources.Load<GameObject>(weaponData.prefab_name), Vector3.zero, Quaternion.identity);
+        var weapon = weaponGo.GetComponent<PlayerWeapon>();
+        //weapon.Init();
     }
 }
