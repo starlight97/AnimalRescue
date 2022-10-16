@@ -7,7 +7,7 @@ public class JeongTestMain : MonoBehaviour
     private Player player;
     private EnemySpawner enemySpawner;
     private WaveManager waveManager;
-    public UIGame uiGame;
+    public UIJeongTest uiJeongTest;
     private bool isPause = false;
 
     public CottonCandy cottonCandy;
@@ -24,7 +24,7 @@ public class JeongTestMain : MonoBehaviour
         };
         this.player.onUpdateMove = (worldPos) =>
         {
-            this.uiGame.uiHpGauge.UpdatePosition(worldPos);
+            this.uiJeongTest.uiHpGauge.UpdatePosition(worldPos);
         };
         this.player.onHit = (n1, n2) =>
         {
@@ -40,6 +40,10 @@ public class JeongTestMain : MonoBehaviour
             Debug.Log(wave + " : wave start");
             enemySpawner.StartWave(wave);
         };
+        this.uiJeongTest.onWeaponSelect = (id) =>
+        {
+            Debug.Log(id + " : Level Up 선택!~@!@~");
+        };
 
 
         DataManager.instance.onDataLoadComplete.AddListener((n1, n2) =>
@@ -53,6 +57,7 @@ public class JeongTestMain : MonoBehaviour
             this.enemySpawner.Init(30);
             this.player.Init();
             this.waveManager.Init();
+            this.uiJeongTest.Init();
         });
         DataManager.instance.Init();
         DataManager.instance.LoadAllData(this);
@@ -65,10 +70,12 @@ public class JeongTestMain : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            if (isPause == true)
-                Resume();
+            //if (isPause == true)
+            //    Resume();
 
-            cottonCandy.Upgrade();
+            //cottonCandy.Upgrade();
+
+            uiJeongTest.ShowWeaponLevelUp();
         }
     }
 
@@ -77,8 +84,7 @@ public class JeongTestMain : MonoBehaviour
         this.player = GameObject.FindObjectOfType<Player>();
         this.enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
         this.waveManager = GameObject.FindObjectOfType<WaveManager>();
-
-
+        this.uiJeongTest = GameObject.FindObjectOfType<UIJeongTest>();
     }
 
     public void Resume()
