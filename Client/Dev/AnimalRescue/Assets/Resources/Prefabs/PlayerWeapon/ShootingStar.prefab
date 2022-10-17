@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 414904090871748271}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44,6 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b046ee444ebfa474db112d3586d3ec18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
-  projectilePrefab: {fileID: 0}
+  id: 2002
+  projectile_current_count: 0
+  current_damage: 0
+  current_attack_speed: 0
+  level: 0
+  projectilePrefab: {fileID: 137382060062445662, guid: cf6bd79146b8daf4480f8aebe9572092, type: 3}
   projectileList: []

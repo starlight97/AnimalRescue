@@ -25,10 +25,5 @@ public class ShootingStarProjectile : PlayerProjectile
     {
         this.particleGo = Instantiate<GameObject>(particlePrefab);
         this.particleGo.transform.position = trans.position;
-
-        if (this.transform.position.y <= -2)
-        {
-            Destroy(this.particleGo.gameObject);
-        }
     }
 }

@@ -7,10 +7,8 @@ public class HyunMain : MonoBehaviour
     private Player player;
     private EnemySpawner enemySpawner;
     private WaveManager waveManager;
-    public BasicWeapon basicWeapon;
-    public ShootingStar shootingStar;
+    private WeaponManager weaponManager;
     public UIGame uiGame;
-    
 
     void Start()
     {
@@ -19,12 +17,13 @@ public class HyunMain : MonoBehaviour
 
     public void Init()
     {
-        this.enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
-        this.enemySpawner.Init(10);
-
-        this.waveManager = GameObject.FindObjectOfType<WaveManager>();
-
         this.player = GameObject.FindObjectOfType<Player>();
+        this.enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
+        this.waveManager = GameObject.FindObjectOfType<WaveManager>();
+        this.weaponManager = GameObject.FindObjectOfType<WeaponManager>();
+
+
+        this.enemySpawner.Init(10);
 
         this.player.onUpdateMove = (worldPos) => 
         {
@@ -52,13 +51,13 @@ public class HyunMain : MonoBehaviour
             enemySpawner.StartWave(wave);
         };
 
+
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
-            var data = DataManager.instance.GetData<WeaponData>(2002);
-            //shootingStar.Init(data);
             enemySpawner.Init(30);
-            this.player.Init();
+            player.Init();
             waveManager.Init();
+            weaponManager.Init(2002);
         });
 
         DataManager.instance.Init();
@@ -67,11 +66,11 @@ public class HyunMain : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            basicWeapon.Upgrade();
-        }
-        if (Input.GetKeyDown(KeyCode.X))
-            shootingStar.Upgrade();
+        //if (Input.GetKeyDown(KeyCode.Z))
+        //{
+        //    basicWeapon.Upgrade();
+        //}
+        //if (Input.GetKeyDown(KeyCode.X))
+        //    shootingStar.Upgrade();
     }
 }
