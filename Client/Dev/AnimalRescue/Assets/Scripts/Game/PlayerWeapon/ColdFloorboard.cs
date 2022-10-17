@@ -5,15 +5,12 @@ using UnityEngine;
 public class ColdFloorboard : PlayerWeapon
 {
     private List<Enemy> enemyList;
-    private Transform playerTrans;
-
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
         base.Init(weaponData, playerTrans);
         this.enemyList = new List<Enemy>();
         StartCoroutine(this.AttackRoutine());
-        StartCoroutine(this.FollowPlayerRoutine());
     }
     private void OnTriggerEnter(Collider other)
     {
@@ -51,12 +48,23 @@ public class ColdFloorboard : PlayerWeapon
             yield return new WaitForSeconds(0.1f);
         }
     }
-    private IEnumerator FollowPlayerRoutine()
+
+    public override void Upgrade()
     {
-        while (true)
+        //base.Upgrade();
+        level++;
+        
+        switch(level)
         {
-            this.transform.position = playerTrans.position;
-            yield return null;
+            case 1:
+                // 컬러 레드
+                break;
+            case 2: 
+                // 컬러 블루
+
+            default:
+
+                break;
         }
     }
 

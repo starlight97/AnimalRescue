@@ -27,14 +27,15 @@ public class PlayerWeapon : MonoBehaviour
     virtual public void Upgrade()
     {        
         this.level++;
+        this.current_damage = (int)((this.level * this.weaponData.increase_damage_per) * weaponData.damage);
         // 투사체 최대 갯수 도달시 부터는 damage가 증가
         // 데미지 공식 = 무기 고유공격력 * 무기레벨
-        if(projectile_current_count >= this.weaponData.projectile_max_state)
-        {
-            // 10 -> - 10 -> 0 
-            this.current_damage = (int)((this.level - (this.weaponData.projectile_max_state - 1)) * this.weaponData.increase_damage_per) * weaponData.damage;
-            //this.weaponData.damage = (this.level - (this.weaponData.projectile_count - 1)) * this.weaponData.damage;
-        }
+        //if(projectile_current_count >= this.weaponData.projectile_max_state)
+        //{
+        //    // 10 -> - 10 -> 0 
+        //    this.current_damage = (int)((this.level - (this.weaponData.projectile_max_state - 1)) * this.weaponData.increase_damage_per) * weaponData.damage;
+        //    //this.weaponData.damage = (this.level - (this.weaponData.projectile_count - 1)) * this.weaponData.damage;
+        //}
     }
 
     public IEnumerator FollowPlayerRoutine()

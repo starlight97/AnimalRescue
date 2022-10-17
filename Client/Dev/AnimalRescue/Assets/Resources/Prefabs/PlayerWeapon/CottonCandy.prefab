@@ -44,7 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c7621ce520825f46ba25dc425a05cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+  id: 2001
+  projectile_current_count: 0
+  current_damage: 0
+  current_attack_speed: 0
+  level: 0
   cottonCandyProjectilePrefab: {fileID: 3945423646787252163, guid: 60dc8e936bcc86642806d21423585599, type: 3}
   circleR: 5
   deg: 0

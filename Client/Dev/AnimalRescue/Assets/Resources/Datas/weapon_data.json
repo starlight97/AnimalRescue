@@ -18,7 +18,7 @@
     "projectile_max_state": 4,
     "projectile_speed": 100.0,
     "increase_damage_per": 2.0,
-    "decrease_attack_speed_per": 0.1,
+    "decrease_attack_speed_per": 1.0,
     "prefab_name": "Prefabs\\PlayerWeapon\\CottonCandy"
   },
   {
@@ -31,5 +31,16 @@
     "increase_damage_per": 2.0,
     "decrease_attack_speed_per": 0.1,
     "prefab_name": "Prefabs\\PlayerWeapon\\ShootingStar"
+  },
+  {
+    "id": 2003,
+    "weapon_name": "ColdFloorboard",
+    "damage": 1,
+    "attack_speed": 0.1,
+    "projectile_max_state": 5,
+    "projectile_speed": 1.0,
+    "increase_damage_per": 2.0,
+    "decrease_attack_speed_per": 1.0,
+    "prefab_name": "Prefabs\\PlayerWeapon\\ColdFloorboard"
   }
 ]

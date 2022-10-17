@@ -12,25 +12,25 @@ public class WeaponManager : MonoBehaviour
     {
         this.playerTrans = GameObject.Find("Player").transform;
         this.playerWeaponList = new List<PlayerWeapon>();
-        this.SpawnPlayerWeapon(2000);
-        //this.playerWeaponList;
+        this.SpawnPlayerWeapon(2001);
     }
 
     private void SpawnPlayerWeapon(int id)
     {
         var weaponData = DataManager.instance.GetData<WeaponData>(id);
         GameObject weaponGo = Instantiate(Resources.Load<GameObject>(weaponData.prefab_name), Vector3.zero, Quaternion.identity);
+        weaponGo.transform.parent = this.transform;
         var weapon = weaponGo.GetComponent<PlayerWeapon>();
-        Debug.Log("ddddddd : " + playerTrans);
         weapon.Init(weaponData, playerTrans);
+        this.playerWeaponList.Add(weapon);
     }
     public void WeaponUpgrade(int id)
     {
-        PlayerWeapon weapon = this.playerWeaponList.Find(x => x.id == id);
+        var weapon = this.playerWeaponList.Find(x => x.id == id);
         if (weapon == null)
         {
             this.SpawnPlayerWeapon(id);
-            this.playerWeaponList.Add(weapon);
+
         }
         else
         {

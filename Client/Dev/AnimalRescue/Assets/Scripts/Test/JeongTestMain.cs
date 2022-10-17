@@ -54,13 +54,12 @@ public class JeongTestMain : MonoBehaviour
         });
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
-            var data = DataManager.instance.GetData<WeaponData>(2001);
-
             this.enemySpawner.Init(30);
             this.player.Init();
             this.waveManager.Init();
             this.uiJeongTest.Init();
             this.weaponManager.Init();
+            uiJeongTest.ShowWeaponLevelUp();
         });
         DataManager.instance.Init();
         DataManager.instance.LoadAllData(this);

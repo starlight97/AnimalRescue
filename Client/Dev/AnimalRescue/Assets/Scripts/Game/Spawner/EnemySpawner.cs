@@ -69,6 +69,7 @@ public class EnemySpawner : MonoBehaviour
             int damage = wave * enemyDataList[0].damage;
 
             GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyDataList[randIdx].prefab_name),pos, Quaternion.identity);
+            enemyGo.transform.parent = this.transform;
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
             enemy.Init(maxhp, damage, enemyDataList[0].experience, enemyDataList[randIdx].movespeed, enemyDataList[randIdx].attackspeed);
