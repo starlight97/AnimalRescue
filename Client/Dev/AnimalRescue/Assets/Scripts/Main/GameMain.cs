@@ -8,7 +8,6 @@ public class GameMain : SceneMain
     private EnemySpawner enemySpawner;
     private WaveManager waveManager;
     public UIGame uiGame;
-    private bool isPause = false;
 
     public override void Init(SceneParams param = null)
     {
@@ -74,13 +73,11 @@ public class GameMain : SceneMain
     public void Resume()
     {
         Time.timeScale = 1f;
-        isPause = false;
     }
 
     public void Pause()
     {
         Time.timeScale = 0f;
-        isPause = true;
     }
 
 }

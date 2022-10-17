@@ -19,10 +19,10 @@ public class WeaponManager : MonoBehaviour
     {
         var weaponData = DataManager.instance.GetData<WeaponData>(id);
         GameObject weaponGo = Instantiate(Resources.Load<GameObject>(weaponData.prefab_name), Vector3.zero, Quaternion.identity);
-        weaponGo.transform.parent = this.transform;
         var weapon = weaponGo.GetComponent<PlayerWeapon>();
         weapon.Init(weaponData, playerTrans);
         this.playerWeaponList.Add(weapon);
+        weaponGo.transform.parent = this.transform;
     }
     public void WeaponUpgrade(int id)
     {

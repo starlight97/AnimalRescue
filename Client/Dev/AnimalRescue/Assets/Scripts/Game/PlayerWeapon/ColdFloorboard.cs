@@ -5,11 +5,13 @@ using UnityEngine;
 public class ColdFloorboard : PlayerWeapon
 {
     private List<Enemy> enemyList;
+    private ParticleSystem particleSystem;
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
         base.Init(weaponData, playerTrans);
         this.enemyList = new List<Enemy>();
+        this.particleSystem = this.GetComponent<ParticleSystem>();
         StartCoroutine(this.AttackRoutine());
     }
     private void OnTriggerEnter(Collider other)
@@ -45,7 +47,7 @@ public class ColdFloorboard : PlayerWeapon
                     enemyList.RemoveAt(index);
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(this.weaponData.attack_speed);
         }
     }
 
@@ -59,8 +61,11 @@ public class ColdFloorboard : PlayerWeapon
             case 1:
                 // 컬러 레드
                 break;
-            case 2: 
+            case 2:
+                var main = particleSystem.main;
+                main.startColor = Color.red;
                 // 컬러 블루
+                break;
 
             default:
 

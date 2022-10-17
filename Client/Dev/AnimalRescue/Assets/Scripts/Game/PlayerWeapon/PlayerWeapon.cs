@@ -42,7 +42,9 @@ public class PlayerWeapon : MonoBehaviour
     {
         while (true)
         {
-            this.transform.position = playerTrans.position;
+            var newPos = playerTrans.position;
+            newPos.y = 0.001f;
+            this.transform.position = newPos;
             yield return null;
         }
     }
