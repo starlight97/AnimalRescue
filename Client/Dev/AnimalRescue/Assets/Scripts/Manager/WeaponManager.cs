@@ -8,11 +8,11 @@ public class WeaponManager : MonoBehaviour
     public List<PlayerWeapon> playerWeaponList;
     private Transform playerTrans;
 
-    public void Init()
+    public void Init(int id)
     {
         this.playerTrans = GameObject.Find("Player").transform;
         this.playerWeaponList = new List<PlayerWeapon>();
-        this.SpawnPlayerWeapon(2001);
+        this.SpawnPlayerWeapon(id);
     }
 
     private void SpawnPlayerWeapon(int id)
