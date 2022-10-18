@@ -5,13 +5,15 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
-    public List<PlayerWeapon> playerWeaponList;
+    private List<PlayerWeapon> playerWeaponList;
+
     private Transform playerTrans;
 
     public void Init(int id)
     {
         this.playerTrans = GameObject.Find("Player").transform;
         this.playerWeaponList = new List<PlayerWeapon>();
+
         this.SpawnPlayerWeapon(id);
     }
 
@@ -30,11 +32,21 @@ public class WeaponManager : MonoBehaviour
         if (weapon == null)
         {
             this.SpawnPlayerWeapon(id);
-
         }
         else
         {
             weapon.Upgrade();
         }
+    }
+    public int GetWeaponLevel(int id)
+    {
+        int level = 0;
+        var weapon = this.playerWeaponList.Find(x => x.id == id);
+        if (weapon != null)
+        {
+            level = weapon.level;
+        }
+
+        return level;
     }
 }
