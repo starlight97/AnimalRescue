@@ -13,6 +13,7 @@ public class UIJeongTest : MonoBehaviour
         uiWeaponLevelUp.onWeaponSelect = (id) =>
         {
             this.onWeaponSelect(id);
+            this.uiWeaponLevelUp.HideUI();
 
         };
 
@@ -21,6 +22,6 @@ public class UIJeongTest : MonoBehaviour
 
     public void ShowWeaponLevelUp()
     {
-        this.uiWeaponLevelUp.ShowItems();
+        this.uiWeaponLevelUp.ShowUI();
     }
 }

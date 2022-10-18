@@ -10,31 +10,28 @@ public class UIWeaponLevelUp : MonoBehaviour
 
     public void Init()
     {
+        this.HideUI();
         foreach (var item in uiWeaponLevelUpItems)
         {
             item.Init();
             item.onSelect = (id) =>
             {
-                this.onWeaponSelect(id);
-                this.HideItems();
+                this.onWeaponSelect(id);                
             };
         }
     }
 
-    public void ShowItems()
+    public void ShowUI()
     {
+        this.gameObject.SetActive(true);
         foreach (var item in uiWeaponLevelUpItems)
         {
             item.Setting();
-            item.gameObject.SetActive(true);
         }
     }
-    public void HideItems()
+    public void HideUI()
     {
-        foreach (var item in uiWeaponLevelUpItems)
-        {
-            item.Setting();
-            item.gameObject.SetActive(false);
-        }
+        this.gameObject.SetActive(false);
+
     }
 }

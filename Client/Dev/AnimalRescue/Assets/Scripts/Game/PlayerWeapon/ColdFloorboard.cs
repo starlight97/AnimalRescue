@@ -53,24 +53,72 @@ public class ColdFloorboard : PlayerWeapon
 
     public override void Upgrade()
     {
-        //base.Upgrade();
-        level++;
-        
-        switch(level)
+        base.Upgrade();
+        switch (level)
         {
             case 1:
-                // 컬러 레드
+                this.ChangeAlpha(30f);
                 break;
             case 2:
-                var main = particleSystem.main;
-                main.startColor = Color.red;
-                // 컬러 블루
+                this.ChangeAlpha(50f);
+                break;
+            case 3:
+                this.ScaleUp();
+                break;
+            case 4:
+                this.ChangeAlpha(70f);
+                break;
+            case 5:
+                this.ChangeAlpha(90f);
+                break;
+            case 6:
+                this.ScaleUp();
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:                
                 break;
 
             default:
 
                 break;
         }
+    }
+
+    // value = 스케일 올릴 사이즈
+    private void ScaleUp(float value = 1.0f)
+    {
+        var scale = this.transform.localScale;
+        scale.x += value;
+        scale.y += value;
+        scale.z += value;
+        this.transform.localScale = scale;
+    }
+
+    // rgb = 색상값
+    // 0 ~ 255
+    private void ChangeColor(float r, float g, float b)
+    {
+        var main = particleSystem.main;
+        var color = main.startColor.color;
+        color.r = r / 255f;
+        color.g = g / 255f;
+        color.b = b / 255f;
+        main.startColor = color;
+    }
+
+    // value = 투명도
+    // 0 ~ 255
+    private void ChangeAlpha(float value)
+    {
+        var main = particleSystem.main;
+        var color = main.startColor.color;
+        color.a = value / 255f;
+        main.startColor = color;
     }
 
 }

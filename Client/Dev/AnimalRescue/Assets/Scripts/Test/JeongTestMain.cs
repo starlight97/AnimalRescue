@@ -58,7 +58,7 @@ public class JeongTestMain : MonoBehaviour
             this.player.Init();
             //this.waveManager.Init();
             this.uiJeongTest.Init();
-            //this.weaponManager.Init();
+            this.weaponManager.Init(2003);
             uiJeongTest.ShowWeaponLevelUp();
         });
         DataManager.instance.Init();

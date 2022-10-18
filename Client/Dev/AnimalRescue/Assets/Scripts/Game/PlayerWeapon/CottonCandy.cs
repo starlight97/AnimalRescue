@@ -58,24 +58,45 @@ public class CottonCandy : PlayerWeapon
     public override void Upgrade()
     {
         base.Upgrade();
-        if(projectile_current_count < this.weaponData.projectile_max_state)
-        {
-            projectile_current_count++;
-            var projectTileGo = Instantiate<GameObject>(cottonCandyProjectilePrefab);
-            projectTileGo.transform.parent = this.gameObject.transform;
-            //var projectTile = projectTileGo.GetComponent<CottonCandyProjectile>();
-            //projectTile.Init(this.weaponData.damage);
-            this.projectileGoList.Add(projectTileGo);
-        }
 
+        switch(level)
+        {
+            case 3:
+                CreateProjectTile();
+                break;
+            case 6:
+                CreateProjectTile();
+                break;
+            case 9:
+                CreateProjectTile();
+                break;
+            case 12:
+                CreateProjectTile();
+                break;
+            case 15:
+                CreateProjectTile();
+                break;
+            default:
+                break;
+        }
+        ProjectTilesInit();
+
+    }
+
+    private void CreateProjectTile()
+    {
+        var projectTileGo = Instantiate<GameObject>(cottonCandyProjectilePrefab);
+        projectTileGo.transform.parent = this.gameObject.transform;
+        this.projectileGoList.Add(projectTileGo);
+    }
+
+    private void ProjectTilesInit()
+    {
         foreach (var projectileGo in projectileGoList)
         {
             var projectile = projectileGo.GetComponent<CottonCandyProjectile>();
             projectile.Init(this.current_damage);
         }
-        //Debug.Log("UpGrade");
-        //Debug.Log("Level : " + this.level);
-
     }
 
 }
