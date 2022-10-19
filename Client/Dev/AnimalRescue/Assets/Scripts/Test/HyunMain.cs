@@ -69,7 +69,7 @@ public class HyunMain : MonoBehaviour
         //if (Input.GetKeyDown(KeyCode.Z))
         //{
         //    basicWeapon.Upgrade();
-        //}
+        ////}
         //if (Input.GetKeyDown(KeyCode.X))
         //    shootingStar.Upgrade();
     }
