@@ -98,6 +98,15 @@ public class ColdFloorboard : PlayerWeapon
         scale.z += value;
         this.transform.localScale = scale;
     }
+    // value = 스케일 올릴 사이즈
+    private void SetScale(float value)
+    {
+        Vector3 scale = new Vector3();
+        scale.x = value;
+        scale.y = value;
+        scale.z = value;
+        this.transform.localScale = scale;
+    }
 
     // rgb = 색상값
     // 0 ~ 255

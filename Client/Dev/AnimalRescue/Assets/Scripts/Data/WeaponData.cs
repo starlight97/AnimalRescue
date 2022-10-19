@@ -18,8 +18,6 @@ public class WeaponData : RawData
     
     public float attack_speed;
     
-    public int projectile_max_state;
-    
     public float projectile_speed;
     
     public float increase_damage_per;
