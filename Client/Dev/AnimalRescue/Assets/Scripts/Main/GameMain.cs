@@ -17,7 +17,6 @@ public class GameMain : SceneMain
 
         GameObjectSetting();
 
-
         this.player.onLevelUp = (amount) =>
         {
             Pause();
@@ -49,7 +48,11 @@ public class GameMain : SceneMain
             Debug.Log(id + " : Level Up 선택!~@!@~");
         };
 
-
+        this.uiGame.Init();
+        this.enemySpawner.Init(100);
+        this.player.Init();
+        this.waveManager.Init();
+        this.weaponManager.Init(2000);
 
     }
 

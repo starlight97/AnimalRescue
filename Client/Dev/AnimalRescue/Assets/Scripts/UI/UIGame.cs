@@ -24,6 +24,7 @@ public class UIGame : MonoBehaviour
 
     public void UpdatePosition(Vector3 worldPos)
     {
+        Debug.Log(uiHpGauge);
         this.uiHpGauge.UpdatePosition(worldPos);
     }
 

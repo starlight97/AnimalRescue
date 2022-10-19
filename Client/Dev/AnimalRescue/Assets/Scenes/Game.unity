@@ -1647,6 +1647,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2494088360300170686, guid: da44acbe2b716ed41bf89c5247ff5b44, type: 3}
+      propertyPath: floatingJoystick
+      value: 
+      objectReference: {fileID: 2106966592}
     - target: {fileID: 2494088360300170687, guid: da44acbe2b716ed41bf89c5247ff5b44, type: 3}
       propertyPath: m_RootOrder
       value: 3

@@ -32,7 +32,8 @@ public class App : MonoBehaviour
             this.LoadScene<LogoMain>(eSceneType.LogoScene);
         };
 
-        
+        this.LoadScene<LogoMain>(eSceneType.LogoScene);
+
     }
 
     public void LoadScene<T>(eSceneType sceneType) where T : SceneMain
