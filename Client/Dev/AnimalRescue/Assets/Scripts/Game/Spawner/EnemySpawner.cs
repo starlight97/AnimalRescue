@@ -6,6 +6,7 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
+
     public UnityAction<int> onDieEnemy;
     public float spawnDelay;
     private Vector3[] spawnPoints;
@@ -72,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
             enemyGo.transform.parent = this.transform;
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
-            enemy.Init(maxhp, damage, enemyDataList[0].experience, enemyDataList[randIdx].movespeed, enemyDataList[randIdx].attackspeed);
+            enemy.Init(maxhp, damage, StatsConstants.EnemyExperience, enemyDataList[randIdx].movespeed, enemyDataList[randIdx].attackspeed);
 
             enemy.onDie = (dieEnemy) =>
             {

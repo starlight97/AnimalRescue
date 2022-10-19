@@ -54,11 +54,11 @@ public class JeongTestMain : MonoBehaviour
         });
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
-            this.enemySpawner.Init(30);
+            this.enemySpawner.Init(100);
             this.player.Init();
-            //this.waveManager.Init();
+            this.waveManager.Init();
             this.uiJeongTest.Init();
-            this.weaponManager.Init(2003);
+            this.weaponManager.Init(2000);
             uiJeongTest.ShowWeaponLevelUp();
         });
         DataManager.instance.Init();

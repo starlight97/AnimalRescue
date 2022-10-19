@@ -4,10 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class PlayerStats : MonoBehaviour
 {    
-    static class Constants
-    {
-        public const int RequiredExperience = 100; // 레벨업 할떄 필요한 경험치 양
-    }
+
 
     public UnityAction<int> onLevelUp;
     public int Damage;
@@ -25,7 +22,7 @@ public class PlayerStats : MonoBehaviour
     public void GetExp(int experience)
     {
         this.experience += experience;
-        if (this.experience >= Constants.RequiredExperience)
+        if (this.experience >= StatsConstants.RequiredExperience)
         {            
             this.LevelUp();
         }
@@ -36,8 +33,8 @@ public class PlayerStats : MonoBehaviour
     // int amount = this.experience / 100; 적용
     public void LevelUp()
     {
-        int amount = this.experience / Constants.RequiredExperience;
-        this.experience %= Constants.RequiredExperience;
+        int amount = this.experience / StatsConstants.RequiredExperience;
+        this.experience %= StatsConstants.RequiredExperience;
         this.onLevelUp(amount);
     }
 

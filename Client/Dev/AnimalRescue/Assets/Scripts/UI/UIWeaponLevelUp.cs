@@ -34,12 +34,13 @@ public class UIWeaponLevelUp : MonoBehaviour
         List<int> weaponIdList = new List<int>();
         foreach (var data in weaponDataList)
         {
+            Debug.Log(data.id);
             weaponIdList.Add(data.id);
         }
 
         foreach (var item in uiWeaponLevelUpItems)
         {
-            var randIdx = Random.Range(0, weaponIdList.Count - 1);
+            var randIdx = Random.Range(0, weaponIdList.Count);
             var data = DataManager.instance.GetData<WeaponData>(weaponIdList[randIdx]);
 
             int id = weaponIdList[randIdx];
