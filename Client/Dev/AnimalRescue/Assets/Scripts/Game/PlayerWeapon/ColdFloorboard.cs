@@ -130,4 +130,9 @@ public class ColdFloorboard : PlayerWeapon
         main.startColor = color;
     }
 
+    private void LateUpdate()
+    {
+        this.FollowPlayer();
+    }
+
 }

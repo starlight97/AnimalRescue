@@ -27,12 +27,12 @@ public class HyunMain : MonoBehaviour
 
         this.player.onUpdateMove = (worldPos) => 
         {
-            this.uiGame.uiHpGauge.UpdatePosition(worldPos);
+            //this.uiGame.uiHpGauge.UpdatePosition(worldPos);
         };
 
         this.player.onHit = (hp, maxHp) =>
         {
-            this.uiGame.uiHpGauge.DecreaseHp(hp, maxHp);
+            //this.uiGame.uiHpGauge.DecreaseHp(hp, maxHp);
         };
 
         this.player.onDie = () =>

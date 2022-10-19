@@ -7,7 +7,8 @@ public class GameMain : SceneMain
     private Player player;
     private EnemySpawner enemySpawner;
     private WaveManager waveManager;
-    public UIGame uiGame;
+    private WeaponManager weaponManager;
+    private UIGame uiGame;
 
     public override void Init(SceneParams param = null)
     {
@@ -16,18 +17,20 @@ public class GameMain : SceneMain
 
         GameObjectSetting();
 
+
         this.player.onLevelUp = (amount) =>
         {
             Pause();
+            uiGame.ShowWeaponLevelUp();
             Debug.Log("레벨업!");
         };
         this.player.onUpdateMove = (worldPos) =>
         {
-            this.uiGame.uiHpGauge.UpdatePosition(worldPos);
+            this.uiGame.UpdatePosition(worldPos);
         };
-        this.player.onHit = (hp, maxHp) =>
+        this.player.onHit = (n1, n2) =>
         {
-            
+
         };
         this.enemySpawner.onDieEnemy = (experience) =>
         {
@@ -39,37 +42,26 @@ public class GameMain : SceneMain
             Debug.Log(wave + " : wave start");
             enemySpawner.StartWave(wave);
         };
+        this.uiGame.onWeaponSelect = (id) =>
+        {
+            this.Resume();
+            this.weaponManager.WeaponUpgrade(id);
+            Debug.Log(id + " : Level Up 선택!~@!@~");
+        };
 
 
 
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-        this.Init();
 
-        DataManager.instance.onDataLoadComplete.AddListener((n1, n2) =>
-        {
-
-        });
-        DataManager.instance.onDataLoadFinished.AddListener(() =>
-        {
-            var data = DataManager.instance.GetData<WeaponData>(2001);
-            this.enemySpawner.Init(30);
-            this.player.Init();
-            this.waveManager.Init();
-        });
-        DataManager.instance.Init();
-        DataManager.instance.LoadAllData(this);
-    }
 
     private void GameObjectSetting()
     {
         this.player = GameObject.FindObjectOfType<Player>();
         this.enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
         this.waveManager = GameObject.FindObjectOfType<WaveManager>();
+        this.uiGame = GameObject.FindObjectOfType<UIGame>();
+        this.weaponManager = GameObject.FindObjectOfType<WeaponManager>();
     }
-
     public void Resume()
     {
         Time.timeScale = 1f;
