@@ -70,7 +70,7 @@ public class HyunMain : MonoBehaviour
         //{
         //    basicWeapon.Upgrade();
         ////}
-        //if (Input.GetKeyDown(KeyCode.X))
-        //    shootingStar.Upgrade();
+        if (Input.GetKeyDown(KeyCode.X))
+            this.weaponManager.WeaponUpgrade(2002);
     }
 }

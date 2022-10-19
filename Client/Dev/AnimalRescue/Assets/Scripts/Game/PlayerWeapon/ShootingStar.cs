@@ -6,6 +6,9 @@ public class ShootingStar : PlayerWeapon
 {
     public GameObject projectilePrefab;
     public List<ShootingStarProjectile> projectileList;
+    private Coroutine createRoutine;
+    private float scaleValue = 2;
+    private Color particleColor = new Color(195, 29, 25);
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
@@ -15,7 +18,8 @@ public class ShootingStar : PlayerWeapon
 
     public void Create()
     {
-        StartCoroutine(CreateRoutine());
+        if (createRoutine == null)
+            createRoutine = StartCoroutine(CreateRoutine());
     }
 
     private IEnumerator CreateRoutine()
@@ -23,67 +27,73 @@ public class ShootingStar : PlayerWeapon
         while (true)
         {
             var projectileGo = Instantiate<GameObject>(projectilePrefab);
+            
             float randX = playerTrans.position.x + Random.Range(-5, 6);
             float randZ = playerTrans.position.z + Random.Range(-5, 6);
             projectileGo.transform.position = new Vector3(randX, 10, randZ);
 
+            // 별똥별 떨어질 때 파티클 + 콜라이더 함께 생성하여 떨어지게 작성됨
             var projectile = projectileGo.GetComponent<ShootingStarProjectile>();
-            projectile.Init(current_damage, current_attack_speed, Vector3.down);            
-            projectile.CreateParticle(projectileGo.transform);
+            projectile.Init(current_damage, current_attack_speed, Vector3.down);
+            projectile.CreateParticle(projectileGo.transform, this.particleColor);
 
             projectileList.Add(projectile);
 
             yield return new WaitForSeconds(3f);
             projectileList.Remove(projectile);
+            this.createRoutine = null;
         }
     }
 
     public override void Upgrade()
     {
         base.Upgrade();
-
+        
         switch (level)
         {
-            case 1:
-                CreateProjectile();
-                Debug.Log("d");
-                break;
             case 2:
+                Create();
                 break;
             case 3:
+                Create();
+                SetColor(200, 124, 50);
                 break;
             case 4:
+                Create();
                 break;
             case 5:
+                Create();
+                SetColor(246, 235, 117);
                 break;
             case 6:
+                Create();
+                break;
+            case 7:
+                Create();
+                SetColor(193, 193, 193);
+                break;
+            case 8:
+                Create();
+                break;
+            case 9:
+                Create();
+                SetColor(47, 108, 100);
+                break;
+            case 10:
+                Create();
+                break;
+            case 11:
+                Create();
+                SetColor(4, 54, 118);
                 break;
 
             default:
                 break;
         }
     }
-    //if (projectile_current_count <= weaponData.projectile_max_state)
-    //{
-    //    projectile_current_count++;
-    //    var projectileGo = Instantiate<GameObject>(projectilePrefab);
-    //    float randX = playerTrans.position.x + Random.Range(-5, 6);
-    //    float randZ = playerTrans.position.z + Random.Range(-5, 6);
-    //    projectileGo.transform.position = new Vector3(randX, 10, randZ);
-    //    var projectile = projectileGo.GetComponent<ShootingStarProjectile>();
-    //    projectile.Init(current_damage, current_attack_speed, Vector3.down);
-    //    projectile.CreateParticle(projectileGo.transform);
-    //}
 
-    private void CreateProjectile()
+    private void SetColor(int r, int g, int b)
     {
-        var projectileGo = Instantiate<GameObject>(projectilePrefab);
-        float randX = playerTrans.position.x + Random.Range(-5, 6);
-        float randZ = playerTrans.position.z + Random.Range(-5, 6);
-        projectileGo.transform.position = new Vector3(randX, 10, randZ);
-        var projectile = projectileGo.GetComponent<ShootingStarProjectile>();
-
-        projectile.Init(current_damage, current_attack_speed, Vector3.down);
-        projectile.CreateParticle(projectileGo.transform);
+        this.particleColor = new Color(r, g, b);
     }
 }
