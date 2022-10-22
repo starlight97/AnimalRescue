@@ -34,7 +34,6 @@ public class UIWeaponLevelUp : MonoBehaviour
         List<int> weaponIdList = new List<int>();
         foreach (var data in weaponDataList)
         {
-            Debug.Log(data.id);
             weaponIdList.Add(data.id);
         }
 

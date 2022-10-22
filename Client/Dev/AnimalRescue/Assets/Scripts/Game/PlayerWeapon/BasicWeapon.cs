@@ -53,4 +53,9 @@ public class BasicWeapon : PlayerWeapon
             base.Upgrade();
         }
     }
+
+    private void LateUpdate()
+    {
+        this.FollowPlayer();
+    }
 }
