@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     private int spawnCount;
     private int maxSpawnCount;
     private List<EnemyData> enemyDataList;
+    //private List<EnemyBossData> enemyBossDataList;
     public List<Enemy> EnemyList
     {
         get;
@@ -46,25 +47,16 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemyRoutine(int wave)
     {
         this.spawnCount = 0;
+        if(wave % 5 == 0)
+        {
+            this.SpawnBoss();
+        }
         while (true)
         {
             if (spawnCount == maxSpawnCount)
                 break;
-            // randPoint1 = 0 ~ 3
-            // randPoint2 = ex( randPoint1가 3이라면 spawnPoints[3] ~ spawnPoints[0] ) (73, 0, 73) ~ (73, 0, -73)
-            // randPoint2 = ex( randPoint1가 2라면 spawnPoints[2] ~ spawnPoints[1] ) (-73, 0, 73) ~ (-73, 0, -73)
-            int randPoint1 = Random.Range(0, 4);
-            int randPoint2;
-            if (randPoint1 == 0)
-                randPoint2 = 3;
-            else
-                randPoint2 = randPoint1 - 1;
 
-            Vector3 pos = new Vector3();
-            pos.x = Random.Range(spawnPoints[randPoint1].x, spawnPoints[randPoint2].x);
-            pos.y = 0;
-            pos.z = Random.Range(spawnPoints[randPoint1].z, spawnPoints[randPoint2].z);
-
+            var pos = this.GetRandomPos();
             var randIdx = Random.Range(0, enemyDataList.Count - 1);
             int maxhp = wave * enemyDataList[0].maxhp;
             int damage = wave * enemyDataList[0].damage;
@@ -85,6 +77,31 @@ public class EnemySpawner : MonoBehaviour
 
             yield return new WaitForSeconds(spawnDelay);
         }
+    }
+
+    private void SpawnBoss()
+    {
+
+    }
+
+    private Vector3 GetRandomPos()
+    {
+        // randPoint1 = 0 ~ 3
+        // randPoint2 = ex( randPoint1가 3이라면 spawnPoints[3] ~ spawnPoints[0] ) (73, 0, 73) ~ (73, 0, -73)
+        // randPoint2 = ex( randPoint1가 2라면 spawnPoints[2] ~ spawnPoints[1] ) (-73, 0, 73) ~ (-73, 0, -73)
+        int randPoint1 = Random.Range(0, 4);
+        int randPoint2;
+        if (randPoint1 == 0)
+            randPoint2 = 3;
+        else
+            randPoint2 = randPoint1 - 1;
+
+        Vector3 pos = new Vector3();
+        pos.x = Random.Range(spawnPoints[randPoint1].x, spawnPoints[randPoint2].x);
+        pos.y = 0;
+        pos.z = Random.Range(spawnPoints[randPoint1].z, spawnPoints[randPoint2].z);
+
+        return pos;
     }
 
 }

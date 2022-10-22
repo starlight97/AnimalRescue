@@ -10,17 +10,17 @@ public class Enemy : MonoBehaviour
         Run, Attack, Hit, Die
     }
 
-    private int maxHp;
+    protected int maxHp;
     public int currentHp;
-    private int damage;
+    protected int damage;
     public int experience;
-    private float movespeed;
-    private float attackspeed;
+    protected float movespeed;
+    protected float attackspeed;
     private GameObject playerGo;
     private Animator anim;
 
-    private Coroutine hitRoutine;
-    private Coroutine attackRoutine;
+    protected Coroutine hitRoutine;
+    protected Coroutine attackRoutine;
 
     public UnityAction<Enemy> onDie;
     public float attackRange;
@@ -107,13 +107,13 @@ public class Enemy : MonoBehaviour
     }
 
     // 공격 할 때 호출
-    private void Attack()
+    protected virtual void Attack()
     {
         if (attackRoutine == null)
             attackRoutine = StartCoroutine(this.AttackRoutine());
     }
 
-    private IEnumerator AttackRoutine()
+    protected virtual IEnumerator AttackRoutine()
     {
         SetState(eState.Attack);
         var length = anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
