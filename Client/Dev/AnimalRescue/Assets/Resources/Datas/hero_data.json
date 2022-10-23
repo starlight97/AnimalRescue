@@ -1,0 +1,26 @@
+[
+  {
+    "id": 100,
+    "heroname": "hero1",
+    "increase_damage": 2,
+    "increase_maxhp": 2,
+    "increase_movespeed": 2,
+    "prefab_path": "Prefabs\\Hero\\hero1"
+  },
+  {
+    "id": 101,
+    "heroname": "hero2",
+    "increase_damage": 1,
+    "increase_maxhp": 4,
+    "increase_movespeed": 1,
+    "prefab_path": "Prefabs\\Hero\\hero2"
+  },
+  {
+    "id": 102,
+    "heroname": "hero3",
+    "increase_damage": 4,
+    "increase_maxhp": 1,
+    "increase_movespeed": 1,
+    "prefab_path": "Prefabs\\Hero\\hero3"
+  }
+]
