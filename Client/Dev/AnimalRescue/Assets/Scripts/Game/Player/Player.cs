@@ -11,13 +11,12 @@ public class Player : MonoBehaviour
         Idle, Run, Die, Hit
     }
 
+    public PlayerLife playerLife = new PlayerLife();
     private PlayerMove playerMove;
     private PlayerStats playerStats;
 
-    [SerializeField]
-    private int hp;
-    [SerializeField]
-    private int maxHp = 10;
+    private float hp;
+    private float maxHp;
 
     private Coroutine hitRoutine; 
     public UnityAction onDie;
@@ -27,7 +26,7 @@ public class Player : MonoBehaviour
     public Transform hpGaugePoint;
     public UnityAction<Vector3> onUpdateMove;
     public UnityAction<int> onLevelUp;
-    public UnityAction<int, int> onHit;
+    public UnityAction<float, float> onHit;
 
     public void Init()
     {
@@ -36,16 +35,15 @@ public class Player : MonoBehaviour
 
         SetState(eStateType.Idle);
 
-        this.hp = this.maxHp; 
+        this.SetHp();
+
         this.playerMove = GetComponent<PlayerMove>();
         this.playerMove.Move();
-
 
         this.playerMove.onMove = () =>
         {
             SetState(eStateType.Run);
         };
-
 
         this.playerStats = GetComponent<PlayerStats>();
         this.playerStats.Init(0, 0, 0);
@@ -58,25 +56,28 @@ public class Player : MonoBehaviour
         this.onUpdateMove(this.hpGaugePoint.position);
     }
 
-    private void Update()
+    private void SetHp()
     {
-        //// hp gauge test - 스페이스 누르면 피 깎임
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Hit(1);
-        //}
+        playerLife.MaxHp = 100;
+        //playerLife.Hp = playerLife.MaxHp;
+        playerLife.Hp = 50;
+        
+
+
+        if (playerLife.Hp <= 0)
+            playerLife.Hp = 0;
     }
 
     public void Hit(int damage)
     {
-        this.hp -= damage;
+        this.playerLife.Hp -= damage;
 
         if (this.hitRoutine == null)
             this.hitRoutine = StartCoroutine(HitRoutine());
 
-        this.onHit(this.hp, this.maxHp);
+        this.onHit(playerLife.Hp, playerLife.MaxHp);
 
-        if (this.hp <= 0)
+        if (this.playerLife.Hp <= 0)
         {
             this.Die();
             StopAllCoroutines();

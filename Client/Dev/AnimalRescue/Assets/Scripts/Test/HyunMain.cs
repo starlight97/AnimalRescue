@@ -57,7 +57,8 @@ public class HyunMain : MonoBehaviour
             enemySpawner.Init(30);
             player.Init();
             waveManager.Init();
-            weaponManager.Init(2002);
+            weaponManager.Init(2003);
+            weaponManager.Init(2004);
         });
 
         DataManager.instance.Init();
@@ -66,11 +67,7 @@ public class HyunMain : MonoBehaviour
 
     private void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Z))
-        //{
-        //    basicWeapon.Upgrade();
-        ////}
         if (Input.GetKeyDown(KeyCode.X))
-            this.weaponManager.WeaponUpgrade(2002);
+            this.weaponManager.WeaponUpgrade(2004);
     }
 }

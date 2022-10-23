@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour
 {
+    [SerializeField]
     private List<PlayerWeapon> playerWeaponList;
 
     private Transform playerTrans;

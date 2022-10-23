@@ -7,7 +7,6 @@ public class ShootingStar : PlayerWeapon
     public GameObject projectilePrefab;
     public List<ShootingStarProjectile> projectileList;
     private Coroutine createRoutine;
-    private float scaleValue = 2;
     private Color particleColor = new Color(195, 29, 25);
 
     public override void Init(WeaponData weaponData, Transform playerTrans)

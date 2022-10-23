@@ -25,7 +25,6 @@ public class PlayerWeapon : MonoBehaviour
     {        
         this.level++;
         this.current_damage = (int)((this.level * this.weaponData.increase_damage_per) * weaponData.damage);
-
     }
 
     protected void FollowPlayer()

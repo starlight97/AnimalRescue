@@ -181,8 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dc78c396da0524dafdbc4ef14bfa4c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 10
-  maxHp: 10
   hpGaugePoint: {fileID: 250453897386971086}
 --- !u!54 &2494088360300170657
 Rigidbody:
