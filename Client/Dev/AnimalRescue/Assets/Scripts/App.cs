@@ -8,7 +8,7 @@ public class App : MonoBehaviour
 {
     public enum eSceneType
     {
-        App, Logo, Loading, Title, Game, Loby, Shop
+        App, Logo, Loading, Title, Lobby, Game, Shop
     }
 
     public static App instance;
@@ -92,7 +92,22 @@ public class App : MonoBehaviour
                     {
                         this.uiApp.FadeIn();
 
-                        main.AddListener("onClickGameReady", (data) =>
+                        main.AddListener("onClick", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<LobbyMain>(eSceneType.Lobby);
+                            });
+                        });
+
+                        main.Init();
+                        break;
+                    }
+                case eSceneType.Lobby:
+                    {
+                        this.uiApp.FadeIn();
+
+                        main.AddListener("onClickGameStart", (data) =>
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
