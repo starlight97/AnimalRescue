@@ -6,7 +6,7 @@ public class HealFloorboard : PlayerWeapon
 {
     private float healAmount = 0.1f;
     private Player player;
-    [SerializeField] float currentHp;
+    float currentHp;
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {

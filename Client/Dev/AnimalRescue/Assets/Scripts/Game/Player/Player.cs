@@ -59,9 +59,7 @@ public class Player : MonoBehaviour
     private void SetHp()
     {
         playerLife.MaxHp = 100;
-        //playerLife.Hp = playerLife.MaxHp;
-        playerLife.Hp = 50;
-        
+        playerLife.Hp = playerLife.MaxHp;       
 
 
         if (playerLife.Hp <= 0)
