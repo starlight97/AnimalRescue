@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class BossRatDoughnut : MonoBehaviour
 {
-    private Vector3 dir;
     public float speed;
     public int damage;
 
-    public void Init(Vector3 dir, int damage)
+    public void Init(int damage)
     {
-        this.dir = dir;
-        //this.dir.y = this.transform.position.y;
         this.damage = damage;
-        this.dir = Vector3.forward;
-
         this.StartCoroutine(this.MoveRoutine());
     }
 
@@ -25,7 +20,7 @@ public class BossRatDoughnut : MonoBehaviour
         while (true)
         {
             delta += Time.deltaTime;
-            this.transform.Translate(dir * this.speed * Time.deltaTime);
+            this.transform.Translate(Vector3.forward * this.speed * Time.deltaTime);
 
             if (delta >= 5f)
                 break;

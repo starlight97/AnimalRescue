@@ -10,6 +10,13 @@ public class Enemy : MonoBehaviour
         Run, Attack, Hit, Die
     }
 
+    public int Level
+    {
+        get;
+        set;
+    }
+
+
     protected int maxHp;
     public int currentHp;
     protected int damage;
@@ -25,7 +32,7 @@ public class Enemy : MonoBehaviour
     public UnityAction<Enemy> onDie;
     public float attackRange;
 
-    public void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed)
+    public virtual void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed)
     {
         this.maxHp = maxHp;
         this.currentHp = this.maxHp;
@@ -57,6 +64,7 @@ public class Enemy : MonoBehaviour
             }
             else
             {
+                this.transform.LookAt(this.playerGo.transform.position);
                 this.Attack();
             }
             yield return null;

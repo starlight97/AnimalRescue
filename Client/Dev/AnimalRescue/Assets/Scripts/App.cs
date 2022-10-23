@@ -8,7 +8,7 @@ public class App : MonoBehaviour
 {
     public enum eSceneType
     {
-        App, LogoScene, LoadingScene, TitleScene, Game
+        App, Logo, Loading, Title, Game, Loby, Shop
     }
 
     public static App instance;
@@ -29,10 +29,10 @@ public class App : MonoBehaviour
 
         GPGSManager.instance.onGPGSConnect = (status) =>
         {
-            this.LoadScene<LogoMain>(eSceneType.LogoScene);
+            this.LoadScene<LogoMain>(eSceneType.Logo);
         };
 
-        this.LoadScene<LogoMain>(eSceneType.LogoScene);
+        this.LoadScene<LogoMain>(eSceneType.Logo);
 
     }
 
@@ -51,7 +51,7 @@ public class App : MonoBehaviour
 
             switch (sceneType)
             {
-                case eSceneType.LogoScene:
+                case eSceneType.Logo:
                     {
                         this.uiApp.FadeOutImmediately();
 
@@ -61,7 +61,7 @@ public class App : MonoBehaviour
  
                             this.uiApp.FadeOut(0.5f, () =>
                             {
-                                this.LoadScene<LoadingMain>(eSceneType.LoadingScene);
+                                this.LoadScene<LoadingMain>(eSceneType.Loading);
                             });
 
                         });
@@ -72,7 +72,7 @@ public class App : MonoBehaviour
                         });
                         break;
                     }
-                case eSceneType.LoadingScene:
+                case eSceneType.Loading:
                     {
                         this.uiApp.FadeIn(0.5f, () =>
                         {
@@ -80,7 +80,7 @@ public class App : MonoBehaviour
                             {
                                 this.uiApp.FadeOut(0.5f, () =>
                                 {
-                                    this.LoadScene<TitleMain>(eSceneType.TitleScene);
+                                    this.LoadScene<TitleMain>(eSceneType.Title);
                                 });
                             });
                             main.Init();
@@ -88,15 +88,22 @@ public class App : MonoBehaviour
 
                         break;
                     }
-                case eSceneType.TitleScene:
+                case eSceneType.Title:
                     {
                         this.uiApp.FadeIn();
 
-                        main.AddListener("onClick", (data) =>
+                        main.AddListener("onClickGameReady", (data) =>
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<GameMain>(eSceneType.Game);
+                            });
+                        });
+                        main.AddListener("onClickShop", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<GameMain>(eSceneType.Shop);
                             });
                         });
                         main.Init();
@@ -111,6 +118,20 @@ public class App : MonoBehaviour
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<GameMain>(eSceneType.Game);
+                            });
+                        });
+                        main.Init();
+                        break;
+                    }
+                case eSceneType.Shop:
+                    {
+                        this.uiApp.FadeIn();
+
+                        main.AddListener("onClickTitle", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<TitleMain>(eSceneType.Title);
                             });
                         });
                         main.Init();

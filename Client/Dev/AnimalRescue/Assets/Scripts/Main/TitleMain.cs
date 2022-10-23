@@ -4,18 +4,24 @@ using UnityEngine;
 
 public class TitleMain : SceneMain
 {
+    private UITitle uiTitle;
     public override void Init(SceneParams param = null)
     {
-        //StartCoroutine(this.TouchToStartRoutine());
-        StartCoroutine(this.WaitForClick());
+        this.uiTitle = GameObject.FindObjectOfType<UITitle>();
+
+        this.uiTitle.onClickBtn = (type) =>
+        {
+            if(type == "GameReady")
+            {
+                Dispatch("onClickGameReady");
+            }
+            else if (type == "Shop")
+            {
+                Dispatch("onClickShop");
+            }
+        };
+        this.uiTitle.Init();
     }
 
-    private IEnumerator WaitForClick()
-    {
-        yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
 
-        this.StopAllCoroutines();
-
-        this.Dispatch("onClick");
-    }
 }
