@@ -35,7 +35,7 @@ public class BasicWeapon : PlayerWeapon
             projectileGo.transform.position = this.transform.position;
             doughnut = projectileGo.GetComponent<DoughnutProjectile>();
             this.transform.rotation = this.playerTrans.transform.rotation;
-            doughnut.Init(this.current_damage, 10, this.transform.forward);
+            doughnut.Init(this.current_damage, current_attack_speed, this.transform.forward);
             doughnut.transform.localScale = new Vector3(size, size, size);
             projectileList.Add(projectileGo);
             yield return new WaitForSeconds(1f);

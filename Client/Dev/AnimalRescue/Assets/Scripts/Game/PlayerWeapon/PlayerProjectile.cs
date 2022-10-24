@@ -47,7 +47,7 @@ public class PlayerProjectile : MonoBehaviour
         float time = 0;
         while(true)
         {
-            // 임시로 10초동안 날라가도 안부딪히면 삭제
+            // 임시로 3초동안 날라가도 안부딪히면 삭제
             time += Time.deltaTime;
             if(time > 3f)
             {

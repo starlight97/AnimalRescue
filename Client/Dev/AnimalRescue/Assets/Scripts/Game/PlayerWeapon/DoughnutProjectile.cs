@@ -15,7 +15,6 @@ public class DoughnutProjectile : PlayerProjectile
         if (collider.CompareTag("Enemy"))
         {
             Destroy(this.gameObject);
-
         }
     }
 }

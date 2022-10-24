@@ -6,11 +6,15 @@ public class Singing : PlayerWeapon
 {
     private GameObject notesGo;
     public GameObject projectilePrefab;
+    [SerializeField]
     private Vector3 dir;
+    
+    private float attackSpeed;
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
         base.Init(weaponData, playerTrans);
+        attackSpeed = this.current_attack_speed;
         // 투사체 날아갈 때마다 머리 위에 음표 띄움
         var player = GameObject.Find("Player").gameObject;
         notesGo = player.transform.Find("Notes").gameObject;
@@ -28,23 +32,55 @@ public class Singing : PlayerWeapon
     {
         while(true)
         {
-            yield return new WaitForSeconds(5f);
             notesGo.gameObject.SetActive(true);
             var projectileGo = Instantiate<GameObject>(projectilePrefab);
             var singingProjectile = projectileGo.GetComponent<SingingProjectile>();
-            var randPos = Random.Range(-1, 2);
+            singingProjectile.transform.position = playerTrans.position;
 
-            dir = new Vector3(randPos, 0, randPos);
-            singingProjectile.Init(weaponData.damage, 3, dir);
+            // 반경 1을 갖는 구의 랜덤 위치로 이동
+            Vector3 dir = Random.insideUnitSphere.normalized;
+            dir.y = 0;
 
-            yield return new WaitForSeconds(5f);
+            Debug.Log(dir);
+            Debug.Log(attackSpeed);
+            singingProjectile.Init(current_damage, attackSpeed, dir);
+
+            yield return new WaitForSeconds(3f);
+
             notesGo.gameObject.SetActive(false);
-        }
 
+            yield return new WaitForSeconds(3f);
+        }
     }
 
     public override void Upgrade()
     {
         base.Upgrade();
+        Debug.Log(level);
+        Debug.Log(attackSpeed);
+        switch (level)
+        {
+            case 3:
+                IncreaseAttackSpeed();
+                break;
+            case 6:
+                IncreaseAttackSpeed();
+                break;
+            case 9:
+                IncreaseAttackSpeed();
+                break;
+            default:
+                break;
+        }
+    }
+
+    private void IncreaseAttackSpeed()
+    {
+        this.attackSpeed += 1;
+    }
+
+    private void LateUpdate()
+    {
+        this.FollowPlayer();
     }
 }
