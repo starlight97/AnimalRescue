@@ -15,23 +15,21 @@ public class Player : MonoBehaviour
     private PlayerMove playerMove;
     private PlayerStats playerStats;
 
-    private float hp;
-    private float maxHp;
-
-    private Coroutine hitRoutine; 
+    private Coroutine hitRoutine;
     public UnityAction onDie;
-    private Transform modelTrans;
     private Animator anim;
 
-    public Transform hpGaugePoint;
+    private Transform hpGaugePoint;
     public UnityAction<Vector3> onUpdateMove;
     public UnityAction<int> onLevelUp;
     public UnityAction<float, float> onHit;
 
+    private float hp;
+
     public void Init()
     {
-        this.modelTrans = transform.Find("model").GetComponent<Transform>();
         this.anim = this.GetComponentInChildren<Animator>();
+        this.hpGaugePoint = transform.Find("HpGaugePoint").GetComponent<Transform>();
 
         SetState(eStateType.Idle);
 
@@ -48,7 +46,7 @@ public class Player : MonoBehaviour
         this.playerStats = GetComponent<PlayerStats>();
         this.playerStats.Init(0, 0, 0);
 
-        this.playerStats.onLevelUp = (amount) => 
+        this.playerStats.onLevelUp = (amount) =>
         {
             this.onLevelUp(amount);
         };
@@ -58,14 +56,14 @@ public class Player : MonoBehaviour
 
     private void SetHp()
     {
-        playerLife.MaxHp = 100;
-        playerLife.Hp = playerLife.MaxHp;       
+        playerLife.MaxHp = 500;
+        playerLife.Hp = playerLife.MaxHp;
+        this.hp = playerLife.Hp;
 
-
-        if (playerLife.Hp <= 0)
-            playerLife.Hp = 0;
+        if (hp <= 0)
+            hp = 0;
     }
-
+     
     public void Hit(int damage)
     {
         this.playerLife.Hp -= damage;
@@ -73,9 +71,9 @@ public class Player : MonoBehaviour
         if (this.hitRoutine == null)
             this.hitRoutine = StartCoroutine(HitRoutine());
 
-        this.onHit(playerLife.Hp, playerLife.MaxHp);
+        this.onHit(this.hp, playerLife.MaxHp);
 
-        if (this.playerLife.Hp <= 0)
+        if (this.hp <= 0)
         {
             this.Die();
             StopAllCoroutines();
@@ -95,7 +93,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         StartCoroutine(DieRoutine());
-    }  
+    }
 
     private IEnumerator DieRoutine()
     {

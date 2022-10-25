@@ -56,7 +56,6 @@ public class GameMain : SceneMain
 
     }
 
-
     private void GameObjectSetting()
     {
         this.player = GameObject.FindObjectOfType<Player>();

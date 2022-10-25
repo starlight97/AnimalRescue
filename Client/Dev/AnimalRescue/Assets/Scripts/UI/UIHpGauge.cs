@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class UIHpGauge : MonoBehaviour
 {
     private RectTransform rectTrans;
-    public RectTransform canvasRectTrans;
     private Image imgFill;
 
-    private void Awake()
+    public void Init()
     {
         this.rectTrans = GetComponent<RectTransform>();
         this.imgFill = GameObject.Find("fill").GetComponent<Image>();
@@ -21,8 +21,18 @@ public class UIHpGauge : MonoBehaviour
         this.rectTrans.position = screenPosition;
     }
 
-    public void DecreaseHp(int hp, int maxHp)
+    public void UpdateUI(float hp, float maxHp)
     {
-       this.imgFill.fillAmount = (float)hp / (float)maxHp;
+        StartCoroutine(UpdateUIRoutine(hp, maxHp));
+    }
+
+    private IEnumerator UpdateUIRoutine(float hp, float maxHp)
+    {
+        while (true)
+        {
+            float per = hp / maxHp;
+            this.imgFill.fillAmount = per;
+            yield return null;
+        }
     }
 }

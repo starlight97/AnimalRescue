@@ -8,7 +8,7 @@ public class HyunMain : MonoBehaviour
     private EnemySpawner enemySpawner;
     private WaveManager waveManager;
     private WeaponManager weaponManager;
-    public UIGame uiGame;
+    private UIHyunTest uiHyunTest;
 
     void Start()
     {
@@ -21,18 +21,18 @@ public class HyunMain : MonoBehaviour
         this.enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
         this.waveManager = GameObject.FindObjectOfType<WaveManager>();
         this.weaponManager = GameObject.FindObjectOfType<WeaponManager>();
-
+        this.uiHyunTest = GameObject.FindObjectOfType<UIHyunTest>();
 
         this.enemySpawner.Init(10);
 
         this.player.onUpdateMove = (worldPos) => 
         {
-            //this.uiGame.uiHpGauge.UpdatePosition(worldPos);
+            this.uiHyunTest.UpdatePosition(worldPos);
         };
 
         this.player.onHit = (hp, maxHp) =>
         {
-            //this.uiGame.uiHpGauge.DecreaseHp(hp, maxHp);
+            this.uiHyunTest.UpdateUIHpGauge(hp, maxHp);
         };
 
         this.player.onDie = () =>
@@ -51,13 +51,13 @@ public class HyunMain : MonoBehaviour
             enemySpawner.StartWave(wave);
         };
 
-
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
+            uiHyunTest.Init();
             enemySpawner.Init(30);
             player.Init();
             waveManager.Init();
-            weaponManager.Init(2000);
+            weaponManager.Init(2005);
         });
 
         DataManager.instance.Init();
@@ -67,6 +67,6 @@ public class HyunMain : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
-            this.weaponManager.WeaponUpgrade(2000);
+            this.weaponManager.WeaponUpgrade(2005);
     }
 }

@@ -6,7 +6,6 @@ public class Singing : PlayerWeapon
 {
     private GameObject notesGo;
     public GameObject projectilePrefab;
-    [SerializeField]
     private Vector3 dir;
     
     private float attackSpeed;
@@ -38,11 +37,9 @@ public class Singing : PlayerWeapon
             singingProjectile.transform.position = playerTrans.position;
 
             // 반경 1을 갖는 구의 랜덤 위치로 이동
-            Vector3 dir = Random.insideUnitSphere.normalized;
+            dir = Random.insideUnitSphere.normalized;
             dir.y = 0;
 
-            Debug.Log(dir);
-            Debug.Log(attackSpeed);
             singingProjectile.Init(current_damage, attackSpeed, dir);
 
             yield return new WaitForSeconds(3f);
@@ -56,8 +53,6 @@ public class Singing : PlayerWeapon
     public override void Upgrade()
     {
         base.Upgrade();
-        Debug.Log(level);
-        Debug.Log(attackSpeed);
         switch (level)
         {
             case 3:

@@ -13,6 +13,7 @@ public class UIGame : MonoBehaviour
     {
         this.uiHpGauge = this.transform.Find("UIHpGauge").GetComponent<UIHpGauge>();
         this.uiWeaponLevelUp = this.transform.Find("UIWeaponLevelUp").GetComponent<UIWeaponLevelUp>();
+        
         uiWeaponLevelUp.onWeaponSelect = (id) =>
         {
             this.onWeaponSelect(id);

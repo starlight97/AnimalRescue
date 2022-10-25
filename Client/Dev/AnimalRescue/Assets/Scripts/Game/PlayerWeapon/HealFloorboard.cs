@@ -40,7 +40,6 @@ public class HealFloorboard : PlayerWeapon
         //base.Upgrade();
         this.level++;
         this.healAmount += 0.05f;
-        Debug.Log(this.healAmount);
     }
 
     private void LateUpdate()
