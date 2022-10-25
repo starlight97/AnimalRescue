@@ -8,40 +8,46 @@ public class UILobby : MonoBehaviour
 {
     public enum eBtnLobby
     {
-        GameReady,
+        GameStart,
         Shop,
+        RepairShop,
         Option,
         Exit
     }
-    private Button btnGameReady;
+    public Button btnGameStart;
     private Button btnShop;
+    public Button btnRepairShop;
     private Button btnOption;
     private Button btnExit;
 
     public UnityAction<eBtnLobby> onClickBtn;
     public void Init()
     {
-        GameObject btnGroup = transform.Find("BtnGroup").gameObject;
-        this.btnGameReady = btnGroup.transform.Find("BtnGameReady").GetComponent<Button>();
-        this.btnShop = btnGroup.transform.Find("BtnShop").GetComponent<Button>();
-        this.btnOption = btnGroup.transform.Find("BtnOption").GetComponent<Button>();
-        this.btnExit = btnGroup.transform.Find("BtnExit").GetComponent<Button>();
+        //GameObject btnGroup = transform.Find("BtnGroup").gameObject;
+        //this.btnGameStart = btnGroup.transform.Find("BtnGameStart").GetComponent<Button>();
+        //this.btnShop = btnGroup.transform.Find("BtnShop").GetComponent<Button>();
+        //this.btnOption = btnGroup.transform.Find("BtnOption").GetComponent<Button>();
+        //this.btnExit = btnGroup.transform.Find("BtnExit").GetComponent<Button>();
 
-        this.btnGameReady.onClick.AddListener(() =>
+        this.btnGameStart.onClick.AddListener(() =>
         {
-            this.onClickBtn(eBtnLobby.GameReady);
+            this.onClickBtn(eBtnLobby.GameStart);
         });
-        this.btnShop.onClick.AddListener(() =>
+        //this.btnShop.onClick.AddListener(() =>
+        //{
+        //    this.onClickBtn(eBtnLobby.Shop);
+        //});
+        this.btnRepairShop.onClick.AddListener(() =>
         {
-            this.onClickBtn(eBtnLobby.Shop);
+            this.onClickBtn(eBtnLobby.RepairShop);
         });
-        this.btnOption.onClick.AddListener(() =>
-        {
-            this.onClickBtn(eBtnLobby.Option);
-        });
-        this.btnExit.onClick.AddListener(() =>
-        {
-            this.onClickBtn(eBtnLobby.Exit);
-        });
+        //this.btnOption.onClick.AddListener(() =>
+        //{
+        //    this.onClickBtn(eBtnLobby.Option);
+        //});
+        //this.btnExit.onClick.AddListener(() =>
+        //{
+        //    this.onClickBtn(eBtnLobby.Exit);
+        //});
     }
 }

@@ -9,7 +9,7 @@ public class JeongTestMain : MonoBehaviour
     private WaveManager waveManager;
     private WeaponManager weaponManager;
     public UIJeongTest uiJeongTest;
-    public BossRat bossRat;
+    public Enemy bossRat;
 
     // Start is called before the first frame update
     void Start()

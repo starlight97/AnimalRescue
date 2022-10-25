@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Shop.unity
     guid: b1c89e6ee428cb44dbcd33e5ef1aa1f6
+  - enabled: 1
+    path: Assets/Scenes/RepairShop.unity
+    guid: fb7d15850f9dbd24293cffb2baa0c29d
   m_configObjects: {}

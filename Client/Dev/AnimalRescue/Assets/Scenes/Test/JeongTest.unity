@@ -2276,7 +2276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3044571172081825697, guid: e4da9abd9c3f99048a9cf1f67cbfa18d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3047623343667630915, guid: e4da9abd9c3f99048a9cf1f67cbfa18d, type: 3}
       propertyPath: m_RootOrder
@@ -2520,7 +2520,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uiJeongTest: {fileID: 2265486162350017556}
-  bossRat: {fileID: 5898385187200626242}
+  bossRat: {fileID: 1898366774}
+--- !u!114 &1898366774 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7033000579076275600, guid: e4da9abd9c3f99048a9cf1f67cbfa18d, type: 3}
+  m_PrefabInstance: {fileID: 1457146334}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2313001678cbd841ad5e5083d9a2d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2016001797
 GameObject:
   m_ObjectHideFlags: 0
@@ -3571,17 +3582,6 @@ Transform:
   m_Father: {fileID: 6946004958964164583}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5898385187200626242 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3982859791062367048, guid: f893cebd50fc1cc4c86943e9d21979ca, type: 3}
-  m_PrefabInstance: {fileID: 6427917061688887712}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba1ad0e9b72bd264cbb1993f9d0ec78f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &6384286842663639196
 Transform:
   m_ObjectHideFlags: 0
@@ -3651,6 +3651,10 @@ PrefabInstance:
     - target: {fileID: 700732126849407609, guid: f893cebd50fc1cc4c86943e9d21979ca, type: 3}
       propertyPath: m_Name
       value: BossRat
+      objectReference: {fileID: 0}
+    - target: {fileID: 700732126849407609, guid: f893cebd50fc1cc4c86943e9d21979ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3982859791062367048, guid: f893cebd50fc1cc4c86943e9d21979ca, type: 3}
       propertyPath: radius
@@ -3798,6 +3802,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56d9e58cc5a0cfb44858af21b4e97e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentHp: 0
+  experience: 0
+  attackRange: 0
 --- !u!4 &8603242707342868891
 Transform:
   m_ObjectHideFlags: 0

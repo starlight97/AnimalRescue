@@ -15,11 +15,14 @@ public class LobbyMain : SceneMain
         {
             switch (type)
             {
-                case UILobby.eBtnLobby.GameReady:
-                    Dispatch("onClickGameReady");
+                case UILobby.eBtnLobby.GameStart:
+                    Dispatch("onClickGameStart");
                     break;
                 case UILobby.eBtnLobby.Shop:
                     Dispatch("onClickShop");
+                    break;
+                case UILobby.eBtnLobby.RepairShop:
+                    Dispatch("onClickRepairShop");
                     break;
                 case UILobby.eBtnLobby.Option:
                     Debug.Log("Option");

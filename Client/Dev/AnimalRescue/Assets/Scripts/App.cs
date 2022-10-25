@@ -8,7 +8,7 @@ public class App : MonoBehaviour
 {
     public enum eSceneType
     {
-        App, Logo, Loading, Title, Lobby, Game, Shop
+        App, Logo, Loading, Title, Lobby, Game, Shop, RepairShop
     }
 
     public static App instance;
@@ -121,6 +121,13 @@ public class App : MonoBehaviour
                                 this.LoadScene<GameMain>(eSceneType.Shop);
                             });
                         });
+                        main.AddListener("onClickRepairShop", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<RepairShopMain>(eSceneType.RepairShop);
+                            });
+                        });
                         main.Init();
                         break;
                     }
@@ -147,6 +154,20 @@ public class App : MonoBehaviour
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<TitleMain>(eSceneType.Title);
+                            });
+                        });
+                        main.Init();
+                        break;
+                    }
+                case eSceneType.RepairShop:
+                    {
+                        this.uiApp.FadeIn();
+
+                        main.AddListener("onClickLobby", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<LobbyMain>(eSceneType.Lobby);
                             });
                         });
                         main.Init();
