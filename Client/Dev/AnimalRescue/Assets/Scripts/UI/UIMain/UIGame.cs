@@ -20,13 +20,18 @@ public class UIGame : MonoBehaviour
             this.uiWeaponLevelUp.HideUI();
         };
 
+        uiHpGauge.Init();
         uiWeaponLevelUp.Init();
     }
 
-    public void UpdatePosition(Vector3 worldPos)
+    public void FixedHpGaugePosition(Vector3 worldPos)
     {
-        Debug.Log(uiHpGauge);
         this.uiHpGauge.UpdatePosition(worldPos);
+    }
+
+    public void UpdateUIHpGauge(float hp, float maxHp)
+    {
+        this.uiHpGauge.UpdateUI(hp, maxHp);
     }
 
     public void ShowWeaponLevelUp()

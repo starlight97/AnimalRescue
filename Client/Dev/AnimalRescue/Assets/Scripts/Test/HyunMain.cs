@@ -30,10 +30,12 @@ public class HyunMain : MonoBehaviour
             this.uiHyunTest.UpdatePosition(worldPos);
         };
 
-        this.player.onHit = (hp, maxHp) =>
+        this.player.onUpdateHp = (hp, maxHp) =>
         {
             this.uiHyunTest.UpdateUIHpGauge(hp, maxHp);
         };
+
+
 
         this.player.onDie = () =>
         {
@@ -57,7 +59,7 @@ public class HyunMain : MonoBehaviour
             enemySpawner.Init(30);
             player.Init();
             waveManager.Init();
-            weaponManager.Init(2005);
+            weaponManager.Init(2004);
         });
 
         DataManager.instance.Init();
@@ -67,6 +69,6 @@ public class HyunMain : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.X))
-            this.weaponManager.WeaponUpgrade(2005);
+            this.weaponManager.WeaponUpgrade(2004);
     }
 }

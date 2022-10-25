@@ -25,11 +25,11 @@ public class JeongTestMain : MonoBehaviour
         };
         this.player.onUpdateMove = (worldPos) =>
         {
-            this.uiJeongTest.uiHpGauge.UpdatePosition(worldPos);
+            this.uiJeongTest.UpdatePosition(worldPos);
         };
-        this.player.onHit = (n1, n2) =>
+        this.player.onUpdateHp = (hp, maxHp) =>
         {
-
+            this.uiJeongTest.UpdateUIHpGauge(hp, maxHp);
         };
         this.enemySpawner.onDieEnemy = (experience) =>
         {
@@ -56,10 +56,10 @@ public class JeongTestMain : MonoBehaviour
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             //this.enemySpawner.Init(100);
+            this.uiJeongTest.Init();
             this.player.Init();
             //this.waveManager.Init();
             this.bossRat.Init(10000,10,10,5,1);
-            this.uiJeongTest.Init();
             this.weaponManager.Init(2000);
             //uiJeongTest.ShowWeaponLevelUp();
         });

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealFloorboard : PlayerWeapon
 {
-    private float healAmount = 0.1f;
+    private float amount = 0.1f;
     private Player player;
     float currentHp;
 
@@ -12,7 +12,6 @@ public class HealFloorboard : PlayerWeapon
     {
         base.Init(weaponData, playerTrans);
         player = GameObject.FindObjectOfType<Player>();
-        currentHp = player.playerLife.Hp;
         Heal();
     }
 
@@ -25,10 +24,7 @@ public class HealFloorboard : PlayerWeapon
     {
         while (true)
         {
-            currentHp += healAmount;
-            player.playerLife.Hp = currentHp;
-            if (player.playerLife.Hp >= player.playerLife.MaxHp)
-                player.playerLife.Hp = player.playerLife.MaxHp;
+            player.Recovery(player.playerLife.Hp, player.playerLife.MaxHp, amount);
             yield return new WaitForSeconds(1f);
         }
     }
@@ -39,7 +35,7 @@ public class HealFloorboard : PlayerWeapon
     {
         //base.Upgrade();
         this.level++;
-        this.healAmount += 0.05f;
+        this.amount += 0.5f;
     }
 
     private void LateUpdate()

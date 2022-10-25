@@ -5,12 +5,14 @@ using UnityEngine.Events;
 
 public class UIJeongTest : MonoBehaviour
 {
-    public UIHpGauge uiHpGauge;
+    private UIHpGauge uiHpGauge;
     public UIWeaponLevelUp uiWeaponLevelUp;
     public UnityAction<int> onWeaponSelect;
 
     public void Init()
     {
+        this.uiHpGauge = this.transform.Find("UIHpGauge").GetComponent<UIHpGauge>();
+        
         uiWeaponLevelUp.onWeaponSelect = (id) =>
         {
             this.onWeaponSelect(id);
@@ -18,10 +20,21 @@ public class UIJeongTest : MonoBehaviour
         };
 
         uiWeaponLevelUp.Init();
+        this.uiHpGauge.Init();
     }
 
     public void ShowWeaponLevelUp()
     {
         this.uiWeaponLevelUp.ShowUI();
+    }
+
+    public void UpdatePosition(Vector3 worldPos)
+    {
+        this.uiHpGauge.UpdatePosition(worldPos);
+    }
+
+    public void UpdateUIHpGauge(float hp, float maxHp)
+    {
+        this.uiHpGauge.UpdateUI(hp, maxHp);
     }
 }

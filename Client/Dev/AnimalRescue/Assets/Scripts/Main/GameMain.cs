@@ -25,11 +25,11 @@ public class GameMain : SceneMain
         };
         this.player.onUpdateMove = (worldPos) =>
         {
-            this.uiGame.UpdatePosition(worldPos);
+            this.uiGame.FixedHpGaugePosition(worldPos);
         };
-        this.player.onHit = (n1, n2) =>
+        this.player.onUpdateHp = (hp, maxHp) =>
         {
-
+            this.uiGame.UpdateUIHpGauge(hp, maxHp);
         };
         this.enemySpawner.onDieEnemy = (experience) =>
         {
@@ -53,7 +53,6 @@ public class GameMain : SceneMain
         this.player.Init();
         this.waveManager.Init();
         this.weaponManager.Init(2000);
-
     }
 
     private void GameObjectSetting()

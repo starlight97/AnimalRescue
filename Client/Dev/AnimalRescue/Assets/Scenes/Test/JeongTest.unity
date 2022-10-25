@@ -2872,7 +2872,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894d4238fe4b56c4d8934da0ae4b7d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasRectTrans: {fileID: 2265486162350017550}
 --- !u!1 &2265486160818878075
 GameObject:
   m_ObjectHideFlags: 0
@@ -3081,7 +3080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b66107e984cfc44946288c8c933aa6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiHpGauge: {fileID: 2265486160818878073}
   uiWeaponLevelUp: {fileID: 239462468}
 --- !u!114 &2265486162674657228
 MonoBehaviour:

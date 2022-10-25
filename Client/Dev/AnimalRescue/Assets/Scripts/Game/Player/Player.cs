@@ -22,18 +22,17 @@ public class Player : MonoBehaviour
     private Transform hpGaugePoint;
     public UnityAction<Vector3> onUpdateMove;
     public UnityAction<int> onLevelUp;
-    public UnityAction<float, float> onHit;
-
-    private float hp;
+    public UnityAction<float, float> onUpdateHp;
 
     public void Init()
     {
-        this.anim = this.GetComponentInChildren<Animator>();
+        playerLife.MaxHp = 100;
+        playerLife.Hp = playerLife.MaxHp;
         this.hpGaugePoint = transform.Find("HpGaugePoint").GetComponent<Transform>();
 
-        SetState(eStateType.Idle);
+        this.anim = this.GetComponentInChildren<Animator>();
 
-        this.SetHp();
+        SetState(eStateType.Idle);
 
         this.playerMove = GetComponent<PlayerMove>();
         this.playerMove.Move();
@@ -54,26 +53,23 @@ public class Player : MonoBehaviour
         this.onUpdateMove(this.hpGaugePoint.position);
     }
 
-    private void SetHp()
+    public void Recovery(float hp, float maxHp, float amount)
     {
-        playerLife.MaxHp = 500;
-        playerLife.Hp = playerLife.MaxHp;
-        this.hp = playerLife.Hp;
-
-        if (hp <= 0)
-            hp = 0;
+        playerLife.Hp += amount;
+        if (playerLife.Hp >= playerLife.MaxHp)
+            playerLife.Hp = playerLife.MaxHp;
+        onUpdateHp(hp, maxHp);
     }
-     
+
     public void Hit(int damage)
     {
         this.playerLife.Hp -= damage;
 
         if (this.hitRoutine == null)
             this.hitRoutine = StartCoroutine(HitRoutine());
+        onUpdateHp(this.playerLife.Hp, this.playerLife.MaxHp);
 
-        this.onHit(this.hp, playerLife.MaxHp);
-
-        if (this.hp <= 0)
+        if (this.playerLife.Hp <= 0)
         {
             this.Die();
             StopAllCoroutines();
@@ -88,7 +84,7 @@ public class Player : MonoBehaviour
 
         SetState(eStateType.Idle);
         this.hitRoutine = null;
-    }
+    } 
 
     private void Die()
     {
