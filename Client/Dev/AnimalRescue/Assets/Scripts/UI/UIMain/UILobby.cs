@@ -20,6 +20,9 @@ public class UILobby : MonoBehaviour
     private Button btnOption;
     private Button btnExit;
 
+    public Text gold;
+    public Text diamond;
+
     public UnityAction<eBtnLobby> onClickBtn;
     public void Init()
     {
@@ -49,5 +52,8 @@ public class UILobby : MonoBehaviour
         //{
         //    this.onClickBtn(eBtnLobby.Exit);
         //});
+        var info = InfoManager.instance.GetInfo();
+        this.gold.text = info.playerInfo.gold.ToString();
+        this.diamond.text = info.playerInfo.diamond.ToString();
     }
 }
