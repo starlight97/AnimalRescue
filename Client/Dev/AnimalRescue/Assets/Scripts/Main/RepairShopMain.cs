@@ -9,6 +9,8 @@ public class RepairShopMain : SceneMain
     {
         base.Init(param);
 
+        var mainParam = (RepairShopParam)param;
+
         this.uiRepairShop = GameObject.FindObjectOfType<UIRepairShop>();
 
         this.uiRepairShop.onClickLobby = () =>
@@ -16,7 +18,7 @@ public class RepairShopMain : SceneMain
             Dispatch("onClickLobby");
         };
 
-        this.uiRepairShop.Init();
+        this.uiRepairShop.Init(mainParam.heroId);
     }
 
 

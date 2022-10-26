@@ -5,6 +5,7 @@ using UnityEngine;
 public class LobbyMain : SceneMain
 {
     private UILobby uiLobby;
+    public int selectedHeroId;
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
@@ -22,6 +23,7 @@ public class LobbyMain : SceneMain
                     Dispatch("onClickShop");
                     break;
                 case UILobby.eBtnLobby.RepairShop:
+                    selectedHeroId = 100;
                     Dispatch("onClickRepairShop");
                     break;
                 case UILobby.eBtnLobby.Option:

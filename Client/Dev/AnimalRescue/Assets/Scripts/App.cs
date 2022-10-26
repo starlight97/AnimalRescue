@@ -14,6 +14,8 @@ public class App : MonoBehaviour
     public static App instance;
     private UIApp uiApp;
 
+    private LobbyMain lobbyMain;
+
     private void Awake()
     {
         App.instance = this;
@@ -107,28 +109,30 @@ public class App : MonoBehaviour
                     {
                         this.uiApp.FadeIn();
 
-                        main.AddListener("onClickGameStart", (data) =>
+                        this.lobbyMain = GameObject.FindObjectOfType<LobbyMain>();
+
+                        lobbyMain.AddListener("onClickGameStart", (data) =>
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<GameMain>(eSceneType.Game);
                             });
                         });
-                        main.AddListener("onClickShop", (data) =>
+                        lobbyMain.AddListener("onClickShop", (data) =>
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<GameMain>(eSceneType.Shop);
                             });
                         });
-                        main.AddListener("onClickRepairShop", (data) =>
+                        lobbyMain.AddListener("onClickRepairShop", (data) =>
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<RepairShopMain>(eSceneType.RepairShop);
                             });
                         });
-                        main.Init();
+                        lobbyMain.Init();
                         break;
                     }
                 case eSceneType.Game:
@@ -170,7 +174,9 @@ public class App : MonoBehaviour
                                 this.LoadScene<LobbyMain>(eSceneType.Lobby);
                             });
                         });
-                        main.Init();
+
+                        var param = new RepairShopParam() { heroId = this.lobbyMain.selectedHeroId};
+                        main.Init(param);
                         break;
                     }
             }
