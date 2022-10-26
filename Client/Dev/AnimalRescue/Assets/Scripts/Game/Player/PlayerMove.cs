@@ -6,7 +6,7 @@ using UnityEngine.Events;
 public class PlayerMove : MonoBehaviour
 {
     [SerializeField]
-    private float moveSpeed = 10;
+    private float moveSpeed;
     public FloatingJoystick floatingJoystick;
     private Rigidbody rBody;
     private Coroutine moveRoutine;
@@ -16,29 +16,29 @@ public class PlayerMove : MonoBehaviour
     public UnityAction onMove;
     public UnityAction onMoveComplete;
 
-    private void Awake()
+    public void Init()
     {
         this.rBody = GetComponent<Rigidbody>();
         this.modelGo = transform.Find("model").gameObject;
+
     }
 
-    public void Move()
+    public void Move(int moveSpeed)
     {
         if (this.moveRoutine != null)
         {
             this.StopCoroutine(this.moveRoutine);
         }
 
-        this.moveRoutine = StartCoroutine(this.MoveRoutine());
+        this.moveRoutine = StartCoroutine(this.MoveRoutine(moveSpeed));
     }
 
-    private IEnumerator MoveRoutine()
+    private IEnumerator MoveRoutine(int moveSpeed)
     {
         while (true)
         {
             this.LimitPosition();
             this.dir = Vector3.forward * floatingJoystick.Vertical + Vector3.right * floatingJoystick.Horizontal;
-
             if (this.dir != Vector3.zero)
             {
                 this.modelGo.transform.rotation = Quaternion.LookRotation(this.dir);

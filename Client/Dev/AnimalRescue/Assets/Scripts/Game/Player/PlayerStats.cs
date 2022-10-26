@@ -4,17 +4,26 @@ using UnityEngine;
 using UnityEngine.Events;
 public class PlayerStats : MonoBehaviour
 {    
-
+    //public float CoolTimeDecreasePer;
 
     public UnityAction<int> onLevelUp;
-    public int Damage;
-    public float CoolTimeDecreasePer;
+    public int damage;
+    public float maxHp;
+    public int moveSpeed;
     private int experience;
 
-    public void Init(int damage, float coolTimeDecreasePer, int experience)
+    //public void Init(int damage, float coolTimeDecreasePer, int experience)
+    //{
+    //    this.Damage = damage;
+    //    this.CoolTimeDecreasePer = coolTimeDecreasePer;
+    //    this.experience = experience;
+    //}
+
+    public void Init(int damage, float maxHp, int moveSpeed, int experience)
     {
-        this.Damage = damage;
-        this.CoolTimeDecreasePer = coolTimeDecreasePer;
+        this.damage = damage;
+        this.maxHp = maxHp;
+        this.moveSpeed = moveSpeed;
         this.experience = experience;
     }
 

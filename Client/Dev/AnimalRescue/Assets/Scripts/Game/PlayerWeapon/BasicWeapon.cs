@@ -17,7 +17,9 @@ public class BasicWeapon : PlayerWeapon
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
         base.Init(weaponData, playerTrans);
+        Debug.Log("ddddddd");
         this.playerTrans = GameObject.Find("Player").transform.Find("model").transform;
+        Debug.Log("this.playerTrasn");
         this.Create();
     }
 

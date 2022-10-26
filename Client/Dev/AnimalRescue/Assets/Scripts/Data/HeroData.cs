@@ -12,11 +12,17 @@
 
 public class HeroData : RawData
 {
-    public string heroname;
-    
+    public string hero_name;
+
+    public float max_hp;
+
+    public int damage;
+
+    public int move_speed;
+
     public int increase_damage;
     
-    public int increase_maxhp;
+    public float increase_maxhp;
     
     public int increase_movespeed;
     

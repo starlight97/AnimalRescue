@@ -25,23 +25,6 @@ public class HyunMain : MonoBehaviour
 
         this.enemySpawner.Init(10);
 
-        this.player.onUpdateMove = (worldPos) => 
-        {
-            this.uiHyunTest.UpdatePosition(worldPos);
-        };
-
-        this.player.onUpdateHp = (hp, maxHp) =>
-        {
-            this.uiHyunTest.UpdateUIHpGauge(hp, maxHp);
-        };
-
-
-
-        this.player.onDie = () =>
-        {
-
-        };
-
         this.enemySpawner.onDieEnemy = (experience) =>
         {
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
@@ -56,11 +39,27 @@ public class HyunMain : MonoBehaviour
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             uiHyunTest.Init();
+            player.Init(101);
             enemySpawner.Init(30);
-            player.Init();
             waveManager.Init();
-            weaponManager.Init(2004);
+            weaponManager.Init(2000);
         });
+
+
+        this.player.onUpdateMove = (worldPos) =>
+        {
+            this.uiHyunTest.UpdatePosition(worldPos);
+        };
+
+        this.player.onUpdateHp = (hp, maxHp) =>
+        {
+            this.uiHyunTest.UpdateUIHpGauge(hp, maxHp);
+        };
+
+        this.player.onDie = () =>
+        {
+
+        };
 
         DataManager.instance.Init();
         DataManager.instance.LoadAllData(this);

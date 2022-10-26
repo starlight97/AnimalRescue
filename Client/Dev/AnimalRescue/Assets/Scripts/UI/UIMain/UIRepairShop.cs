@@ -19,6 +19,6 @@ public class UIRepairShop : MonoBehaviour
 
         var heroData = DataManager.instance.GetData<HeroData>(heroId);
         
-        this.textHeroName.text = heroData.heroname;
+        //this.textHeroName.text = heroData.heroname;
     }
 }

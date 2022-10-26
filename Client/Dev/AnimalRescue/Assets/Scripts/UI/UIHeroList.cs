@@ -17,7 +17,7 @@ public class UIHeroList : MonoBehaviour
             GameObject itemGo = Instantiate(this.uiHeroListItemPrefab, this.content);
             var item = itemGo.GetComponent<UIHeroListItem>();
             var heroData = DataManager.instance.GetData<HeroData>(hero.id);
-            item.Init(hero.id, heroData.heroname);
+            //item.Init(hero.id, heroData.heroname);
         }
 
         //foreach (var data in GoldShopMain.instance.dicGoldShopDatas.Values)

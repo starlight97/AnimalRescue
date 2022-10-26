@@ -11,6 +11,9 @@ public class Player : MonoBehaviour
         Idle, Run, Die, Hit
     }
 
+    private GameObject heroGo;
+    private int id;
+
     public PlayerLife playerLife = new PlayerLife();
     private PlayerMove playerMove;
     private PlayerStats playerStats;
@@ -26,24 +29,67 @@ public class Player : MonoBehaviour
 
     public void Init()
     {
-        playerLife.MaxHp = 100;
-        playerLife.Hp = playerLife.MaxHp;
-        this.hpGaugePoint = transform.Find("HpGaugePoint").GetComponent<Transform>();
+        
 
+        //playerLife.MaxHp = 100;
+        //playerLife.Hp = playerLife.MaxHp;
+        //this.hpGaugePoint = transform.Find("HpGaugePoint").GetComponent<Transform>();
+
+        //this.anim = this.GetComponentInChildren<Animator>();
+
+        //SetState(eStateType.Idle);
+
+        //this.playerMove = GetComponent<PlayerMove>();
+        //this.playerMove.Move();
+
+        //this.playerMove.onMove = () =>
+        //{
+        //    SetState(eStateType.Run);
+        //};
+
+        //this.playerStats = GetComponent<PlayerStats>();
+        //this.SetPlayerStat();
+
+        //this.playerStats.onLevelUp = (amount) =>
+        //{
+        //    this.onLevelUp(amount);
+        //};
+
+        //this.onUpdateMove(this.hpGaugePoint.position);
+    }
+
+    public void Init(int heroId)
+    {
+        var data = DataManager.instance.GetData<HeroData>(heroId);
+        this.heroGo = Instantiate(Resources.Load<GameObject>(data.prefab_path));
+        this.heroGo.name = "model";
+        this.heroGo.transform.parent = this.transform;
+
+        this.hpGaugePoint = this.transform.Find("HpGaugePoint").GetComponent<Transform>();
         this.anim = this.GetComponentInChildren<Animator>();
-
         SetState(eStateType.Idle);
 
+        this.playerStats = GetComponent<PlayerStats>();
         this.playerMove = GetComponent<PlayerMove>();
-        this.playerMove.Move();
+        
+        // Hp
+        playerLife.MaxHp = data.max_hp + data.increase_maxhp;
+        playerLife.Hp = playerLife.MaxHp;
 
+        // Damage
+        var damage = data.damage + data.increase_damage;
+
+        // Speed
+        var moveSpeed = data.move_speed + data.increase_movespeed;
+
+        this.playerStats.Init(damage, playerLife.MaxHp, moveSpeed, 0);
+
+        this.playerMove.Init();
+        this.playerMove.Move(moveSpeed);
         this.playerMove.onMove = () =>
         {
             SetState(eStateType.Run);
         };
-
-        this.playerStats = GetComponent<PlayerStats>();
-        this.playerStats.Init(0, 0, 0);
 
         this.playerStats.onLevelUp = (amount) =>
         {

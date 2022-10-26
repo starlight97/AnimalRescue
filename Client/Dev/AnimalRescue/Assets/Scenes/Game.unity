@@ -1382,6 +1382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 001ae58d4523e3249ae51c34634866e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerWeaponList: []
 --- !u!4 &735830288
 Transform:
   m_ObjectHideFlags: 0
@@ -1448,7 +1449,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 894d4238fe4b56c4d8934da0ae4b7d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasRectTrans: {fileID: 631569070}
 --- !u!1 &966300849
 GameObject:
   m_ObjectHideFlags: 0
@@ -1779,6 +1779,10 @@ PrefabInstance:
     - target: {fileID: 2494088360300170684, guid: da44acbe2b716ed41bf89c5247ff5b44, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2494088360300170686, guid: da44acbe2b716ed41bf89c5247ff5b44, type: 3}
+      propertyPath: moveSpeed
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2494088360300170686, guid: da44acbe2b716ed41bf89c5247ff5b44, type: 3}
       propertyPath: floatingJoystick
