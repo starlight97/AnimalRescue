@@ -20,40 +20,41 @@ public class UILobby : MonoBehaviour
     private Button btnOption;
     private Button btnExit;
 
+    private UIHeroList uiHeroList;
+    private UILobbyHeroStats uiLobbyHeroStats;
+
     public Text gold;
     public Text diamond;
 
     public UnityAction<eBtnLobby> onClickBtn;
+    public UnityAction<int> onClickHero;
     public void Init()
     {
-        //GameObject btnGroup = transform.Find("BtnGroup").gameObject;
-        //this.btnGameStart = btnGroup.transform.Find("BtnGameStart").GetComponent<Button>();
-        //this.btnShop = btnGroup.transform.Find("BtnShop").GetComponent<Button>();
-        //this.btnOption = btnGroup.transform.Find("BtnOption").GetComponent<Button>();
-        //this.btnExit = btnGroup.transform.Find("BtnExit").GetComponent<Button>();
+        this.uiLobbyHeroStats = GameObject.FindObjectOfType<UILobbyHeroStats>();
+        this.uiHeroList = GameObject.FindObjectOfType<UIHeroList>();
 
         this.btnGameStart.onClick.AddListener(() =>
         {
             this.onClickBtn(eBtnLobby.GameStart);
         });
-        //this.btnShop.onClick.AddListener(() =>
-        //{
-        //    this.onClickBtn(eBtnLobby.Shop);
-        //});
         this.btnRepairShop.onClick.AddListener(() =>
         {
             this.onClickBtn(eBtnLobby.RepairShop);
         });
-        //this.btnOption.onClick.AddListener(() =>
-        //{
-        //    this.onClickBtn(eBtnLobby.Option);
-        //});
-        //this.btnExit.onClick.AddListener(() =>
-        //{
-        //    this.onClickBtn(eBtnLobby.Exit);
-        //});
+        this.uiHeroList.onCLickHero = (id) =>
+        {
+            this.onClickHero(id);
+        };
+        this.uiLobbyHeroStats.Init();
+        this.uiHeroList.Init();
+
         var info = InfoManager.instance.GetInfo();
         this.gold.text = info.playerInfo.gold.ToString();
         this.diamond.text = info.playerInfo.diamond.ToString();
+    }
+
+    public void UiLobbyHeroStatsUIUpdate(string heroName, int damage, int hp, int moveSpeed)
+    {
+        this.uiLobbyHeroStats.UIUpdate(heroName, damage, hp, moveSpeed);
     }
 }

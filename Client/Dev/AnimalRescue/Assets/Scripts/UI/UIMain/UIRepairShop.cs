@@ -10,6 +10,8 @@ public class UIRepairShop : MonoBehaviour
     public Button btnBack;
     public UnityAction onClickLobby;
     public Text textHeroName;
+
+    private UIPowerUpStat uiPowerUpStat;
     public void Init(int heroId)
     {
         this.btnBack.onClick.AddListener(() =>
@@ -17,8 +19,15 @@ public class UIRepairShop : MonoBehaviour
             this.onClickLobby();
         });
 
-        var heroData = DataManager.instance.GetData<HeroData>(heroId);
-        
-        //this.textHeroName.text = heroData.heroname;
+        this.uiPowerUpStat = GameObject.FindObjectOfType<UIPowerUpStat>();
+        uiPowerUpStat.Init(heroId);
+
+        uiPowerUpStat.onCLickLevelUp = (statType) =>
+        {
+
+        };
+
+        var heroData = DataManager.instance.GetData<HeroData>(heroId);        
+        this.textHeroName.text = heroData.hero_name;
     }
 }

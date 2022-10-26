@@ -34,7 +34,11 @@ public class InfoManager
             Debug.Log("신규 유저 입니다.");
             gameInfo = new GameInfo("testid");
             HeroInfo heroInfo = new HeroInfo(100);
-            gameInfo.dicHeroInfo.Add(heroInfo.id,heroInfo);
+            gameInfo.dicHeroInfo.Add(heroInfo.id, heroInfo);
+            HeroInfo heroInfo1 = new HeroInfo(101);
+            gameInfo.dicHeroInfo.Add(heroInfo1.id, heroInfo1);
+            HeroInfo heroInfo2 = new HeroInfo(102);
+            gameInfo.dicHeroInfo.Add(heroInfo2.id, heroInfo2);
         }
         SaveGame();
     }

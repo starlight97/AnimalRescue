@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class UIHeroList : MonoBehaviour
 {
     private RectTransform content;
     public GameObject uiHeroListItemPrefab;
+    public UnityAction<int> onCLickHero;
+
+    private List<UIHeroListItem> uiHeroListItemList = new List<UIHeroListItem>();
     //public 
     public void Init()
     {
@@ -17,23 +21,15 @@ public class UIHeroList : MonoBehaviour
             GameObject itemGo = Instantiate(this.uiHeroListItemPrefab, this.content);
             var item = itemGo.GetComponent<UIHeroListItem>();
             var heroData = DataManager.instance.GetData<HeroData>(hero.id);
-            //item.Init(hero.id, heroData.heroname);
+            item.Init(hero.id, heroData.hero_name);
+
+            item.btnHeroListItem.onClick.AddListener(() =>
+            {
+                this.onCLickHero(hero.id);
+            });
+            uiHeroListItemList.Add(item);
         }
+        this.onCLickHero(uiHeroListItemList[0].id);       
 
-        //foreach (var data in GoldShopMain.instance.dicGoldShopDatas.Values)
-        //{
-        //    Debug.LogFormat("{0} {1} {2} {3} {4}", data.id, data.name, data.price, data.sprite_name, data.dollar);
-        //    GameObject itemGo = Instantiate(this.uiGoldShopItemPrefab, this.content);
-        //    var item = itemGo.GetComponent<UIGoldShopItem>();
-        //    Sprite sp = this.atlas.GetSprite(data.sprite_name);
-
-        //    item.Init(data.id, data.name, data.price, data.dollar, sp);
-
-        //    item.btnPurchase.onClick.AddListener(() =>
-        //    {
-        //        Debug.LogFormat("아이템 구매 : {0}", item.id);
-        //    });
-        //    i++;
-        //}
     }
 }

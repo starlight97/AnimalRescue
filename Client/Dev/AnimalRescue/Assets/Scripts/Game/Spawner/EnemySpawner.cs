@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
-
     public UnityAction<int> onDieEnemy;
     public float spawnDelay;
     private Vector3[] spawnPoints;
