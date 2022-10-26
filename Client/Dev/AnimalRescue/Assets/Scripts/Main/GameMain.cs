@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameMain : SceneMain
 {
@@ -13,7 +14,6 @@ public class GameMain : SceneMain
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
-
 
         GameObjectSetting();
 
@@ -49,10 +49,16 @@ public class GameMain : SceneMain
         };
 
         this.uiGame.Init();
+        this.player.Init(102);
         this.enemySpawner.Init(100);
-        this.player.Init();
         this.waveManager.Init();
         this.weaponManager.Init(2000);
+
+        DataManager.instance.onDataLoadFinished.AddListener(() => 
+        {
+
+        });
+        
     }
 
     private void GameObjectSetting()

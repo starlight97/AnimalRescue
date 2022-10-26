@@ -24,23 +24,6 @@ public class UIHpGauge : MonoBehaviour
     public void UpdateUI(float hp, float maxHp)
     {
         float per = hp / maxHp;
-        Debug.Log("per -> " + per);
-        Debug.Log("maxHp -> " + maxHp);
         this.imgFill.fillAmount = per;
-
-        Debug.Log(hp);
-        //StartCoroutine(UpdateUIRoutine(hp, maxHp));
-    }
-
-    private IEnumerator UpdateUIRoutine(float hp, float maxHp)
-    {
-        while (true)
-        {
-            float per = hp / maxHp;
-            Debug.Log("per -> " + per);
-            Debug.Log("maxHp -> " + maxHp);
-            this.imgFill.fillAmount = per;
-            yield return null;
-        }
     }
 }
