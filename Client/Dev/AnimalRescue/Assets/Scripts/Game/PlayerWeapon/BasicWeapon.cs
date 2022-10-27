@@ -12,7 +12,7 @@ public class BasicWeapon : PlayerWeapon
     private Coroutine createRoutine;
     private DoughnutProjectile doughnut;
 
-    private float size = 1;
+    private float size = 1.5f;
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
@@ -46,7 +46,7 @@ public class BasicWeapon : PlayerWeapon
     {
         if (size <= 5)
         {
-            size += 1;
+            size += 0.5f;
         }
         else
         {

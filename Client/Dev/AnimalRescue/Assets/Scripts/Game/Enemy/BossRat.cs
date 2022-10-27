@@ -8,10 +8,9 @@ public class BossRat : Enemy
     public float radius;
     private int projectileCount;
 
-
-    public override void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed)
+    public override void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed, float attackRange)
     {
-        base.Init(maxHp, damage, experience, movespeed, attackspeed);
+        base.Init(maxHp, damage, experience, movespeed, attackspeed, attackRange);
         projectileCount = 10;
         switch (Level)
         {
@@ -26,7 +25,7 @@ public class BossRat : Enemy
     protected override IEnumerator AttackRoutine()
     {
         RadiusAttack();
-        yield return new WaitForSeconds(this.attackspeed);
+        yield return new WaitForSeconds(this.attackSpeed);
         this.attackRoutine = null;
     }
 

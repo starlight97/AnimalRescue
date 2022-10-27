@@ -12,15 +12,17 @@
 
 public class EnemyData : RawData
 {
-    public string monstername;
+    public string monster_name;
     
     public int damage;
     
-    public float movespeed;
+    public float move_speed;
     
-    public int maxhp;
+    public int max_hp;
     
-    public float attackspeed;
+    public float attack_speed;
+
+    public float attack_range;
     
     public string prefab_name;
 }

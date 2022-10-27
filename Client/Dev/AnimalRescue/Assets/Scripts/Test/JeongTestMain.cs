@@ -59,7 +59,7 @@ public class JeongTestMain : MonoBehaviour
             this.uiJeongTest.Init();
             this.player.Init();
             //this.waveManager.Init();
-            this.bossRat.Init(10000,10,10,5,1);
+            this.bossRat.Init(10000,10,10,5,1, 1);
             this.weaponManager.Init(2000);
             //uiJeongTest.ShowWeaponLevelUp();
         });

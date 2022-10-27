@@ -21,8 +21,11 @@ public class Enemy : MonoBehaviour
     public int currentHp;
     protected int damage;
     public int experience;
-    protected float movespeed;
-    protected float attackspeed;
+    protected float moveSpeed;
+    protected float attackSpeed;
+
+    [SerializeField] protected float attackRange;
+
     private GameObject playerGo;
     private Animator anim;
 
@@ -30,16 +33,16 @@ public class Enemy : MonoBehaviour
     protected Coroutine attackRoutine;
 
     public UnityAction<Enemy> onDie;
-    public float attackRange;
 
-    public virtual void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed)
+    public virtual void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed, float attackRange)
     {
         this.maxHp = maxHp;
         this.currentHp = this.maxHp;
         this.damage = damage;
         this.experience = experience;
-        this.movespeed = movespeed;
-        this.attackspeed = attackspeed;
+        this.moveSpeed = movespeed;
+        this.attackSpeed = attackspeed;
+        this.attackRange = attackRange;
 
         this.playerGo = GameObject.Find("Player").gameObject;
         this.anim = this.GetComponent<Animator>();
@@ -60,7 +63,7 @@ public class Enemy : MonoBehaviour
             {
                 this.transform.LookAt(this.playerGo.transform.position);
 
-                transform.Translate(Vector3.forward * Time.deltaTime * this.movespeed);
+                transform.Translate(Vector3.forward * Time.deltaTime * this.moveSpeed);
             }
             else
             {
@@ -132,7 +135,7 @@ public class Enemy : MonoBehaviour
         var player = playerGo.GetComponent<Player>();
         player.Hit(this.damage);
 
-        yield return this.attackspeed;
+        yield return this.attackSpeed;
         this.attackRoutine = null;
     }
 

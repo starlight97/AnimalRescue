@@ -57,14 +57,14 @@ public class EnemySpawner : MonoBehaviour
 
             var pos = this.GetRandomPos();
             var randIdx = Random.Range(0, enemyDataList.Count - 1);
-            int maxhp = wave * enemyDataList[0].maxhp;
+            int maxhp = wave * enemyDataList[0].max_hp;
             int damage = wave * enemyDataList[0].damage;
 
             GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyDataList[randIdx].prefab_name),pos, Quaternion.identity);
             enemyGo.transform.parent = this.transform;
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
-            enemy.Init(maxhp, damage, StatsConstants.EnemyExperience, enemyDataList[randIdx].movespeed, enemyDataList[randIdx].attackspeed);
+            enemy.Init(maxhp, damage, StatsConstants.EnemyExperience, enemyDataList[randIdx].move_speed, enemyDataList[randIdx].attack_speed, enemyDataList[randIdx].attack_range);
 
             enemy.onDie = (dieEnemy) =>
             {
