@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class UIPowerUpStatItem : MonoBehaviour
@@ -9,10 +10,12 @@ public class UIPowerUpStatItem : MonoBehaviour
     private Text textIncrease;
     private Text textPrice;
 
-    public Button btnLevelUp;
+    private Button btnLevelUp;
     private int price;
     private string statkey;
     private int heroId;
+
+    public UnityAction<string> onClickLevelUp;
 
     public void Init(string statType,string statkey, int heroId, int increase, int price)
     {
@@ -27,9 +30,16 @@ public class UIPowerUpStatItem : MonoBehaviour
         this.price = price;
         this.statkey = statkey;
         this.heroId = heroId;
+
+        this.btnLevelUp.onClick.AddListener(() =>
+        {
+            if(this.LevelUp())
+                this.onClickLevelUp(statkey);
+        });
+
     }
 
-    public bool LevelUp()
+    private bool LevelUp()
     {
         var info = InfoManager.instance.GetInfo();
         var gold = info.playerInfo.gold;

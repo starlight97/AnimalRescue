@@ -146,7 +146,8 @@ public class App : MonoBehaviour
                                 this.LoadScene<GameMain>(eSceneType.Game);
                             });
                         });
-                        main.Init();
+                        var param = new GameMainParam() { heroId = this.lobbyMain.selectedHeroId };
+                        main.Init(param);
                         break;
                     }
                 case eSceneType.Shop:

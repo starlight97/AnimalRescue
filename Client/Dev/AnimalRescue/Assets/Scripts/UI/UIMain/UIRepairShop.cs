@@ -22,9 +22,9 @@ public class UIRepairShop : MonoBehaviour
         this.uiPowerUpStat = GameObject.FindObjectOfType<UIPowerUpStat>();
         uiPowerUpStat.Init(heroId);
 
-        uiPowerUpStat.onCLickLevelUp = (statType) =>
+        uiPowerUpStat.onClickLevelUp = (statType) =>
         {
-
+            Debug.Log(statType);
         };
 
         var heroData = DataManager.instance.GetData<HeroData>(heroId);        

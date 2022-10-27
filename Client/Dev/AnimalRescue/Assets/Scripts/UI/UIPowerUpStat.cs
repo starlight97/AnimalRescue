@@ -7,7 +7,7 @@ public class UIPowerUpStat : MonoBehaviour
 {
     private RectTransform content;
     public GameObject uiPowerUpStatItemPrefab;
-    public UnityAction<string> onCLickLevelUp;
+    public UnityAction<string> onClickLevelUp;
 
     private int price = 100;
 
@@ -20,36 +20,26 @@ public class UIPowerUpStat : MonoBehaviour
         GameObject itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         var item = itemGo.GetComponent<UIPowerUpStatItem>();
         item.Init("공격력","damage",heroId, data.increase_damage, info.dicHeroInfo[heroId].dicStats["damage"] * price);
-        item.btnLevelUp.onClick.AddListener(() =>
+        item.onClickLevelUp = (statkey) =>
         {
-            if (item.LevelUp())
-            {
-                this.onCLickLevelUp("damage");
-            }
-        });
-
+            this.onClickLevelUp(statkey);
+        };
 
         itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         item = itemGo.GetComponent<UIPowerUpStatItem>();
         item.Init("이동속도","movespeed", heroId, data.increase_movespeed, info.dicHeroInfo[heroId].dicStats["movespeed"] * price);
-        item.btnLevelUp.onClick.AddListener(() =>
+        item.onClickLevelUp = (statkey) =>
         {
-            if (item.LevelUp())
-            {
-                this.onCLickLevelUp("movespeed");
-            }
-        });
+            this.onClickLevelUp(statkey);
+        };
 
         itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         item = itemGo.GetComponent<UIPowerUpStatItem>();
         item.Init("체력","maxhp", heroId, (int)data.increase_maxhp, info.dicHeroInfo[heroId].dicStats["maxhp"] * price);
-        item.btnLevelUp.onClick.AddListener(() =>
+        item.onClickLevelUp = (statkey) =>
         {
-            if (item.LevelUp())
-            {
-                this.onCLickLevelUp("maxhp");
-            }
-        });
+            this.onClickLevelUp(statkey);
+        };
 
     }
 }
