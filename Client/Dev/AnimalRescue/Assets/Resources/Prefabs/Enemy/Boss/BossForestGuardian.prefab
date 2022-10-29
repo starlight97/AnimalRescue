@@ -963,7 +963,7 @@ GameObject:
   - component: {fileID: 8529254668463750386}
   - component: {fileID: 8581629820940048106}
   m_Layer: 0
-  m_Name: Boss1
+  m_Name: BossForestGuardian
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

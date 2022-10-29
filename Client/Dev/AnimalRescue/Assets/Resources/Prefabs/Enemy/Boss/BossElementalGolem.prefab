@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 1053046042178657105}
   - component: {fileID: 1143197736884411383}
   m_Layer: 0
-  m_Name: Boss3
+  m_Name: BossElementalGolem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

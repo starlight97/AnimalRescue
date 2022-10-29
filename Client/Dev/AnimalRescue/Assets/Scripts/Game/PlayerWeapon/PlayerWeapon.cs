@@ -14,11 +14,19 @@ public class PlayerWeapon : MonoBehaviour
 
     virtual public void Init(WeaponData weaponData, Transform playerTrans)
     {
+        this.playerTrans = playerTrans;
+
+        var player = this.playerTrans.gameObject.GetComponent<Player>();
+
+
+        var heroData = DataManager.instance.GetData<HeroData>(player.Id);
+        var info = InfoManager.instance.GetInfo();
+        var heroDamage = (heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage);
+
         this.weaponData = weaponData;
-        this.current_damage = weaponData.damage;
+        this.current_damage = weaponData.damage + heroDamage;
         this.current_attack_speed = weaponData.attack_speed;
         this.level = 1;
-        this.playerTrans = playerTrans;
     }
 
     virtual public void Upgrade()

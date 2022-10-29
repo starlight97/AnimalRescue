@@ -11,8 +11,9 @@ public class Player : MonoBehaviour
         Idle, Run, Die, Hit
     }
 
+    public int Id { get; private set; }
+
     private GameObject heroGo;
-    private int id;
 
     public PlayerLife playerLife = new PlayerLife();
     private PlayerMove playerMove;
@@ -29,63 +30,39 @@ public class Player : MonoBehaviour
 
     public void Init()
     {
-        
-
-        //playerLife.MaxHp = 100;
-        //playerLife.Hp = playerLife.MaxHp;
-        //this.hpGaugePoint = transform.Find("HpGaugePoint").GetComponent<Transform>();
-
-        //this.anim = this.GetComponentInChildren<Animator>();
-
-        //SetState(eStateType.Idle);
-
-        //this.playerMove = GetComponent<PlayerMove>();
-        //this.playerMove.Move();
-
-        //this.playerMove.onMove = () =>
-        //{
-        //    SetState(eStateType.Run);
-        //};
-
-        //this.playerStats = GetComponent<PlayerStats>();
-        //this.SetPlayerStat();
-
-        //this.playerStats.onLevelUp = (amount) =>
-        //{
-        //    this.onLevelUp(amount);
-        //};
-
-        //this.onUpdateMove(this.hpGaugePoint.position);
+        // 참조 없어지면 철거할 예정 ^__^!!
     }
 
     public void Init(int heroId)
     {
-        var data = DataManager.instance.GetData<HeroData>(heroId);
-        this.heroGo = Instantiate(Resources.Load<GameObject>(data.prefab_path));
+        this.Id = heroId;
+
+        this.playerStats = GetComponent<PlayerStats>();
+        this.playerMove = GetComponent<PlayerMove>();
+
+        var heroData = DataManager.instance.GetData<HeroData>(heroId);
+        var info = InfoManager.instance.GetInfo();
+
+        var heroDamage = (heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage);
+        var heroMaxHp = (heroData.max_hp + info.dicHeroInfo[heroData.id].dicStats["maxHp"] * heroData.increase_maxhp);
+        var heroMoveSpeed = (heroData.move_speed + info.dicHeroInfo[heroData.id].dicStats["moveSpeed"] * heroData.increase_movespeed);
+
+        this.heroGo = Instantiate(Resources.Load<GameObject>(heroData.prefab_path));
         this.heroGo.name = "model";
         this.heroGo.transform.parent = this.transform;
 
         this.hpGaugePoint = this.transform.Find("HpGaugePoint").GetComponent<Transform>();
         this.anim = this.GetComponentInChildren<Animator>();
         SetState(eStateType.Idle);
-
-        this.playerStats = GetComponent<PlayerStats>();
-        this.playerMove = GetComponent<PlayerMove>();
-        
         // Hp
-        playerLife.MaxHp = data.max_hp + data.increase_maxhp;
+        playerLife.MaxHp = heroMaxHp;
         playerLife.Hp = playerLife.MaxHp;
 
-        // Damage
-        var damage = data.damage + data.increase_damage;
-
-        // Speed
-        var moveSpeed = data.move_speed + data.increase_movespeed;
-
-        this.playerStats.Init(damage, playerLife.MaxHp, moveSpeed, 0);
+        this.playerStats.Init(heroDamage, playerLife.MaxHp, heroMoveSpeed, 0);
 
         this.playerMove.Init();
-        this.playerMove.Move(moveSpeed);
+        this.playerMove.Move(heroMoveSpeed);
+
         this.playerMove.onMove = () =>
         {
             SetState(eStateType.Run);

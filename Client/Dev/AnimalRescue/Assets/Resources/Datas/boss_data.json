@@ -1,32 +1,32 @@
 [
   {
     "id": 3000,
-    "boss_name": "Boss1",
+    "boss_name": "ForestGuardian",
     "damage": 24,
-    "move_speed": 5.0,
-    "max_hp": 5000,
+    "move_speed": 5,
+    "max_hp": 10000,
     "attack_speed": 1.5,
-    "attack_range": 5.0,
-    "prefab_name": "Prefabs\\Enemy\\Boss\\Boss1"
+    "attack_range": 5,
+    "prefab_name": "Prefabs\\Enemy\\Boss\\BossForestGuardian"
   },
   {
     "id": 3001,
-    "boss_name": "Boss2",
+    "boss_name": "AncientWarrior",
     "damage": 25,
-    "move_speed": 4.0,
-    "max_hp": 5000,
+    "move_speed": 4,
+    "max_hp": 10000,
     "attack_speed": 1.7,
-    "attack_range": 4.0,
-    "prefab_name": "Prefabs\\Enemy\\Boss\\Boss2"
+    "attack_range": 4,
+    "prefab_name": "Prefabs\\Enemy\\Boss\\BossAncientWarrior"
   },
   {
     "id": 3002,
-    "boss_name": "Boss3",
+    "boss_name": "ElementalGolem",
     "damage": 26,
-    "move_speed": 3.0,
-    "max_hp": 5000,
-    "attack_speed": 2.0,
-    "attack_range": 6.0,
-    "prefab_name": "Prefabs\\Enemy\\Boss\\Boss3"
+    "move_speed": 3,
+    "max_hp": 10000,
+    "attack_speed": 2,
+    "attack_range": 6,
+    "prefab_name": "Prefabs\\Enemy\\Boss\\BossElementalGolem"
   }
 ]
