@@ -50,7 +50,7 @@ public class GameMain : SceneMain
 
         this.uiGame.Init();
         this.player.Init(102);
-        this.enemySpawner.Init(100);
+        this.enemySpawner.Init();
         this.waveManager.Init();
         this.weaponManager.Init(2000);
 

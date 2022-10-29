@@ -10,19 +10,13 @@ public class Enemy : MonoBehaviour
         Run, Attack, Hit, Die
     }
 
-    public int Level
-    {
-        get;
-        set;
-    }
-
-
     protected int maxHp;
     public int currentHp;
     protected int damage;
     public int experience;
     protected float moveSpeed;
     protected float attackSpeed;
+    protected int level;
 
     [SerializeField] protected float attackRange;
 
@@ -34,15 +28,16 @@ public class Enemy : MonoBehaviour
 
     public UnityAction<Enemy> onDie;
 
-    public virtual void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed, float attackRange)
+    public virtual void Init(int level, int maxHp, int damage, int experience, float movespeed, float attackspeed, float attackRange)
     {
-        this.maxHp = maxHp;
+        this.level = level;
+        this.maxHp = this.level * maxHp;        
         this.currentHp = this.maxHp;
-        this.damage = damage;
+        this.damage = this.level * damage;
         this.experience = experience;
         this.moveSpeed = movespeed;
         this.attackSpeed = attackspeed;
-        this.attackRange = attackRange;
+        this.attackRange = attackRange;        
 
         this.playerGo = GameObject.Find("Player").gameObject;
         this.anim = this.GetComponent<Animator>();

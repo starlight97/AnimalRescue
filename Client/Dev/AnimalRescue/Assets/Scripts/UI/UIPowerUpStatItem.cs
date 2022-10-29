@@ -48,7 +48,7 @@ public class UIPowerUpStatItem : MonoBehaviour
         {
             info.playerInfo.gold -= this.price;
 
-            this.price += StatsConstants.StatpowerUpPrice;
+            this.price += GameConstants.StatpowerUpPrice;
             this.textPrice.text = price.ToString();
 
             info.dicHeroInfo[heroId].dicStats[statkey]++;

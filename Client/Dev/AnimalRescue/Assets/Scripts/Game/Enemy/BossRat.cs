@@ -8,11 +8,11 @@ public class BossRat : Enemy
     public float radius;
     private int projectileCount;
 
-    public override void Init(int maxHp, int damage, int experience, float movespeed, float attackspeed, float attackRange)
+    public override void Init(int level, int maxHp, int damage, int experience, float movespeed, float attackspeed, float attackRange)
     {
-        base.Init(maxHp, damage, experience, movespeed, attackspeed, attackRange);
+        base.Init(level, maxHp, damage, experience, movespeed, attackspeed, attackRange);
         projectileCount = 10;
-        switch (Level)
+        switch (this.level)
         {
             case 1:
                 projectileCount = 1;

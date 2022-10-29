@@ -31,7 +31,7 @@ public class PlayerStats : MonoBehaviour
     public void GetExp(int experience)
     {
         this.experience += experience;
-        if (this.experience >= StatsConstants.RequiredExperience)
+        if (this.experience >= GameConstants.RequiredExperience)
         {            
             this.LevelUp();
         }
@@ -42,8 +42,8 @@ public class PlayerStats : MonoBehaviour
     // int amount = this.experience / 100; 적용
     public void LevelUp()
     {
-        int amount = this.experience / StatsConstants.RequiredExperience;
-        this.experience %= StatsConstants.RequiredExperience;
+        int amount = this.experience / GameConstants.RequiredExperience;
+        this.experience %= GameConstants.RequiredExperience;
         this.onLevelUp(amount);
     }
 

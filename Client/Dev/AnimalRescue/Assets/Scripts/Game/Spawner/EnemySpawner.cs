@@ -7,11 +7,10 @@ using UnityEngine.Events;
 public class EnemySpawner : MonoBehaviour
 {
     public UnityAction<int> onDieEnemy;
-    public float spawnDelay;
     private Vector3[] spawnPoints;
     private int spawnCount;
-    private int maxSpawnCount;
     private List<EnemyData> enemyDataList;
+    private List<BossData> bossDataList;
     //private List<EnemyBossData> enemyBossDataList;
     public List<Enemy> EnemyList
     {
@@ -19,7 +18,7 @@ public class EnemySpawner : MonoBehaviour
         private set;
     }
 
-    public void Init(int maxSpawnCount)
+    public void Init()
     {
         this.spawnPoints = new Vector3[4];
         this.EnemyList = new List<Enemy>();
@@ -27,15 +26,21 @@ public class EnemySpawner : MonoBehaviour
         this.spawnPoints[1] = new Vector3(-73, 0, -73);
         this.spawnPoints[2] = new Vector3(-73, 0, 73);
         this.spawnPoints[3] = new Vector3(73, 0, 73);
-        this.spawnCount = 0;
-        this.maxSpawnCount = maxSpawnCount;
         this.enemyDataList = new List<EnemyData>();
+        this.bossDataList = new List<BossData>();
         this.enemyDataList = DataManager.instance.GetDataList<EnemyData>().ToList();
+        this.bossDataList = DataManager.instance.GetDataList<BossData>().ToList();
     }
 
     public void StartWave(int wave)
     {
         SpawnEnemy(wave);
+
+        if (wave % 5 == 0)
+        {
+            this.SpawnBoss(wave);
+        }
+
     }
 
     private void SpawnEnemy(int wave)
@@ -46,25 +51,22 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemyRoutine(int wave)
     {
         this.spawnCount = 0;
-        if(wave % 5 == 0)
-        {
-            this.SpawnBoss();
-        }
         while (true)
         {
-            if (spawnCount == maxSpawnCount)
+            if (spawnCount == GameConstants.SpawnEnemyCount)
                 break;
 
             var pos = this.GetRandomPos();
             var randIdx = Random.Range(0, enemyDataList.Count - 1);
-            int maxhp = wave * enemyDataList[0].max_hp;
-            int damage = wave * enemyDataList[0].damage;
+            int experience = GameConstants.EnemyExperience;
+            int level = wave;
 
             GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyDataList[randIdx].prefab_name),pos, Quaternion.identity);
             enemyGo.transform.parent = this.transform;
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
-            enemy.Init(maxhp, damage, StatsConstants.EnemyExperience, enemyDataList[randIdx].move_speed, enemyDataList[randIdx].attack_speed, enemyDataList[randIdx].attack_range);
+            enemy.Init(level, bossDataList[randIdx].max_hp, bossDataList[randIdx].damage,
+    experience, bossDataList[randIdx].move_speed, bossDataList[randIdx].attack_speed, bossDataList[randIdx].attack_range);
 
             enemy.onDie = (dieEnemy) =>
             {
@@ -74,13 +76,28 @@ public class EnemySpawner : MonoBehaviour
             };
             spawnCount++;
 
-            yield return new WaitForSeconds(spawnDelay);
+            yield return new WaitForSeconds(GameConstants.EnemySpawnTime);
         }
     }
 
-    private void SpawnBoss()
+    private void SpawnBoss(int wave)
     {
-
+        var pos = this.GetRandomPos();
+        var randIdx = Random.Range(0, bossDataList.Count - 1);
+        int experience = GameConstants.EnemyExperience * 33;
+        int level = wave / 5;
+        GameObject bossGo = Instantiate(Resources.Load<GameObject>(bossDataList[randIdx].prefab_name), pos, Quaternion.identity);
+        bossGo.transform.parent = this.transform;
+        Enemy enemy = bossGo.GetComponent<Enemy>();
+        EnemyList.Add(enemy);
+        enemy.Init(level, bossDataList[randIdx].max_hp, bossDataList[randIdx].damage, 
+            experience, bossDataList[randIdx].move_speed, bossDataList[randIdx].attack_speed, bossDataList[randIdx].attack_range);
+        enemy.onDie = (dieEnemy) =>
+        {
+            EnemyList.Remove(dieEnemy);
+            this.onDieEnemy(dieEnemy.experience);
+            Destroy(dieEnemy.gameObject);
+        };
     }
 
     private Vector3 GetRandomPos()

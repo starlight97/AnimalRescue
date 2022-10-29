@@ -154,11 +154,11 @@ public class App : MonoBehaviour
                     {
                         this.uiApp.FadeIn();
 
-                        main.AddListener("onClickTitle", (data) =>
+                        main.AddListener("onClickLobby", (data) =>
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
-                                this.LoadScene<TitleMain>(eSceneType.Title);
+                                this.LoadScene<LobbyMain>(eSceneType.Lobby);
                             });
                         });
                         main.Init();
