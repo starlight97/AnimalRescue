@@ -2,34 +2,37 @@
   {
     "id": 100,
     "hero_name": "hero1",
-    "max_hp": 200,
+    "max_hp": 200.0,
     "damage": 10,
     "move_speed": 8,
     "increase_damage": 2,
-    "increase_maxhp": 2,
+    "increase_maxhp": 2.0,
     "increase_movespeed": 2,
+    "ui_prefab_path": "Prefabs\\Hero\\UIhero1",
     "prefab_path": "Prefabs\\Hero\\hero1"
   },
   {
     "id": 101,
     "hero_name": "hero2",
-    "max_hp": 200,
+    "max_hp": 200.0,
     "damage": 10,
     "move_speed": 8,
     "increase_damage": 1,
-    "increase_maxhp": 4,
+    "increase_maxhp": 4.0,
     "increase_movespeed": 1,
+    "ui_prefab_path": "Prefabs\\Hero\\UIhero2",
     "prefab_path": "Prefabs\\Hero\\hero2"
   },
   {
     "id": 102,
     "hero_name": "hero3",
-    "max_hp": 200,
+    "max_hp": 200.0,
     "damage": 10,
     "move_speed": 8,
     "increase_damage": 4,
-    "increase_maxhp": 1,
+    "increase_maxhp": 1.0,
     "increase_movespeed": 1,
+    "ui_prefab_path": "Prefabs\\Hero\\UIhero3",
     "prefab_path": "Prefabs\\Hero\\hero3"
   }
 ]
