@@ -36,6 +36,12 @@ public class JeongTestMain : MonoBehaviour
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
         };
+        this.enemySpawner.onDieBoss = (experience) =>
+        {
+            PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
+            playerStats.GetExp(experience);
+            waveManager.StartWave();
+        };
         this.waveManager.onWaveStart = (wave) =>
         {
             Debug.Log(wave + " : wave start");

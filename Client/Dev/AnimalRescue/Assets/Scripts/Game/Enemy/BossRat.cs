@@ -38,27 +38,24 @@ public class BossRat : Enemy
 
         SpawnBullet(angle, degree);
 
-        int cnt = 1;
-        int cnt2 = 1;
+        int angleCount = 1;
+        int currentProjectileCount = 1;
         while (true)
-        {
-            
-            if (cnt2 >= projectileCount)
+        {            
+            if (currentProjectileCount >= projectileCount)
                 break;
-            if (cnt2 < projectileCount)
+            if (currentProjectileCount < projectileCount)
             {
-                cnt2++;
-                SpawnBullet(angle + (cnt * 20), degree);
+                currentProjectileCount++;
+                SpawnBullet(angle + (angleCount * 20), degree);
             }
-            if (cnt2 < projectileCount)
+            if (currentProjectileCount < projectileCount)
             {
-                cnt2++;
-                SpawnBullet(angle - (cnt * 20), degree);
+                currentProjectileCount++;
+                SpawnBullet(angle - (angleCount * 20), degree);
             }
-            cnt++;
+            angleCount++;
         }
-
-
     }
 
     private void SpawnBullet(float angle, float degree)
