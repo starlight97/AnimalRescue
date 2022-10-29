@@ -37,15 +37,12 @@ public class Player : MonoBehaviour
     {
         this.Id = heroId;
 
-        this.playerStats = GetComponent<PlayerStats>();
-        this.playerMove = GetComponent<PlayerMove>();
-
         var heroData = DataManager.instance.GetData<HeroData>(heroId);
         var info = InfoManager.instance.GetInfo();
 
-        var heroDamage = (heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage);
-        var heroMaxHp = (heroData.max_hp + info.dicHeroInfo[heroData.id].dicStats["maxHp"] * heroData.increase_maxhp);
-        var heroMoveSpeed = (heroData.move_speed + info.dicHeroInfo[heroData.id].dicStats["moveSpeed"] * heroData.increase_movespeed);
+        var heroDamage = (int)heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage;
+        var heroMaxHp = (int)(heroData.max_hp + info.dicHeroInfo[heroData.id].dicStats["maxhp"] * heroData.increase_maxhp);
+        var heroMoveSpeed = (int)heroData.move_speed + info.dicHeroInfo[heroData.id].dicStats["movespeed"] * heroData.increase_movespeed;
 
         this.heroGo = Instantiate(Resources.Load<GameObject>(heroData.prefab_path));
         this.heroGo.name = "model";
@@ -54,6 +51,10 @@ public class Player : MonoBehaviour
         this.hpGaugePoint = this.transform.Find("HpGaugePoint").GetComponent<Transform>();
         this.anim = this.GetComponentInChildren<Animator>();
         SetState(eStateType.Idle);
+
+        this.playerStats = GetComponent<PlayerStats>();
+        this.playerMove = GetComponent<PlayerMove>();
+
         // Hp
         playerLife.MaxHp = heroMaxHp;
         playerLife.Hp = playerLife.MaxHp;

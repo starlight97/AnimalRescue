@@ -15,6 +15,8 @@ public class GameMain : SceneMain
     {
         base.Init(param);
 
+        GameMainParam gameMainParam = (GameMainParam)param;
+
         GameObjectSetting();
 
         this.player.onLevelUp = (amount) =>
@@ -55,7 +57,7 @@ public class GameMain : SceneMain
         };
 
         this.uiGame.Init();
-        this.player.Init(102);
+        this.player.Init(gameMainParam.heroId);
         this.enemySpawner.Init();
         this.waveManager.Init();
         this.weaponManager.Init(2000);

@@ -7,7 +7,7 @@ public abstract class SceneParams
 
 }
 
-public class LobyMainParam : SceneParams
+public class LobbyMainParam : SceneParams
 {
     public int heroId;
 }

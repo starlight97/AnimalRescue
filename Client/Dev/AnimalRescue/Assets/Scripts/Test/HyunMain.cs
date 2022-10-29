@@ -23,24 +23,22 @@ public class HyunMain : MonoBehaviour
         this.weaponManager = GameObject.FindObjectOfType<WeaponManager>();
         this.uiHyunTest = GameObject.FindObjectOfType<UIHyunTest>();
 
-        //this.enemySpawner.Init(10);
-
-        this.enemySpawner.onDieEnemy = (experience) =>
-        {
-            PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
-            playerStats.GetExp(experience);
-        };
+        //this.enemySpawner.onDieEnemy = (experience) =>
+        //{
+        //    PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
+        //    playerStats.GetExp(experience);
+        //};
 
         this.waveManager.onWaveStart = (wave) =>
         {
-            enemySpawner.StartWave(wave);
+            //enemySpawner.StartWave(wave);
         };
 
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             uiHyunTest.Init();
-            player.Init(101);
-            //enemySpawner.Init(30);
+            player.Init(100);
+            //enemySpawner.Init();
             waveManager.Init();
             weaponManager.Init(2000);
         });
@@ -60,14 +58,14 @@ public class HyunMain : MonoBehaviour
         {
 
         };
-
+        InfoManager.instance.Init();
         DataManager.instance.Init();
         DataManager.instance.LoadAllData(this);
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.X))
-            this.weaponManager.WeaponUpgrade(2004);
+        //if (Input.GetKeyDown(KeyCode.X))
+        //    this.weaponManager.WeaponUpgrade(2004);
     }
 }
