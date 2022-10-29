@@ -7,8 +7,9 @@ public class BossForestGuardianCube : MonoBehaviour
 {
     private int damage;
     private float cubeMaxScale;
+    private float diffusionRate;
     public UnityAction onAttackComplete;
-    public void Init(int damage, float cubeMaxScale)
+    public void Init(int damage, float cubeMaxScale, float diffusionRate)
     {
         this.damage = damage;
         this.cubeMaxScale = cubeMaxScale;
@@ -29,8 +30,8 @@ public class BossForestGuardianCube : MonoBehaviour
         {
             yield return null;
             var scale = this.transform.localScale;
-            scale.x += 0.2f;
-            scale.z += 0.2f;
+            scale.x += diffusionRate;
+            scale.z += diffusionRate;
             this.transform.localScale = scale;
 
             if (scale.x >= cubeMaxScale)

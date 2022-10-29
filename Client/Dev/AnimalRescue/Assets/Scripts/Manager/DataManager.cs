@@ -68,7 +68,7 @@ public class DataManager
             this.GetType().GetMethod(nameof(LoadData))
                 .MakeGenericMethod(typeDef).Invoke(this, new string[] { asset.text });
 
-            yield return new WaitForSeconds(0.3f);
+            yield return null;
             idx++;
         }
         yield return null;

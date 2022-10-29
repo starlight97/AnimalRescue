@@ -963,10 +963,11 @@ GameObject:
   - component: {fileID: 8529254668463750386}
   - component: {fileID: 8581629820940048106}
   - component: {fileID: 8874171294083515050}
-  - component: {fileID: -9109173466430505353}
+  - component: {fileID: -3925047686497935056}
+  - component: {fileID: 6601102133552810851}
   m_Layer: 0
   m_Name: BossForestGuardian
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1033,8 +1034,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
---- !u!135 &-9109173466430505353
-SphereCollider:
+--- !u!114 &-3925047686497935056
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8523394493210733864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9094bdc77024a749b75f0ac955ec205, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHp: 0
+  experience: 0
+  attackRange: 0
+  cubePrefab: {fileID: 1722756824254042946, guid: 0da0a2222dc096d4eb5dc02fc9363e44, type: 3}
+  cubeMaxScale: 10
+--- !u!136 &6601102133552810851
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1043,9 +1061,10 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0.7, z: 0}
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &8523395975699794380
 GameObject:
   m_ObjectHideFlags: 0

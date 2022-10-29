@@ -66,8 +66,8 @@ public class EnemySpawner : MonoBehaviour
             enemyGo.transform.parent = this.transform;
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
-            enemy.Init(level, bossDataList[randIdx].max_hp, bossDataList[randIdx].damage,
-    experience, bossDataList[randIdx].move_speed, bossDataList[randIdx].attack_speed, bossDataList[randIdx].attack_range);
+            enemy.Init(level, enemyDataList[randIdx].max_hp, enemyDataList[randIdx].damage,
+    experience, enemyDataList[randIdx].move_speed, enemyDataList[randIdx].attack_speed, enemyDataList[randIdx].attack_range);
 
             enemy.onDie = (dieEnemy) =>
             {

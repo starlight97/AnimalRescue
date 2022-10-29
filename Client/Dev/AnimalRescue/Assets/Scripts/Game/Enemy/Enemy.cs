@@ -119,6 +119,11 @@ public class Enemy : MonoBehaviour
             attackRoutine = StartCoroutine(this.AttackRoutine());
     }
 
+    protected virtual void DifficultySetting()
+    {
+
+    }
+
     protected virtual IEnumerator AttackRoutine()
     {
         SetState(eState.Attack);

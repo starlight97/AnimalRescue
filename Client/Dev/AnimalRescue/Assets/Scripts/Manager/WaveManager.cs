@@ -15,6 +15,13 @@ public class WaveManager : MonoBehaviour
         StartWave();
     }
 
+    // 보스테스트용 TestInit
+    public void TestInit()
+    {
+        currentWave = 4;
+        StartWave();
+    }
+
     public void StartWave()
     {
         StartCoroutine(this.StartWaveRoutine());

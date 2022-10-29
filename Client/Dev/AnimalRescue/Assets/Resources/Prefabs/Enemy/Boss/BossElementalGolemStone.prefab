@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9041467484737278157}
   - component: {fileID: 1044723410152509088}
   - component: {fileID: 1507635739739991611}
-  - component: {fileID: 358895129847394175}
+  - component: {fileID: 1030612768287145886}
   m_Layer: 0
   m_Name: BossElementalGolemStone
   m_TagString: Untagged
@@ -116,7 +116,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!114 &358895129847394175
+--- !u!114 &1030612768287145886
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -125,6 +125,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7384006414486548760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3ae24321398f16f4b974ad1b1a4791ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 81f3ab34a3a4f7a428155b13e7d0d660, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 10

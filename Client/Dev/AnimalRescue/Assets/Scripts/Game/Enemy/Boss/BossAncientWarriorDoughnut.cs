@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossAncientWarriorDoughnut : MonoBehaviour
 {
     public float speed;
-    public int damage;
+    private int damage;
 
     public void Init(int damage)
     {
