@@ -10,10 +10,8 @@
 
 
 
-public class BossData
+public class BossData : RawData
 {
-    
-    public int id;
     
     public string boss_name;
     

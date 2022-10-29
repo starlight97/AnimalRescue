@@ -9,25 +9,34 @@ public class UIRepairShop : MonoBehaviour
 {
     public Button btnBack;
     public UnityAction onClickLobby;
-    public Text textHeroName;
+    public Text textPlayerGold;
+    public Text textPlayerDiamond;
 
     private UIPowerUpStat uiPowerUpStat;
+    private UIHeroDetailStats uiHeroDetailStats;
     public void Init(int heroId)
     {
+        var info = InfoManager.instance.GetInfo();
+        this.textPlayerGold.text = info.playerInfo.gold.ToString();
+        this.textPlayerDiamond.text = info.playerInfo.diamond.ToString();
+
         this.btnBack.onClick.AddListener(() =>
         {
             this.onClickLobby();
         });
 
         this.uiPowerUpStat = GameObject.FindObjectOfType<UIPowerUpStat>();
-        uiPowerUpStat.Init(heroId);
-
+        this.uiHeroDetailStats = GameObject.FindObjectOfType<UIHeroDetailStats>();
+        this.uiPowerUpStat.Init(heroId);
+        this.uiHeroDetailStats.Init(heroId);
         uiPowerUpStat.onClickLevelUp = (statType) =>
         {
-            Debug.Log(statType);
+            this.uiHeroDetailStats.UpdateUI();
+            this.textPlayerGold.text = info.playerInfo.gold.ToString();
+            this.textPlayerDiamond.text = info.playerInfo.diamond.ToString();
         };
 
-        var heroData = DataManager.instance.GetData<HeroData>(heroId);        
-        this.textHeroName.text = heroData.hero_name;
+        var heroData = DataManager.instance.GetData<HeroData>(heroId);
+        this.uiHeroDetailStats.UpdateUI();
     }
 }

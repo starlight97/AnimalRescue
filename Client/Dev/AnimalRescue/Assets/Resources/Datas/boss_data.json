@@ -1,6 +1,6 @@
 [
   {
-    "id": 2000,
+    "id": 3000,
     "boss_name": "Boss1",
     "damage": 24,
     "move_speed": 5.0,
@@ -10,7 +10,7 @@
     "prefab_name": "Prefabs\\Enemy\\Boss\\Boss1"
   },
   {
-    "id": 2001,
+    "id": 3001,
     "boss_name": "Boss2",
     "damage": 25,
     "move_speed": 4.0,
@@ -20,7 +20,7 @@
     "prefab_name": "Prefabs\\Enemy\\Boss\\Boss2"
   },
   {
-    "id": 2002,
+    "id": 3002,
     "boss_name": "Boss3",
     "damage": 26,
     "move_speed": 3.0,

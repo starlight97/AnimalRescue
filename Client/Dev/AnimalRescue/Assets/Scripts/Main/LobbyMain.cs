@@ -6,6 +6,7 @@ public class LobbyMain : SceneMain
 {
     private UILobby uiLobby;
     public int selectedHeroId = 100;
+    public GameObject heroViewGo;
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
@@ -41,7 +42,19 @@ public class LobbyMain : SceneMain
 
             var heroData = DataManager.instance.GetData<HeroData>(id);
 
-            this.uiLobby.UiLobbyHeroStatsUIUpdate(heroData.hero_name,1,1,1);
+            var info = InfoManager.instance.GetInfo();
+            int damage = (heroData.damage +info.dicHeroInfo[selectedHeroId].dicStats["damage"] * heroData.increase_damage);
+            int maxhp = (int)(heroData.max_hp + info.dicHeroInfo[selectedHeroId].dicStats["maxhp"] * heroData.increase_maxhp);
+            int movespeed = (heroData.move_speed + info.dicHeroInfo[selectedHeroId].dicStats["movespeed"] * heroData.increase_movespeed);
+
+            this.uiLobby.UiLobbyHeroStatsUIUpdate(heroData.hero_name,damage,maxhp, movespeed);
+
+            if(heroViewGo.transform.childCount > 0)
+                Destroy(heroViewGo.transform.GetChild(0).gameObject);
+            var uiHeroGo = Instantiate(Resources.Load<GameObject>(heroData.ui_prefab_path), heroViewGo.transform);
+            //uiHeroGo.transform.parent = heroViewGo.transform;
+            //uiHeroGo.transform.localPosition = Vector3.zero;
+            //uiHeroGo.transform.localRotation = 0;
         };
         this.uiLobby.Init();
     }

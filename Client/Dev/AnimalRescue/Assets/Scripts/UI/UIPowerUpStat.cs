@@ -27,7 +27,7 @@ public class UIPowerUpStat : MonoBehaviour
 
         itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         item = itemGo.GetComponent<UIPowerUpStatItem>();
-        item.Init("이동속도","movespeed", heroId, data.increase_movespeed, info.dicHeroInfo[heroId].dicStats["movespeed"] * price);
+        item.Init("체력", "maxhp", heroId, (int)data.increase_maxhp, info.dicHeroInfo[heroId].dicStats["maxhp"] * price);
         item.onClickLevelUp = (statkey) =>
         {
             this.onClickLevelUp(statkey);
@@ -35,11 +35,10 @@ public class UIPowerUpStat : MonoBehaviour
 
         itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         item = itemGo.GetComponent<UIPowerUpStatItem>();
-        item.Init("체력","maxhp", heroId, (int)data.increase_maxhp, info.dicHeroInfo[heroId].dicStats["maxhp"] * price);
+        item.Init("이동속도","movespeed", heroId, data.increase_movespeed, info.dicHeroInfo[heroId].dicStats["movespeed"] * price);
         item.onClickLevelUp = (statkey) =>
         {
             this.onClickLevelUp(statkey);
         };
-
     }
 }
