@@ -13,5 +13,10 @@
     "id": 2,
     "res_name": "hero_data",
     "type": "HeroData"
+  },
+  {
+    "id": 3,
+    "res_name": "boss_data",
+    "type": "BossData"
   }
 ]

@@ -1,0 +1,32 @@
+[
+  {
+    "id": 2000,
+    "boss_name": "Boss1",
+    "damage": 24,
+    "move_speed": 5.0,
+    "max_hp": 5000,
+    "attack_speed": 1.5,
+    "attack_range": 5.0,
+    "prefab_name": "Prefabs\\Enemy\\Boss\\Boss1"
+  },
+  {
+    "id": 2001,
+    "boss_name": "Boss2",
+    "damage": 25,
+    "move_speed": 4.0,
+    "max_hp": 5000,
+    "attack_speed": 1.7,
+    "attack_range": 4.0,
+    "prefab_name": "Prefabs\\Enemy\\Boss\\Boss2"
+  },
+  {
+    "id": 2002,
+    "boss_name": "Boss3",
+    "damage": 26,
+    "move_speed": 3.0,
+    "max_hp": 5000,
+    "attack_speed": 2.0,
+    "attack_range": 6.0,
+    "prefab_name": "Prefabs\\Enemy\\Boss\\Boss3"
+  }
+]
