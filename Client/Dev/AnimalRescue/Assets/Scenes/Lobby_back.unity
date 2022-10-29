@@ -157,6 +157,7 @@ MonoBehaviour:
       m_Calls: []
   useOnDestoryEvent: 1
   selectedHeroId: 0
+  heroViewGo: {fileID: 0}
 --- !u!4 &190458901
 Transform:
   m_ObjectHideFlags: 0

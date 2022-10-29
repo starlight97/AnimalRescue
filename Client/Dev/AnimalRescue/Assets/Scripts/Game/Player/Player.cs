@@ -59,10 +59,10 @@ public class Player : MonoBehaviour
         playerLife.MaxHp = heroMaxHp;
         playerLife.Hp = playerLife.MaxHp;
 
-        this.playerStats.Init(heroDamage, playerLife.MaxHp, heroMoveSpeed, 0);
+        //this.playerStats.Init(heroDamage, playerLife.MaxHp, heroMoveSpeed, 0);
 
         this.playerMove.Init();
-        this.playerMove.Move(heroMoveSpeed);
+        //this.playerMove.Move(heroMoveSpeed);
 
         this.playerMove.onMove = () =>
         {

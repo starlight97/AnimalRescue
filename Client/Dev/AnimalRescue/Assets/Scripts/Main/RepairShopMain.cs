@@ -5,6 +5,7 @@ using UnityEngine;
 public class RepairShopMain : SceneMain
 {
     private UIRepairShop uiRepairShop;
+    
     public override void Init(SceneParams param = null)
     {
         base.Init(param);

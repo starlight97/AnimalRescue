@@ -11,6 +11,7 @@ public class UIRepairShop : MonoBehaviour
     public UnityAction onClickLobby;
     public Text textPlayerGold;
     public Text textPlayerDiamond;
+    public GameObject heroViewGo;
 
     private UIPowerUpStat uiPowerUpStat;
     private UIHeroDetailStats uiHeroDetailStats;
@@ -37,6 +38,7 @@ public class UIRepairShop : MonoBehaviour
         };
 
         var heroData = DataManager.instance.GetData<HeroData>(heroId);
+        var uiHeroGo = Instantiate(Resources.Load<GameObject>(heroData.ui_prefab_path), heroViewGo.transform);
         this.uiHeroDetailStats.UpdateUI();
     }
 }

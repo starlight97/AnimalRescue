@@ -53,7 +53,7 @@ public class UILobby : MonoBehaviour
         this.diamond.text = info.playerInfo.diamond.ToString();
     }
 
-    public void UiLobbyHeroStatsUIUpdate(string heroName, int damage, int hp, int moveSpeed)
+    public void UiLobbyHeroStatsUIUpdate(string heroName, int damage, int hp, float moveSpeed)
     {
         this.uiLobbyHeroStats.UIUpdate(heroName, damage, hp, moveSpeed);
     }

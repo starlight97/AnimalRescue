@@ -19,13 +19,13 @@ public class HeroData : RawData
     
     public int damage;
     
-    public int move_speed;
+    public float move_speed;
     
     public int increase_damage;
     
     public float increase_maxhp;
     
-    public int increase_movespeed;
+    public float increase_movespeed;
     
     public string ui_prefab_path;
     

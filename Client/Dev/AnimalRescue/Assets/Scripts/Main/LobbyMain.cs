@@ -45,7 +45,7 @@ public class LobbyMain : SceneMain
             var info = InfoManager.instance.GetInfo();
             int damage = (heroData.damage +info.dicHeroInfo[selectedHeroId].dicStats["damage"] * heroData.increase_damage);
             int maxhp = (int)(heroData.max_hp + info.dicHeroInfo[selectedHeroId].dicStats["maxhp"] * heroData.increase_maxhp);
-            int movespeed = (heroData.move_speed + info.dicHeroInfo[selectedHeroId].dicStats["movespeed"] * heroData.increase_movespeed);
+            float movespeed = (heroData.move_speed + info.dicHeroInfo[selectedHeroId].dicStats["movespeed"] * heroData.increase_movespeed);
 
             this.uiLobby.UiLobbyHeroStatsUIUpdate(heroData.hero_name,damage,maxhp, movespeed);
 

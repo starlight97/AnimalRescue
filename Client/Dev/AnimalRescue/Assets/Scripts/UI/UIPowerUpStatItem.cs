@@ -17,7 +17,7 @@ public class UIPowerUpStatItem : MonoBehaviour
 
     public UnityAction<string> onClickLevelUp;
 
-    public void Init(string statType,string statkey, int heroId, int increase, int price)
+    public void Init(string statType,string statkey, int heroId, float increase, int price)
     {
         this.textIncrease = transform.Find("TextIncrease").GetComponent<Text>();
         this.btnLevelUp = transform.Find("BtnLevelUp").GetComponent<Button>();

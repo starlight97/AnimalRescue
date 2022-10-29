@@ -11,6 +11,8 @@ public class GameMain : SceneMain
     private WeaponManager weaponManager;
     private UIGame uiGame;
 
+    private int getGold = 0;
+
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
@@ -33,13 +35,21 @@ public class GameMain : SceneMain
         {
             this.uiGame.UpdateUIHpGauge(hp, maxHp);
         };
+        this.player.onDie = () =>
+        {
+            var info = InfoManager.instance.GetInfo();
+            info.playerInfo.gold += getGold;
+            // 씬이동 게임오버씬으로
+        };
         this.enemySpawner.onDieEnemy = (experience) =>
         {
+            getGold += 1;
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
         };
         this.enemySpawner.onDieBoss = (experience) =>
         {
+            getGold += 10;
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
             waveManager.StartWave();

@@ -18,7 +18,7 @@ public class UILobbyHeroStats : MonoBehaviour
         this.textMoveSpeed = transform.Find("TextMoveSpeed").GetComponent<Text>();
     }
 
-    public void UIUpdate(string heroName, int damage, int hp, int moveSpeed)
+    public void UIUpdate(string heroName, int damage, int hp, float moveSpeed)
     {
         this.textHeroName.text = heroName;
         this.textDamage.text = "DAMAGE : " + damage.ToString();
