@@ -23,6 +23,7 @@ public class LoadingMain : SceneMain
         DataManager.instance.LoadAllData();
 
         InfoManager.instance.Init();
+        AdMobManager.instance.Init();
 
     }
 }
