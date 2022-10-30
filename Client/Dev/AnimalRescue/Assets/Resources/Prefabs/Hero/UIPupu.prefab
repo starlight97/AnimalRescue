@@ -2455,7 +2455,7 @@ GameObject:
   - component: {fileID: 7343300860124133446}
   - component: {fileID: 170736051191224645}
   m_Layer: 7
-  m_Name: UIhero1
+  m_Name: UIPupu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

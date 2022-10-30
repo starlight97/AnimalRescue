@@ -3337,7 +3337,7 @@ GameObject:
   - component: {fileID: 5190556165257052974}
   - component: {fileID: 3440391561236685357}
   m_Layer: 0
-  m_Name: hero1
+  m_Name: Pupu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
