@@ -58,11 +58,16 @@ public class Player : MonoBehaviour
 
         this.playerMove.onMove = () =>
         {
+            if (hitRoutine != null)
+            {
+                return;
+            }
             SetState(eStateType.Run);
         };
         this.playerMove.onMoveComplete = () => 
         {
-            SetState(eStateType.Idle);        
+            if (this.hitRoutine == null)
+                SetState(eStateType.Idle);
         };
 
         this.playerStats.Init(heroDamage, playerLife.MaxHp, heroMoveSpeed, 0);
@@ -90,10 +95,9 @@ public class Player : MonoBehaviour
 
     public void Hit(int damage)
     {
-        this.playerLife.Hp -= damage;
-
         if (this.hitRoutine == null)
             this.hitRoutine = StartCoroutine(HitRoutine());
+        this.playerLife.Hp -= damage;
         onUpdateHp(this.playerLife.Hp, this.playerLife.MaxHp);
 
         if (this.playerLife.Hp <= 0)
@@ -108,13 +112,12 @@ public class Player : MonoBehaviour
         SetState(eStateType.Hit);
         var length = this.anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         yield return new WaitForSeconds(length);
-
-        SetState(eStateType.Idle);
         this.hitRoutine = null;
     } 
 
     private void Die()
     {
+        Debug.Log("die");
         StartCoroutine(DieRoutine());
     }
 

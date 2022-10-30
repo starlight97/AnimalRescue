@@ -45,7 +45,7 @@ public class PlayerMove : MonoBehaviour
                 this.transform.Translate(this.dir.normalized * moveSpeed * Time.deltaTime);
                 this.onMove();
             }
-            else
+            else if (this.dir == Vector3.zero)
             {
                 onMoveComplete();
             }
