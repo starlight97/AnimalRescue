@@ -56,16 +56,21 @@ public class Player : MonoBehaviour
         playerLife.MaxHp = heroMaxHp;
         playerLife.Hp = playerLife.MaxHp;
 
+        this.playerMove.onMove = () =>
+        {
+            SetState(eStateType.Run);
+        };
+        this.playerMove.onMoveComplete = () => 
+        {
+            SetState(eStateType.Idle);        
+        };
+
         this.playerStats.Init(heroDamage, playerLife.MaxHp, heroMoveSpeed, 0);
 
         this.playerMove.Init(heroMoveSpeed);
 
         FindEnemys();
 
-        this.playerMove.onMove = () =>
-        {
-            SetState(eStateType.Run);
-        };
 
         this.playerStats.onLevelUp = (amount) =>
         {

@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2494088360300170685, guid: da44acbe2b716ed41bf89c5247ff5b44, type: 3}
       propertyPath: viewRadius
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2494088360300170685, guid: da44acbe2b716ed41bf89c5247ff5b44, type: 3}
       propertyPath: enemyMask.m_Bits

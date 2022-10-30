@@ -14,10 +14,10 @@ public class Enemy : MonoBehaviour
     public int currentHp;
     protected int damage;
     public int experience;
-    protected float moveSpeed;
     protected float attackSpeed;
     protected int level;
 
+    [SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackRange;
 
     private GameObject playerGo;
