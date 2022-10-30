@@ -1,15 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIShop : MonoBehaviour
 {
     private UIHeroShop uiHeroShop;
-
+    public Button btnShowAd;
     public void Init()
     {
-        this.uiHeroShop = GameObject.FindObjectOfType<UIHeroShop>();
+        //this.uiHeroShop = GameObject.FindObjectOfType<UIHeroShop>();
 
-        this.uiHeroShop.Init(0);
+        //this.uiHeroShop.Init(0);
+        AdMobManager.instance.Init();
+        btnShowAd.onClick.AddListener(() =>
+        {
+            AdMobManager.instance.ShowAds();
+        });
     }
 }
