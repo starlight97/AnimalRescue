@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEditor;  // OnDrawGizmos
 
 public class Player : MonoBehaviour
 {
@@ -28,11 +29,6 @@ public class Player : MonoBehaviour
     public UnityAction<int> onLevelUp;
     public UnityAction<float, float> onUpdateHp;
 
-    public void Init()
-    {
-        // 참조 없어지면 철거할 예정 ^__^!!
-    }
-
     public void Init(int heroId)
     {
         this.Id = heroId;
@@ -40,13 +36,14 @@ public class Player : MonoBehaviour
         var heroData = DataManager.instance.GetData<HeroData>(heroId);
         var info = InfoManager.instance.GetInfo();
 
-        var heroDamage = (int)heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage;
+        var heroDamage = heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage;
         var heroMaxHp = (int)(heroData.max_hp + info.dicHeroInfo[heroData.id].dicStats["maxhp"] * heroData.increase_maxhp);
-        var heroMoveSpeed = (int)heroData.move_speed + info.dicHeroInfo[heroData.id].dicStats["movespeed"] * heroData.increase_movespeed;
+        var heroMoveSpeed = heroData.move_speed + info.dicHeroInfo[heroData.id].dicStats["movespeed"] * heroData.increase_movespeed;
 
         this.heroGo = Instantiate(Resources.Load<GameObject>(heroData.prefab_path));
         this.heroGo.name = "model";
         this.heroGo.transform.parent = this.transform;
+
 
         this.hpGaugePoint = this.transform.Find("HpGaugePoint").GetComponent<Transform>();
         this.anim = this.GetComponentInChildren<Animator>();
@@ -59,10 +56,11 @@ public class Player : MonoBehaviour
         playerLife.MaxHp = heroMaxHp;
         playerLife.Hp = playerLife.MaxHp;
 
-        //this.playerStats.Init(heroDamage, playerLife.MaxHp, heroMoveSpeed, 0);
+        this.playerStats.Init(heroDamage, playerLife.MaxHp, heroMoveSpeed, 0);
 
-        this.playerMove.Init();
-        //this.playerMove.Move(heroMoveSpeed);
+        this.playerMove.Init(heroMoveSpeed);
+
+        FindEnemys();
 
         this.playerMove.onMove = () =>
         {
@@ -126,5 +124,61 @@ public class Player : MonoBehaviour
     private void SetState(eStateType state)
     {
         this.anim.SetInteger("State", (int)state);
+    }
+
+    // 시야 영역의 반지름과 시야 각도
+    public float viewRadius;
+    [Range(0, 360)]
+    public float viewAngle;
+
+    public LayerMask enemyMask;
+
+    // Target mask에 ray hit된 transform을 보관하는 리스트
+    public List<Transform> visibleEnemyList = new List<Transform>();
+
+    public void FindEnemys()
+    {
+        StartCoroutine(FindEnemysWithDelay(0.1f));
+    }
+
+    IEnumerator FindEnemysWithDelay(float delay)
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(delay);
+            FindVisibleEnemys();
+        }
+    }
+
+    void FindVisibleEnemys()
+    {
+        visibleEnemyList.Clear();
+        // viewRadius를 반지름으로 한 원 영역 내 targetMask 레이어인 콜라이더를 모두 가져옴
+        Collider[] EnemysInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, enemyMask);
+
+        for (int i = 0; i < EnemysInViewRadius.Length; i++)
+        {
+            Transform target = EnemysInViewRadius[i].transform;
+            Vector3 dirToTarget = (target.position - transform.position).normalized;
+
+            // 플레이어와 forward와 target이 이루는 각이 설정한 각도 내라면
+            if (Vector3.Angle(this.heroGo.transform.forward, dirToTarget) < viewAngle / 2)
+            {
+                float dstToTarget = Vector3.Distance(transform.position, target.transform.position);
+                visibleEnemyList.Add(target);
+            }
+        }
+    }
+
+    // y축 오일러 각을 3차원 방향 벡터로 변환한다.
+    // 참조 사이트: https://nicotina04.tistory.com/197
+    public Vector3 DirFromAngle(float angleDegrees, bool angleIsGlobal)
+    {
+        if (!angleIsGlobal)
+        {
+            angleDegrees += transform.eulerAngles.y;
+        }
+
+        return new Vector3(Mathf.Cos((-angleDegrees + 90) * Mathf.Deg2Rad), 0, Mathf.Sin((-angleDegrees + 90) * Mathf.Deg2Rad));
     }
 }

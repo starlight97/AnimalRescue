@@ -49,7 +49,7 @@ public class PlayerProjectile : MonoBehaviour
         {
             // 임시로 3초동안 날라가도 안부딪히면 삭제
             time += Time.deltaTime;
-            if(time > 0.7f)
+            if(time > 3f)
             {
                 Destroy(this.gameObject);
             }

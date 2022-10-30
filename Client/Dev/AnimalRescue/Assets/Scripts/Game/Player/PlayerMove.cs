@@ -16,14 +16,14 @@ public class PlayerMove : MonoBehaviour
     public UnityAction onMove;
     public UnityAction onMoveComplete;
 
-    public void Init()
+    public void Init(float moveSpeed)
     {
         this.rBody = GetComponent<Rigidbody>();
         this.modelGo = transform.Find("model").gameObject;
-
+        Move(moveSpeed);
     }
 
-    public void Move(int moveSpeed)
+    public void Move(float moveSpeed)
     {
         if (this.moveRoutine != null)
         {
@@ -33,7 +33,7 @@ public class PlayerMove : MonoBehaviour
         this.moveRoutine = StartCoroutine(this.MoveRoutine(moveSpeed));
     }
 
-    private IEnumerator MoveRoutine(int moveSpeed)
+    private IEnumerator MoveRoutine(float moveSpeed)
     {
         while (true)
         {

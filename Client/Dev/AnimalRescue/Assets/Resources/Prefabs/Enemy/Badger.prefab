@@ -1296,7 +1296,7 @@ GameObject:
   - component: {fileID: 4884999226170470769}
   - component: {fileID: 1122604563768648983}
   - component: {fileID: -321578950295392226}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Badger
   m_TagString: Enemy
   m_Icon: {fileID: 0}

@@ -3753,7 +3753,7 @@ GameObject:
   - component: {fileID: 2323192994940012135}
   - component: {fileID: 7914760735987758934}
   - component: {fileID: -5229674334947912270}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Deer
   m_TagString: Enemy
   m_Icon: {fileID: 0}

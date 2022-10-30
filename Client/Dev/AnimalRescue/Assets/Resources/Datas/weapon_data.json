@@ -4,7 +4,7 @@
     "weapon_name": "BasicWeapon",
     "damage": 100,
     "attack_speed": 15,
-    "projectile_speed": 3,
+    "projectile_speed": 1,
     "increase_damage_per": 1.5,
     "decrease_attack_speed_per": 0.1,
     "prefab_name": "Prefabs\\PlayerWeapon\\BasicWeapon"

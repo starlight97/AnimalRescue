@@ -23,22 +23,22 @@ public class HyunMain : MonoBehaviour
         this.weaponManager = GameObject.FindObjectOfType<WeaponManager>();
         this.uiHyunTest = GameObject.FindObjectOfType<UIHyunTest>();
 
-        //this.enemySpawner.onDieEnemy = (experience) =>
-        //{
-        //    PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
-        //    playerStats.GetExp(experience);
-        //};
+        this.enemySpawner.onDieEnemy = (experience) =>
+        {
+            PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
+            playerStats.GetExp(experience);
+        };
 
         this.waveManager.onWaveStart = (wave) =>
         {
-            //enemySpawner.StartWave(wave);
+            enemySpawner.StartWave(wave);
         };
 
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             uiHyunTest.Init();
             player.Init(100);
-            //enemySpawner.Init();
+            enemySpawner.Init();
             waveManager.Init();
             weaponManager.Init(2000);
         });

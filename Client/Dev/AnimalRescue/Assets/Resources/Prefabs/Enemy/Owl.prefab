@@ -3377,7 +3377,7 @@ GameObject:
   - component: {fileID: 8919465847428245416}
   - component: {fileID: 4596364037744843818}
   - component: {fileID: 3925401495118909529}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Owl
   m_TagString: Enemy
   m_Icon: {fileID: 0}

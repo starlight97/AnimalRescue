@@ -9,17 +9,10 @@ public class PlayerStats : MonoBehaviour
     public UnityAction<int> onLevelUp;
     public int damage;
     public float maxHp;
-    public int moveSpeed;
+    public float moveSpeed;
     private int experience;
 
-    //public void Init(int damage, float coolTimeDecreasePer, int experience)
-    //{
-    //    this.Damage = damage;
-    //    this.CoolTimeDecreasePer = coolTimeDecreasePer;
-    //    this.experience = experience;
-    //}
-
-    public void Init(int damage, float maxHp, int moveSpeed, int experience)
+    public void Init(int damage, float maxHp, float moveSpeed, int experience)
     {
         this.damage = damage;
         this.maxHp = maxHp;
