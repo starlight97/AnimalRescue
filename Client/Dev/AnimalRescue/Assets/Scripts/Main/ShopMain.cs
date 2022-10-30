@@ -8,14 +8,14 @@ public class ShopMain : SceneMain
 
     private void Start()
     {
-        DataManager.instance.Init();
-        DataManager.instance.LoadAllData(this);
-        InfoManager.instance.Init();
+        //DataManager.instance.Init();
+        //DataManager.instance.LoadAllData(this);
+        //InfoManager.instance.Init();
 
-        DataManager.instance.onDataLoadFinished.AddListener(() =>
-        {
-            this.Init();
-        });
+        //DataManager.instance.onDataLoadFinished.AddListener(() =>
+        //{
+        //    this.Init();
+        //});
 
     }
 
@@ -26,5 +26,10 @@ public class ShopMain : SceneMain
         this.uiShop = GameObject.FindObjectOfType<UIShop>();
 
         this.uiShop.Init();
+
+        this.uiShop.onClickLobby = () =>
+        {
+            Dispatch("onClickLobby");
+        };
     }
 }

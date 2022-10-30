@@ -122,7 +122,7 @@ public class App : MonoBehaviour
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
-                                this.LoadScene<GameMain>(eSceneType.Shop);
+                                this.LoadScene<ShopMain>(eSceneType.Shop);
                             });
                         });
                         lobbyMain.AddListener("onClickRepairShop", (data) =>

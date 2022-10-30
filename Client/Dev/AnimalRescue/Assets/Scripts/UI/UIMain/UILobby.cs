@@ -15,7 +15,7 @@ public class UILobby : MonoBehaviour
         Exit
     }
     public Button btnGameStart;
-    private Button btnShop;
+    public Button btnShop;
     public Button btnRepairShop;
     private Button btnOption;
     private Button btnExit;
@@ -36,6 +36,10 @@ public class UILobby : MonoBehaviour
         this.btnGameStart.onClick.AddListener(() =>
         {
             this.onClickBtn(eBtnLobby.GameStart);
+        });
+        this.btnShop.onClick.AddListener(() =>
+        {
+            this.onClickBtn(eBtnLobby.Shop);
         });
         this.btnRepairShop.onClick.AddListener(() =>
         {
