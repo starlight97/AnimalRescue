@@ -1,6 +1,6 @@
 public class DatapathData
 {
     public int id;
-    public string res_name; // µ¥ÀÌÅÍ ÆÄÀÏ °æ·Î
-    public string type;     // µ¥ÀÌÅÍ Å¸ÀÔ
+    public string res_name; // ë°ì´í„° íŒŒì¼ ê²½ë¡œ
+    public string type;     // ë°ì´í„° íƒ€ì…
 }

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 10000,
+    "category": 0,
+    "item_id": 101,
+    "price": 3000,
+    "price_type": 0
+  },
+  {
+    "id": 10001,
+    "category": 0,
+    "item_id": 102,
+    "price": 3000,
+    "price_type": 0
+  },
+  {
+    "id": 10002,
+    "category": 0,
+    "item_id": 103,
+    "price": 5000,
+    "price_type": 0
+  },
+  {
+    "id": 10003,
+    "category": 0,
+    "item_id": 104,
+    "price": 5000,
+    "price_type": 0
+  },
+  {
+    "id": 10004,
+    "category": 0,
+    "item_id": 105,
+    "price": 5000,
+    "price_type": 0
+  }
+]

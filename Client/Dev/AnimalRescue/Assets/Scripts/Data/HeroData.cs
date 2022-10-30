@@ -27,7 +27,11 @@ public class HeroData : RawData
     
     public float increase_movespeed;
     
+    public int monster_type;
+    
     public string ui_prefab_path;
     
     public string prefab_path;
+    
+    public string sprite_name;
 }

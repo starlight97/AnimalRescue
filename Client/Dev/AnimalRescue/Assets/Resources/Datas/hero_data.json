@@ -1,38 +1,86 @@
 [
   {
     "id": 100,
-    "hero_name": "hero1",
+    "hero_name": "Pupu",
     "max_hp": 200.0,
     "damage": 10,
-    "move_speed": 8,
+    "move_speed": 8.0,
     "increase_damage": 2,
     "increase_maxhp": 2.0,
     "increase_movespeed": 0.2,
-    "ui_prefab_path": "Prefabs\\Hero\\UIhero1",
-    "prefab_path": "Prefabs\\Hero\\hero1"
+    "monster_type": 0,
+    "ui_prefab_path": "Prefabs\\Hero\\UiPupu",
+    "prefab_path": "Prefabs\\Hero\\Pupu",
+    "sprite_name": "pupu"
   },
   {
     "id": 101,
-    "hero_name": "hero2",
+    "hero_name": "Rosa",
     "max_hp": 200.0,
     "damage": 10,
-    "move_speed": 8,
+    "move_speed": 8.0,
     "increase_damage": 1,
     "increase_maxhp": 4.0,
     "increase_movespeed": 0.1,
-    "ui_prefab_path": "Prefabs\\Hero\\UIhero2",
-    "prefab_path": "Prefabs\\Hero\\hero2"
+    "monster_type": 1,
+    "ui_prefab_path": "Prefabs\\Hero\\UIRosa",
+    "prefab_path": "Prefabs\\Hero\\Rosa",
+    "sprite_name": "rosa"
   },
   {
     "id": 102,
-    "hero_name": "hero3",
+    "hero_name": "Papa",
     "max_hp": 200.0,
     "damage": 10,
-    "move_speed": 8,
+    "move_speed": 8.0,
     "increase_damage": 4,
     "increase_maxhp": 1.0,
     "increase_movespeed": 0.1,
-    "ui_prefab_path": "Prefabs\\Hero\\UIhero3",
-    "prefab_path": "Prefabs\\Hero\\hero3"
+    "monster_type": 2,
+    "ui_prefab_path": "Prefabs\\Hero\\UIPapa",
+    "prefab_path": "Prefabs\\Hero\\Papa",
+    "sprite_name": "papa"
+  },
+  {
+    "id": 103,
+    "hero_name": "Finn",
+    "max_hp": 300.0,
+    "damage": 15,
+    "move_speed": 9.0,
+    "increase_damage": 3,
+    "increase_maxhp": 3.0,
+    "increase_movespeed": 0.3,
+    "monster_type": 0,
+    "ui_prefab_path": "Prefabs\\Hero\\UIFinn",
+    "prefab_path": "Prefabs\\Hero\\Finn",
+    "sprite_name": "finn"
+  },
+  {
+    "id": 104,
+    "hero_name": "Bo",
+    "max_hp": 300.0,
+    "damage": 15,
+    "move_speed": 9.0,
+    "increase_damage": 2,
+    "increase_maxhp": 5.0,
+    "increase_movespeed": 0.2,
+    "monster_type": 1,
+    "ui_prefab_path": "Prefabs\\Hero\\UIBo",
+    "prefab_path": "Prefabs\\Hero\\Bo",
+    "sprite_name": "bo"
+  },
+  {
+    "id": 105,
+    "hero_name": "Aidan",
+    "max_hp": 300.0,
+    "damage": 15,
+    "move_speed": 9.0,
+    "increase_damage": 2,
+    "increase_maxhp": 2.0,
+    "increase_movespeed": 0.4,
+    "monster_type": 3,
+    "ui_prefab_path": "Prefabs\\Hero\\UiAidan",
+    "prefab_path": "Prefabs\\Hero\\Aidan",
+    "sprite_name": "aidan"
   }
 ]

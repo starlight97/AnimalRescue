@@ -18,5 +18,15 @@
     "id": 3,
     "res_name": "boss_data",
     "type": "BossData"
+  },
+  {
+    "id": 4,
+    "res_name": "shop_data",
+    "type": "ShopData"
+  },
+  {
+    "id": 5,
+    "res_name": "shopgroup_data",
+    "type": "ShopgroupData"
   }
 ]
