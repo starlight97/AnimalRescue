@@ -12,6 +12,7 @@ public class ShootingStar : PlayerWeapon
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
         base.Init(weaponData, playerTrans);
+        this.current_damage += playerDamage * 3;
         Create();
     }
 

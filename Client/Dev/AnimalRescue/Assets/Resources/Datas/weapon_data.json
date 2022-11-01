@@ -3,10 +3,9 @@
     "id": 2000,
     "weapon_name": "BasicWeapon",
     "damage": 100,
-    "attack_speed": 15,
-    "projectile_speed": 1,
-    "increase_damage_per": 1.5,
-    "decrease_attack_speed_per": 0.1,
+    "attack_speed": 20,
+    "projectile_speed": 3,
+    "increase_damage_per": 1.1,
     "prefab_name": "Prefabs\\PlayerWeapon\\BasicWeapon"
   },
   {
@@ -15,8 +14,7 @@
     "damage": 100,
     "attack_speed": 1,
     "projectile_speed": 100,
-    "increase_damage_per": 1.7,
-    "decrease_attack_speed_per": 1,
+    "increase_damage_per": 1.5,
     "prefab_name": "Prefabs\\PlayerWeapon\\CottonCandy"
   },
   {
@@ -26,17 +24,15 @@
     "attack_speed": 8,
     "projectile_speed": 1,
     "increase_damage_per": 2,
-    "decrease_attack_speed_per": 0.1,
     "prefab_name": "Prefabs\\PlayerWeapon\\ShootingStar"
   },
   {
     "id": 2003,
     "weapon_name": "ColdFloorboard",
-    "damage": 5,
+    "damage": 2,
     "attack_speed": 0.1,
     "projectile_speed": 1,
-    "increase_damage_per": 1.7,
-    "decrease_attack_speed_per": 1,
+    "increase_damage_per": 1.1,
     "prefab_name": "Prefabs\\PlayerWeapon\\ColdFloorboard"
   },
   {
@@ -46,7 +42,6 @@
     "attack_speed": 0,
     "projectile_speed": 1,
     "increase_damage_per": 0,
-    "decrease_attack_speed_per": 0,
     "prefab_name": "Prefabs\\PlayerWeapon\\HealFloorboard"
   },
   {
@@ -55,8 +50,7 @@
     "damage": 10,
     "attack_speed": 3,
     "projectile_speed": 3,
-    "increase_damage_per": 0.5,
-    "decrease_attack_speed_per": 0.5,
+    "increase_damage_per": 1.15,
     "prefab_name": "Prefabs\\PlayerWeapon\\Singing"
   }
 ]
