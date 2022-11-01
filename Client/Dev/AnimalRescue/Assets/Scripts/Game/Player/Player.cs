@@ -85,9 +85,9 @@ public class Player : MonoBehaviour
         this.onUpdateMove(this.hpGaugePoint.position);
     }
 
-    public void Recovery(float hp, float maxHp, float amount)
+    public void Recovery(float hp, float maxHp, float per)
     {
-        playerLife.Hp += amount;
+        playerLife.Hp *= per;
         if (playerLife.Hp >= playerLife.MaxHp)
             playerLife.Hp = playerLife.MaxHp;
         onUpdateHp(hp, maxHp);
@@ -117,7 +117,6 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        Debug.Log("die");
         StartCoroutine(DieRoutine());
     }
 

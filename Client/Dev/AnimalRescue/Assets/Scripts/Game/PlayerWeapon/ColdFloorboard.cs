@@ -12,8 +12,11 @@ public class ColdFloorboard : PlayerWeapon
         base.Init(weaponData, playerTrans);
         this.enemyList = new List<Enemy>();
         this.particleSystem = this.GetComponent<ParticleSystem>();
+        this.current_damage += playerDamage / 10;
+
         StartCoroutine(this.AttackRoutine());
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))

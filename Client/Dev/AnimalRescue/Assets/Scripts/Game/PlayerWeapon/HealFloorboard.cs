@@ -4,14 +4,11 @@ using UnityEngine;
 
 public class HealFloorboard : PlayerWeapon
 {
-    private float amount = 0.1f;
-    private Player player;
-    float currentHp;
+    private float per = 1.01f;
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
         base.Init(weaponData, playerTrans);
-        player = GameObject.FindObjectOfType<Player>();
         Heal();
     }
 
@@ -24,18 +21,19 @@ public class HealFloorboard : PlayerWeapon
     {
         while (true)
         {
-            player.Recovery(player.playerLife.Hp, player.playerLife.MaxHp, amount);
+            var player = playerTrans.GetComponent<Player>();
+            player.Recovery(player.playerLife.Hp, player.playerLife.MaxHp, per);
             yield return new WaitForSeconds(1f);
         }
     }
 
 
-    // 힐량 0.05씩 증가
+    // 힐량 0.1퍼씩 증가
     public override void Upgrade()
     {
         //base.Upgrade();
         this.level++;
-        this.amount += 0.5f;
+        this.per += 0.05f;
     }
 
     private void LateUpdate()

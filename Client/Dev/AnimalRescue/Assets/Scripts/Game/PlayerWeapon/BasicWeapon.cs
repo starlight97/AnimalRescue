@@ -51,7 +51,7 @@ public class BasicWeapon : PlayerWeapon
             doughnut.Init(this.current_damage, this.current_attack_speed, this.dir.normalized);
             doughnut.transform.localScale = new Vector3(size, size, size);
             projectileList.Add(projectileGo);
-            yield return new WaitForSeconds(weaponData.projectile_speed);
+            yield return new WaitForSeconds(1f);
         }
     }
 
