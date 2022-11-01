@@ -12,12 +12,14 @@ public class UILobby : MonoBehaviour
         Shop,
         RepairShop,
         Option,
+        OptionClose,
         Exit
     }
     public Button btnGameStart;
     public Button btnShop;
     public Button btnRepairShop;
     public Button btnOption;
+    public Button btnOptionClose;
     private Button btnExit;
 
     private UIHeroList uiHeroList;
@@ -28,6 +30,7 @@ public class UILobby : MonoBehaviour
 
     public UnityAction<eBtnLobby> onClickBtn;
     public UnityAction<int> onClickHero;
+    public GameObject panelSetting;
     public void Init()
     {
         this.uiLobbyHeroStats = GameObject.FindObjectOfType<UILobbyHeroStats>();
@@ -47,7 +50,13 @@ public class UILobby : MonoBehaviour
         });
         this.btnOption.onClick.AddListener(() =>
         {
+            panelSetting.SetActive(true);
             this.onClickBtn(eBtnLobby.Option);
+        });
+        this.btnOptionClose.onClick.AddListener(() =>
+        {
+            panelSetting.SetActive(false);
+            this.onClickBtn(eBtnLobby.OptionClose);
         });
         this.uiHeroList.onCLickHero = (id) =>
         {

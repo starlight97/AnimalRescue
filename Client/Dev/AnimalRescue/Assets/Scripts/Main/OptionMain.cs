@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class OptionMain : SceneMain
 {
-    // Start is called before the first frame update
-    void Start()
+    private UIOption uiOption;
+    public override void Init(SceneParams param = null)
     {
-        
-    }
+        base.Init(param);
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        this.uiOption = GameObject.FindObjectOfType<UIOption>();
+
+        this.uiOption.Init();
+
     }
 }

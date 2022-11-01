@@ -27,7 +27,10 @@ public class LobbyMain : SceneMain
                     Dispatch("onClickRepairShop");
                     break;
                 case UILobby.eBtnLobby.Option:
-                    Dispatch("onClickOption");
+                    this.heroViewGo.SetActive(false);
+                    break;
+                case UILobby.eBtnLobby.OptionClose:
+                    this.heroViewGo.SetActive(true);
                     break;
                 case UILobby.eBtnLobby.Exit:
                     Application.Quit();
