@@ -20,6 +20,8 @@ public class UILobby : MonoBehaviour
     public Button btnRepairShop;
     public Button btnOption;
     public Button btnOptionClose;
+    public Button btnCloudSave;
+    public Button btnCloudLoad;
     private Button btnExit;
 
     private UIHeroList uiHeroList;
@@ -58,6 +60,15 @@ public class UILobby : MonoBehaviour
             panelSetting.SetActive(false);
             this.onClickBtn(eBtnLobby.OptionClose);
         });
+        this.btnCloudSave.onClick.AddListener(() =>
+        {
+            GPGSManager.instance.LoadFromCloud();
+        });
+        this.btnCloudLoad.onClick.AddListener(() =>
+        {
+            GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
+        });
+
         this.uiHeroList.onCLickHero = (id) =>
         {
             this.onClickHero(id);

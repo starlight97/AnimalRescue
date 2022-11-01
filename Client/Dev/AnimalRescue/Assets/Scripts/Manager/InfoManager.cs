@@ -1,6 +1,4 @@
 using Newtonsoft.Json;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using UnityEngine;
@@ -49,5 +47,10 @@ public class InfoManager
     public GameInfo GetInfo()
     {
         return this.gameInfo;
+    }
+    public void SetInfo(GameInfo gameInfo)
+    {
+        this.gameInfo = null;
+        this.gameInfo = gameInfo;
     }
 }

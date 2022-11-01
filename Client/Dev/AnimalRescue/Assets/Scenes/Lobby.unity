@@ -1281,10 +1281,10 @@ RectTransform:
   m_Father: {fileID: 812599702}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000030517578, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &856544508
 MonoBehaviour:
@@ -2444,10 +2444,10 @@ RectTransform:
   m_Father: {fileID: 770405179}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 600, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -0.000061035156, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1551102444
 MonoBehaviour:
@@ -3533,6 +3533,8 @@ MonoBehaviour:
   btnRepairShop: {fileID: 3240182426040607080}
   btnOption: {fileID: 1503181758}
   btnOptionClose: {fileID: 3471883616944506036}
+  btnCloudSave: {fileID: 812599703}
+  btnCloudLoad: {fileID: 770405180}
   gold: {fileID: 1620633341}
   diamond: {fileID: 1294687494}
   panelSetting: {fileID: 3096860447010100321}
