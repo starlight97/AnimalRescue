@@ -623,7 +623,7 @@ GameObject:
   - component: {fileID: 3121084511852636338}
   - component: {fileID: 3121084511843370868}
   m_Layer: 7
-  m_Name: UIAiden
+  m_Name: UIAidan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
