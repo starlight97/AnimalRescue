@@ -289,6 +289,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   btnHeroListItem: {fileID: 0}
+  imgHero: {fileID: 8803712769148453995}
   textHeroName: {fileID: 882969747228856556}
   id: 0
 --- !u!114 &2512583223640200981

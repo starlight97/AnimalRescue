@@ -27,7 +27,7 @@ public class LobbyMain : SceneMain
                     Dispatch("onClickRepairShop");
                     break;
                 case UILobby.eBtnLobby.Option:
-                    Debug.Log("Option");
+                    Dispatch("onClickOption");
                     break;
                 case UILobby.eBtnLobby.Exit:
                     Application.Quit();

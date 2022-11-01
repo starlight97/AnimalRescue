@@ -70,12 +70,8 @@ public class GameMain : SceneMain
         this.player.Init(gameMainParam.heroId);
         this.enemySpawner.Init();
         this.waveManager.Init();
-        this.weaponManager.Init(2000);
+        this.weaponManager.Init(2001);
 
-        DataManager.instance.onDataLoadFinished.AddListener(() => 
-        {
-
-        });
         
     }
 

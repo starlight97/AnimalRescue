@@ -3541,7 +3541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 282, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 68}
   m_Pivot: {x: 1, y: 1}
 --- !u!224 &3726463312288691330
@@ -4388,6 +4388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ec601c99c4c304490d655817e5be88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: 34d36bd18fd5e7643a7292fd0b32c9b5, type: 2}
   uiHeroListItemPrefab: {fileID: 8803712769121075414, guid: 79e13f67c912003489434778ef956b2a, type: 3}
 --- !u!222 &4433987167744025041
 CanvasRenderer:
@@ -5484,7 +5485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -71.4998, y: -61.168037}
+  m_AnchoredPosition: {x: -71.49982, y: -61.168037}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &6936225097355979947

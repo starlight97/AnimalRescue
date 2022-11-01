@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossForestGuardian : Enemy
 {
     public GameObject cubePrefab;
-    public float cubeMaxScale;
+    public float cubeMaxScale;    // 큐브 크기
     public float diffusionRate;   // 큐브 확산속도
 
     public override void Init(int level, int maxHp, int damage, int experience, float movespeed, float attackspeed, float attackRange)
@@ -34,19 +34,21 @@ public class BossForestGuardian : Enemy
 
         if (this.level == 1)
         {
-            diffusionRate = 0.2f;
+            cubeMaxScale = 15f;
+            diffusionRate = 0.1f;
         }
         else if (this.level == 2)
         {
-            diffusionRate = 0.4f;
+            diffusionRate = 0.2f;
         }
         else if (this.level == 3)
         {
-            diffusionRate = 0.6f;
+            cubeMaxScale = 20f;
+            diffusionRate = 0.3f;
         }
         else if (this.level >= 4)
         {
-            diffusionRate = 0.8f;
+            diffusionRate = 0.4f;
         }
     }
 }

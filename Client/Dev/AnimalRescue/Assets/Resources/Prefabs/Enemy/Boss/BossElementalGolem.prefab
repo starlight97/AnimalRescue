@@ -161,9 +161,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHp: 0
   experience: 0
+  moveSpeed: 0
   attackRange: 0
   stonePrefab: {fileID: 7384006414486548760, guid: db12a0f4a27f34948b5837b78a42a2fc, type: 3}
-  radius: 3
+  radius: 1
 --- !u!136 &2663954975225086843
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -8,7 +8,7 @@ public class App : MonoBehaviour
 {
     public enum eSceneType
     {
-        App, Logo, Loading, Title, Lobby, Game, Shop, RepairShop
+        App, Logo, Loading, Title, Lobby, Game, Shop, RepairShop, Option
     }
 
     public static App instance;
@@ -130,6 +130,13 @@ public class App : MonoBehaviour
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<RepairShopMain>(eSceneType.RepairShop);
+                            });
+                        });
+                        lobbyMain.AddListener("onClickOption", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<OptionMain>(eSceneType.Option);
                             });
                         });
                         lobbyMain.Init();

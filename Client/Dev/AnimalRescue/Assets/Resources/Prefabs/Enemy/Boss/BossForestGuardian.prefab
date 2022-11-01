@@ -1048,9 +1048,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHp: 0
   experience: 0
+  moveSpeed: 0
   attackRange: 0
   cubePrefab: {fileID: 1722756824254042946, guid: 0da0a2222dc096d4eb5dc02fc9363e44, type: 3}
-  cubeMaxScale: 10
+  cubeMaxScale: 0
+  diffusionRate: 0
 --- !u!136 &6601102133552810851
 CapsuleCollider:
   m_ObjectHideFlags: 0

@@ -2695,9 +2695,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHp: 0
   experience: 0
+  moveSpeed: 0
   attackRange: 0
   doughnutPrefab: {fileID: 7384006414486548760, guid: 0e3e300f7e074c24eb373af84c4fb941, type: 3}
-  radius: 3
+  radius: 1
 --- !u!54 &4495296526905328515
 Rigidbody:
   m_ObjectHideFlags: 0

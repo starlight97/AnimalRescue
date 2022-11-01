@@ -17,7 +17,7 @@ public class UILobby : MonoBehaviour
     public Button btnGameStart;
     public Button btnShop;
     public Button btnRepairShop;
-    private Button btnOption;
+    public Button btnOption;
     private Button btnExit;
 
     private UIHeroList uiHeroList;
@@ -44,6 +44,10 @@ public class UILobby : MonoBehaviour
         this.btnRepairShop.onClick.AddListener(() =>
         {
             this.onClickBtn(eBtnLobby.RepairShop);
+        });
+        this.btnOption.onClick.AddListener(() =>
+        {
+            this.onClickBtn(eBtnLobby.Option);
         });
         this.uiHeroList.onCLickHero = (id) =>
         {

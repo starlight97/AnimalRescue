@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.Events;
 
 public class UIHeroList : MonoBehaviour
 {
+    public SpriteAtlas atlas;
     private RectTransform content;
     public GameObject uiHeroListItemPrefab;
     public UnityAction<int> onCLickHero;
@@ -21,7 +23,7 @@ public class UIHeroList : MonoBehaviour
             GameObject itemGo = Instantiate(this.uiHeroListItemPrefab, this.content);
             var item = itemGo.GetComponent<UIHeroListItem>();
             var heroData = DataManager.instance.GetData<HeroData>(hero.id);
-            item.Init(hero.id, heroData.hero_name);
+            item.Init(hero.id, atlas.GetSprite(heroData.sprite_name), heroData.hero_name);
 
             item.btnHeroListItem.onClick.AddListener(() =>
             {

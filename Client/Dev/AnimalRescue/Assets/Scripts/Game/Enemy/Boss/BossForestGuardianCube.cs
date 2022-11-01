@@ -13,7 +13,7 @@ public class BossForestGuardianCube : MonoBehaviour
     {
         this.damage = damage;
         this.cubeMaxScale = cubeMaxScale;
-
+        this.diffusionRate = diffusionRate;
         StartCoroutine(this.AttackRoutine());
     }
     private void OnTriggerEnter(Collider other)
