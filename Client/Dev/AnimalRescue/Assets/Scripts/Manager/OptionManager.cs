@@ -20,6 +20,20 @@ public class OptionManager : MonoBehaviour
 
     }
 
+    public void Init()
+    {
+        this.bgmVolumeSlider.onValueChanged.AddListener((value) =>
+        {
+            AudioControl();
+        });
+        this.sfxVolumeSlider.onValueChanged.AddListener((value) =>
+        {
+            AudioControl();
+        });
+
+
+    }
+
     public void AudioControl()
     {
         float bgmVolume = bgmVolumeSlider.value;

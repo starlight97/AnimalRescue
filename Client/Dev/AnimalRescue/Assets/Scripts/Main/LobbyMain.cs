@@ -5,6 +5,7 @@ using UnityEngine;
 public class LobbyMain : SceneMain
 {
     private UILobby uiLobby;
+    private OptionManager optionManager;
     public int selectedHeroId = 100;
     public GameObject heroViewGo;
     public override void Init(SceneParams param = null)
@@ -12,6 +13,7 @@ public class LobbyMain : SceneMain
         base.Init(param);
 
         this.uiLobby = GameObject.FindObjectOfType<UILobby>();
+        this.optionManager = GameObject.FindObjectOfType<OptionManager>();
 
         this.uiLobby.onClickBtn = (type) =>
         {
@@ -79,7 +81,7 @@ public class LobbyMain : SceneMain
 
         this.uiLobby.Init();
 
-        
+        this.optionManager.Init();
         SoundManager.instance.PlayBGMSound();
     }
 }
