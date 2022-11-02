@@ -24,6 +24,5 @@ public class LoadingMain : SceneMain
 
         InfoManager.instance.Init();
         AdMobManager.instance.Init();
-        SoundManager.instance.Init();
     }
 }

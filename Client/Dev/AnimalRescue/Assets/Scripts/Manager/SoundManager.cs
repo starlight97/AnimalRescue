@@ -5,23 +5,16 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public static SoundManager instance;
-
     public AudioClip[] audiobgmArr;
-    private AudioSource audioSource;
+    private AudioSource bgmAudioSource;
     private int bgmCount;
     private int currentIndex;
 
     private Coroutine playSoundRoutine;
 
-    private void Awake()
-    {
-        SoundManager.instance = this;
-    }
-
     public void Init()
     {
-        audioSource = GetComponent<AudioSource>();
+        bgmAudioSource = transform.Find("BGMAudio").GetComponent<AudioSource>();
         bgmCount = audiobgmArr.Length;
         currentIndex = 0;
         //StartCoroutine(this.PlaySoundRoutine());
@@ -39,7 +32,7 @@ public class SoundManager : MonoBehaviour
     public void StopBGMSound()
     {
         StopCoroutine(playSoundRoutine);
-        audioSource.Stop();
+        bgmAudioSource.Stop();
         playSoundRoutine = null;
     }
 
@@ -52,10 +45,10 @@ public class SoundManager : MonoBehaviour
                 currentIndex = 0;
             }
             yield return new WaitForSeconds(0.5f);
-            if (!audioSource.isPlaying)
+            if (!bgmAudioSource.isPlaying)
             {
-                audioSource.clip = audiobgmArr[currentIndex];
-                audioSource.Play();
+                bgmAudioSource.clip = audiobgmArr[currentIndex];
+                bgmAudioSource.Play();
                 currentIndex++;
             }
         }
