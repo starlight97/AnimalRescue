@@ -59,6 +59,24 @@ public class LobbyMain : SceneMain
             //uiHeroGo.transform.localPosition = Vector3.zero;
             //uiHeroGo.transform.localRotation = 0;
         };
+
+        GPGSManager.instance.onSavedCloud = () =>
+        {
+            //this.textGameInfo.text = status.ToString();
+        };
+        GPGSManager.instance.onLoadedCloud = (info) =>
+        {
+            InfoManager.instance.SetInfo(info);
+            //var json = JsonConvert.SerializeObject(this.gameInfo);
+            Debug.Log("*************로드성공*********");
+            Debug.Log("로드 성공");
+            Debug.Log("*************로드성공*********");
+        };
+        GPGSManager.instance.onErrorHandler = (status) =>
+        {
+            Debug.Log("ERROR : " + status);
+        };
+
         this.uiLobby.Init();
     }
 }

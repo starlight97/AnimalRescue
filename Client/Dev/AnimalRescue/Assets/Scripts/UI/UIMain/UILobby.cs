@@ -62,11 +62,12 @@ public class UILobby : MonoBehaviour
         });
         this.btnCloudSave.onClick.AddListener(() =>
         {
-            GPGSManager.instance.LoadFromCloud();
+            GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
+            
         });
         this.btnCloudLoad.onClick.AddListener(() =>
         {
-            GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
+            GPGSManager.instance.LoadFromCloud();
         });
 
         this.uiHeroList.onCLickHero = (id) =>
