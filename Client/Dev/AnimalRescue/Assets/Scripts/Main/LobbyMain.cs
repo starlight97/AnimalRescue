@@ -78,5 +78,8 @@ public class LobbyMain : SceneMain
         };
 
         this.uiLobby.Init();
+
+        
+        SoundManager.instance.PlayBGMSound();
     }
 }
