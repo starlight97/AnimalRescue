@@ -14,6 +14,7 @@ public class Singing : PlayerWeapon
     {
         base.Init(weaponData, playerTrans);
         attackSpeed = this.current_attack_speed;
+        current_damage += playerDamage / 7;
         // 투사체 날아갈 때마다 머리 위에 음표 띄움
         var player = GameObject.Find("Player").gameObject;
         notesGo = player.transform.Find("Notes").gameObject;
@@ -36,7 +37,7 @@ public class Singing : PlayerWeapon
             var singingProjectile = projectileGo.GetComponent<SingingProjectile>();
             singingProjectile.transform.position = playerTrans.position;
 
-            // 반경 1을 갖는 구의 랜덤 위치로 이동
+            // 반경 1을 갖는 구의 랜덤 위치에 생성
             dir = Random.insideUnitSphere.normalized;
             dir.y = 0;
 
@@ -55,13 +56,13 @@ public class Singing : PlayerWeapon
         base.Upgrade();
         switch (level)
         {
-            case 3:
+            case 4:
                 IncreaseAttackSpeed();
                 break;
-            case 6:
+            case 8:
                 IncreaseAttackSpeed();
                 break;
-            case 9:
+            case 12:
                 IncreaseAttackSpeed();
                 break;
             default:
@@ -71,7 +72,7 @@ public class Singing : PlayerWeapon
 
     private void IncreaseAttackSpeed()
     {
-        this.attackSpeed += 1;
+        this.attackSpeed -= 0.1f;
     }
 
     private void LateUpdate()

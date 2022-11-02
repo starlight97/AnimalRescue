@@ -14,6 +14,8 @@ public class CottonCandy : PlayerWeapon
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
         base.Init(weaponData, playerTrans);
+        current_damage += playerDamage;
+
         this.Attack();
 
         var projectTileGo = Instantiate<GameObject>(cottonCandyProjectilePrefab);

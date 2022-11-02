@@ -48,7 +48,7 @@
     "id": 2005,
     "weapon_name": "Singing",
     "damage": 10,
-    "attack_speed": 3,
+    "attack_speed": 0.3,
     "projectile_speed": 3,
     "increase_damage_per": 1.15,
     "prefab_name": "Prefabs\\PlayerWeapon\\Singing"

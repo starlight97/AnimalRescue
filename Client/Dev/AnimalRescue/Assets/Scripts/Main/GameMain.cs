@@ -70,7 +70,7 @@ public class GameMain : SceneMain
         this.player.Init(gameMainParam.heroId);
         this.enemySpawner.Init();
         this.waveManager.Init();
-        this.weaponManager.Init(2001);
+        this.weaponManager.Init(2004);
 
         
     }

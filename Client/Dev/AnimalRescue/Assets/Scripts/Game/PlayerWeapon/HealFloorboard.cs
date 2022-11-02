@@ -9,6 +9,7 @@ public class HealFloorboard : PlayerWeapon
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
         base.Init(weaponData, playerTrans);
+        current_damage = 0;
         Heal();
     }
 
@@ -33,7 +34,7 @@ public class HealFloorboard : PlayerWeapon
     {
         //base.Upgrade();
         this.level++;
-        this.per += 0.05f;
+        this.per += 0.1f;
     }
 
     private void LateUpdate()
