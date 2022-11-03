@@ -74,7 +74,10 @@ public class GameMain : SceneMain
             info.playerInfo.gold += getGold;
             Dispatch("onGameOver");
         };
-
+        this.uiGame.onClickAds = () =>
+        {
+            ShowAds();
+        };
 
         this.uiGame.Init();
         this.player.Init(gameMainParam.heroId);
@@ -99,6 +102,32 @@ public class GameMain : SceneMain
     public void Pause()
     {
         Time.timeScale = 0f;
+    }
+
+    public void ShowAds()
+    {
+        AdMobManager.instance.Init("ca-app-pub-3940256099942544/5224354917");
+        // 진짜 광고!!!!!!!!! 바꿔~~~~~!!!!!!!!!!!!!!!!!!
+        //AdMobManager.instance.Init("ca-app-pub-4572742510387968/3117467058");
+
+        AdMobManager.instance.ShowGameOverAds();
+        AdMobManager.instance.onHandleRewardedAdClosed = () => {
+            // 로딩창 제거
+            Debug.Log("onHandleRewardedAdClosed");
+        };
+        AdMobManager.instance.onHandleRewardedAdFailedToLoad = (args) => {
+            // 로딩창 제거
+            Debug.LogFormat("onHandleRewardedAdFailedToLoad: {0}", args.LoadAdError.ToString());
+        };
+        AdMobManager.instance.onHandleRewardedAdFailedToShow = () => {
+            // 로딩창 제거
+            Debug.LogFormat("onHandleRewardedAdFailedToShow");
+        };
+        AdMobManager.instance.onHandleUserEarnedReward = (reward) => {
+            // 보상 주기
+            Debug.LogFormat("{0} {1}", reward.Type, reward.Amount);
+            player.playerLife.Hp = (float)(player.playerLife.MaxHp * (reward.Amount) / 100);
+        };
     }
 
 }

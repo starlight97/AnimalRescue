@@ -10,6 +10,7 @@ public class UIGame : MonoBehaviour
     private UIRivivePanel uiRivivePanel;
     public UnityAction<int> onWeaponSelect;
     public UnityAction onGameOver;
+    public UnityAction onClickAds;
 
     public void Init()
     {
@@ -32,7 +33,7 @@ public class UIGame : MonoBehaviour
         uiRivivePanel.onClickAdsBtn = () =>
         {
             this.uiRivivePanel.HidePanel();
-            AdMobManager.instance.ShowAds();
+            this.onClickAds();
         };
 
         uiRivivePanel.onTimeOver = () => 

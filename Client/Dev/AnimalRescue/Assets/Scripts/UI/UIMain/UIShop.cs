@@ -6,6 +6,7 @@ public class UIShop : MonoBehaviour
 {
     private UIHeroShop uiHeroShop;
     public UnityAction onClickLobby;
+    public UnityAction onClickAdsBtn;
     public Button btnBack;
     public Button btnShowAd;
     public void Init()
@@ -22,7 +23,12 @@ public class UIShop : MonoBehaviour
         });
         btnShowAd.onClick.AddListener(() =>
         {
-            AdMobManager.instance.ShowAds();
+            onClickAdsBtn();
         });
+    }
+
+    public Text GetTextGold()
+    {
+        return uiHeroShop.textGold;
     }
 }
