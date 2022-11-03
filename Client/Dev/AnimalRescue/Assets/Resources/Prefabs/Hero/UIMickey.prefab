@@ -3194,6 +3194,7 @@ GameObject:
   m_Component:
   - component: {fileID: 776525783687966159}
   - component: {fileID: 836443293657855157}
+  - component: {fileID: -809949190978386238}
   m_Layer: 7
   m_Name: UIMickey
   m_TagString: Untagged
@@ -3253,6 +3254,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &-809949190978386238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 778540024882563373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b246e81eede02b84493e4dc4e225f031, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &778785459599479235
 GameObject:
   m_ObjectHideFlags: 0

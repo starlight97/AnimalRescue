@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class UIHeroListItem : MonoBehaviour
 {
-    private AudioSource audioSource;
+    public AudioSource audioSource;
     public Button btnHeroListItem;
     public Image imgHero;
     public Text textHeroName;
@@ -19,11 +19,6 @@ public class UIHeroListItem : MonoBehaviour
         this.id = id;
 
         this.textHeroName.text = heroName;
-        this.btnHeroListItem.onClick.AddListener(() =>
-        {
-            this.audioSource.Play();
-        });
-        
     }
 
 }

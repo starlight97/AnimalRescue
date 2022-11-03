@@ -1497,7 +1497,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audiobgmArr:
-  - {fileID: 8300000, guid: fa8e17824c5015840a7e2033f971eefc, type: 3}
   - {fileID: 8300000, guid: 60955bc3d6f2077419747e6195ec997a, type: 3}
   - {fileID: 8300000, guid: 817888f57b8d0e64ea688b080bde63eb, type: 3}
 --- !u!1 &1035906514

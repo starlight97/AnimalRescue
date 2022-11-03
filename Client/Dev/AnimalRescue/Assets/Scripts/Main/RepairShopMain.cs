@@ -5,7 +5,7 @@ using UnityEngine;
 public class RepairShopMain : SceneMain
 {
     private UIRepairShop uiRepairShop;
-    
+    private SoundManager soundManager;
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
@@ -13,6 +13,7 @@ public class RepairShopMain : SceneMain
         var mainParam = (RepairShopParam)param;
 
         this.uiRepairShop = GameObject.FindObjectOfType<UIRepairShop>();
+        this.soundManager = GameObject.FindObjectOfType<SoundManager>();
 
         this.uiRepairShop.onClickLobby = () =>
         {
@@ -20,6 +21,8 @@ public class RepairShopMain : SceneMain
         };
 
         this.uiRepairShop.Init(mainParam.heroId);
+        this.soundManager.Init();
+        this.soundManager.PlayBGMSound();
     }
 
 

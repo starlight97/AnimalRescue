@@ -28,6 +28,7 @@ public class UIHeroList : MonoBehaviour
             item.btnHeroListItem.onClick.AddListener(() =>
             {
                 this.onCLickHero(hero.id);
+                item.audioSource.Play();
             });
             uiHeroListItemList.Add(item);
         }
