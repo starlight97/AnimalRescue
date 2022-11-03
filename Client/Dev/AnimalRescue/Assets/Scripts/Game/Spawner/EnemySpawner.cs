@@ -76,8 +76,8 @@ public class EnemySpawner : MonoBehaviour
                 Destroy(dieEnemy.gameObject);
             };
             spawnCount++;
-
-            yield return new WaitForSeconds(GameConstants.EnemySpawnTime);
+            
+            yield return new WaitForSeconds(0.01f);
         }
     }
 

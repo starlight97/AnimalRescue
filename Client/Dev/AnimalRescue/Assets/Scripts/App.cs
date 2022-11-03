@@ -8,7 +8,7 @@ public class App : MonoBehaviour
 {
     public enum eSceneType
     {
-        App, Logo, Loading, Title, Lobby, Game, Shop, RepairShop
+        App, Logo, Loading, Title, Lobby, Game, Shop, RepairShop, GameOver
     }
 
     public static App instance;
@@ -143,7 +143,7 @@ public class App : MonoBehaviour
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
-                                this.LoadScene<GameMain>(eSceneType.Game);
+                                this.LoadScene<GameOverMain>(eSceneType.GameOver);
                             });
                         });
                         var param = new GameMainParam() { heroId = this.lobbyMain.selectedHeroId };
@@ -178,6 +178,21 @@ public class App : MonoBehaviour
 
                         var param = new RepairShopParam() { heroId = this.lobbyMain.selectedHeroId};
                         main.Init(param);
+                        break;
+                    }
+                case eSceneType.GameOver:
+                    {
+                        this.uiApp.FadeIn();
+
+                        main.AddListener("onClickNoBtn", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<LobbyMain>(eSceneType.Lobby);
+                            });
+                        });
+
+                        main.Init();
                         break;
                     }
             }

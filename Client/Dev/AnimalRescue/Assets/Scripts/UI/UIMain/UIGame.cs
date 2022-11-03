@@ -7,12 +7,15 @@ public class UIGame : MonoBehaviour
 {
     private UIHpGauge uiHpGauge;
     private UIWeaponLevelUp uiWeaponLevelUp;
+    private UIRivivePanel uiRivivePanel;
     public UnityAction<int> onWeaponSelect;
+    public UnityAction onGameOver;
 
     public void Init()
     {
         this.uiHpGauge = this.transform.Find("UIHpGauge").GetComponent<UIHpGauge>();
         this.uiWeaponLevelUp = this.transform.Find("UIWeaponLevelUp").GetComponent<UIWeaponLevelUp>();
+        this.uiRivivePanel = this.transform.Find("UIRivivePanel").GetComponent<UIRivivePanel>();
         
         uiWeaponLevelUp.onWeaponSelect = (id) =>
         {
@@ -20,8 +23,27 @@ public class UIGame : MonoBehaviour
             this.uiWeaponLevelUp.HideUI();
         };
 
+        uiRivivePanel.onClickNoBtn = () => 
+        {
+            this.uiRivivePanel.HidePanel();
+            this.onGameOver();
+        };
+
+        uiRivivePanel.onClickAdsBtn = () =>
+        {
+            this.uiRivivePanel.HidePanel();
+            AdMobManager.instance.ShowAds();
+        };
+
+        uiRivivePanel.onTimeOver = () => 
+        {
+            this.uiRivivePanel.HidePanel();
+            this.onGameOver();
+        };
+
         uiHpGauge.Init();
         uiWeaponLevelUp.Init();
+        uiRivivePanel.Init();
     }
 
     public void FixedHpGaugePosition(Vector3 worldPos)
@@ -37,5 +59,15 @@ public class UIGame : MonoBehaviour
     public void ShowWeaponLevelUp()
     {
         this.uiWeaponLevelUp.ShowUI();
+    }
+
+    public void ShowRivivePanel()
+    {
+        this.uiRivivePanel.ShowPanel();
+    }
+
+    public void RunTimer()
+    {
+        this.uiRivivePanel.RiviveTimer();
     }
 }
