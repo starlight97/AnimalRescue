@@ -37,9 +37,11 @@ public class GameMain : SceneMain
         };
         this.player.onDie = () =>
         {
-            var info = InfoManager.instance.GetInfo();
-            info.playerInfo.gold += getGold;
-            // 씬이동 게임오버씬으로
+            Pause();
+            this.uiGame.ShowRivivePanel();
+            this.uiGame.RunTimer();
+
+            //// 씬이동 게임오버씬으로
         };
         this.enemySpawner.onDieEnemy = (experience) =>
         {
@@ -65,14 +67,20 @@ public class GameMain : SceneMain
             this.weaponManager.WeaponUpgrade(id);
             Debug.Log(id + " : Level Up 선택!~@!@~");
         };
+        this.uiGame.onGameOver = () => 
+        {
+            Resume();
+            var info = InfoManager.instance.GetInfo();
+            info.playerInfo.gold += getGold;
+            Dispatch("onGameOver");
+        };
+
 
         this.uiGame.Init();
         this.player.Init(gameMainParam.heroId);
         this.enemySpawner.Init();
         this.waveManager.Init();
-        this.weaponManager.Init(2004);
-
-        
+        //this.weaponManager.Init(2000);
     }
 
     private void GameObjectSetting()

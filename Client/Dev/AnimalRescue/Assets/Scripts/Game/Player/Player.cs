@@ -118,6 +118,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         StartCoroutine(DieRoutine());
+        this.onDie();
     }
 
     private IEnumerator DieRoutine()
@@ -125,7 +126,6 @@ public class Player : MonoBehaviour
         SetState(eStateType.Die);
         var length = this.anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         yield return new WaitForSeconds(length);
-        this.onDie();
     }
 
     private void SetState(eStateType state)
@@ -133,6 +133,7 @@ public class Player : MonoBehaviour
         this.anim.SetInteger("State", (int)state);
     }
 
+    #region 자동 에임 부채꼴 범위
     // 시야 영역의 반지름과 시야 각도
     public float viewRadius;
     [Range(0, 360)]
@@ -188,4 +189,5 @@ public class Player : MonoBehaviour
 
         return new Vector3(Mathf.Cos((-angleDegrees + 90) * Mathf.Deg2Rad), 0, Mathf.Sin((-angleDegrees + 90) * Mathf.Deg2Rad));
     }
+    #endregion
 }
