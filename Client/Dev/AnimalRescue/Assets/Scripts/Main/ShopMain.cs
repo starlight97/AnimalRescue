@@ -6,19 +6,6 @@ public class ShopMain : SceneMain
 {
     private UIShop uiShop;
 
-    private void Start()
-    {
-        //DataManager.instance.Init();
-        //DataManager.instance.LoadAllData(this);
-        //InfoManager.instance.Init();
-
-        //DataManager.instance.onDataLoadFinished.AddListener(() =>
-        //{
-        //    this.Init();
-        //});
-
-    }
-
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
@@ -36,6 +23,8 @@ public class ShopMain : SceneMain
         {
             ShowAds();
         };
+
+        this.OptionInit();
     }
 
     private void ShowAds()

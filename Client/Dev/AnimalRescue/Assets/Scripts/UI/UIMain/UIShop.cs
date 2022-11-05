@@ -12,8 +12,8 @@ public class UIShop : UIBase
     override public void Init()
     {
         base.Init();
+        this.UIOptionInit();
         this.uiHeroShop = GameObject.FindObjectOfType<UIHeroShop>();
-
 
 
         this.uiHeroShop.Init(0);
@@ -22,10 +22,14 @@ public class UIShop : UIBase
         {
             this.onClickLobby();
         });
-        btnShowAd.onClick.AddListener(() =>
+        this.btnShowAd.onClick.AddListener(() =>
         {
             onClickAdsBtn();
         });
+        this.isShowPanelOption = (check) =>
+        {
+
+        };
     }
 
     public Text GetTextGold()

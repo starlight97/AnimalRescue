@@ -72,9 +72,6 @@ public class LobbyMain : SceneMain
         };
 
         this.uiLobby.Init();
-
-        this.optionManager.Init();
-        this.soundManager.Init();
-        this.soundManager.PlayBGMSound();
+        this.OptionInit();
     }
 }

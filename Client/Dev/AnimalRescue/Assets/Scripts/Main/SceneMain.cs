@@ -20,6 +20,13 @@ public class SceneMain : MonoBehaviour, IEventDispatcher
         this.uiBase = GameObject.FindObjectOfType<UIBase>();
     }
 
+    public void OptionInit()
+    {
+        this.optionManager.Init();
+        this.soundManager.Init();
+        this.soundManager.PlayBGMSound();
+    }
+
     public void AddListener(string eventName, UnityAction<EventParams> callback)
     {
         this.eventDispatcher.AddListener(eventName, callback);

@@ -24,23 +24,25 @@ public class UIBase : MonoBehaviour
     {
         this.btnOption.onClick.AddListener(() =>
         {
-            ShowPanelOption();
+            SetActivePanelOption(true);
         });
         this.btnOptionClose.onClick.AddListener(() =>
         {
-            HidePanelOption();
+            SetActivePanelOption(false);
         });
+
+        this.isShowPanelOption = (check) =>
+        {
+
+        };
     }
 
-    public void ShowPanelOption()
+    // state : true 호출시 Panel 켜기
+    // state : true 호출시 Panel 끄기
+    public void SetActivePanelOption(bool state)
     {
-        isShowPanelOption(true);
-        panelOptionGo.SetActive(true);
+        isShowPanelOption(state);
+        panelOptionGo.SetActive(state);
     }
 
-    public void HidePanelOption()
-    {
-        isShowPanelOption(false);
-        panelOptionGo.SetActive(false);
-    }
 }

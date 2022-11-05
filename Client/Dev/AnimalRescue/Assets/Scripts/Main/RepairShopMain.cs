@@ -20,10 +20,9 @@ public class RepairShopMain : SceneMain
             Dispatch("onClickLobby");
         };
 
-        this.optionManager.Init();
+        this.OptionInit();
         this.uiRepairShop.Init(mainParam.heroId);
-        this.soundManager.Init();
-        this.soundManager.PlayBGMSound();
+
     }
 
 
