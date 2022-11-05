@@ -10,18 +10,19 @@ public class OptionManager : MonoBehaviour
     public Slider bgmVolumeSlider;
     public Slider sfxVolumeSlider;
 
-    public void Setting()
-    {
-        //float backGroundVolume = DataManager.instance.systemData.audioBackGroundVolume;
-        //float masterVolume = DataManager.instance.systemData.audioMasterVolume;
-
-        //bgmVolumeSlider.value = backGroundVolume;
-        //sfxVolumeSlider.value = masterVolume;
-
-    }
-
     public void Init()
     {
+        if (PlayerPrefs.HasKey("BgmVolume") && PlayerPrefs.HasKey("SfxVolume"))
+        {
+            bgmVolumeSlider.value = PlayerPrefs.GetFloat("BgmVolume");
+            sfxVolumeSlider.value = PlayerPrefs.GetFloat("SfxVolume");
+        }
+        else
+        {
+            bgmVolumeSlider.value = 0.5f;
+            sfxVolumeSlider.value = 0.5f;
+        }
+
         this.bgmVolumeSlider.onValueChanged.AddListener((value) =>
         {
             AudioControl();
@@ -31,7 +32,8 @@ public class OptionManager : MonoBehaviour
             AudioControl();
         });
 
-
+        audioMixer.SetFloat("BGM", bgmVolumeSlider.value);
+        audioMixer.SetFloat("SFX", sfxVolumeSlider.value);
     }
 
     public void AudioControl()
@@ -47,5 +49,7 @@ public class OptionManager : MonoBehaviour
         audioMixer.SetFloat("BGM", bgmVolume);
         audioMixer.SetFloat("SFX", sfxrVolume);
 
+        PlayerPrefs.SetFloat("BgmVolume", bgmVolume);
+        PlayerPrefs.SetFloat("SfxVolume", sfxrVolume);
     }
 }
