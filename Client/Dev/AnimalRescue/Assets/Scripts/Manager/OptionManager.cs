@@ -19,8 +19,8 @@ public class OptionManager : MonoBehaviour
         }
         else
         {
-            bgmVolumeSlider.value = 0.5f;
-            sfxVolumeSlider.value = 0.5f;
+            bgmVolumeSlider.value = -20;
+            sfxVolumeSlider.value = -20;
         }
 
         this.bgmVolumeSlider.onValueChanged.AddListener((value) =>
@@ -32,8 +32,7 @@ public class OptionManager : MonoBehaviour
             AudioControl();
         });
 
-        audioMixer.SetFloat("BGM", bgmVolumeSlider.value);
-        audioMixer.SetFloat("SFX", sfxVolumeSlider.value);
+        AudioControl();
     }
 
     public void AudioControl()

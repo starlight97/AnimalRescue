@@ -5,12 +5,12 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class UIRepairShop : MonoBehaviour
+public class UIRepairShop : UIBase
 {
     public Button btnBack;
     public UnityAction onClickLobby;
     public Text textPlayerGold;
-    public Text textPlayerDiamond;
+    //public Text textPlayerDiamond;
     public GameObject heroViewGo;
     public AudioSource audioSource;
     private int powerUpConut = 0;
@@ -20,11 +20,13 @@ public class UIRepairShop : MonoBehaviour
 
     public ParticleSystem heartsParticleGo;
     public ParticleSystem starParticleGo;
-    public void Init(int heroId)
+    override public void Init(int heroId)
     {
+        base.Init(heroId);
+        base.UIOptionInit();
         var info = InfoManager.instance.GetInfo();
         this.textPlayerGold.text = info.playerInfo.gold.ToString();
-        this.textPlayerDiamond.text = info.playerInfo.diamond.ToString();
+        //this.textPlayerDiamond.text = info.playerInfo.diamond.ToString();
 
         this.btnBack.onClick.AddListener(() =>
         {
@@ -46,47 +48,26 @@ public class UIRepairShop : MonoBehaviour
             audioSource.Play();
             this.uiHeroDetailStats.UpdateUI();
             this.textPlayerGold.text = info.playerInfo.gold.ToString();
-            this.textPlayerDiamond.text = info.playerInfo.diamond.ToString();
+            //this.textPlayerDiamond.text = info.playerInfo.diamond.ToString();
             powerUpConut++;
             if(powerUpConut % 3 == 0)
             {
                 uiHero.SetAnim(UIHero.eState.PowerUp02);
                 heartsParticleGo.Play();
-                //PlayParticle(2);
             }
             else
             {
                 uiHero.SetAnim(UIHero.eState.PowerUp01);
                 starParticleGo.Play();
-                //PlayParticle(1);
             }
 
         };
+        this.isShowPanelOption = (check) =>
+        {
+            heroViewGo.SetActive(!check);
+        };
+
         this.uiHeroDetailStats.UpdateUI();
     }
 
-    // 1 별
-    // 2 하트
-    private Coroutine playParticleRoutine;
-    //private void PlayParticle(int type)
-    //{
-    //    if (playParticleRoutine != null)
-    //        StopCoroutine(playParticleRoutine);
-    //    playParticleRoutine = this.StartCoroutine(this.PlayParticleRoutine(type));
-    //}
-    //private IEnumerator PlayParticleRoutine(int type)
-    //{
-    //    //if(type == 1)
-    //    //{
-    //    //    starParticleGo.SetActive(true);
-    //    //}
-    //    //else
-    //    //{
-    //    //    heartsParticleGo.SetActive(true);
-    //    //}
-    //    //yield return new WaitForSeconds(3f);
-    //    //starParticleGo.SetActive(false);
-    //    //heartsParticleGo.SetActive(false);
-    //    //playParticleRoutine = null;
-    //}
 }

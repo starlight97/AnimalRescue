@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class UILobby : MonoBehaviour
+public class UILobby : UIBase
 {
     public enum eBtnLobby
     {
@@ -18,8 +18,7 @@ public class UILobby : MonoBehaviour
     public Button btnGameStart;
     public Button btnShop;
     public Button btnRepairShop;
-    public Button btnOption;
-    public Button btnOptionClose;
+
     public Button btnCloudSave;
     public Button btnCloudLoad;
     private Button btnExit;
@@ -32,9 +31,13 @@ public class UILobby : MonoBehaviour
 
     public UnityAction<eBtnLobby> onClickBtn;
     public UnityAction<int> onClickHero;
-    public GameObject panelSetting;
-    public void Init()
+
+
+    override public void Init()
     {
+        base.Init();
+        base.UIOptionInit();
+
         this.uiLobbyHeroStats = GameObject.FindObjectOfType<UILobbyHeroStats>();
         this.uiHeroList = GameObject.FindObjectOfType<UIHeroList>();
 
@@ -50,16 +53,13 @@ public class UILobby : MonoBehaviour
         {
             this.onClickBtn(eBtnLobby.RepairShop);
         });
-        this.btnOption.onClick.AddListener(() =>
+        this.isShowPanelOption = (check) =>
         {
-            panelSetting.SetActive(true);
-            this.onClickBtn(eBtnLobby.Option);
-        });
-        this.btnOptionClose.onClick.AddListener(() =>
-        {
-            panelSetting.SetActive(false);
-            this.onClickBtn(eBtnLobby.OptionClose);
-        });
+            if(check)
+                this.onClickBtn(eBtnLobby.Option);
+            else
+                this.onClickBtn(eBtnLobby.OptionClose);
+        };
         this.btnCloudSave.onClick.AddListener(() =>
         {
             GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());

@@ -23,9 +23,9 @@ public class ShopMain : SceneMain
     {
         base.Init(param);
 
-        this.uiShop = GameObject.FindObjectOfType<UIShop>();
-
+        this.uiShop = (UIShop)this.uiBase;
         this.uiShop.Init();
+        
 
         this.uiShop.onClickLobby = () =>
         {

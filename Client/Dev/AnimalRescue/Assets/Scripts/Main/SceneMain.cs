@@ -9,9 +9,15 @@ public class SceneMain : MonoBehaviour, IEventDispatcher
     public UnityEvent onDestroy = new UnityEvent();
     public bool useOnDestoryEvent = true;
 
+    protected OptionManager optionManager;
+    protected SoundManager soundManager;
+    protected UIBase uiBase;
+
     public virtual void Init(SceneParams param = null)
     {
-
+        this.optionManager = GameObject.FindObjectOfType<OptionManager>();
+        this.soundManager = GameObject.FindObjectOfType<SoundManager>();
+        this.uiBase = GameObject.FindObjectOfType<UIBase>();
     }
 
     public void AddListener(string eventName, UnityAction<EventParams> callback)

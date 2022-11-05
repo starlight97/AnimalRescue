@@ -23,7 +23,7 @@ public class UIHeroList : MonoBehaviour
             GameObject itemGo = Instantiate(this.uiHeroListItemPrefab, this.content);
             var item = itemGo.GetComponent<UIHeroListItem>();
             var heroData = DataManager.instance.GetData<HeroData>(hero.id);
-            item.Init(hero.id, atlas.GetSprite(heroData.sprite_name), heroData.hero_name);
+            item.Init(hero.id, atlas.GetSprite(heroData.sprite_name));
 
             item.btnHeroListItem.onClick.AddListener(() =>
             {

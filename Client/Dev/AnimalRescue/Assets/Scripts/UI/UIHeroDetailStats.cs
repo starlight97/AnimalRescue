@@ -35,10 +35,10 @@ public class UIHeroDetailStats : MonoBehaviour
         var info = InfoManager.instance.GetInfo();
 
         this.textDamageLevel.text = "Level : " + info.dicHeroInfo[heroId].dicStats["damage"].ToString();
-        this.textDamage.text = "데미지 : " + (heroData.damage + (info.dicHeroInfo[heroId].dicStats["damage"] * heroData.increase_damage)).ToString();
+        this.textDamage.text = "Damage : " + (heroData.damage + (info.dicHeroInfo[heroId].dicStats["damage"] * heroData.increase_damage)).ToString();
         this.textMaxHpLevel.text = "Level : " + info.dicHeroInfo[heroId].dicStats["maxhp"].ToString();
-        this.textMaxHp.text = "체력 : " + (heroData.max_hp + (info.dicHeroInfo[heroId].dicStats["maxhp"] * heroData.increase_maxhp)).ToString();
+        this.textMaxHp.text = "Hp : " + (heroData.max_hp + (info.dicHeroInfo[heroId].dicStats["maxhp"] * heroData.increase_maxhp)).ToString();
         this.textMoveSpeedLevel.text = "Level : " + info.dicHeroInfo[heroId].dicStats["movespeed"].ToString();
-        this.textMoveSpeed.text = "이동속도 : " + (heroData.move_speed + (info.dicHeroInfo[heroId].dicStats["movespeed"] * heroData.increase_movespeed)).ToString();
+        this.textMoveSpeed.text = "MoveSpeed : " + (heroData.move_speed + (info.dicHeroInfo[heroId].dicStats["movespeed"] * heroData.increase_movespeed)).ToString();
     }
 }

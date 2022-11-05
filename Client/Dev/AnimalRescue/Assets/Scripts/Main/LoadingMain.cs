@@ -7,8 +7,10 @@ public class LoadingMain : SceneMain
     private UILoading uiLoading;
     public override void Init(SceneParams param = null)
     {
-        this.uiLoading = GameObject.FindObjectOfType<UILoading>();
-        uiLoading.Init();
+        base.Init();
+        this.uiLoading = (UILoading)this.uiBase;
+        this.uiLoading.Init();
+
 
         DataManager.instance.onDataLoadComplete.AddListener((dataName, progress) =>
         {

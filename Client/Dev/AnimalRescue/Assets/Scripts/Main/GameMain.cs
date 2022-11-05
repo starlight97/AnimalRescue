@@ -16,6 +16,8 @@ public class GameMain : SceneMain
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
+        this.uiGame = (UIGame)this.uiBase;
+
 
         GameMainParam gameMainParam = (GameMainParam)param;
 
@@ -98,7 +100,6 @@ public class GameMain : SceneMain
         this.player = GameObject.FindObjectOfType<Player>();
         this.enemySpawner = GameObject.FindObjectOfType<EnemySpawner>();
         this.waveManager = GameObject.FindObjectOfType<WaveManager>();
-        this.uiGame = GameObject.FindObjectOfType<UIGame>();
         this.weaponManager = GameObject.FindObjectOfType<WeaponManager>();
     }
     public void Resume()

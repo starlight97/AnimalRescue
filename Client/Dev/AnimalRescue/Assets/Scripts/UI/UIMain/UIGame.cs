@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class UIGame : MonoBehaviour
+public class UIGame : UIBase
 {
     private UIHpGauge uiHpGauge;
     private UIWeaponLevelUp uiWeaponLevelUp;
@@ -12,8 +12,9 @@ public class UIGame : MonoBehaviour
     public UnityAction onGameOver;
     public UnityAction onClickAds;
 
-    public void Init()
+    public override void Init()
     {
+        base.Init();
         this.uiHpGauge = this.transform.Find("UIHpGauge").GetComponent<UIHpGauge>();
         this.uiWeaponLevelUp = this.transform.Find("UIWeaponLevelUp").GetComponent<UIWeaponLevelUp>();
         this.uiRivivePanel = this.transform.Find("UIRivivePanel").GetComponent<UIRivivePanel>();

@@ -2657,7 +2657,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Setting
+  m_text: Option
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 27f54c9130c9748c9be53df11fa03382, type: 2}
   m_sharedMaterial: {fileID: -4171563015097924827, guid: 27f54c9130c9748c9be53df11fa03382, type: 2}
@@ -3892,16 +3892,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e0b1ed7c588d8247a56f4264cc2a9e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  panelOptionGo: {fileID: 3096860447010100321}
+  btnOption: {fileID: 1503181758}
+  btnOptionClose: {fileID: 3471883616944506036}
   btnGameStart: {fileID: 213992152}
   btnShop: {fileID: 2097902541}
   btnRepairShop: {fileID: 3240182426040607080}
-  btnOption: {fileID: 1503181758}
-  btnOptionClose: {fileID: 3471883616944506036}
   btnCloudSave: {fileID: 812599703}
   btnCloudLoad: {fileID: 770405180}
   gold: {fileID: 1620633341}
   diamond: {fileID: 1294687494}
-  panelSetting: {fileID: 3096860447010100321}
 --- !u!114 &2082894318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6927,7 +6927,7 @@ MonoBehaviour:
   m_MinValue: -40
   m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: -10
+  m_Value: -20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8821,7 +8821,7 @@ MonoBehaviour:
   m_MinValue: -40
   m_MaxValue: 0
   m_WholeNumbers: 0
-  m_Value: -10
+  m_Value: -20
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

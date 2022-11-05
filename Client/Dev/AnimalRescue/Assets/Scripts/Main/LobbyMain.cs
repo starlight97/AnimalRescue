@@ -5,18 +5,13 @@ using UnityEngine;
 public class LobbyMain : SceneMain
 {
     private UILobby uiLobby;
-    private OptionManager optionManager;
-    private SoundManager soundManager;
     public int selectedHeroId = 100;
     public GameObject heroViewGo;
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
-
-        this.uiLobby = GameObject.FindObjectOfType<UILobby>();
-        this.optionManager = GameObject.FindObjectOfType<OptionManager>();
-        this.soundManager = GameObject.FindObjectOfType<SoundManager>();
-
+        this.uiLobby = (UILobby)this.uiBase;
+        
         this.uiLobby.onClickBtn = (type) =>
         {
             switch (type)
@@ -59,9 +54,7 @@ public class LobbyMain : SceneMain
             if(heroViewGo.transform.childCount > 0)
                 Destroy(heroViewGo.transform.GetChild(0).gameObject);
             var uiHeroGo = Instantiate(Resources.Load<GameObject>(heroData.ui_prefab_path), heroViewGo.transform);
-            //uiHeroGo.transform.parent = heroViewGo.transform;
-            //uiHeroGo.transform.localPosition = Vector3.zero;
-            //uiHeroGo.transform.localRotation = 0;
+ 
         };
 
         GPGSManager.instance.onSavedCloud = () =>
@@ -72,9 +65,6 @@ public class LobbyMain : SceneMain
         {
             InfoManager.instance.SetInfo(info);
             //var json = JsonConvert.SerializeObject(this.gameInfo);
-            Debug.Log("*************로드성공*********");
-            Debug.Log("로드 성공");
-            Debug.Log("*************로드성공*********");
         };
         GPGSManager.instance.onErrorHandler = (status) =>
         {

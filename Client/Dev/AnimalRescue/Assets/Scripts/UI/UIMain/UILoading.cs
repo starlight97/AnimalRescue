@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UILoading : MonoBehaviour
+public class UILoading : UIBase
 {
     private Image imgSliderFront;
     private Text textDataName;
     private Text textPer;
 
-    public void Init()
+    public override void Init()
     {
         this.imgSliderFront = transform.Find("Slider").Find("Front").GetComponent<Image>();
         this.textDataName = transform.Find("TextDataName").GetComponent<Text>();

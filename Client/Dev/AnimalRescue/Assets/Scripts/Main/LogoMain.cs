@@ -6,6 +6,7 @@ public class LogoMain : SceneMain
 {
     public override void Init(SceneParams param = null)
     {
+        base.Init();
         this.useOnDestoryEvent = false;
 
         StartCoroutine(this.ShowLogoRoutine());

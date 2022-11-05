@@ -2,15 +2,16 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
-public class UIShop : MonoBehaviour
+public class UIShop : UIBase
 {
     private UIHeroShop uiHeroShop;
     public UnityAction onClickLobby;
     public UnityAction onClickAdsBtn;
     public Button btnBack;
     public Button btnShowAd;
-    public void Init()
+    override public void Init()
     {
+        base.Init();
         this.uiHeroShop = GameObject.FindObjectOfType<UIHeroShop>();
 
 
