@@ -20,7 +20,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] protected float moveSpeed;
     [SerializeField] protected float attackRange;
 
-    private GameObject playerGo;
+    protected GameObject playerGo;
     private Animator anim;
 
     protected Coroutine hitRoutine;

@@ -165,6 +165,10 @@ MonoBehaviour:
   attackRange: 0
   stonePrefab: {fileID: 7384006414486548760, guid: db12a0f4a27f34948b5837b78a42a2fc, type: 3}
   radius: 1
+  shadowPrefab: {fileID: 8493011544530208532, guid: 6e7a6cec155bbc640825f8c3b8dc585f, type: 3}
+  onCreateStone:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!136 &2663954975225086843
 CapsuleCollider:
   m_ObjectHideFlags: 0

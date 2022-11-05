@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossElementalGolem : Enemy
 {
     public GameObject stonePrefab;
     public float radius;
-    private int projectileCount = 0;
+    public GameObject shadowPrefab;
+    public UnityEvent<BossElementalGolemStone> onCreateStone = new UnityEvent<BossElementalGolemStone>();
+    private int attackCount;
+    private float stoneRandomRange;
 
     public override void Init(int level, int maxHp, int damage, int experience, float movespeed, float attackspeed, float attackRange)
     {
@@ -17,56 +21,37 @@ public class BossElementalGolem : Enemy
 
     protected override IEnumerator AttackRoutine()
     {
-        RadiusAttack();
+        SpawnStone(playerGo.transform.position);
+        for (int count = 1; count < attackCount; count++)
+        {
+            Debug.Log("asd");
+            var randX = Random.Range(-stoneRandomRange, stoneRandomRange);
+            var randZ = Random.Range(-stoneRandomRange, stoneRandomRange);
+
+            var pos = playerGo.transform.position;
+            pos.x += randX;
+            pos.z += randZ;
+            SpawnStone(pos);
+        }
+        
         yield return new WaitForSeconds(this.attackSpeed);
         this.attackRoutine = null;
     }
 
-    private void RadiusAttack()
+    private void SpawnStone(Vector3 tpos)
     {
-        float degree = this.transform.rotation.y;
-        var rot = this.transform.rotation;
-        rot = Quaternion.Euler(0, rot.eulerAngles.y, 0);
-        var angle = rot.eulerAngles.y;
+        var pos = new Vector3(tpos.x, 20, tpos.z);
+        var stoneGo = Instantiate<GameObject>(this.stonePrefab);
+        stoneGo.transform.position = pos;
+        var shadowGo = Instantiate(this.shadowPrefab);
+        pos.y = 0.01f;
+        shadowGo.transform.position = pos;
+        shadowGo.GetComponent<Shadow>().Init(stoneGo);
 
-        SpawnBullet(angle, degree);
-
-        int angleCount = 1;
-        int currentProjectileCount = 1;
-        while (true)
-        {
-            if (currentProjectileCount >= projectileCount)
-                break;
-            if (currentProjectileCount < projectileCount)
-            {
-                currentProjectileCount++;
-                SpawnBullet(angle + (angleCount * 20), degree);
-            }
-            if (currentProjectileCount < projectileCount)
-            {
-                currentProjectileCount++;
-                SpawnBullet(angle - (angleCount * 20), degree);
-            }
-            angleCount++;
-        }
+        var bossStone = stoneGo.GetComponent<BossElementalGolemStone>();
+        bossStone.Init(this.damage, shadowGo);
     }
 
-    private void SpawnBullet(float angle, float degree)
-    {
-        var radian = degree * Mathf.PI / 180;
-        var x = Mathf.Cos(radian) * radius;
-        var z = Mathf.Sin(radian) * radius;
-        var pos = new Vector3(x, 0, z);
-        var bossRatDoughnutGo = Instantiate<GameObject>(this.stonePrefab);
-
-        // 회전축 , 회전값    
-        var rot = Quaternion.Euler(0, angle, 0);
-
-        bossRatDoughnutGo.transform.rotation = rot;
-        bossRatDoughnutGo.transform.position = pos + this.transform.position;
-        var bossRatDoughnu = bossRatDoughnutGo.GetComponent<BossElementalGolemStone>();
-        bossRatDoughnu.Init(this.damage);
-    }
 
     protected override void DifficultySetting()
     {
@@ -74,19 +59,32 @@ public class BossElementalGolem : Enemy
 
         if (this.level == 1)
         {
-            projectileCount = 2;
+            attackCount = 1;
+            stoneRandomRange = 3f;
         }
         else if (this.level == 2)
         {
-            projectileCount = 4;
+            attackCount = 2;
+            stoneRandomRange = 5f;
         }
         else if (this.level == 3)
         {
-            projectileCount = 6;
+            attackCount = 6;
+            stoneRandomRange = 7f;
         }
         else if (this.level >= 4)
         {
-            projectileCount = 8;
+            attackCount = 10;
+            stoneRandomRange = 10f;
+        }
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            this.level++;
+            DifficultySetting();
         }
     }
 }

@@ -1918,10 +1918,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -5537,6 +5537,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 80e3a59b4c994424898b5a814454d82e, type: 2}
+  textBgmVolume: {fileID: 0}
+  textSfxVolume: {fileID: 0}
   bgmVolumeSlider: {fileID: 24504906}
   sfxVolumeSlider: {fileID: 24504905}
 --- !u!4 &2079646341

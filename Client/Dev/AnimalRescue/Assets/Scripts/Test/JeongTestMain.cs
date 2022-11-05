@@ -9,7 +9,7 @@ public class JeongTestMain : MonoBehaviour
     private WaveManager waveManager;
     private WeaponManager weaponManager;
     public UIJeongTest uiJeongTest;
-    public Enemy bossRat;
+    public Enemy boss;
 
     // Start is called before the first frame update
     void Start()
@@ -61,11 +61,11 @@ public class JeongTestMain : MonoBehaviour
         });
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
-            this.enemySpawner.Init();
+            //this.enemySpawner.Init();
             this.uiJeongTest.Init();
             this.player.Init(100);
-            this.waveManager.TestInit();
-            //this.bossRat.Init(10000,10,10,5,1, 1);
+            //this.waveManager.TestInit();
+            this.boss.Init(1, 10000,10,10,5,1, 5);
             this.weaponManager.Init(2000);
             //uiJeongTest.ShowWeaponLevelUp();
         });

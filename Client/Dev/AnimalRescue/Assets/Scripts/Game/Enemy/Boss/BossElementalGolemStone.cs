@@ -1,29 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BossElementalGolemStone : MonoBehaviour
 {
     public float speed;
     private int damage;
-
-    public void Init(int damage)
+    private GameObject shadowGo;
+    public void Init(int damage, GameObject shadowGo)
     {
         this.damage = damage;
+        this.shadowGo = shadowGo;
         this.StartCoroutine(this.MoveRoutine());
     }
 
 
     private IEnumerator MoveRoutine()
     {
-        float delta = 0;
         while (true)
         {
-            delta += Time.deltaTime;
-            this.transform.Translate(Vector3.forward * this.speed * Time.deltaTime);
+            this.transform.Translate(Vector3.down * this.speed * Time.deltaTime);
 
-            if (delta >= 5f)
-                break;
+            if (this.transform.position.y <= 0.1f)
+                break;             
+            
             yield return null;
         }
         Destroy(this.gameObject);
@@ -36,5 +37,10 @@ public class BossElementalGolemStone : MonoBehaviour
             other.GetComponent<Player>().Hit(this.damage);
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnDestroy()
+    {
+        Destroy(shadowGo);
     }
 }

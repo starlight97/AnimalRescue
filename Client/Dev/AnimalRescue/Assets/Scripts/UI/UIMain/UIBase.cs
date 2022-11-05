@@ -38,7 +38,7 @@ public class UIBase : MonoBehaviour
     }
 
     // state : true 호출시 Panel 켜기
-    // state : true 호출시 Panel 끄기
+    // state : false 호출시 Panel 끄기
     public void SetActivePanelOption(bool state)
     {
         isShowPanelOption(state);
