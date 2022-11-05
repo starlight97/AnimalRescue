@@ -13,6 +13,7 @@ public class UIHpGauge : MonoBehaviour
     {
         this.rectTrans = GetComponent<RectTransform>();
         this.imgFill = GameObject.Find("fill").GetComponent<Image>();
+        this.imgFill.fillAmount = 1;
     }
 
     public void UpdatePosition(Vector3 worldPos)

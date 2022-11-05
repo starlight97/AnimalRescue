@@ -102,8 +102,8 @@ public class Player : MonoBehaviour
 
         if (this.playerLife.Hp <= 0)
         {
+            this.playerLife.Hp = 0;
             this.Die();
-            StopAllCoroutines();
         }
     }
 
@@ -118,6 +118,7 @@ public class Player : MonoBehaviour
     private void Die()
     {
         StartCoroutine(DieRoutine());
+        StopAllCoroutines();
         this.onDie();
     }
 

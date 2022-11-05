@@ -37,11 +37,14 @@ public class GameMain : SceneMain
         };
         this.player.onDie = () =>
         {
-            Pause();
-            this.uiGame.ShowRivivePanel();
-            this.uiGame.RunTimer();
-
-            //// 씬이동 게임오버씬으로
+            #region 광고 있을 때
+            //Pause();
+            //this.uiGame.ShowRivivePanel();
+            //this.uiGame.RunTimer();
+            #endregion
+            var info = InfoManager.instance.GetInfo();
+            info.playerInfo.gold += getGold;
+            Dispatch("onGameOver");
         };
         this.enemySpawner.onDieEnemy = (experience) =>
         {
@@ -67,17 +70,21 @@ public class GameMain : SceneMain
             this.weaponManager.WeaponUpgrade(id);
             Debug.Log(id + " : Level Up 선택!~@!@~");
         };
+
+        #region 부활 패널 관련 액션
         this.uiGame.onGameOver = () => 
         {
-            Resume();
-            var info = InfoManager.instance.GetInfo();
-            info.playerInfo.gold += getGold;
-            Dispatch("onGameOver");
+            //Resume();
+            //var info = InfoManager.instance.GetInfo();
+            //info.playerInfo.gold += getGold;
+            //Dispatch("onGameOver");
         };
         this.uiGame.onClickAds = () =>
         {
-            ShowAds();
+            // 광고 버튼 누르면 hp 절반 회복
+            //ShowAds();
         };
+        #endregion
 
         this.uiGame.Init();
         this.player.Init(gameMainParam.heroId);
@@ -104,6 +111,8 @@ public class GameMain : SceneMain
         Time.timeScale = 0f;
     }
 
+
+    #region 광고 보여주기
     public void ShowAds()
     {
         AdMobManager.instance.Init("ca-app-pub-3940256099942544/5224354917");
@@ -129,5 +138,5 @@ public class GameMain : SceneMain
             player.playerLife.Hp = (float)(player.playerLife.MaxHp * (reward.Amount) / 100);
         };
     }
-
+    #endregion
 }
