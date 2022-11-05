@@ -22,3 +22,8 @@ public class RepairShopParam : SceneParams
 {
     public int heroId;
 }
+
+public class GameOverMainParam : SceneParams
+{
+    public int heroId;
+}

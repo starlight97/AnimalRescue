@@ -184,15 +184,22 @@ public class App : MonoBehaviour
                     {
                         this.uiApp.FadeIn();
 
-                        main.AddListener("onClickNoBtn", (data) =>
+                        main.AddListener("onClickAgain", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<GameMain>(eSceneType.Game);
+                            });
+                        });
+                        main.AddListener("onClickLobby", (data) =>
                         {
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<LobbyMain>(eSceneType.Lobby);
                             });
                         });
-
-                        main.Init();
+                        var param = new GameOverMainParam() { heroId = this.lobbyMain.selectedHeroId };
+                        main.Init(param);
                         break;
                     }
             }

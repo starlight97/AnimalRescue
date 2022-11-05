@@ -37,7 +37,7 @@ public class HyunMain : MonoBehaviour
         DataManager.instance.onDataLoadFinished.AddListener(() =>
         {
             uiHyunTest.Init();
-            player.Init(100);
+            player.Init(105);
             enemySpawner.Init();
             waveManager.Init();
             weaponManager.Init(2004);

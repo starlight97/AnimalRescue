@@ -77,7 +77,7 @@ public class EnemySpawner : MonoBehaviour
             };
             spawnCount++;
             
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(GameConstants.EnemySpawnTime);
         }
     }
 
