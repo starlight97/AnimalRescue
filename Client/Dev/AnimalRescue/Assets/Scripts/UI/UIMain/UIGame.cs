@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Events;
 
 public class UIGame : UIBase
 {
+    private Image dimImage;
     private UIHpGauge uiHpGauge;
     private UIWeaponLevelUp uiWeaponLevelUp;
     private UIRivivePanel uiRivivePanel;
@@ -15,16 +17,21 @@ public class UIGame : UIBase
     public override void Init()
     {
         base.Init();
+        this.dimImage = this.transform.Find("dim").GetComponent<Image>();
         this.uiHpGauge = this.transform.Find("UIHpGauge").GetComponent<UIHpGauge>();
         this.uiWeaponLevelUp = this.transform.Find("UIWeaponLevelUp").GetComponent<UIWeaponLevelUp>();
         this.uiRivivePanel = this.transform.Find("UIRivivePanel").GetComponent<UIRivivePanel>();
+
+        this.dimImage.gameObject.SetActive(false);
         
         uiWeaponLevelUp.onWeaponSelect = (id) =>
         {
             this.onWeaponSelect(id);
             this.uiWeaponLevelUp.HideUI();
+            this.dimImage.gameObject.SetActive(false);
         };
 
+        #region RiviveAction
         uiRivivePanel.onClickNoBtn = () => 
         {
             this.uiRivivePanel.HidePanel();
@@ -42,6 +49,7 @@ public class UIGame : UIBase
             this.uiRivivePanel.HidePanel();
             this.onGameOver();
         };
+        #endregion
 
         uiHpGauge.Init();
         uiWeaponLevelUp.Init();
@@ -61,6 +69,7 @@ public class UIGame : UIBase
     public void ShowWeaponLevelUp()
     {
         this.uiWeaponLevelUp.ShowUI();
+        this.dimImage.gameObject.SetActive(true);
     }
 
     public void ShowRivivePanel()

@@ -5,7 +5,7 @@ using UnityEngine;
 public class LobbyMain : SceneMain
 {
     private UILobby uiLobby;
-    public int selectedHeroId = 100;
+    public int selectedHeroId;
     public GameObject heroViewGo;
     public override void Init(SceneParams param = null)
     {

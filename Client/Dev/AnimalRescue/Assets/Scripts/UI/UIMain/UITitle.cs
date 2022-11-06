@@ -8,8 +8,6 @@ public class UITitle : MonoBehaviour
 {
     public Text startText;
 
-    private float delta = 0;
-
     public void Init()
     {
         blinkText();

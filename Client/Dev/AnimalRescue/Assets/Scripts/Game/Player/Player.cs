@@ -34,7 +34,6 @@ public class Player : MonoBehaviour
         this.Id = heroId;
 
         var heroData = DataManager.instance.GetData<HeroData>(this.Id);
-        Debug.Log(heroData.hero_name);
         var info = InfoManager.instance.GetInfo();
 
         var heroDamage = heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage;
