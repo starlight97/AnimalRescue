@@ -33,7 +33,8 @@ public class Player : MonoBehaviour
     {
         this.Id = heroId;
 
-        var heroData = DataManager.instance.GetData<HeroData>(heroId);
+        var heroData = DataManager.instance.GetData<HeroData>(this.Id);
+        Debug.Log(heroData.hero_name);
         var info = InfoManager.instance.GetInfo();
 
         var heroDamage = heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage;
@@ -95,8 +96,9 @@ public class Player : MonoBehaviour
 
     public void Hit(int damage)
     {
-        if (this.hitRoutine == null)
-            this.hitRoutine = StartCoroutine(HitRoutine());
+        if (this.hitRoutine != null)
+            StopCoroutine(hitRoutine);
+        this.hitRoutine = StartCoroutine(HitRoutine());
         this.playerLife.Hp -= damage;
         onUpdateHp(this.playerLife.Hp, this.playerLife.MaxHp);
 
@@ -118,8 +120,8 @@ public class Player : MonoBehaviour
     private void Die()
     {
         StartCoroutine(DieRoutine());
-        StopAllCoroutines();
         this.onDie();
+        StopAllCoroutines();
     }
 
     private IEnumerator DieRoutine()
