@@ -17,6 +17,6 @@ public class GameOverMain : SceneMain
             Dispatch("onClick" + btnName);
         };
 
-        this.uiGameOver.Init();
+        this.uiGameOver.Init(gameOvermainParam.heroId);
     }
 }

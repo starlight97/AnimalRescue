@@ -8,7 +8,8 @@ public class UIHero : MonoBehaviour
     {
         Idle = 0,
         PowerUp01,
-        PowerUp02
+        PowerUp02,
+        Dizzy
     }
     private Animator anim;
     private Coroutine setAnimRoutine;
@@ -41,6 +42,4 @@ public class UIHero : MonoBehaviour
         yield return null;
         this.setAnimRoutine = null;
     }
-
-
 }
