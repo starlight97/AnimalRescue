@@ -23,7 +23,7 @@ public class HyunMain : MonoBehaviour
         this.weaponManager = GameObject.FindObjectOfType<WeaponManager>();
         this.uiHyunTest = GameObject.FindObjectOfType<UIHyunTest>();
 
-        this.enemySpawner.onDieEnemy = (experience) =>
+        this.enemySpawner.onDieEnemy = (id, experience) =>
         {
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
