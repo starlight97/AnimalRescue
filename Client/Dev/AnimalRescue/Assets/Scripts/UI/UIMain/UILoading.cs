@@ -8,6 +8,7 @@ public class UILoading : UIBase
     public Image imgSliderFront;
     public Text textDataName;
     public Text textPer;
+    public Image imgPupu;
 
     public override void Init()
     {
@@ -18,9 +19,13 @@ public class UILoading : UIBase
 
     public void SetUI(string dataName, float progress)
     {
-        this.textPer.text = string.Format("{0}%", progress * 100f);
+        this.textPer.text = string.Format("{0}%", (int)progress * 100f);
         this.textDataName.text = dataName;
         this.imgSliderFront.fillAmount = progress;
+        this.imgPupu.fillAmount = progress;
+
+        if (this.imgPupu.fillAmount >= 0.6f)
+            this.imgPupu.fillAmount = 0.6f;
     }
 
 }
