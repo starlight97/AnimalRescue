@@ -19,7 +19,7 @@ public class UIPowerUpStat : MonoBehaviour
 
         GameObject itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         var item = itemGo.GetComponent<UIPowerUpStatItem>();
-        item.Init("공격력","damage",heroId, data.increase_damage, info.dicHeroInfo[heroId].dicStats["damage"] * price);
+        item.Init("Damage","damage",heroId, data.increase_damage, info.dicHeroInfo[heroId].dicStats["damage"] * price);
         item.onClickLevelUp = (statkey) =>
         {
             this.onClickLevelUp(statkey);
@@ -27,7 +27,7 @@ public class UIPowerUpStat : MonoBehaviour
 
         itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         item = itemGo.GetComponent<UIPowerUpStatItem>();
-        item.Init("체력", "maxhp", heroId, (int)data.increase_maxhp, info.dicHeroInfo[heroId].dicStats["maxhp"] * price);
+        item.Init("Hp", "maxhp", heroId, (int)data.increase_maxhp, info.dicHeroInfo[heroId].dicStats["maxhp"] * price);
         item.onClickLevelUp = (statkey) =>
         {
             this.onClickLevelUp(statkey);
@@ -35,9 +35,17 @@ public class UIPowerUpStat : MonoBehaviour
 
         itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         item = itemGo.GetComponent<UIPowerUpStatItem>();
-        item.Init("이동속도","movespeed", heroId, data.increase_movespeed, info.dicHeroInfo[heroId].dicStats["movespeed"] * price);
+        item.Init("MoveSpeed","movespeed", heroId, data.increase_movespeed, info.dicHeroInfo[heroId].dicStats["movespeed"] * price);
+        if(info.dicHeroInfo[heroId].dicStats["movespeed"] >= 100)
+        {
+            item.ShowMaxBtn();
+        }
         item.onClickLevelUp = (statkey) =>
         {
+            if (info.dicHeroInfo[heroId].dicStats["movespeed"] >= 100)
+            {
+                item.ShowMaxBtn();
+            }
             this.onClickLevelUp(statkey);
         };
     }

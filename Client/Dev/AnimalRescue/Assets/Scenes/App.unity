@@ -297,6 +297,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39204d18b5880f344986944d3337f77f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  btnAudioArr:
+  - {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
+  - {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
+  - {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
   audioMixer: {fileID: 24100000, guid: 80e3a59b4c994424898b5a814454d82e, type: 2}
 --- !u!1 &1045275283
 GameObject:

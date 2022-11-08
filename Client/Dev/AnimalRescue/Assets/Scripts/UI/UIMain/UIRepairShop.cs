@@ -7,12 +7,18 @@ using UnityEngine.UI;
 
 public class UIRepairShop : UIBase
 {
+    public enum eBtnRepairShop
+    {
+        Back,
+        Shop
+    }
+
     public Button btnBack;
-    public UnityAction onClickLobby;
+    public Button btnShop;
+    public UnityAction<eBtnRepairShop> onClickBtn;
     public Text textPlayerGold;
     //public Text textPlayerDiamond;
     public GameObject heroViewGo;
-    public AudioSource audioSource;
     private int powerUpConut = 0;
 
     private UIPowerUpStat uiPowerUpStat;
@@ -30,7 +36,11 @@ public class UIRepairShop : UIBase
 
         this.btnBack.onClick.AddListener(() =>
         {
-            this.onClickLobby();
+            this.onClickBtn(eBtnRepairShop.Back);
+        });
+        this.btnShop.onClick.AddListener(() =>
+        {
+            this.onClickBtn(eBtnRepairShop.Shop);
         });
 
         this.uiPowerUpStat = GameObject.FindObjectOfType<UIPowerUpStat>();
@@ -45,7 +55,7 @@ public class UIRepairShop : UIBase
 
         uiPowerUpStat.onClickLevelUp = (statType) =>
         {
-            audioSource.Play();
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button3);
             this.uiHeroDetailStats.UpdateUI();
             this.textPlayerGold.text = info.playerInfo.gold.ToString();
             //this.textPlayerDiamond.text = info.playerInfo.diamond.ToString();
@@ -64,6 +74,7 @@ public class UIRepairShop : UIBase
         };
         this.isShowPanelOption = (check) =>
         {
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
             heroViewGo.SetActive(!check);
         };
 

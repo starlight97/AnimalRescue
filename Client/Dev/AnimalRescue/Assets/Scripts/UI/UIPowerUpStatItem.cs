@@ -11,6 +11,7 @@ public class UIPowerUpStatItem : MonoBehaviour
     private Text textPrice;
 
     private Button btnLevelUp;
+    private Button btnMax;
     private int price;
     private string statkey;
     private int heroId;
@@ -21,6 +22,7 @@ public class UIPowerUpStatItem : MonoBehaviour
     {
         this.textIncrease = transform.Find("TextIncrease").GetComponent<Text>();
         this.btnLevelUp = transform.Find("BtnLevelUp").GetComponent<Button>();
+        this.btnMax = transform.Find("BtnMax").GetComponent<Button>();
         this.textStatName = transform.Find("TextStatName").GetComponent<Text>();
         this.textPrice = this.btnLevelUp.transform.Find("TextPrice").GetComponent<Text>();
 
@@ -33,10 +35,20 @@ public class UIPowerUpStatItem : MonoBehaviour
 
         this.btnLevelUp.onClick.AddListener(() =>
         {
-            if(this.LevelUp())
+            if (this.LevelUp())
                 this.onClickLevelUp(statkey);
         });
+        this.btnMax.onClick.AddListener(() =>
+        {
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
+        });
+        this.btnMax.gameObject.SetActive(false);
+    }
 
+    public void ShowMaxBtn()
+    {
+        btnLevelUp.gameObject.SetActive(false);
+        btnMax.gameObject.SetActive(true);
     }
 
     private bool LevelUp()

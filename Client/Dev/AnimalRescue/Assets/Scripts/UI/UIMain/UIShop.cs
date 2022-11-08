@@ -20,15 +20,17 @@ public class UIShop : UIBase
 
         this.btnBack.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
             this.onClickLobby();
         });
         this.btnShowAd.onClick.AddListener(() =>
         {
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
             onClickAdsBtn();
         });
         this.isShowPanelOption = (check) =>
         {
-
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
         };
     }
 

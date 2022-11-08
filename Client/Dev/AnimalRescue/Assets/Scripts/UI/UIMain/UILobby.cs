@@ -31,7 +31,6 @@ public class UILobby : UIBase
 
     public UnityAction<eBtnLobby> onClickBtn;
     public UnityAction<int> onClickHero;
-    public AudioClip btnAudio;
 
     override public void Init()
     {
@@ -44,21 +43,21 @@ public class UILobby : UIBase
         this.btnGameStart.onClick.AddListener(() =>
         {
             this.onClickBtn(eBtnLobby.GameStart);
-            SoundManager.instance.PlaySound(btnAudio);
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
         });
         this.btnShop.onClick.AddListener(() =>
         {
             this.onClickBtn(eBtnLobby.Shop);
-            SoundManager.instance.PlaySound(btnAudio);
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
         });
         this.btnRepairShop.onClick.AddListener(() =>
         {
             this.onClickBtn(eBtnLobby.RepairShop);
-            SoundManager.instance.PlaySound(btnAudio);
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
         });
         this.isShowPanelOption = (check) =>
         {
-            SoundManager.instance.PlaySound(btnAudio);
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
 
             if (check)
                 this.onClickBtn(eBtnLobby.Option);

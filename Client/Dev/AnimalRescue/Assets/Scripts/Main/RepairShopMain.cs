@@ -15,9 +15,18 @@ public class RepairShopMain : SceneMain
         this.uiRepairShop = (UIRepairShop)this.uiBase;
 
 
-        this.uiRepairShop.onClickLobby = () =>
+        this.uiRepairShop.onClickBtn = (type) =>
         {
-            Dispatch("onClickLobby");
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
+            switch (type)
+            {
+                case UIRepairShop.eBtnRepairShop.Back:
+                    Dispatch("onClickLobby");
+                    break;
+                case UIRepairShop.eBtnRepairShop.Shop:
+                    Dispatch("onClickShop");
+                    break;
+            }            
         };
 
         this.OptionInit();

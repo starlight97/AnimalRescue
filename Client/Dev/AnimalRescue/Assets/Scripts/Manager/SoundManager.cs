@@ -6,7 +6,15 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
+    public enum eButtonAudio
+    {
+        Button1,
+        Button2,
+        Button3
+    }
     public static SoundManager instance;
+
+    public AudioClip[] btnAudioArr;
 
     public AudioMixer audioMixer;
 
@@ -53,6 +61,10 @@ public class SoundManager : MonoBehaviour
     public void PlaySound(AudioClip audio)
     {
         this.sfxAudioSource.PlayOneShot(audio);
+    }
+    public void PlaySound(eButtonAudio eButtonAudio)
+    {
+        this.sfxAudioSource.PlayOneShot(btnAudioArr[(int)eButtonAudio]);
     }
 
     public void StopBGMSound()

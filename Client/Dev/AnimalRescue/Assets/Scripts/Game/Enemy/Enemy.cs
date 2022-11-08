@@ -130,10 +130,18 @@ public class Enemy : MonoBehaviour
         var length = anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         yield return new WaitForSeconds(length);
 
+        var dis = Vector3.Distance(playerGo.transform.position, this.gameObject.transform.position);
+        if (dis <= this.attackRange)
+        {
+            var player = playerGo.GetComponent<Player>();
+            player.Hit(this.damage);
+        }
+        else
+        {
+        }
         SetState(eState.Run);
         // 플레이어 공격
-        var player = playerGo.GetComponent<Player>();
-        player.Hit(this.damage);
+
 
         yield return this.attackSpeed;
         this.attackRoutine = null;

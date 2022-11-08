@@ -1940,9 +1940,9 @@ MonoBehaviour:
   btnOption: {fileID: 1896595599}
   btnOptionClose: {fileID: 24504902}
   btnBack: {fileID: 2664502283495299671}
+  btnShop: {fileID: 1199322975}
   textPlayerGold: {fileID: 1433994999}
   heroViewGo: {fileID: 1525090445}
-  audioSource: {fileID: 610670224}
   heartsParticleGo: {fileID: 1972804172149207972}
   starParticleGo: {fileID: 2831303094008359565}
 --- !u!82 &610670224

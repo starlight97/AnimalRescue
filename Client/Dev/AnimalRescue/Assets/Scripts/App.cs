@@ -175,6 +175,13 @@ public class App : MonoBehaviour
                                 this.LoadScene<LobbyMain>(eSceneType.Lobby);
                             });
                         });
+                        main.AddListener("onClickShop", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<ShopMain>(eSceneType.Shop);
+                            });
+                        });
 
                         var param = new RepairShopParam() { heroId = this.lobbyMain.selectedHeroId};
                         main.Init(param);
