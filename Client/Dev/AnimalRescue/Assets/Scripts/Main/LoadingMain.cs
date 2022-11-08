@@ -23,6 +23,7 @@ public class LoadingMain : SceneMain
         });
         DataManager.instance.Init();
         DataManager.instance.LoadAllData();
+        SoundManager.instance.Init();
 
         InfoManager.instance.Init();
     }
