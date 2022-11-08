@@ -11,9 +11,13 @@ public class SoundManager : MonoBehaviour
     private AudioSource sfxAudioSource;
     private Coroutine playSoundRoutine;
 
-    public void Init()
+    private void Awake()
     {
         instance = this;
+    }
+
+    public void Init()
+    {
         bgmAudioSource = transform.Find("BGMAudio").GetComponent<AudioSource>();
         sfxAudioSource = transform.Find("SFXAudio").GetComponent<AudioSource>();
     }

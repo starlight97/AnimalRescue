@@ -4815,6 +4815,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   atlas: {fileID: 4343727234628468602, guid: 34d36bd18fd5e7643a7292fd0b32c9b5, type: 2}
   uiHeroListItemPrefab: {fileID: 8803712769121075414, guid: 79e13f67c912003489434778ef956b2a, type: 3}
+  btnAudio: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
 --- !u!222 &4433987167744025041
 CanvasRenderer:
   m_ObjectHideFlags: 0

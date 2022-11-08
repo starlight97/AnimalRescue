@@ -487,6 +487,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   useOnDestoryEvent: 1
+  btnAudio: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
 --- !u!1 &679159742
 GameObject:
   m_ObjectHideFlags: 0

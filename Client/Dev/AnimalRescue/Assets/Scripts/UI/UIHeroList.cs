@@ -10,6 +10,7 @@ public class UIHeroList : MonoBehaviour
     private RectTransform content;
     public GameObject uiHeroListItemPrefab;
     public UnityAction<int> onCLickHero;
+    public AudioClip btnAudio;
 
     private List<UIHeroListItem> uiHeroListItemList = new List<UIHeroListItem>();
     //public 
@@ -28,7 +29,7 @@ public class UIHeroList : MonoBehaviour
             item.btnHeroListItem.onClick.AddListener(() =>
             {
                 this.onCLickHero(hero.id);
-                item.audioSource.Play();
+                SoundManager.instance.PlaySound(btnAudio);
             });
             uiHeroListItemList.Add(item);
         }

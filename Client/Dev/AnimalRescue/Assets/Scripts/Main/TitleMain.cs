@@ -5,6 +5,7 @@ using UnityEngine;
 public class TitleMain : SceneMain
 {
     private UITitle uiTitle;
+    public AudioClip btnAudio;
 
     public override void Init(SceneParams param = null)
     {
@@ -16,12 +17,12 @@ public class TitleMain : SceneMain
         
 
     private IEnumerator WaitForClick()
-    {
+    {        
         var uiTitleHeroGo = GameObject.Find("UITitleHero");
         var uiTitleHero = uiTitleHeroGo.GetComponent<UITitleHero>();
         uiTitleHero.Init();
         yield return new WaitUntil(() => Input.GetMouseButtonDown(0));
-
+        SoundManager.instance.PlaySound(btnAudio);
         uiTitleHero.RunAnimation();
         this.StopAllCoroutines();
 

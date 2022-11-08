@@ -12,6 +12,7 @@ public class LobbyMain : SceneMain
     {
         base.Init(param);
         this.uiLobby = (UILobby)this.uiBase;
+        Debug.Log(SoundManager.instance);
         SoundManager.instance.PlayBGMSound(bgmlist);
         this.uiLobby.onClickBtn = (type) =>
         {
