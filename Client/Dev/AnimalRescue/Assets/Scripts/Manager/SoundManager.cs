@@ -5,28 +5,27 @@ using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
-    public AudioClip[] audiobgmArr;
-    private AudioSource bgmAudioSource;
-    private int bgmCount;
-    private int currentIndex;
+    public static SoundManager instance;
 
+    private AudioSource bgmAudioSource;
+    private AudioSource sfxAudioSource;
     private Coroutine playSoundRoutine;
 
     public void Init()
     {
+        instance = this;
         bgmAudioSource = transform.Find("BGMAudio").GetComponent<AudioSource>();
-        bgmCount = audiobgmArr.Length;
-        currentIndex = 0;
-        //StartCoroutine(this.PlaySoundRoutine());
-        //PlaySound();
+        sfxAudioSource = transform.Find("SFXAudio").GetComponent<AudioSource>();
     }
-    public void PlayBGMSound()
+    public void PlayBGMSound(AudioClip[] audiobgmArr)
     {
-        //audioSource.clip = audiobgmArr[currentIndex];
-        //audioSource.Play();
         if (playSoundRoutine != null)
             StopBGMSound();
-        playSoundRoutine = StartCoroutine(this.PlayBGMSoundRoutine());
+        playSoundRoutine = StartCoroutine(this.PlayBGMSoundRoutine(audiobgmArr));
+    }
+    public void PlaySound(AudioClip audio)
+    {
+        this.sfxAudioSource.PlayOneShot(audio);
     }
 
     public void StopBGMSound()
@@ -36,8 +35,11 @@ public class SoundManager : MonoBehaviour
         playSoundRoutine = null;
     }
 
-    private IEnumerator PlayBGMSoundRoutine()
+    private IEnumerator PlayBGMSoundRoutine(AudioClip[] audiobgmArr)
     {
+        int bgmCount = audiobgmArr.Length;
+        int currentIndex = 0;
+
         while (true)
         {
             if (currentIndex == bgmCount)

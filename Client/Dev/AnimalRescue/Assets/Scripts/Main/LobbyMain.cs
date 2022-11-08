@@ -7,11 +7,12 @@ public class LobbyMain : SceneMain
     private UILobby uiLobby;
     public int selectedHeroId;
     public GameObject heroViewGo;
+    public AudioClip[] bgmlist;
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
         this.uiLobby = (UILobby)this.uiBase;
-        
+        SoundManager.instance.PlayBGMSound(bgmlist);
         this.uiLobby.onClickBtn = (type) =>
         {
             switch (type)
@@ -34,7 +35,6 @@ public class LobbyMain : SceneMain
                 case UILobby.eBtnLobby.Exit:
                     Application.Quit();
                     break;
-
             }
         };
         
