@@ -11,6 +11,11 @@ public class LobbyMain : SceneMain
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
+        this.onDestroy.AddListener(() =>
+        {
+            SoundManager.instance.StopBGMSound();
+        });
+
         this.uiLobby = (UILobby)this.uiBase;
         Debug.Log(SoundManager.instance);
         SoundManager.instance.PlayBGMSound(bgmlist);

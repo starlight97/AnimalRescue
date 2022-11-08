@@ -2369,6 +2369,7 @@ MonoBehaviour:
   btnCloudLoad: {fileID: 770405180}
   gold: {fileID: 1620633341}
   diamond: {fileID: 1294687494}
+  btnAudio: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
 --- !u!114 &2082894318
 MonoBehaviour:
   m_ObjectHideFlags: 0

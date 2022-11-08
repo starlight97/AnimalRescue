@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
+
+    public AudioMixer audioMixer;
 
     private AudioSource bgmAudioSource;
     private AudioSource sfxAudioSource;
@@ -20,6 +23,26 @@ public class SoundManager : MonoBehaviour
     {
         bgmAudioSource = transform.Find("BGMAudio").GetComponent<AudioSource>();
         sfxAudioSource = transform.Find("SFXAudio").GetComponent<AudioSource>();
+
+        float bgmVolume;
+        float sfxVolume;
+        if (PlayerPrefs.HasKey("BgmVolume") && PlayerPrefs.HasKey("SfxVolume"))
+        {
+            bgmVolume = PlayerPrefs.GetFloat("BgmVolume");
+            sfxVolume = PlayerPrefs.GetFloat("SfxVolume");
+        }
+        else
+        {
+            bgmVolume = -20;
+            sfxVolume = -20;
+        }
+        AidioInit(bgmVolume, sfxVolume);
+    }
+
+    private void AidioInit(float bgmVolume, float sfxVolume)
+    {
+        audioMixer.SetFloat("BGM", bgmVolume);
+        audioMixer.SetFloat("SFX", sfxVolume);
     }
     public void PlayBGMSound(AudioClip[] audiobgmArr)
     {

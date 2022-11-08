@@ -13,6 +13,7 @@ public class UIHeroShop : MonoBehaviour
     public GameObject uiHeroShopItemPrefab;
     public UnityAction<int> onClickPurchaseHero;
     public Text textGold;
+    public AudioClip btnAudio;
 
     public void Init(int category)
     {
@@ -34,6 +35,7 @@ public class UIHeroShop : MonoBehaviour
             item.Init(shopdata.item_id, herodata.hero_name, shopdata.price, atlas.GetSprite(herodata.sprite_name));
             item.btnPurchase.onClick.AddListener(() =>
             {
+                SoundManager.instance.PlaySound(btnAudio);
                 var info = InfoManager.instance.GetInfo();
                 if(info.playerInfo.gold >= item.price)
                 {
