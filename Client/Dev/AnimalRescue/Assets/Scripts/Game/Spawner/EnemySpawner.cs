@@ -6,8 +6,8 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public UnityAction<int> onDieEnemy;
-    public UnityAction<int> onDieBoss;
+    public UnityAction<int, int> onDieEnemy;
+    public UnityAction<int, int> onDieBoss;
     private Vector3[] spawnPoints;
     private int spawnCount;
     private List<EnemyData> enemyDataList;
@@ -72,7 +72,7 @@ public class EnemySpawner : MonoBehaviour
             enemy.onDie = (dieEnemy) =>
             {
                 EnemyList.Remove(dieEnemy);
-                this.onDieEnemy(dieEnemy.experience);
+                this.onDieEnemy(dieEnemy.id, dieEnemy.experience);
                 Destroy(dieEnemy.gameObject);
             };
             spawnCount++;
@@ -96,7 +96,7 @@ public class EnemySpawner : MonoBehaviour
         enemy.onDie = (dieEnemy) =>
         {
             EnemyList.Remove(dieEnemy);
-            this.onDieBoss(dieEnemy.experience);
+            this.onDieBoss(dieEnemy.id, dieEnemy.experience);
             Destroy(dieEnemy.gameObject);
         };
     }

@@ -48,13 +48,13 @@ public class GameMain : SceneMain
             info.playerInfo.gold += getGold;
             Dispatch("onGameOver");
         };
-        this.enemySpawner.onDieEnemy = (experience) =>
+        this.enemySpawner.onDieEnemy = (enemyid, experience) =>
         {
             getGold += 1;
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
         };
-        this.enemySpawner.onDieBoss = (experience) =>
+        this.enemySpawner.onDieBoss = (enemyid, experience) =>
         {
             getGold += 10;
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();

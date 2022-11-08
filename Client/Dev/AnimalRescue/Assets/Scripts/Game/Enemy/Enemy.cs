@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
+    public int id;
     public enum eState
     {
         Run, Attack, Hit, Die

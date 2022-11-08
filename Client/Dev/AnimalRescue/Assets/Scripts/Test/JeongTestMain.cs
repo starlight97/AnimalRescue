@@ -31,12 +31,12 @@ public class JeongTestMain : MonoBehaviour
         {
             this.uiJeongTest.UpdateUIHpGauge(hp, maxHp);
         };
-        this.enemySpawner.onDieEnemy = (experience) =>
+        this.enemySpawner.onDieEnemy = (enemyid, experience) =>
         {
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
         };
-        this.enemySpawner.onDieBoss = (experience) =>
+        this.enemySpawner.onDieBoss = (enemyid, experience) =>
         {
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
