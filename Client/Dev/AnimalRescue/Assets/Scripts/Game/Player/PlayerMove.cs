@@ -5,8 +5,7 @@ using UnityEngine.Events;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField]
-    private float moveSpeed;
+    public float moveSpeed;
     public FloatingJoystick floatingJoystick;
     private Rigidbody rBody;
     private Coroutine moveRoutine;
@@ -16,24 +15,24 @@ public class PlayerMove : MonoBehaviour
     public UnityAction onMove;
     public UnityAction onMoveComplete;
 
-    public void Init(float moveSpeed)
+    public void Init()
     {
         this.rBody = GetComponent<Rigidbody>();
         this.modelGo = transform.Find("model").gameObject;
-        Move(moveSpeed);
+        Move();
     }
 
-    public void Move(float moveSpeed)
+    public void Move()
     {
         if (this.moveRoutine != null)
         {
             this.StopCoroutine(this.moveRoutine);
         }
 
-        this.moveRoutine = StartCoroutine(this.MoveRoutine(moveSpeed));
+        this.moveRoutine = StartCoroutine(this.MoveRoutine());
     }
 
-    private IEnumerator MoveRoutine(float moveSpeed)
+    private IEnumerator MoveRoutine()
     {
         while (true)
         {

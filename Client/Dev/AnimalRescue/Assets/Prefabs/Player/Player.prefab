@@ -85,7 +85,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba168674fbf7e74e957e3708f8b4894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
+  moveSpeed: 0
   floatingJoystick: {fileID: 0}
   dir: {x: 0, y: 0, z: 0}
 --- !u!114 &4990222528237364056

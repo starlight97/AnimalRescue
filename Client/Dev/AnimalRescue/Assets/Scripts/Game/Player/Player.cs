@@ -36,10 +36,6 @@ public class Player : MonoBehaviour
         var heroData = DataManager.instance.GetData<HeroData>(this.Id);
         var info = InfoManager.instance.GetInfo();
 
-        var heroDamage = heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage;
-        var heroMaxHp = (int)(heroData.max_hp + info.dicHeroInfo[heroData.id].dicStats["maxhp"] * heroData.increase_maxhp);
-        var heroMoveSpeed = heroData.move_speed + info.dicHeroInfo[heroData.id].dicStats["movespeed"] * heroData.increase_movespeed;
-
         this.heroGo = Instantiate(Resources.Load<GameObject>(heroData.prefab_path));
         this.heroGo.name = "model";
         this.heroGo.transform.parent = this.transform;
@@ -51,10 +47,6 @@ public class Player : MonoBehaviour
 
         this.playerStats = GetComponent<PlayerStats>();
         this.playerMove = GetComponent<PlayerMove>();
-
-        // Hp
-        playerLife.MaxHp = heroMaxHp;
-        playerLife.Hp = playerLife.MaxHp;
 
         this.playerMove.onMove = () =>
         {
@@ -70,12 +62,15 @@ public class Player : MonoBehaviour
                 SetState(eStateType.Idle);
         };
 
-        this.playerStats.Init(heroDamage, playerLife.MaxHp, heroMoveSpeed, 0);
+        this.playerStats.Init(this.Id, 1);
 
-        this.playerMove.Init(heroMoveSpeed);
+        this.playerMove.moveSpeed = this.playerStats.moveSpeed;
+
+        this.playerMove.Init();
+        playerLife.MaxHp = playerStats.maxHp;
+        playerLife.Hp = playerLife.MaxHp;
 
         FindEnemys();
-
 
         this.playerStats.onLevelUp = (amount) =>
         {

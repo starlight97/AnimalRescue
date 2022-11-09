@@ -12,11 +12,14 @@ public class PlayerStats : MonoBehaviour
     public float moveSpeed;
     private int experience;
 
-    public void Init(int damage, float maxHp, float moveSpeed, int experience)
+    public void Init(int id, int experience)
     {
-        this.damage = damage;
-        this.maxHp = maxHp;
-        this.moveSpeed = moveSpeed;
+        var heroData = DataManager.instance.GetData<HeroData>(id);
+        var info = InfoManager.instance.GetInfo();
+
+        this.damage = heroData.damage + info.dicHeroInfo[heroData.id].dicStats["damage"] * heroData.increase_damage;
+        this.maxHp = (int)(heroData.max_hp + info.dicHeroInfo[heroData.id].dicStats["maxhp"] * heroData.increase_maxhp);
+        this.moveSpeed = heroData.move_speed + (info.dicHeroInfo[heroData.id].dicStats["movespeed"] * heroData.increase_movespeed) / 10;
         this.experience = experience;
     }
 
@@ -39,5 +42,4 @@ public class PlayerStats : MonoBehaviour
         this.experience %= GameConstants.RequiredExperience;
         this.onLevelUp(amount);
     }
-
 }
