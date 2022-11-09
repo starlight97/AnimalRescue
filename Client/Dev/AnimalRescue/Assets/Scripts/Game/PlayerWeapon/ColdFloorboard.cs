@@ -13,6 +13,7 @@ public class ColdFloorboard : PlayerWeapon
         this.enemyList = new List<Enemy>();
         this.particleSystem = this.GetComponent<ParticleSystem>();
         this.current_damage += playerDamage / 10;
+        this.ChangeAlpha(30f);
 
         StartCoroutine(this.AttackRoutine());
     }
@@ -57,6 +58,7 @@ public class ColdFloorboard : PlayerWeapon
     public override void Upgrade()
     {
         base.Upgrade();
+
         switch (level)
         {
             case 1:
@@ -78,16 +80,94 @@ public class ColdFloorboard : PlayerWeapon
                 this.ScaleUp();
                 break;
             case 7:
+                this.ChangeAlpha(110f);
                 break;
             case 8:
+                this.ChangeAlpha(130f);
                 break;
             case 9:
+                this.ScaleUp();
                 break;
-            case 10:                
+            case 10:
+                this.ChangeAlpha(150f);
                 break;
-
+            case 11:
+                this.ChangeAlpha(170f);
+                break;
+            case 12:
+                this.ScaleUp();
+                break;
+            case 13:
+                this.SetScale(3f);
+                this.ChangeColor(0, 47, 255);
+                this.ChangeAlpha(30f);
+                break;
+            case 14:
+                this.ChangeAlpha(50f);
+                break;
+            case 15:
+                this.ChangeAlpha(70f);
+                break;
+            case 16:
+                this.ScaleUp();
+                break;
+            case 17:
+                this.ChangeAlpha(90f);
+                break;
+            case 18:
+                this.ChangeAlpha(110f);
+                break;
+            case 19:
+                this.ScaleUp();
+                break;
+            case 20:
+                this.ChangeAlpha(130f);
+                break;
+            case 21:
+                this.ChangeAlpha(150f);
+                break;
+            case 22:
+                this.ScaleUp();
+                break;
+            case 23:
+                this.ChangeAlpha(170f);
+                break;
+            case 24:
+                this.SetScale(3f);
+                this.ChangeColor(0, 17, 255);
+                this.ChangeAlpha(30f);
+                break;
+            case 25:
+                this.ChangeAlpha(50f);
+                break;
+            case 26:
+                this.ChangeAlpha(70f);
+                break;
+            case 27:
+                this.ScaleUp();
+                break;
+            case 28:
+                this.ChangeAlpha(90f);
+                break;
+            case 29:
+                this.ChangeAlpha(110f);
+                break;
+            case 30:
+                this.ScaleUp();
+                break;
+            case 31:
+                this.ChangeAlpha(130f);
+                break;
+            case 32:
+                this.ChangeAlpha(150f);
+                break;
+            case 33:
+                this.ScaleUp();
+                break;
+            case 34:
+                this.ChangeAlpha(170f);
+                break;
             default:
-
                 break;
         }
     }

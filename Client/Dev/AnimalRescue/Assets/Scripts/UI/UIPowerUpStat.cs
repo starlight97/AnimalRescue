@@ -36,13 +36,13 @@ public class UIPowerUpStat : MonoBehaviour
         itemGo = Instantiate(this.uiPowerUpStatItemPrefab, this.content);
         item = itemGo.GetComponent<UIPowerUpStatItem>();
         item.Init("MoveSpeed","movespeed", heroId, data.increase_movespeed, info.dicHeroInfo[heroId].dicStats["movespeed"] * price);
-        if(info.dicHeroInfo[heroId].dicStats["movespeed"] >= 100)
+        if(info.dicHeroInfo[heroId].dicStats["movespeed"] >= GameConstants.MOVEMAXLEVEL)
         {
             item.ShowMaxBtn();
         }
         item.onClickLevelUp = (statkey) =>
         {
-            if (info.dicHeroInfo[heroId].dicStats["movespeed"] >= 100)
+            if (info.dicHeroInfo[heroId].dicStats["movespeed"] >= GameConstants.MOVEMAXLEVEL)
             {
                 item.ShowMaxBtn();
             }
