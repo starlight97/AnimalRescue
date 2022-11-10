@@ -1046,11 +1046,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9094bdc77024a749b75f0ac955ec205, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   currentHp: 0
   experience: 0
   moveSpeed: 0
   attackRange: 0
-  cubePrefab: {fileID: 1722756824254042946, guid: 0da0a2222dc096d4eb5dc02fc9363e44, type: 3}
+  cubePrefab: {fileID: 2548467721818183181, guid: 29c928dc3c43da9438e4dc51cce5ff08, type: 3}
   cubeMaxScale: 0
   diffusionRate: 0
 --- !u!136 &6601102133552810851

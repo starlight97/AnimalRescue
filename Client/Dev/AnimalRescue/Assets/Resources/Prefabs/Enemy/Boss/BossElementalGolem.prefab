@@ -159,11 +159,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8e9a94c4fce79a49859dddcaa64d495, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   currentHp: 0
   experience: 0
   moveSpeed: 0
   attackRange: 0
-  stonePrefab: {fileID: 7384006414486548760, guid: db12a0f4a27f34948b5837b78a42a2fc, type: 3}
+  stonePrefab: {fileID: 1721701642210805619, guid: 59a24841cf873204b9d0c42f3d67b17c, type: 3}
   radius: 1
   shadowPrefab: {fileID: 8493011544530208532, guid: 6e7a6cec155bbc640825f8c3b8dc585f, type: 3}
   onCreateStone:

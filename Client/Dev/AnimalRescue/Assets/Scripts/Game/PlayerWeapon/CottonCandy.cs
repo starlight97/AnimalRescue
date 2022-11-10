@@ -101,4 +101,26 @@ public class CottonCandy : PlayerWeapon
         }
     }
 
+    //// rgb = 색상값
+    //// 0 ~ 255
+    //private void ChangeColor(float r, float g, float b)
+    //{
+    //    var main = particleSystem.main;
+    //    var color = main.startColor.color;
+    //    color.r = r / 255f;
+    //    color.g = g / 255f;
+    //    color.b = b / 255f;
+    //    main.startColor = color;
+    //}
+
+    //// value = 투명도
+    //// 0 ~ 255
+    //private void ChangeAlpha(float value)
+    //{
+    //    var main = particleSystem.main;
+    //    var color = main.startColor.color;
+    //    color.a = value / 255f;
+    //    main.startColor = color;
+    //}
+
 }

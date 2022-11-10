@@ -12,6 +12,8 @@ public class EnemySpawner : MonoBehaviour
     private int spawnCount;
     private List<EnemyData> enemyDataList;
     private List<BossData> bossDataList;
+
+    private int randEnemyCount = 2;
     //private List<EnemyBossData> enemyBossDataList;
     public List<Enemy> EnemyList
     {
@@ -52,22 +54,32 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator SpawnEnemyRoutine(int wave)
     {
         this.spawnCount = 0;
+        List<EnemyData> tempEnemyDataList = enemyDataList.ToList();
+        while (true)
+        {
+            var randIdx = Random.Range(0, tempEnemyDataList.Count - 1);
+            tempEnemyDataList.RemoveAt(randIdx);
+
+            if (tempEnemyDataList.Count <= randEnemyCount)
+                break;
+        }
+
         while (true)
         {
             if (spawnCount == GameConstants.SpawnEnemyCount)
                 break;
 
             var pos = this.GetRandomPos();
-            var randIdx = Random.Range(0, enemyDataList.Count - 1);
+            var randIdx = Random.Range(0, tempEnemyDataList.Count - 1);
             int experience = GameConstants.EnemyExperience;
             int level = wave;
 
-            GameObject enemyGo = Instantiate(Resources.Load<GameObject>(enemyDataList[randIdx].prefab_name),pos, Quaternion.identity);
+            GameObject enemyGo = Instantiate(Resources.Load<GameObject>(tempEnemyDataList[randIdx].prefab_name),pos, Quaternion.identity);
             enemyGo.transform.parent = this.transform;
             Enemy enemy = enemyGo.GetComponent<Enemy>();
             EnemyList.Add(enemy);
-            enemy.Init(level, enemyDataList[randIdx].max_hp, enemyDataList[randIdx].damage,
-    experience, enemyDataList[randIdx].move_speed, enemyDataList[randIdx].attack_speed, enemyDataList[randIdx].attack_range);
+            enemy.Init(level, tempEnemyDataList[randIdx].max_hp, tempEnemyDataList[randIdx].damage,
+    experience, tempEnemyDataList[randIdx].move_speed, tempEnemyDataList[randIdx].attack_speed, tempEnemyDataList[randIdx].attack_range);
 
             enemy.onDie = (dieEnemy) =>
             {
