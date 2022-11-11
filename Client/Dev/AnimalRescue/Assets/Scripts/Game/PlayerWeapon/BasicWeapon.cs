@@ -58,14 +58,51 @@ public class BasicWeapon : PlayerWeapon
 
     public override void Upgrade()
     {
-        if (size <= 5)
+        base.Upgrade();
+
+        switch (level)
         {
-            size += 0.5f;
+            case 2:
+            case 3:
+                SpeedUp();
+                break;
+            case 4:
+                ScaleUp();
+                break;
+            case 5:
+            case 6:
+                SpeedUp();
+                break;
+            case 7:
+                ScaleUp();
+                break;
+            case 8:
+            case 9:
+                SpeedUp();
+                break;
+            case 10:
+                ScaleUp();
+                break;
+            case 11:
+            case 12:
+                SpeedUp();
+                break;
+            case 13:
+                ScaleUp();
+                break;
+            default:
+                break;
         }
-        else
-        {
-            base.Upgrade();
-        }
+    }
+
+    private void ScaleUp()
+    {
+        this.size += 0.5f;
+    }
+
+    private void SpeedUp()
+    {
+        this.current_attack_speed += 0.2f;
     }
 
     private void LateUpdate()
