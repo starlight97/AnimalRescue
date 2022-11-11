@@ -387,6 +387,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   useOnDestoryEvent: 1
+  bgmlist:
+  - {fileID: 8300000, guid: 5a9a1adbc8c2def41bd730b8c9e76ded, type: 3}
 --- !u!1 &82613549
 GameObject:
   m_ObjectHideFlags: 0

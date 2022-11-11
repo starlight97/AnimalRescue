@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealFloorboard : PlayerWeapon
 {
+    public AudioClip healAudio;
     private float per = 1.01f;
     private ParticleSystem ps;
     public override void Init(WeaponData weaponData, Transform playerTrans)
@@ -23,6 +24,7 @@ public class HealFloorboard : PlayerWeapon
     {
         while (true)
         {
+            SoundManager.instance.PlaySound(healAudio);
             var player = playerTrans.GetComponent<Player>();
             player.Recovery(player.playerLife.Hp, player.playerLife.MaxHp, per);
             yield return new WaitForSeconds(1f);

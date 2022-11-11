@@ -159,8 +159,7 @@ MonoBehaviour:
   selectedHeroId: 0
   heroViewGo: {fileID: 468240510}
   bgmlist:
-  - {fileID: 8300000, guid: 60955bc3d6f2077419747e6195ec997a, type: 3}
-  - {fileID: 8300000, guid: 817888f57b8d0e64ea688b080bde63eb, type: 3}
+  - {fileID: 8300000, guid: 0158bde1764a0fc4a9a22ffb994839d5, type: 3}
 --- !u!4 &190458901
 Transform:
   m_ObjectHideFlags: 0
@@ -2369,7 +2368,6 @@ MonoBehaviour:
   btnCloudLoad: {fileID: 770405180}
   gold: {fileID: 1620633341}
   diamond: {fileID: 1294687494}
-  btnAudio: {fileID: 8300000, guid: 32d4b1811dda14a6cb9e059ee8ad17d2, type: 3}
 --- !u!114 &2082894318
 MonoBehaviour:
   m_ObjectHideFlags: 0

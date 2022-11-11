@@ -5,11 +5,15 @@ using UnityEngine;
 public class RepairShopMain : SceneMain
 {
     private UIRepairShop uiRepairShop;
-
+    public AudioClip[] bgmlist;
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
-
+        this.onDestroy.AddListener(() =>
+        {
+            SoundManager.instance.StopBGMSound();
+        });
+        SoundManager.instance.PlayBGMSound(bgmlist);
         var mainParam = (RepairShopParam)param;
 
         this.uiRepairShop = (UIRepairShop)this.uiBase;

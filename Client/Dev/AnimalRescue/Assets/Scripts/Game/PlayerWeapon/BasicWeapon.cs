@@ -6,6 +6,7 @@ using System.Linq;
 
 public class BasicWeapon : PlayerWeapon
 {
+    public AudioClip bulletSpawnAudio;
     private List<GameObject> projectileList = new List<GameObject>();
     public GameObject doughnutProjectilePrefab;
 
@@ -37,6 +38,7 @@ public class BasicWeapon : PlayerWeapon
     {
         while (true)
         {
+            SoundManager.instance.PlaySound(bulletSpawnAudio);
             var projectileGo = Instantiate<GameObject>(doughnutProjectilePrefab);
 
             projectileGo.transform.position = this.transform.position;

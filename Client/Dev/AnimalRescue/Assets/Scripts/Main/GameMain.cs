@@ -15,9 +15,17 @@ public class GameMain : SceneMain
     private int getGold = 0;
     private int killEnemy = 0;
 
+    public AudioClip[] bgmlist;
+
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
+        this.onDestroy.AddListener(() =>
+        {
+            SoundManager.instance.StopBGMSound();
+        });
+        SoundManager.instance.PlayBGMSound(bgmlist);
+
         this.uiGame = (UIGame)this.uiBase;
         this.playTime = GameObject.FindObjectOfType<PlayTimeManager>();
 
@@ -66,6 +74,9 @@ public class GameMain : SceneMain
             playerStats.GetExp(experience);
             this.uiGame.SetProgress(killEnemy, getGold);
             waveManager.StartWave();
+
+            SoundManager.instance.StopBGMSound();
+            SoundManager.instance.PlayBGMSound(bgmlist);
         };
         this.waveManager.onWaveStart = (wave) =>
         {

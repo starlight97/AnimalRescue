@@ -4932,6 +4932,8 @@ MonoBehaviour:
   current_damage: 0
   current_attack_speed: 0
   level: 0
+  playerDamage: 0
+  attackSoundAudio: {fileID: 8300000, guid: f14e8bfdac498dd4f82766090b48e582, type: 3}
 --- !u!1 &7916443704427928581
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2002
-  projectile_current_count: 0
   current_damage: 0
   current_attack_speed: 0
   level: 0
+  playerDamage: 0
+  bulletSpawnAudio: {fileID: 8300000, guid: 5e1a9f876d3dafd47bc6b3dde25135fa, type: 3}
   projectilePrefab: {fileID: 137382060062445662, guid: cf6bd79146b8daf4480f8aebe9572092, type: 3}
   projectileList: []

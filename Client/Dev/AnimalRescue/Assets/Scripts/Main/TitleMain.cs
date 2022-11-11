@@ -7,9 +7,17 @@ public class TitleMain : SceneMain
 {
     private UITitle uiTitle;
     public AudioClip btnAudio;
+    public AudioClip[] bgmlist;
 
     public override void Init(SceneParams param = null)
     {
+        //base.Init();
+        this.onDestroy.AddListener(() =>
+        {
+            SoundManager.instance.StopBGMSound();
+        });
+        SoundManager.instance.PlayBGMSound(bgmlist);
+
         this.uiTitle = GameObject.Find("UITitle").GetComponent<UITitle>();
         //StartCoroutine(this.TouchToStartRoutine());
         StartCoroutine(this.WaitForClick());

@@ -5,10 +5,16 @@ using UnityEngine;
 public class ShopMain : SceneMain
 {
     private UIShop uiShop;
+    public AudioClip[] bgmlist;
 
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
+        this.onDestroy.AddListener(() =>
+        {
+            SoundManager.instance.StopBGMSound();
+        });
+        SoundManager.instance.PlayBGMSound(bgmlist);
 
         this.uiShop = (UIShop)this.uiBase;
         this.uiShop.Init();

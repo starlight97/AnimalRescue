@@ -6,6 +6,8 @@ using UnityEngine.Events;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public AudioClip bossSpawnAudio;
+    public AudioClip[] bossBgmAudioArr;
     public UnityAction<int, int> onDieEnemy;
     public UnityAction<int, int> onDieBoss;
     private Vector3[] spawnPoints;
@@ -95,6 +97,9 @@ public class EnemySpawner : MonoBehaviour
 
     private void SpawnBoss(int wave)
     {
+        SoundManager.instance.PlaySound(bossSpawnAudio);
+        SoundManager.instance.StopBGMSound();
+        SoundManager.instance.PlayBGMSound(bossBgmAudioArr);
         var pos = this.GetRandomPos();
         var randIdx = Random.Range(0, bossDataList.Count - 1);
         int experience = GameConstants.EnemyExperience * 33;

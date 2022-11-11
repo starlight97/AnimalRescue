@@ -45,8 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2000
-  projectile_current_count: 0
   current_damage: 0
   current_attack_speed: 0
   level: 0
+  playerDamage: 0
+  bulletSpawnAudio: {fileID: 8300000, guid: 7e9ee6dc04a5d40d1a5dfc4beb9865e7, type: 3}
   doughnutProjectilePrefab: {fileID: 436838217909685359, guid: 55ef2580aeb38ab42bfd1d0458b7ddc7, type: 3}

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShootingStar : PlayerWeapon
 {
+    public AudioClip bulletSpawnAudio;
     public GameObject projectilePrefab;
     public List<ShootingStarProjectile> projectileList;
     private Coroutine createRoutine;
@@ -27,6 +28,7 @@ public class ShootingStar : PlayerWeapon
     {
         while (true)
         {
+            SoundManager.instance.PlaySound(bulletSpawnAudio);
             var projectileGo = Instantiate<GameObject>(projectilePrefab);
             
             float randX = playerTrans.position.x + Random.Range(-5, 6);

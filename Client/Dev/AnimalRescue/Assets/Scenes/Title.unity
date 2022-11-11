@@ -488,6 +488,8 @@ MonoBehaviour:
       m_Calls: []
   useOnDestoryEvent: 1
   btnAudio: {fileID: 8300000, guid: 52320e590bf774734a288886eba557ba, type: 3}
+  bgmlist:
+  - {fileID: 8300000, guid: 5bd29b00ee969f14f945536ef4ff77ed, type: 3}
 --- !u!1 &679159742
 GameObject:
   m_ObjectHideFlags: 0

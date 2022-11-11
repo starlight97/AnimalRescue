@@ -6,6 +6,8 @@ public class ColdFloorboard : PlayerWeapon
 {
     private List<Enemy> enemyList;
     private ParticleSystem particleSystem;
+    private Coroutine attackSoundPlay;
+    public AudioClip attackSoundAudio;
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
@@ -32,7 +34,31 @@ public class ColdFloorboard : PlayerWeapon
         if (other.CompareTag("Enemy"))
         {
             enemyList.Remove(other.GetComponent<Enemy>());
+            if(enemyList.Count <= 0)
+            {
+                if (attackSoundPlay != null)
+                {
+                    StopCoroutine(attackSoundPlay);
+                    attackSoundPlay = null;
+                    SoundManager.instance.StopSound();
+                }
+
+            }
         }
+    }
+
+    private void AttackSoundPlay()
+    {
+        if (attackSoundPlay != null)
+            return;
+
+        attackSoundPlay = StartCoroutine(AttackSoundPlayImpl());
+    }
+    private IEnumerator AttackSoundPlayImpl()
+    {
+        SoundManager.instance.PlaySound(attackSoundAudio);
+        yield return new WaitForSeconds(270f);
+        attackSoundPlay = null;
     }
 
     private IEnumerator AttackRoutine()
@@ -51,6 +77,8 @@ public class ColdFloorboard : PlayerWeapon
                 else
                     enemyList.RemoveAt(index);
             }
+            if (enemyCount > 0)
+                AttackSoundPlay();
 
             yield return new WaitForSeconds(this.weaponData.attack_speed);
         }

@@ -73,6 +73,10 @@ public class SoundManager : MonoBehaviour
         bgmAudioSource.Stop();
         playSoundRoutine = null;
     }
+    public void StopSound()
+    {
+        sfxAudioSource.Stop();
+    }
 
     private IEnumerator PlayBGMSoundRoutine(AudioClip[] audiobgmArr)
     {
