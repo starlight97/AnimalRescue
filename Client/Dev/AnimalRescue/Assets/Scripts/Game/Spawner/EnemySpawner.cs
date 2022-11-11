@@ -57,7 +57,7 @@ public class EnemySpawner : MonoBehaviour
         List<EnemyData> tempEnemyDataList = enemyDataList.ToList();
         while (true)
         {
-            var randIdx = Random.Range(0, tempEnemyDataList.Count - 1);
+            var randIdx = Random.Range(0, tempEnemyDataList.Count);
             tempEnemyDataList.RemoveAt(randIdx);
 
             if (tempEnemyDataList.Count <= randEnemyCount)
@@ -70,7 +70,7 @@ public class EnemySpawner : MonoBehaviour
                 break;
 
             var pos = this.GetRandomPos();
-            var randIdx = Random.Range(0, tempEnemyDataList.Count - 1);
+            var randIdx = Random.Range(0, tempEnemyDataList.Count);
             int experience = GameConstants.EnemyExperience;
             int level = wave;
 

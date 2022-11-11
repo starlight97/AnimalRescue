@@ -11,7 +11,13 @@ public class JeongTestMain : MonoBehaviour
     private void Start()
     {
         enemy.Init(1,1,1,1,1,1,10);
-        player.Init(100);
+        DataManager.instance.Init();
+        DataManager.instance.LoadAllData(this);
+        DataManager.instance.onDataLoadFinished.AddListener(() =>
+        {
+            player.Init(100);
+
+        });
     }
 
     private void Update()

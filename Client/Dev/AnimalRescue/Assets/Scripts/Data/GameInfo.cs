@@ -10,7 +10,7 @@ public class GameInfo
     public GameInfo(string gpgsid)
     {
         this.gpgsid = gpgsid;
-        this.playerInfo = new PlayerInfo(500000, 500000);
+        this.playerInfo = new PlayerInfo(500000, 500000, 0);
         this.dicHeroInfo = new Dictionary<int, HeroInfo>();
     }
 }
