@@ -22,7 +22,8 @@ public class BasicWeapon : PlayerWeapon
         base.Init(weaponData, playerTrans);
         this.player = this.playerTrans.gameObject.GetComponent<Player>();
         this.playerTrans = GameObject.Find("Player").transform.Find("model").transform;
-        current_damage += playerDamage;
+        this.weaponData.damage += playerDamage;
+        this.current_damage += playerDamage;
         this.Create();
     }
 

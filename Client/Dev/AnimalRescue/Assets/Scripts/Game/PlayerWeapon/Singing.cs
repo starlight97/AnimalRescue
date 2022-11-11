@@ -15,6 +15,7 @@ public class Singing : PlayerWeapon
         base.Init(weaponData, playerTrans);
         attackSpeed = this.current_attack_speed;
         current_damage += playerDamage / 7;
+        this.weaponData.damage += playerDamage / 7;
         // 투사체 날아갈 때마다 머리 위에 음표 띄움
         var player = GameObject.Find("Player").gameObject;
         notesGo = player.transform.Find("Notes").gameObject;

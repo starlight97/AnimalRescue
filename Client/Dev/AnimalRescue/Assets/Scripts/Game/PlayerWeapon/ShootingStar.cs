@@ -13,6 +13,7 @@ public class ShootingStar : PlayerWeapon
     {
         base.Init(weaponData, playerTrans);
         this.current_damage += playerDamage * 3;
+        this.weaponData.damage += playerDamage * 3;
         Create();
     }
 

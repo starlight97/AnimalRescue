@@ -13,6 +13,7 @@ public class ColdFloorboard : PlayerWeapon
         this.enemyList = new List<Enemy>();
         this.particleSystem = this.GetComponent<ParticleSystem>();
         this.current_damage += playerDamage / 10;
+        this.weaponData.damage += playerDamage / 10;
         this.ChangeAlpha(30f);
 
         StartCoroutine(this.AttackRoutine());

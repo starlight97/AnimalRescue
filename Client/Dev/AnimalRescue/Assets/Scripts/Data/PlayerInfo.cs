@@ -4,13 +4,13 @@ public class PlayerInfo
     public int gold;
     public int diamond;
     public string highRecordtime;
-    public int highRecordStage;
+    public int highRecordWave;
 
-    public PlayerInfo(int gold, int diamond,int highRecordStage, string highRecordtime = "0")
+    public PlayerInfo(int gold, int diamond,int highRecordWave, string highRecordtime = "0")
     {
         this.gold = gold;
         this.diamond = diamond;
-        this.highRecordStage = highRecordStage;
+        this.highRecordWave = highRecordWave;
         this.highRecordtime = highRecordtime;
     }
 }

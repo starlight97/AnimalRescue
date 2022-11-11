@@ -15,6 +15,7 @@ public class CottonCandy : PlayerWeapon
     {
         base.Init(weaponData, playerTrans);
         current_damage += playerDamage;
+        this.weaponData.damage += playerDamage;
 
         this.Attack();
 
