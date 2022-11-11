@@ -10,6 +10,7 @@ public class UIGame : UIBase
     private UIHpGauge uiHpGauge;
     private UIWeaponLevelUp uiWeaponLevelUp;
     private UIRivivePanel uiRivivePanel;
+    private UIGameStatus uiGameStatus;
     public UnityAction<int> onWeaponSelect;
     public UnityAction onGameOver;
     public UnityAction onClickAds;
@@ -21,6 +22,7 @@ public class UIGame : UIBase
         this.uiHpGauge = this.transform.Find("UIHpGauge").GetComponent<UIHpGauge>();
         this.uiWeaponLevelUp = this.transform.Find("UIWeaponLevelUp").GetComponent<UIWeaponLevelUp>();
         this.uiRivivePanel = this.transform.Find("UIRivivePanel").GetComponent<UIRivivePanel>();
+        this.uiGameStatus = this.transform.Find("UIGameStatus").GetComponent<UIGameStatus>();
 
         this.dimImage.gameObject.SetActive(false);
         
@@ -54,6 +56,7 @@ public class UIGame : UIBase
         uiHpGauge.Init();
         uiWeaponLevelUp.Init();
         uiRivivePanel.Init();
+        uiGameStatus.Init();
     }
 
     public void FixedHpGaugePosition(Vector3 worldPos)
@@ -80,5 +83,15 @@ public class UIGame : UIBase
     public void RunTimer()
     {
         this.uiRivivePanel.RiviveTimer();
+    }
+
+    public void SetProgress(int enemyCount, int goldCount)
+    {
+        this.uiGameStatus.SetProgressText(enemyCount, goldCount);
+    }
+
+    public void SetWave(int wave)
+    {
+        this.uiGameStatus.SetWaveText(wave);
     }
 }

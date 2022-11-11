@@ -12,6 +12,7 @@ public class GameMain : SceneMain
     private UIGame uiGame;
 
     private int getGold = 0;
+    private int killEnemy = 0;
 
     public override void Init(SceneParams param = null)
     {
@@ -51,20 +52,25 @@ public class GameMain : SceneMain
         this.enemySpawner.onDieEnemy = (enemyid, experience) =>
         {
             getGold += 1;
+            killEnemy += 1;
+            this.uiGame.SetProgress(killEnemy, getGold);
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
         };
         this.enemySpawner.onDieBoss = (enemyid, experience) =>
         {
             getGold += 10;
+            killEnemy += 1;
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
+            this.uiGame.SetProgress(killEnemy, getGold);
             waveManager.StartWave();
         };
         this.waveManager.onWaveStart = (wave) =>
         {
             Debug.Log(wave + " : wave start");
             enemySpawner.StartWave(wave);
+            this.uiGame.SetWave(wave);
         };
         this.uiGame.onWeaponSelect = (id) =>
         {
