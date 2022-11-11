@@ -40,9 +40,8 @@ public class ColdFloorboard : PlayerWeapon
                 {
                     StopCoroutine(attackSoundPlay);
                     attackSoundPlay = null;
-                    SoundManager.instance.StopSound();
                 }
-
+                SoundManager.instance.StopSound();
             }
         }
     }
@@ -57,7 +56,7 @@ public class ColdFloorboard : PlayerWeapon
     private IEnumerator AttackSoundPlayImpl()
     {
         SoundManager.instance.PlaySound(attackSoundAudio);
-        yield return new WaitForSeconds(270f);
+        yield return new WaitForSeconds(120f);
         attackSoundPlay = null;
     }
 
@@ -70,15 +69,30 @@ public class ColdFloorboard : PlayerWeapon
             {
                 // enemy가 다른무기에 이미 죽었다면
                 if (enemyList[index] == null)
+                {
+                    enemyList.RemoveAt(index);
                     continue;
+                }
 
                 if (enemyList[index].currentHp > 0)
                     enemyList[index].Hit(this.current_damage);
                 else
+                {
                     enemyList.RemoveAt(index);
+                }                    
             }
             if (enemyCount > 0)
                 AttackSoundPlay();
+            else
+            {
+                if (attackSoundPlay != null)
+                {
+                    StopCoroutine(attackSoundPlay);
+                    attackSoundPlay = null;
+                    SoundManager.instance.StopSound();
+                }
+            }
+
 
             yield return new WaitForSeconds(this.weaponData.attack_speed);
         }

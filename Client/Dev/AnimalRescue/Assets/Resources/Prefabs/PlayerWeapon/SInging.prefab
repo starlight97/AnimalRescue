@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8440824054735727738}
   - component: {fileID: 794712423856728394}
   m_Layer: 0
-  m_Name: Singing
+  m_Name: SInging
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,4 +48,6 @@ MonoBehaviour:
   current_damage: 0
   current_attack_speed: 0
   level: 0
+  playerDamage: 0
   projectilePrefab: {fileID: 5174008717861086784, guid: 00ce8f17941dc1f47a8ed57f0e7bb64d, type: 3}
+  attackAudio: {fileID: 8300000, guid: 383693f406b0a934e93d09adb750984e, type: 3}

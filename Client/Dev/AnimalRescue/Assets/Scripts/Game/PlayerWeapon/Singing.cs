@@ -9,6 +9,7 @@ public class Singing : PlayerWeapon
     private Vector3 dir;
     
     private float attackSpeed;
+    public AudioClip attackAudio;
 
     public override void Init(WeaponData weaponData, Transform playerTrans)
     {
@@ -42,7 +43,7 @@ public class Singing : PlayerWeapon
             dir.y = 0;
 
             singingProjectile.Init(current_damage, attackSpeed, dir);
-
+            SoundManager.instance.PlaySound(attackAudio);
             yield return new WaitForSeconds(3f);
 
             notesGo.gameObject.SetActive(false);

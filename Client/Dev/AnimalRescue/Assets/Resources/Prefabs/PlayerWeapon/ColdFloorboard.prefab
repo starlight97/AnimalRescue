@@ -4933,7 +4933,7 @@ MonoBehaviour:
   current_attack_speed: 0
   level: 0
   playerDamage: 0
-  attackSoundAudio: {fileID: 8300000, guid: f14e8bfdac498dd4f82766090b48e582, type: 3}
+  attackSoundAudio: {fileID: 8300000, guid: 8c9ef05758f01274397082f5adf7d7d9, type: 3}
 --- !u!1 &7916443704427928581
 GameObject:
   m_ObjectHideFlags: 0

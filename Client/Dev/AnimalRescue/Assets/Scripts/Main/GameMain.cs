@@ -16,6 +16,7 @@ public class GameMain : SceneMain
     private int killEnemy = 0;
 
     public AudioClip[] bgmlist;
+    public AudioClip levelUpAudio;
 
     public override void Init(SceneParams param = null)
     {
@@ -37,6 +38,7 @@ public class GameMain : SceneMain
         {
             Pause();
             uiGame.ShowWeaponLevelUp();
+            SoundManager.instance.PlaySound(levelUpAudio);
             Debug.Log("레벨업!");
         };
         this.player.onUpdateMove = (worldPos) =>

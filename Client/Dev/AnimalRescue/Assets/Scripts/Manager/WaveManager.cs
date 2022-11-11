@@ -6,7 +6,6 @@ using UnityEngine.Events;
 public class WaveManager : MonoBehaviour
 {
     private int currentWave;
-    public float waveTime;
     public UnityAction<int> onWaveStart;
 
     public void Init()
@@ -35,7 +34,7 @@ public class WaveManager : MonoBehaviour
             onWaveStart(currentWave);
             if (currentWave % 5 == 0)
                 break;
-            yield return new WaitForSeconds(waveTime);
+            yield return new WaitForSeconds(GameConstants.WaveTime);
         }
     }
 }

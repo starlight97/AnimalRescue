@@ -9,7 +9,7 @@ public static class GameConstants
     public const int StatpowerUpPrice = 100;   // 능력치 강화할때마다 필요한 골드가격 level * 100
     public const float EnemySpawnTime = 0.01f;   // 몬스터 스폰시간
     public const int SpawnEnemyCount = 100;   // 1웨이브당 스폰 몬스터 숫자
-    public const float WaveTime = 120f;       // 1웨이브 진행시간
+    public const float WaveTime = 60f;       // 1웨이브 진행시간
     public const int MOVEMAXLEVEL = 100;       // 이동속도맥스레벨
 
 }
