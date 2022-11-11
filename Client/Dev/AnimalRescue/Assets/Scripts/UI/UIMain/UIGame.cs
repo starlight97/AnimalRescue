@@ -94,4 +94,9 @@ public class UIGame : UIBase
     {
         this.uiGameStatus.SetWaveText(wave);
     }
+
+    public void SetPlayTime(string time)
+    {
+        this.uiGameStatus.SetPlayTimeText(time);
+    }
 }

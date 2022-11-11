@@ -10,6 +10,7 @@ public class GameMain : SceneMain
     private WaveManager waveManager;
     private WeaponManager weaponManager;
     private UIGame uiGame;
+    private PlayTimeManager playTime;
 
     private int getGold = 0;
     private int killEnemy = 0;
@@ -18,7 +19,7 @@ public class GameMain : SceneMain
     {
         base.Init(param);
         this.uiGame = (UIGame)this.uiBase;
-
+        this.playTime = GameObject.FindObjectOfType<PlayTimeManager>();
 
         GameMainParam gameMainParam = (GameMainParam)param;
 
@@ -78,7 +79,11 @@ public class GameMain : SceneMain
             this.weaponManager.WeaponUpgrade(id);
             Debug.Log(id + " : Level Up 선택!~@!@~");
         };
-
+        this.playTime.onPassesTime = (time) => 
+        {
+            this.uiGame.SetPlayTime(time);
+        };
+        
         #region 부활 패널 관련 액션
         this.uiGame.onGameOver = () => 
         {
@@ -99,6 +104,7 @@ public class GameMain : SceneMain
         this.enemySpawner.Init();
         this.waveManager.Init();
         this.weaponManager.Init(2000);
+        this.playTime.Init();
     }
 
     private void GameObjectSetting()
