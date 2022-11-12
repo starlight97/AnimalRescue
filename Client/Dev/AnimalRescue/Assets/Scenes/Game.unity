@@ -1916,7 +1916,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29cc8ffe0e09d3d4fa43c4ae5a838203, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waveTime: 60
 --- !u!4 &1112418141
 Transform:
   m_ObjectHideFlags: 0
@@ -2611,6 +2610,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 631569070}
     m_Modifications:
+    - target: {fileID: 1717689564781459140, guid: 9520d7f44d3d4654295772d26ad5441f, type: 3}
+      propertyPath: atlas
+      value: 
+      objectReference: {fileID: 4343727234628468602, guid: 34d36bd18fd5e7643a7292fd0b32c9b5, type: 2}
     - target: {fileID: 1717689564781459146, guid: 9520d7f44d3d4654295772d26ad5441f, type: 3}
       propertyPath: m_Name
       value: UIWeaponLevelUp
@@ -3156,6 +3159,7 @@ MonoBehaviour:
   bgmlist:
   - {fileID: 8300000, guid: 60955bc3d6f2077419747e6195ec997a, type: 3}
   - {fileID: 8300000, guid: 817888f57b8d0e64ea688b080bde63eb, type: 3}
+  levelUpAudio: {fileID: 0}
 --- !u!4 &1832104801
 Transform:
   m_ObjectHideFlags: 0

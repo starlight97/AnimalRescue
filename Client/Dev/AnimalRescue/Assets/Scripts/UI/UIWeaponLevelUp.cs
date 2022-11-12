@@ -2,15 +2,19 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.Events;
 
 public class UIWeaponLevelUp : MonoBehaviour
 {
-    public UnityAction<int> onWeaponSelect;
+    public SpriteAtlas atlas;
 
+    public UnityAction<int> onWeaponSelect;
     public UIWeaponLevelUpItem[] uiWeaponLevelUpItems;
     private List<WeaponData> weaponDataList;
     private WeaponManager weaponManager;
+
+
     public void Init()
     {
         this.HideUI();
@@ -45,7 +49,8 @@ public class UIWeaponLevelUp : MonoBehaviour
             int id = weaponIdList[randIdx];
             int level = weaponManager.GetWeaponLevel(data.id);
             string weapon_name = data.weapon_name;
-            item.Setting(id, weapon_name, level);
+            Sprite sprite = this.atlas.GetSprite(data.weapon_name);
+            item.Setting(id, weapon_name, sprite, level);
             weaponIdList.RemoveAt(randIdx);
         }
     }

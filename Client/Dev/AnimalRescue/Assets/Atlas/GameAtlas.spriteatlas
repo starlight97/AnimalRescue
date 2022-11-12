@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CharacterAtlas
+  m_Name: GameAtlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -20,7 +20,19 @@ SpriteAtlas:
       readable: 0
       crunchedCompression: 0
       sRGB: 1
-    platformSettings: []
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 2
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -33,6 +45,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 102900000, guid: 7b5fcd2ba7c5cbf42b63bad2eb708d2f, type: 3}
+    - {fileID: 102900000, guid: d9b6c4107f253f3449ca40fad128d77f, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -41,32 +54,44 @@ SpriteAtlas:
   - {fileID: 21300000, guid: a20c8d30afa377546a6a8e0aed7e863e, type: 3}
   - {fileID: 21300000, guid: 849b0482b21fe144d9f26cf0defa4ab5, type: 3}
   - {fileID: 21300000, guid: b0cb0c826c197554d9e23b32fb6d7699, type: 3}
+  - {fileID: 21300000, guid: 4a1259a3aca83c446ba67e814a13f7a3, type: 3}
+  - {fileID: 21300000, guid: dbb042142a242564697ccce1a21ae3fa, type: 3}
+  - {fileID: 21300000, guid: 9701c664803300145bcec4e103a92cd1, type: 3}
   - {fileID: 21300000, guid: f67a3cd4e36d470459be72a76491fe3a, type: 3}
   - {fileID: 21300000, guid: 787037f5a715a0e489f6721421cd33ce, type: 3}
+  - {fileID: 21300000, guid: 13cbaf9737be5db4c845d9f6b47e61d1, type: 3}
   - {fileID: 21300000, guid: c01d2b185414b8c47a13f26d6e85814f, type: 3}
+  - {fileID: 21300000, guid: 571b7c18f3fc9ff40909783ead5e2dac, type: 3}
   - {fileID: 21300000, guid: c9af7c3856d0d06498ea4f19635a28ea, type: 3}
   - {fileID: 21300000, guid: e91d6958bd14dff47a0ef94b7918e8f4, type: 3}
   - {fileID: 21300000, guid: 24bac799394286a458f9e88f9fc1481c, type: 3}
   - {fileID: 21300000, guid: 14d096c93530d9241a725585cf4cfd42, type: 3}
   - {fileID: 21300000, guid: 973db6c95389571489775a774b2d930b, type: 3}
   - {fileID: 21300000, guid: a8df351a7f2a0334b8235f0b93afa79a, type: 3}
+  - {fileID: 21300000, guid: 7e7a585a553bc8d4981722dec3c6f0e2, type: 3}
   - {fileID: 21300000, guid: a795fedd4989cce47814a62427e9a94f, type: 3}
   - {fileID: 21300000, guid: bfbdcbfdd125a4b4390e64cfbdb62edb, type: 3}
   m_PackedSpriteNamesToIndex:
   - sebastian
   - papa
   - pupu
+  - Doughnut
+  - HealFloorboard
+  - CottonCandy
   - rick
   - kali
+  - ColdFloorboard
   - finn
+  - ShootingStar
   - casey
   - mickey
   - bo
   - rosa
   - jasper
   - gregory
+  - Singing
   - aidan
   - felix
   m_RenderDataMap: {}
-  m_Tag: CharacterAtlas
+  m_Tag: GameAtlas
   m_IsVariant: 0

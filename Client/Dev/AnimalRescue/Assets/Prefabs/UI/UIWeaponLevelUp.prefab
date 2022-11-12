@@ -1507,6 +1507,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 452bd5b9c18ca854a95936e512e588f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  atlas: {fileID: 4343727234628468602, guid: 34d36bd18fd5e7643a7292fd0b32c9b5, type: 2}
   uiWeaponLevelUpItems:
   - {fileID: 1717689564340293253}
   - {fileID: 1717689564574162077}

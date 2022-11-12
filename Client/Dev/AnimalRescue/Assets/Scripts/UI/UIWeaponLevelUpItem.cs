@@ -10,12 +10,14 @@ public class UIWeaponLevelUpItem : MonoBehaviour
     private Button btn;
     private Text textWeaponName;
     private Text textWeaponLevel;
+    private Image imgWeapon;
     public UnityAction<int> onSelect;
 
     public void Init()
     {
         this.textWeaponName = transform.Find("TextWeaponName").GetComponent<Text>();
         this.textWeaponLevel = transform.Find("TextWeaponLevel").GetComponent<Text>();
+        this.imgWeapon = transform.Find("WeaponImage").GetComponent<Image>();
         this.btn = this.GetComponent<Button>();
         this.btn.onClick.AddListener(() =>
         {
@@ -23,10 +25,12 @@ public class UIWeaponLevelUpItem : MonoBehaviour
         });
     }
 
-    public void Setting(int id, string weaponName, int level)
+    public void Setting(int id, string weaponName, Sprite sprite, int level)
     {
         this.id = id;
         this.textWeaponName.text = weaponName;
+        this.imgWeapon.sprite = sprite;
+        this.imgWeapon.SetNativeSize();
         this.textWeaponLevel.text = "Level : " + level;
     }
 

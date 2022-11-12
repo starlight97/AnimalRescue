@@ -48,7 +48,6 @@ public class UIGameResult : MonoBehaviour
 
     public void ShowNewWaveIcon()
     {
-        Debug.Log("dd");
         bool checkNewWave = RecordManager.instance.CheckNewWaveRecord();
         bool checkNewTime = RecordManager.instance.CheckNewTimeRecord();
         if (checkNewWave)
