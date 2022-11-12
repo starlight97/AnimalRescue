@@ -25,10 +25,13 @@ public class PlayTimeManager : MonoBehaviour
         {
             delta += Time.deltaTime;
             TimeSpan t = TimeSpan.FromSeconds(delta);
+            string time = null;
 
-            string time = string.Format("{0:D2}:{1:D2}",
-                            t.Minutes,
-                            t.Seconds);
+            time = string.Format("{0:D2}:{1:D2}:{2:D2}",
+            t.Hours,
+            t.Minutes,
+            t.Seconds);
+
             onPassesTime(time);
             yield return null;
         }

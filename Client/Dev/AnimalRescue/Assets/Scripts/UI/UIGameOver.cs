@@ -11,6 +11,7 @@ public class UIGameOver : UIBase
         Again, Lobby
     }
 
+    private UIGameResult uiGameResult;
     public Button btnAgain;
     public Button btnLobby;
     public GameObject heroSpaceGo;
@@ -20,6 +21,8 @@ public class UIGameOver : UIBase
     {
         base.Init(heroId);
 
+        this.uiGameResult = GameObject.Find("UIGameResult").GetComponent<UIGameResult>();
+
         btnAgain.onClick.AddListener(() => {
             this.onClickBtn(eBtnType.Again);
         });
@@ -28,6 +31,8 @@ public class UIGameOver : UIBase
             this.onClickBtn(eBtnType.Lobby);
         });
 
+        this.uiGameResult.Init();
+
         var data = DataManager.instance.GetData<HeroData>(heroId);
         var uiHeroGo = Instantiate(Resources.Load<GameObject>(data.ui_prefab_path), heroSpaceGo.transform);
         var uiHero = uiHeroGo.GetComponent<UIHero>();
@@ -35,5 +40,16 @@ public class UIGameOver : UIBase
 
         var uiHeroAnim = uiHero.GetComponent<Animator>();
         uiHeroAnim.SetTrigger(UIHero.eState.Dizzy.ToString());
+    }
+
+    public void GetRecordText(int enemy, int gold, string time, int wave)
+    {
+        this.uiGameResult.SetResultText(enemy, gold, time, wave);
+    }
+
+    public void GetHighRecord(int highWave, string highTime)
+    {
+        this.uiGameResult.SetHighRecord(highWave, highTime);
+        this.uiGameResult.ShowNewWaveIcon();
     }
 }

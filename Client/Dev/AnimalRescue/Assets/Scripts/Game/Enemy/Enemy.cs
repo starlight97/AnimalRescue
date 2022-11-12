@@ -148,6 +148,11 @@ public class Enemy : MonoBehaviour
         this.attackRoutine = null;
     }
 
+    public void StopAttack()
+    {
+        attackRoutine = null;
+    }
+
     private void SetState(eState state)
     {
         //anim.SetInteger("State", (int)state);

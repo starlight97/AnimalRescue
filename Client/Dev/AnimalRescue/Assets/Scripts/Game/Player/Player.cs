@@ -90,16 +90,18 @@ public class Player : MonoBehaviour
 
     public void Hit(int damage)
     {
-        if (this.hitRoutine != null)
-            StopCoroutine(hitRoutine);
-        this.hitRoutine = StartCoroutine(HitRoutine());
         this.playerLife.Hp -= damage;
-        onUpdateHp(this.playerLife.Hp, this.playerLife.MaxHp);
 
         if (this.playerLife.Hp <= 0)
         {
-            this.playerLife.Hp = 0;
             this.Die();
+        }
+        else
+        {
+            if (this.hitRoutine != null)
+                StopCoroutine(hitRoutine);
+            this.hitRoutine = StartCoroutine(HitRoutine());
+            onUpdateHp(this.playerLife.Hp, this.playerLife.MaxHp);
         }
     }
 
@@ -114,8 +116,6 @@ public class Player : MonoBehaviour
     private void Die()
     {
         StartCoroutine(DieRoutine());
-        this.onDie();
-        StopAllCoroutines();
     }
 
     private IEnumerator DieRoutine()
@@ -123,6 +123,8 @@ public class Player : MonoBehaviour
         SetState(eStateType.Die);
         var length = this.anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         yield return new WaitForSeconds(length);
+
+        this.onDie();
     }
 
     private void SetState(eStateType state)

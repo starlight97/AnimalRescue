@@ -12,8 +12,8 @@ public class GameMain : SceneMain
     private UIGame uiGame;
     private PlayTimeManager playTime;
 
-    private int getGold = 0;
-    private int killEnemy = 0;
+    //public int GetGold { get; private set ; }
+    //public int KillEnemy { get; private set; }
 
     public AudioClip[] bgmlist;
     public AudioClip levelUpAudio;
@@ -56,25 +56,39 @@ public class GameMain : SceneMain
             //this.uiGame.ShowRivivePanel();
             //this.uiGame.RunTimer();
             #endregion
+            var enemys = GameObject.FindObjectsOfType<Enemy>();
+            foreach (var enemy in enemys)
+            {
+                enemy.StopAttack();
+            }
+            
             var info = InfoManager.instance.GetInfo();
+            var getGold = RecordManager.instance.GetGold();
             info.playerInfo.gold += getGold;
+            InfoManager.instance.SaveGame();
             Dispatch("onGameOver");
         };
         this.enemySpawner.onDieEnemy = (enemyid, experience) =>
         {
-            getGold += 1;
-            killEnemy += 1;
-            this.uiGame.SetProgress(killEnemy, getGold);
+            RecordManager.instance.AddGold(1);
+            RecordManager.instance.AddEnemyCount(1);
+
+            var getGold = RecordManager.instance.GetGold();
+            var enemyCount = RecordManager.instance.GetEnemyCount();
+
+            this.uiGame.SetProgress(enemyCount, getGold);
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
         };
         this.enemySpawner.onDieBoss = (enemyid, experience) =>
         {
-            getGold += 10;
-            killEnemy += 1;
+            RecordManager.instance.AddGold(10);
+            RecordManager.instance.AddEnemyCount(1);
+            var getGold = RecordManager.instance.GetGold();
+            var enemyCount = RecordManager.instance.GetEnemyCount();
             PlayerStats playerStats = this.player.GetComponent<PlayerStats>();
             playerStats.GetExp(experience);
-            this.uiGame.SetProgress(killEnemy, getGold);
+            this.uiGame.SetProgress(enemyCount, getGold);
             waveManager.StartWave();
 
             SoundManager.instance.StopBGMSound();
@@ -84,6 +98,7 @@ public class GameMain : SceneMain
         {
             Debug.Log(wave + " : wave start");
             enemySpawner.StartWave(wave);
+            RecordManager.instance.SetWave(wave);
             this.uiGame.SetWave(wave);
         };
         this.uiGame.onWeaponSelect = (id) =>
@@ -94,6 +109,7 @@ public class GameMain : SceneMain
         };
         this.playTime.onPassesTime = (time) => 
         {
+            RecordManager.instance.SetPlayTime(time);
             this.uiGame.SetPlayTime(time);
         };
         
