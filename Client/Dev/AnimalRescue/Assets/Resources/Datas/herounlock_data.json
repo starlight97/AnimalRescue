@@ -1,0 +1,58 @@
+[
+  {
+    "id": 20000,
+    "hero_id": 106,
+    "condition_key": 1007,
+    "condition_amount": 10000,
+    "condition_type": 0
+  },
+  {
+    "id": 20001,
+    "hero_id": 107,
+    "condition_key": 1002,
+    "condition_amount": 10000,
+    "condition_type": 0
+  },
+  {
+    "id": 20002,
+    "hero_id": 108,
+    "condition_key": 1004,
+    "condition_amount": 10000,
+    "condition_type": 0
+  },
+  {
+    "id": 20003,
+    "hero_id": 109,
+    "condition_key": 1003,
+    "condition_amount": 10000,
+    "condition_type": 0
+  },
+  {
+    "id": 20004,
+    "hero_id": 110,
+    "condition_key": 1005,
+    "condition_amount": 10000,
+    "condition_type": 0
+  },
+  {
+    "id": 20005,
+    "hero_id": 111,
+    "condition_key": 1006,
+    "condition_amount": 10000,
+    "condition_type": 0
+  },
+  {
+    "id": 20006,
+    "hero_id": 112,
+    "condition_key": 1001,
+    "condition_amount": 10000,
+    "condition_type": 0
+  },
+  {
+    "id": 20007,
+    "hero_id": 113,
+    "condition_key": 1000,
+    "condition_amount": 10000,
+    "condition_type": 0
+  }
+]

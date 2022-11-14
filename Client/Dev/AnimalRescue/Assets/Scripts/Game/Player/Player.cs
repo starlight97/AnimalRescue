@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     public UnityAction<Vector3> onUpdateMove;
     public UnityAction<int> onLevelUp;
     public UnityAction<float, float> onUpdateHp;
+    private bool isDIe = false;
 
     public void Init(int heroId)
     {
@@ -115,11 +116,15 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        StartCoroutine(DieRoutine());
+        if(isDIe == false)
+        {
+            StartCoroutine(DieRoutine());
+        }
     }
 
     private IEnumerator DieRoutine()
     {
+        isDIe = true;
         SetState(eStateType.Die);
         var length = this.anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         yield return new WaitForSeconds(length);
@@ -131,6 +136,17 @@ public class Player : MonoBehaviour
     {
         this.anim.SetInteger("State", (int)state);
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Enemy")
+        {
+            Enemy enemy = collision.collider.GetComponent<Enemy>();
+            this.Hit(enemy.damage);
+        }
+    }
+
+
 
     #region 자동 에임 부채꼴 범위
     // 시야 영역의 반지름과 시야 각도

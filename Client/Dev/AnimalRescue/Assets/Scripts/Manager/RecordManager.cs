@@ -15,6 +15,8 @@ public class RecordManager
     private bool isNewTimeRecord = false;
     private bool isNewWaveRecord = false;
 
+    private bool isNewHeroOpen = false;
+
     public int GetGold()
     {
         return gold;
@@ -109,5 +111,40 @@ public class RecordManager
     {
         return isNewWaveRecord;
     }
-  
+
+    public void SaveKillEnemy(Dictionary<int, int> dicKillEnemy)
+    {
+        var dicKillEnemyInfo = InfoManager.instance.GetInfo().dicKillEnemyInfo;
+
+        foreach (var killEnemy in dicKillEnemy)
+        {
+            if(dicKillEnemyInfo.ContainsKey(killEnemy.Key) == false)
+            {
+                dicKillEnemyInfo.Add(killEnemy.Key, killEnemy.Value);
+                if(killEnemy.Value >= GameConstants.NEWHEROUNLOCKVALUE)
+                {
+                    isNewHeroOpen = true;
+                }
+            }
+            else
+            {
+                if (dicKillEnemyInfo[killEnemy.Key] <= GameConstants.NEWHEROUNLOCKVALUE &&
+                    dicKillEnemyInfo[killEnemy.Key] + killEnemy.Value >= GameConstants.NEWHEROUNLOCKVALUE)
+                {
+                    isNewHeroOpen = true;
+                }
+                dicKillEnemyInfo[killEnemy.Key] += killEnemy.Value;
+                if (dicKillEnemyInfo[killEnemy.Key] >= 50000)
+                    dicKillEnemyInfo[killEnemy.Key] = 50000;
+            }
+
+        }
+    }
+
+    public bool IsNewHeroOpen()
+    {
+        bool check = isNewHeroOpen;
+        isNewHeroOpen = false;
+        return check;
+    }
 }

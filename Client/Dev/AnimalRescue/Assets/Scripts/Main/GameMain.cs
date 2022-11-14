@@ -11,6 +11,7 @@ public class GameMain : SceneMain
     private WeaponManager weaponManager;
     private UIGame uiGame;
     private PlayTimeManager playTime;
+    private Dictionary<int, int> dicKillEnemy;
 
     //public int GetGold { get; private set ; }
     //public int KillEnemy { get; private set; }
@@ -21,6 +22,9 @@ public class GameMain : SceneMain
     public override void Init(SceneParams param = null)
     {
         base.Init(param);
+
+        this.dicKillEnemy = new Dictionary<int, int>();
+
         this.onDestroy.AddListener(() =>
         {
             SoundManager.instance.StopBGMSound();
@@ -56,20 +60,27 @@ public class GameMain : SceneMain
             //this.uiGame.ShowRivivePanel();
             //this.uiGame.RunTimer();
             #endregion
-            var enemys = GameObject.FindObjectsOfType<Enemy>();
-            foreach (var enemy in enemys)
-            {
-                enemy.StopAttack();
-            }
             
             var info = InfoManager.instance.GetInfo();
             var getGold = RecordManager.instance.GetGold();
+
+            RecordManager.instance.SaveKillEnemy(this.dicKillEnemy);
+
             info.playerInfo.gold += getGold;
             InfoManager.instance.SaveGame();
             Dispatch("onGameOver");
         };
         this.enemySpawner.onDieEnemy = (enemyid, experience) =>
         {
+            if (dicKillEnemy.ContainsKey(enemyid) == false)
+            {
+                dicKillEnemy.Add(enemyid, 1);
+            }
+            else
+            {
+                dicKillEnemy[enemyid]++;
+            }
+
             RecordManager.instance.AddGold(1);
             RecordManager.instance.AddEnemyCount(1);
 
@@ -105,7 +116,6 @@ public class GameMain : SceneMain
         {
             this.Resume();
             this.weaponManager.WeaponUpgrade(id);
-            Debug.Log(id + " : Level Up 선택!~@!@~");
         };
         this.playTime.onPassesTime = (time) => 
         {

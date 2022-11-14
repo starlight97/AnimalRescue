@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     protected int maxHp;
     public int currentHp;
-    protected int damage;
+    public int damage;
     public int experience;
     protected float attackSpeed;
     protected int level;
