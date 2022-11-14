@@ -2447,8 +2447,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a89fe64beb548a94e95fee96ea2c7c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 1006
   currentHp: 0
   experience: 0
+  moveSpeed: 0
   attackRange: 0
 --- !u!135 &3494588110946255157
 SphereCollider:
