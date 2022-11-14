@@ -33,5 +33,61 @@
     "item_id": 105,
     "price": 5000,
     "price_type": 0
+  },
+  {
+    "id": 10005,
+    "category": 1,
+    "item_id": 106,
+    "price": 7000,
+    "price_type": 0
+  },
+  {
+    "id": 10006,
+    "category": 1,
+    "item_id": 107,
+    "price": 7000,
+    "price_type": 0
+  },
+  {
+    "id": 10007,
+    "category": 1,
+    "item_id": 108,
+    "price": 7000,
+    "price_type": 0
+  },
+  {
+    "id": 10008,
+    "category": 1,
+    "item_id": 109,
+    "price": 7000,
+    "price_type": 0
+  },
+  {
+    "id": 10009,
+    "category": 1,
+    "item_id": 110,
+    "price": 7000,
+    "price_type": 0
+  },
+  {
+    "id": 10010,
+    "category": 1,
+    "item_id": 111,
+    "price": 7000,
+    "price_type": 0
+  },
+  {
+    "id": 10011,
+    "category": 1,
+    "item_id": 112,
+    "price": 7000,
+    "price_type": 0
+  },
+  {
+    "id": 10012,
+    "category": 1,
+    "item_id": 113,
+    "price": 7000,
+    "price_type": 0
   }
 ]

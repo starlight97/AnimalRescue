@@ -23,7 +23,7 @@ public class UIGameOver : UIBase
         base.Init(heroId);
 
         this.uiGameResult = GameObject.Find("UIGameResult").GetComponent<UIGameResult>();
-        this.uiShopNoticePopup = GameObject.Find("UIShopNoticePopup").GetComponent<UIShopNoticePopup>();
+        this.uiShopNoticePopup = this.transform.Find("UIShopNoticePopup").GetComponent<UIShopNoticePopup>();
 
         btnAgain.onClick.AddListener(() => {
             this.onClickBtn(eBtnType.Again);
@@ -34,7 +34,7 @@ public class UIGameOver : UIBase
         });
 
         this.uiGameResult.Init();
-        this.uiShopNoticePopup.Init();
+        //this.uiShopNoticePopup.Init();
 
         var data = DataManager.instance.GetData<HeroData>(heroId);
         var uiHeroGo = Instantiate(Resources.Load<GameObject>(data.ui_prefab_path), heroSpaceGo.transform);
