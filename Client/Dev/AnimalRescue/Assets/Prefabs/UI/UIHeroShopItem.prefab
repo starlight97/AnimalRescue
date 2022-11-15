@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 58, y: 0}
+  m_AnchoredPosition: {x: 46, y: 5}
   m_SizeDelta: {x: 300, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2304097755315508780
@@ -73,13 +73,15 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 6
     m_MaxSize: 60
-    m_Alignment: 0
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 99999999
+  m_Text: '5000
+
+'
 --- !u!1 &2304097755575942995
 GameObject:
   m_ObjectHideFlags: 0
@@ -147,7 +149,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 52130f543624c604798b19916572d327, type: 3}
     m_FontSize: 60
     m_FontStyle: 0
     m_BestFit: 0
@@ -5206,7 +5208,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 90.12683, y: -58}
+  m_AnchoredPosition: {x: 84, y: -52}
   m_SizeDelta: {x: 75.2537, y: 71.2929}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6533539502248384178
@@ -5455,6 +5457,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd51e83fc84844645bb5805287d73920, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
+  price: 0
   btnPurchase: {fileID: 6533539501628237152}
   imgHero: {fileID: 6533539503725789158}
   textHeroName: {fileID: 2304097755575943005}
