@@ -1,6 +1,7 @@
 using GoogleMobileAds.Api;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class AdMobManager : MonoBehaviour
@@ -38,8 +39,28 @@ public class AdMobManager : MonoBehaviour
         string adUnitId = "unexpected_platform";
 #endif
 
-        // 모바일 광고 SDK를 초기화함.
-        MobileAds.Initialize(initStatus => { });
+        // 모바일 광고 SDK를 초기화함. 
+        MobileAds.Initialize(initStatus => {
+            // 광고를 요청하기 전에 각 어댑터의 초기화 상태를 확인
+            // 광고 로드 전 초기화 완료될 때까지 기다려야함.
+            Dictionary<string, AdapterStatus> map = initStatus.getAdapterStatusMap();
+            foreach (KeyValuePair<string, AdapterStatus> keyValuePair in map)
+            {
+                string className = keyValuePair.Key;
+                AdapterStatus status = keyValuePair.Value;
+                switch (status.InitializationState)
+                {
+                    case AdapterState.NotReady:
+                        // The adapter initialization did not complete.
+                        MonoBehaviour.print("Adapter: " + className + " not ready.");
+                        break;
+                    case AdapterState.Ready:
+                        // The adapter was successfully initialized.
+                        MonoBehaviour.print("Adapter: " + className + " is initialized.");
+                        break;
+                }
+            }
+        });
 
         ////광고 로드 : RewardedAd 객체의 loadAd메서드에 AdRequest 인스턴스를 넣음
         //AdRequest request = new AdRequest.Builder().Build();
