@@ -31,12 +31,12 @@ public class AdMobManager : MonoBehaviour
         //string adUnitId = "unused";
         this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
         this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
-#elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-4572742510387968/2132883982";
-#elif UNITY_IPHONE
-        string adUnitId = "";
-#else
-        string adUnitId = "unexpected_platform";
+//#elif UNITY_ANDROID
+//        string adUnitId = "ca-app-pub-4572742510387968/2132883982";
+//#elif UNITY_IPHONE
+//        string adUnitId = "";
+//#else
+//        string adUnitId = "unexpected_platform";
 #endif
 
         // 모바일 광고 SDK를 초기화함. 
