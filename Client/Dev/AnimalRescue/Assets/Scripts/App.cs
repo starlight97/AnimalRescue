@@ -146,6 +146,13 @@ public class App : MonoBehaviour
                                 this.LoadScene<GameOverMain>(eSceneType.GameOver);
                             });
                         });
+                        main.AddListener("onGameExit", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<LobbyMain>(eSceneType.Lobby);
+                            });
+                        });
                         var param = new GameMainParam() { heroId = this.lobbyMain.selectedHeroId };
                         main.Init(param);
                         break;

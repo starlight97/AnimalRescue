@@ -33,7 +33,6 @@ public class UIBase : MonoBehaviour
 
         this.isShowPanelOption = (check) =>
         {
-
         };
     }
 

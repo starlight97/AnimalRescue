@@ -29,6 +29,7 @@ public class GameMain : SceneMain
         {
             SoundManager.instance.StopBGMSound();
         });
+
         SoundManager.instance.PlayBGMSound(bgmlist);
 
         this.uiGame = (UIGame)this.uiBase;
@@ -136,6 +137,20 @@ public class GameMain : SceneMain
             // 광고 버튼 누르면 hp 절반 회복
             //ShowAds();
         };
+        this.uiGame.btnGameExit.onClick.AddListener(() =>
+        {
+            Resume();
+            var info = InfoManager.instance.GetInfo();
+            var getGold = RecordManager.instance.GetGold();
+
+            RecordManager.instance.SaveKillEnemy(this.dicKillEnemy);
+
+            info.playerInfo.gold += getGold;
+            InfoManager.instance.SaveGame();
+
+            Dispatch("onGameExit");
+        });
+
         #endregion
 
         this.uiGame.Init();
@@ -144,6 +159,8 @@ public class GameMain : SceneMain
         this.waveManager.Init();
         this.weaponManager.Init(2000);
         this.playTime.Init();
+        this.OptionInit();
+
     }
 
     private void GameObjectSetting()

@@ -14,10 +14,12 @@ public class UIGame : UIBase
     public UnityAction<int> onWeaponSelect;
     public UnityAction onGameOver;
     public UnityAction onClickAds;
+    public Button btnGameExit;
 
     public override void Init()
     {
         base.Init();
+        this.UIOptionInit();
         this.dimImage = this.transform.Find("dim").GetComponent<Image>();
         this.uiHpGauge = this.transform.Find("UIHpGauge").GetComponent<UIHpGauge>();
         this.uiWeaponLevelUp = this.transform.Find("UIWeaponLevelUp").GetComponent<UIWeaponLevelUp>();
@@ -31,6 +33,16 @@ public class UIGame : UIBase
             this.onWeaponSelect(id);
             this.uiWeaponLevelUp.HideUI();
             this.dimImage.gameObject.SetActive(false);
+        };
+
+        this.isShowPanelOption = (check) =>
+        {
+            SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
+
+            if (check)
+                Pause();
+            else
+                Resume();
         };
 
         #region RiviveAction
@@ -57,6 +69,7 @@ public class UIGame : UIBase
         uiWeaponLevelUp.Init();
         uiRivivePanel.Init();
         uiGameStatus.Init();
+        
     }
 
     public void FixedHpGaugePosition(Vector3 worldPos)
@@ -98,5 +111,15 @@ public class UIGame : UIBase
     public void SetPlayTime(string time)
     {
         this.uiGameStatus.SetPlayTimeText(time);
+    }
+
+    public void Resume()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void Pause()
+    {
+        Time.timeScale = 0f;
     }
 }
