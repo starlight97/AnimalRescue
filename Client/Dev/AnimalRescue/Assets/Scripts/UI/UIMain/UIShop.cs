@@ -7,7 +7,6 @@ public class UIShop : UIBase
     private UIHeroShop uiHeroShop;
     public UnityAction onClickLobby;
     public UnityAction onClickAdsBtn;
-    public UnityAction onClickLoadData;
     public Button btnBack;
     public Button btnShowAd;
     public Button btnCloudSave;
@@ -45,7 +44,6 @@ public class UIShop : UIBase
         this.btnCloudLoad.onClick.AddListener(() =>
         {
             GPGSManager.instance.LoadFromCloud();
-            this.onClickLoadData();
         });
     }
 

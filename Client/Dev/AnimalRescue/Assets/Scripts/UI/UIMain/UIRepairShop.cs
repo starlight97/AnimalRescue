@@ -18,7 +18,6 @@ public class UIRepairShop : UIBase
     public Button btnBack;
     public Button btnShop;
     public UnityAction<eBtnRepairShop> onClickBtn;
-    public UnityAction onClickLoadData;
     public Text textPlayerGold;
     //public Text textPlayerDiamond;
     public GameObject heroViewGo;
@@ -88,7 +87,6 @@ public class UIRepairShop : UIBase
         this.btnCloudLoad.onClick.AddListener(() =>
         {
             GPGSManager.instance.LoadFromCloud();
-            this.onClickLoadData();
         });
 
         this.uiHeroDetailStats.UpdateUI();

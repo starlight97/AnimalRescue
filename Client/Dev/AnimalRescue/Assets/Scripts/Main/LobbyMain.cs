@@ -62,10 +62,6 @@ public class LobbyMain : SceneMain
  
         };
 
-        this.uiLobby.onClickLoadData = () =>
-        {
-            Dispatch("onReload");
-        };
 
         GPGSManager.instance.onSavedCloud = () =>
         {
@@ -74,6 +70,7 @@ public class LobbyMain : SceneMain
         GPGSManager.instance.onLoadedCloud = (info) =>
         {
             InfoManager.instance.SetInfo(info);
+            Dispatch("onReload");
             //var json = JsonConvert.SerializeObject(this.gameInfo);
         };
         GPGSManager.instance.onErrorHandler = (status) =>
