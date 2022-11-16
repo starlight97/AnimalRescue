@@ -30,15 +30,9 @@ public class ShopMain : SceneMain
             ShowAds();
         };
 
-        GPGSManager.instance.onSavedCloud = () =>
+        this.uiShop.onDataLoadComplete = () =>
         {
-            //this.textGameInfo.text = status.ToString();
-        };
-        GPGSManager.instance.onLoadedCloud = (info) =>
-        {
-            InfoManager.instance.SetInfo(info);
             Dispatch("onReload");
-            //var json = JsonConvert.SerializeObject(this.gameInfo);
         };
 
         this.OptionInit();

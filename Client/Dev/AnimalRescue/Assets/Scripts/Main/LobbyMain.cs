@@ -63,15 +63,10 @@ public class LobbyMain : SceneMain
         };
 
 
-        GPGSManager.instance.onSavedCloud = () =>
+
+        this.uiLobby.onDataLoadComplete = () =>
         {
-            //this.textGameInfo.text = status.ToString();
-        };
-        GPGSManager.instance.onLoadedCloud = (info) =>
-        {
-            InfoManager.instance.SetInfo(info);
             Dispatch("onReload");
-            //var json = JsonConvert.SerializeObject(this.gameInfo);
         };
         GPGSManager.instance.onErrorHandler = (status) =>
         {

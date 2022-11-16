@@ -32,6 +32,12 @@ public class UILobby : UIBase
     public UnityAction<eBtnLobby> onClickBtn;
     public UnityAction<int> onClickHero;
 
+    public Button btnLoadCheck;
+    public Button btnSaveCheck;
+    public GameObject panelSaveCheckGo;
+    public GameObject panelLoadCheckGo;
+    public UnityAction onDataLoadComplete;
+
 
     override public void Init()
     {
@@ -78,12 +84,33 @@ public class UILobby : UIBase
         {
             this.onClickHero(id);
         };
+
+        this.btnSaveCheck.onClick.AddListener(() =>
+        {
+            panelSaveCheckGo.gameObject.SetActive(false);
+        });
+        this.btnLoadCheck.onClick.AddListener(() =>
+        {
+            onDataLoadComplete();
+        });
         this.uiLobbyHeroStats.Init();
         this.uiHeroList.Init();
 
         var info = InfoManager.instance.GetInfo();
         this.gold.text = info.playerInfo.gold.ToString();
         this.diamond.text = info.playerInfo.diamond.ToString();
+
+        GPGSManager.instance.onSavedCloud = () =>
+        {
+            panelSaveCheckGo.gameObject.SetActive(true);
+            //this.textGameInfo.text = status.ToString();
+        };
+        GPGSManager.instance.onLoadedCloud = (info) =>
+        {
+            panelLoadCheckGo.gameObject.SetActive(true);
+            InfoManager.instance.SetInfo(info);
+            //var json = JsonConvert.SerializeObject(this.gameInfo);
+        };
     }
 
     public void UiLobbyHeroStatsUIUpdate(string heroName, int damage, int hp, float moveSpeed)

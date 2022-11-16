@@ -11,7 +11,13 @@ public class UIShop : UIBase
     public Button btnShowAd;
     public Button btnCloudSave;
     public Button btnCloudLoad;
+    public Button btnLoadCheck;
+    public Button btnSaveCheck;
+    public GameObject panelCloudGo;
+    public UnityAction onDataLoadComplete;
 
+    public GameObject panelSaveCheckGo;
+    public GameObject panelLoadCheckGo;
 
     override public void Init()
     {
@@ -44,6 +50,27 @@ public class UIShop : UIBase
         this.btnCloudLoad.onClick.AddListener(() =>
         {
             GPGSManager.instance.LoadFromCloud();
+        });
+
+        GPGSManager.instance.onSavedCloud = () =>
+        {
+            panelSaveCheckGo.gameObject.SetActive(true);
+            //this.textGameInfo.text = status.ToString();
+        };
+        GPGSManager.instance.onLoadedCloud = (info) =>
+        {
+            panelLoadCheckGo.gameObject.SetActive(true);
+            InfoManager.instance.SetInfo(info);
+            //var json = JsonConvert.SerializeObject(this.gameInfo);
+        };
+
+        this.btnSaveCheck.onClick.AddListener(() =>
+        {
+            panelSaveCheckGo.gameObject.SetActive(false);
+        });
+        this.btnLoadCheck.onClick.AddListener(() =>
+        {
+            onDataLoadComplete();
         });
     }
 

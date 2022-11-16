@@ -69,6 +69,7 @@ public class GameMain : SceneMain
 
             info.playerInfo.gold += getGold;
             InfoManager.instance.SaveGame();
+            SoundManager.instance.StopSound();
             Dispatch("onGameOver");
         };
         this.enemySpawner.onDieEnemy = (enemyid, experience) =>
@@ -147,7 +148,7 @@ public class GameMain : SceneMain
 
             info.playerInfo.gold += getGold;
             InfoManager.instance.SaveGame();
-
+            SoundManager.instance.StopSound();
             Dispatch("onGameExit");
         });
 

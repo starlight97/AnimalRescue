@@ -32,16 +32,9 @@ public class RepairShopMain : SceneMain
                     break;
             }            
         };
-
-        GPGSManager.instance.onSavedCloud = () =>
+        this.uiRepairShop.onDataLoadComplete = () =>
         {
-            //this.textGameInfo.text = status.ToString();
-        };
-        GPGSManager.instance.onLoadedCloud = (info) =>
-        {
-            InfoManager.instance.SetInfo(info);
             Dispatch("onReload");
-            //var json = JsonConvert.SerializeObject(this.gameInfo);
         };
 
         this.OptionInit();

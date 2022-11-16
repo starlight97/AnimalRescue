@@ -2471,6 +2471,10 @@ MonoBehaviour:
   btnCloudLoad: {fileID: 770405180}
   gold: {fileID: 1620633341}
   diamond: {fileID: 1294687494}
+  btnLoadCheck: {fileID: 7090370370885478396}
+  btnSaveCheck: {fileID: 7090370370885478397}
+  panelSaveCheckGo: {fileID: 7090370370885478399}
+  panelLoadCheckGo: {fileID: 7090370370885478398}
 --- !u!114 &2082894318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6155,6 +6159,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UICloudPopups
       objectReference: {fileID: 0}
+    - target: {fileID: 6241539838781473962, guid: 0b4a7cf5224f54f43bc4b4d7487a7a34, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6241539838781473963, guid: 0b4a7cf5224f54f43bc4b4d7487a7a34, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -6245,10 +6253,42 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6652932643631959298, guid: 0b4a7cf5224f54f43bc4b4d7487a7a34, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b4a7cf5224f54f43bc4b4d7487a7a34, type: 3}
+--- !u!114 &7090370370885478396 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7592055329287899414, guid: 0b4a7cf5224f54f43bc4b4d7487a7a34, type: 3}
+  m_PrefabInstance: {fileID: 7090370370885478395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7090370370885478397 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4956520961425489691, guid: 0b4a7cf5224f54f43bc4b4d7487a7a34, type: 3}
+  m_PrefabInstance: {fileID: 7090370370885478395}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7090370370885478398 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6241539839985816802, guid: 0b4a7cf5224f54f43bc4b4d7487a7a34, type: 3}
+  m_PrefabInstance: {fileID: 7090370370885478395}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7090370370885478399 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6652932643631959298, guid: 0b4a7cf5224f54f43bc4b4d7487a7a34, type: 3}
+  m_PrefabInstance: {fileID: 7090370370885478395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!222 &7091210783113501682
 CanvasRenderer:
   m_ObjectHideFlags: 0

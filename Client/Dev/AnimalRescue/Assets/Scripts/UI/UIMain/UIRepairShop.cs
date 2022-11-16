@@ -17,7 +17,11 @@ public class UIRepairShop : UIBase
     public Button btnCloudLoad;
     public Button btnBack;
     public Button btnShop;
+    public Button btnLoadCheck;
+    public Button btnSaveCheck;
+    public GameObject panelCloudGo;
     public UnityAction<eBtnRepairShop> onClickBtn;
+    public UnityAction onDataLoadComplete;
     public Text textPlayerGold;
     //public Text textPlayerDiamond;
     public GameObject heroViewGo;
@@ -28,6 +32,10 @@ public class UIRepairShop : UIBase
 
     public ParticleSystem heartsParticleGo;
     public ParticleSystem starParticleGo;
+
+    public GameObject panelSaveCheckGo;
+    public GameObject panelLoadCheckGo;
+
     override public void Init(int heroId)
     {
         base.Init(heroId);
@@ -87,6 +95,27 @@ public class UIRepairShop : UIBase
         this.btnCloudLoad.onClick.AddListener(() =>
         {
             GPGSManager.instance.LoadFromCloud();
+        });
+
+        GPGSManager.instance.onSavedCloud = () =>
+        {
+            panelSaveCheckGo.gameObject.SetActive(true);
+            //this.textGameInfo.text = status.ToString();
+        };
+        GPGSManager.instance.onLoadedCloud = (info) =>
+        {
+            panelLoadCheckGo.gameObject.SetActive(true);
+            InfoManager.instance.SetInfo(info);
+            //var json = JsonConvert.SerializeObject(this.gameInfo);
+        };
+
+        this.btnSaveCheck.onClick.AddListener(() =>
+        {
+            panelSaveCheckGo.gameObject.SetActive(false);
+        });
+        this.btnLoadCheck.onClick.AddListener(() =>
+        {
+            onDataLoadComplete();
         });
 
         this.uiHeroDetailStats.UpdateUI();
