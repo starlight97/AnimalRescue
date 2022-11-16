@@ -62,6 +62,7 @@ public class LobbyMain : SceneMain
  
         };
 
+
         GPGSManager.instance.onSavedCloud = () =>
         {
             //this.textGameInfo.text = status.ToString();
@@ -69,6 +70,7 @@ public class LobbyMain : SceneMain
         GPGSManager.instance.onLoadedCloud = (info) =>
         {
             InfoManager.instance.SetInfo(info);
+            Dispatch("onReload");
             //var json = JsonConvert.SerializeObject(this.gameInfo);
         };
         GPGSManager.instance.onErrorHandler = (status) =>

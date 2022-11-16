@@ -32,6 +32,7 @@ public class UILobby : UIBase
     public UnityAction<eBtnLobby> onClickBtn;
     public UnityAction<int> onClickHero;
 
+
     override public void Init()
     {
         base.Init();
@@ -66,8 +67,7 @@ public class UILobby : UIBase
         };
         this.btnCloudSave.onClick.AddListener(() =>
         {
-            GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
-            
+            GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());            
         });
         this.btnCloudLoad.onClick.AddListener(() =>
         {

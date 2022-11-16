@@ -33,6 +33,17 @@ public class RepairShopMain : SceneMain
             }            
         };
 
+        GPGSManager.instance.onSavedCloud = () =>
+        {
+            //this.textGameInfo.text = status.ToString();
+        };
+        GPGSManager.instance.onLoadedCloud = (info) =>
+        {
+            InfoManager.instance.SetInfo(info);
+            Dispatch("onReload");
+            //var json = JsonConvert.SerializeObject(this.gameInfo);
+        };
+
         this.OptionInit();
         this.uiRepairShop.Init(mainParam.heroId);
 

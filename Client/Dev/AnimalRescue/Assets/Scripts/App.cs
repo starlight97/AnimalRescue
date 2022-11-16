@@ -132,6 +132,13 @@ public class App : MonoBehaviour
                                 this.LoadScene<RepairShopMain>(eSceneType.RepairShop);
                             });
                         });
+                        main.AddListener("onReload", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<TitleMain>(eSceneType.Title);
+                            });
+                        });
                         lobbyMain.Init();
                         break;
                     }
@@ -168,6 +175,13 @@ public class App : MonoBehaviour
                                 this.LoadScene<LobbyMain>(eSceneType.Lobby);
                             });
                         });
+                        main.AddListener("onReload", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<TitleMain>(eSceneType.Title);
+                            });
+                        });
                         main.Init();
                         break;
                     }
@@ -187,6 +201,13 @@ public class App : MonoBehaviour
                             this.uiApp.FadeOut(0.5f, () =>
                             {
                                 this.LoadScene<ShopMain>(eSceneType.Shop);
+                            });
+                        });
+                        main.AddListener("onReload", (data) =>
+                        {
+                            this.uiApp.FadeOut(0.5f, () =>
+                            {
+                                this.LoadScene<TitleMain>(eSceneType.Title);
                             });
                         });
 

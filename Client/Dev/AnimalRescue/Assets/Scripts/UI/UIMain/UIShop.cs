@@ -9,6 +9,10 @@ public class UIShop : UIBase
     public UnityAction onClickAdsBtn;
     public Button btnBack;
     public Button btnShowAd;
+    public Button btnCloudSave;
+    public Button btnCloudLoad;
+
+
     override public void Init()
     {
         base.Init();
@@ -32,6 +36,15 @@ public class UIShop : UIBase
         {
             SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
         };
+
+        this.btnCloudSave.onClick.AddListener(() =>
+        {
+            GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
+        });
+        this.btnCloudLoad.onClick.AddListener(() =>
+        {
+            GPGSManager.instance.LoadFromCloud();
+        });
     }
 
     public Text GetTextGold()
