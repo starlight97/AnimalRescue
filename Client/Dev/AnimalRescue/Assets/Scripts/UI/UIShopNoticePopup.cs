@@ -6,21 +6,25 @@ using UnityEngine.UI;
 
 public class UIShopNoticePopup : MonoBehaviour
 {
+    private RectTransform noticePopupGo;
     private Button btnOk;
     public UnityAction onClickBtn;
+    public UnityAction onShowUI;
 
     public void Init()
     {
-        this.btnOk = this.transform.Find("OkBtn").GetComponent<Button>();
-        this.transform.gameObject.SetActive(false);
+        this.noticePopupGo = this.transform.Find("NoticePopup").GetComponent<RectTransform>();
+        this.btnOk = this.transform.Find("NoticePopup").transform.Find("OkBtn").GetComponent<Button>();
 
         this.btnOk.onClick.AddListener(() => {
             this.transform.gameObject.SetActive(false);
+            onClickBtn();
         });
     }
 
     public void ShowUI()
     {
-        this.transform.gameObject.SetActive(true);
+        this.noticePopupGo.gameObject.SetActive(true);
+        onShowUI();
     }
 }

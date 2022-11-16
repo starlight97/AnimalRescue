@@ -11,6 +11,6 @@ public static class GameConstants
     public const int SpawnEnemyCount = 100;   // 1웨이브당 스폰 몬스터 숫자
     public const float WaveTime = 60f;       // 1웨이브 진행시간
     public const int MOVEMAXLEVEL = 100;       // 이동속도맥스레벨
-    public const int NEWHEROUNLOCKVALUE = 10000;    // 새로운 히어로 해금하려면 잡아야 하는 몬스터수
+    public const int NEWHEROUNLOCKVALUE = 10;    // 새로운 히어로 해금하려면 잡아야 하는 몬스터수
 
 }
