@@ -40,9 +40,9 @@ public class ShopMain : SceneMain
 
     private void ShowAds()
     {
-        AdMobManager.instance.Init("ca-app-pub-3940256099942544/5224354917");
+        //AdMobManager.instance.Init("ca-app-pub-3940256099942544/5224354917");
         // 진짜 광고 !!!!!!!!! 출시할 때 바꺼~~~!!!!!!!!!!!!!
-        //AdMobManager.instance.Init("ca-app-pub-4572742510387968/2132883982");
+        AdMobManager.instance.Init("ca-app-pub-4572742510387968/2132883982");
         AdMobManager.instance.ShowShopCoinAds();
         AdMobManager.instance.onHandleRewardedAdClosed = () => {
             // 로딩창 제거

@@ -132,8 +132,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 42184850}
+  - component: {fileID: 42184851}
   m_Layer: 0
-  m_Name: Map
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,6 +160,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &42184851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42184849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 162641c605b92aa4ca4d2472eba75e91, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textures:
+  - {fileID: 2800000, guid: 990a8c3ed9ae5464dac478666ae79847, type: 3}
+  - {fileID: 2800000, guid: ee9f212754fa3bb409149bbb7d8dd452, type: 3}
+  - {fileID: 2800000, guid: cd08c9867276c394bb3d09d3fb2dc422, type: 3}
+  - {fileID: 2800000, guid: 716b936f05c1f234ba83852d75174954, type: 3}
+  - {fileID: 2800000, guid: b74cc9ace304f12458c49214e5373717, type: 3}
+  - {fileID: 2800000, guid: 959f424eb42a61f4db3d0d9e21e6dbf2, type: 3}
+  - {fileID: 2800000, guid: 92ce9be676f8e3649a194cb43ba68566, type: 3}
+  - {fileID: 2800000, guid: 0f5c50088ef09ae44a4ae05106395202, type: 3}
+  - {fileID: 2800000, guid: e0a3ec4f66c73a143afc497b21d14bd4, type: 3}
+  - {fileID: 2800000, guid: 9c95a71a78f018944bcc26765957b782, type: 3}
+  - {fileID: 2800000, guid: 198efc826f78cd84ba9b7b692ce0ecdb, type: 3}
 --- !u!1 &148330502
 GameObject:
   m_ObjectHideFlags: 0

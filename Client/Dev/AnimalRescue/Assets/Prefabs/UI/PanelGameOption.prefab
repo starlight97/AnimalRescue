@@ -808,7 +808,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 211.96, y: 3.3}
+  m_AnchoredPosition: {x: 211.96, y: -15}
   m_SizeDelta: {x: 392, y: 33.999947}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6629187951429001950
@@ -3962,7 +3962,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: GAMEEXIT
+  m_Text: GAME EXIT
 --- !u!1 &8144154622855173667
 GameObject:
   m_ObjectHideFlags: 0
