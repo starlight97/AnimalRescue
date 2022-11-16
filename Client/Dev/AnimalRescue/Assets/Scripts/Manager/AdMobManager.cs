@@ -32,7 +32,7 @@ public class AdMobManager : MonoBehaviour
         this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
         this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
 #elif UNITY_ANDROID
-        string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+        string adUnitId = "ca-app-pub-4572742510387968/2132883982";
 #elif UNITY_IPHONE
         string adUnitId = "";
 #else

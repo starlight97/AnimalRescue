@@ -3430,7 +3430,7 @@ MonoBehaviour:
   bgmlist:
   - {fileID: 8300000, guid: 60955bc3d6f2077419747e6195ec997a, type: 3}
   - {fileID: 8300000, guid: 817888f57b8d0e64ea688b080bde63eb, type: 3}
-  levelUpAudio: {fileID: 0}
+  levelUpAudio: {fileID: 8300000, guid: 0c008ee3ee72a4362a35be25fa5de043, type: 3}
 --- !u!4 &1832104801
 Transform:
   m_ObjectHideFlags: 0

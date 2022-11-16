@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class Ground : MonoBehaviour
 {
-    private MeshRenderer meshRenderer;
+    private MeshRenderer[] meshRenderers;
     public List<Texture> textures;
 
     void Start()
     {
-        this.meshRenderer = this.transform.GetComponentInChildren<MeshRenderer>();
+        this.meshRenderers = this.transform.GetComponentsInChildren<MeshRenderer>();
 
-        var rand = Random.Range(0, textures.Count);
-        this.meshRenderer.material.mainTexture = textures[rand];
+        foreach (var meshRenderer in meshRenderers)
+        {
+            var rand = Random.Range(0, textures.Count);
+            meshRenderer.material.mainTexture = textures[rand];
+        }
     }
 }
