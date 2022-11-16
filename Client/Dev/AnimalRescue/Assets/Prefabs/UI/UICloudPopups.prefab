@@ -207,6 +207,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6241539838781473963}
+  - component: {fileID: 6641877969133146944}
   m_Layer: 5
   m_Name: UICloudPopups
   m_TagString: Untagged
@@ -236,6 +237,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6641877969133146944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6241539838781473962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10dec251a75a8324da6bb74af3b8bb9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savePopupGo: {fileID: 6652932643631959298}
+  loadPopupGo: {fileID: 6241539839985816802}
+  saveOkBtn: {fileID: 4956520961425489691}
+  loadOkBtn: {fileID: 7592055329287899414}
 --- !u!1 &6241539839174596139
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,7 +460,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4441657124636174390
 RectTransform:
   m_ObjectHideFlags: 0
