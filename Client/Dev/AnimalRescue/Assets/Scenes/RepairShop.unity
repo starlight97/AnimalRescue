@@ -2033,6 +2033,8 @@ MonoBehaviour:
   panelOptionGo: {fileID: 24504904}
   btnOption: {fileID: 1896595599}
   btnOptionClose: {fileID: 24504902}
+  btnCloudSave: {fileID: 1346987754}
+  btnCloudLoad: {fileID: 1346987753}
   btnBack: {fileID: 2664502283495299671}
   btnShop: {fileID: 1199322975}
   textPlayerGold: {fileID: 1433994999}
@@ -3560,6 +3562,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306533656}
   m_CullTransparentMesh: 0
+--- !u!114 &1346987753 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8144154623370095800, guid: b13aa278563acd84495cef582fc2d7d5, type: 3}
+  m_PrefabInstance: {fileID: 24504901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1346987754 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8144154623009117715, guid: b13aa278563acd84495cef582fc2d7d5, type: 3}
+  m_PrefabInstance: {fileID: 24504901}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1433994998
 GameObject:
   m_ObjectHideFlags: 0

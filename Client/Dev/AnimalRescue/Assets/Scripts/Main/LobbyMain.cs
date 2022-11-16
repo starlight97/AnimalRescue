@@ -62,6 +62,11 @@ public class LobbyMain : SceneMain
  
         };
 
+        this.uiLobby.onClickLoadData = () =>
+        {
+            Dispatch("onReload");
+        };
+
         GPGSManager.instance.onSavedCloud = () =>
         {
             //this.textGameInfo.text = status.ToString();

@@ -30,6 +30,11 @@ public class ShopMain : SceneMain
             ShowAds();
         };
 
+        this.uiShop.onClickLoadData = () =>
+        {
+            Dispatch("onReload");
+        };
+
         this.OptionInit();
     }
 

@@ -33,6 +33,11 @@ public class RepairShopMain : SceneMain
             }            
         };
 
+        this.uiRepairShop.onClickLoadData = () =>
+        {
+            Dispatch("onReload");
+        };
+
         this.OptionInit();
         this.uiRepairShop.Init(mainParam.heroId);
 

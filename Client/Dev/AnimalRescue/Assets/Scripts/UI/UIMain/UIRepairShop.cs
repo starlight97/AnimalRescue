@@ -13,9 +13,12 @@ public class UIRepairShop : UIBase
         Shop
     }
 
+    public Button btnCloudSave;
+    public Button btnCloudLoad;
     public Button btnBack;
     public Button btnShop;
     public UnityAction<eBtnRepairShop> onClickBtn;
+    public UnityAction onClickLoadData;
     public Text textPlayerGold;
     //public Text textPlayerDiamond;
     public GameObject heroViewGo;
@@ -77,6 +80,16 @@ public class UIRepairShop : UIBase
             SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
             heroViewGo.SetActive(!check);
         };
+
+        this.btnCloudSave.onClick.AddListener(() =>
+        {
+            GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
+        });
+        this.btnCloudLoad.onClick.AddListener(() =>
+        {
+            GPGSManager.instance.LoadFromCloud();
+            this.onClickLoadData();
+        });
 
         this.uiHeroDetailStats.UpdateUI();
     }

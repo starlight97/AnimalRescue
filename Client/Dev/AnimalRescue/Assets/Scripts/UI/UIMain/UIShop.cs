@@ -7,8 +7,13 @@ public class UIShop : UIBase
     private UIHeroShop uiHeroShop;
     public UnityAction onClickLobby;
     public UnityAction onClickAdsBtn;
+    public UnityAction onClickLoadData;
     public Button btnBack;
     public Button btnShowAd;
+    public Button btnCloudSave;
+    public Button btnCloudLoad;
+
+
     override public void Init()
     {
         base.Init();
@@ -32,6 +37,16 @@ public class UIShop : UIBase
         {
             SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
         };
+
+        this.btnCloudSave.onClick.AddListener(() =>
+        {
+            GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
+        });
+        this.btnCloudLoad.onClick.AddListener(() =>
+        {
+            GPGSManager.instance.LoadFromCloud();
+            this.onClickLoadData();
+        });
     }
 
     public Text GetTextGold()
