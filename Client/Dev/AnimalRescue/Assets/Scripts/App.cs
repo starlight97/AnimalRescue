@@ -21,6 +21,7 @@ public class App : MonoBehaviour
         App.instance = this;
 
         DontDestroyOnLoad(this.gameObject);
+
     }
 
     private void Start()

@@ -101,7 +101,7 @@ public class EnemySpawner : MonoBehaviour
         SoundManager.instance.StopBGMSound();
         SoundManager.instance.PlayBGMSound(bossBgmAudioArr);
         var pos = this.GetRandomPos();
-        var randIdx = Random.Range(0, bossDataList.Count - 1);
+        var randIdx = Random.Range(0, bossDataList.Count);
         int experience = GameConstants.EnemyExperience * 33;
         int level = wave / 5;
         GameObject bossGo = Instantiate(Resources.Load<GameObject>(bossDataList[randIdx].prefab_name), pos, Quaternion.identity);

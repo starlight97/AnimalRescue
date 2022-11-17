@@ -2292,6 +2292,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 892297236578615281, guid: b9266e19b5ae6094c8f5d3f43dd44fc9, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 892297236578615281, guid: b9266e19b5ae6094c8f5d3f43dd44fc9, type: 3}
+      propertyPath: m_ScreenMatchMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 892297236578615281, guid: b9266e19b5ae6094c8f5d3f43dd44fc9, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 892297236578615281, guid: b9266e19b5ae6094c8f5d3f43dd44fc9, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 892297236578615283, guid: b9266e19b5ae6094c8f5d3f43dd44fc9, type: 3}
       propertyPath: m_Name
       value: JoystickCanvas

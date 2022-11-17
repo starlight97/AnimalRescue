@@ -111,6 +111,8 @@ public class UILobby : UIBase
             InfoManager.instance.SetInfo(info);
             //var json = JsonConvert.SerializeObject(this.gameInfo);
         };
+
+
     }
 
     public void UiLobbyHeroStatsUIUpdate(string heroName, int damage, int hp, float moveSpeed)
