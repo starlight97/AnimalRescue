@@ -7,9 +7,11 @@ using UnityEngine.UI;
 public class UITitle : MonoBehaviour
 {
     public Text startText;
+    public Text versionText;
 
     public void Init()
     {
+        versionText.text = Application.version;
         blinkText();
     }
 

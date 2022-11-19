@@ -35,20 +35,20 @@ public class BossForestGuardian : Enemy
         if (this.level == 1)
         {
             cubeMaxScale = 15f;
-            diffusionRate = 0.1f;
+            diffusionRate = 0.03f;
         }
         else if (this.level == 2)
         {
-            diffusionRate = 0.2f;
+            diffusionRate = 0.06f;
         }
         else if (this.level == 3)
         {
             cubeMaxScale = 20f;
-            diffusionRate = 0.3f;
+            diffusionRate = 0.1f;
         }
         else if (this.level >= 4)
         {
-            diffusionRate = 0.4f;
+            diffusionRate = 0.13f;
         }
     }
 }

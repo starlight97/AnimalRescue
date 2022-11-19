@@ -34,7 +34,8 @@ public class Enemy : MonoBehaviour
         this.level = level;
         this.maxHp = this.level * maxHp;        
         this.currentHp = this.maxHp;
-        this.damage = this.level * damage;
+        //this.damage = this.level * damage;
+        this.damage = damage + (this.level * damage / 5);
         this.experience = experience;
         this.moveSpeed = movespeed;
         this.attackSpeed = attackspeed;
