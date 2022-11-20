@@ -7,6 +7,7 @@ using UnityEngine;
 public class AdMobManager : MonoBehaviour
 {
     private string adUnitId;
+    private RewardedAd rewardedAd;
     private RewardedAd shopCoinRewardedAd;
     private RewardedAd gameOverRewardedAd;
 
@@ -23,24 +24,27 @@ public class AdMobManager : MonoBehaviour
         instance = this;
     }
 
-
     public void Init(string adUnitId)
     {
-        //adUnitId 설정
-#if UNITY_EDITOR
-        //string adUnitId = "unused";
-        this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
-        this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
+//        //adUnitId 설정
+//#if UNITY_EDITOR
+//        //string adUnitId = "unused";
+//        //this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
+//        //this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
 //#elif UNITY_ANDROID
 //        string adUnitId = "ca-app-pub-4572742510387968/2132883982";
-//#elif UNITY_IPHONE
-//        string adUnitId = "";
+//        //#elif UNITY_IPHONE
+//        //        string adUnitId = "";
 //#else
 //        string adUnitId = "unexpected_platform";
-#endif
+//#endif
+
+        this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
+        this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
 
         // 모바일 광고 SDK를 초기화함. 
-        MobileAds.Initialize(initStatus => {
+        MobileAds.Initialize(initStatus =>
+        {
             // 광고를 요청하기 전에 각 어댑터의 초기화 상태를 확인
             // 광고 로드 전 초기화 완료될 때까지 기다려야함.
             Dictionary<string, AdapterStatus> map = initStatus.getAdapterStatusMap();
@@ -75,6 +79,8 @@ public class AdMobManager : MonoBehaviour
         //this.rewardedAd.OnUserEarnedReward += HandleUserEarnedReward;// 광고를 시청한 후 보상을 받아야할 때 호출
         //this.rewardedAd.OnAdClosed += HandleRewardedAdClosed; // 닫기 버튼을 누르거나 뒤로가기 버튼을 눌러 동영상 광고를 닫을 때 호출
     }
+
+
     public void HandleRewardedAdLoaded(object sender, EventArgs args)
     {
         Debug.Log("HandleRewardedAdLoaded");
