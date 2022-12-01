@@ -24,7 +24,7 @@ public class AdMobManager : MonoBehaviour
         instance = this;
     }
 
-    public void Init(string adUnitId)
+    public void Init()
     {
 //        //adUnitId 설정
 //#if UNITY_EDITOR
@@ -39,8 +39,9 @@ public class AdMobManager : MonoBehaviour
 //        string adUnitId = "unexpected_platform";
 //#endif
 
-        this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
-        this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
+        this.shopCoinRewardedAd = CreateAndLoadRewardedAd("ca-app-pub-4572742510387968/2132883982");
+        this.gameOverRewardedAd = CreateAndLoadRewardedAd("ca-app-pub-4572742510387968/3117467058");
+
 
         // 모바일 광고 SDK를 초기화함. 
         MobileAds.Initialize(initStatus =>
@@ -48,6 +49,7 @@ public class AdMobManager : MonoBehaviour
             // 광고를 요청하기 전에 각 어댑터의 초기화 상태를 확인
             // 광고 로드 전 초기화 완료될 때까지 기다려야함.
             Dictionary<string, AdapterStatus> map = initStatus.getAdapterStatusMap();
+            
             foreach (KeyValuePair<string, AdapterStatus> keyValuePair in map)
             {
                 string className = keyValuePair.Key;

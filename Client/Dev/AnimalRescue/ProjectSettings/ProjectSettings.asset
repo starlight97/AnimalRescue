@@ -243,14 +243,14 @@ PlayerSettings:
   useCustomLauncherManifest: 0
   useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0
-  useCustomBaseGradleTemplate: 0
+  useCustomBaseGradleTemplate: 1
   useCustomGradlePropertiesTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: I:/GitHub/AnimalRescue/Keystore/animalrescue.keystore
+  AndroidKeystoreName: C:/workspace/Unity/AnimalRescue/Keystore/animalrescue.keystore
   AndroidKeyaliasName: subingo
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

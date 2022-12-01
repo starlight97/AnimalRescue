@@ -61,7 +61,7 @@ public class GameMain : SceneMain
             //this.uiGame.ShowRivivePanel();
             //this.uiGame.RunTimer();
             #endregion
-            
+
             var info = InfoManager.instance.GetInfo();
             var getGold = RecordManager.instance.GetGold();
 
@@ -130,7 +130,7 @@ public class GameMain : SceneMain
         {
             //Resume();
             //var info = InfoManager.instance.GetInfo();
-            //info.playerInfo.gold += getGold;
+            //info.playerInfo.gold += RecordManager.instance.GetGold();
             //Dispatch("onGameOver");
         };
         this.uiGame.onClickAds = () =>
@@ -185,9 +185,7 @@ public class GameMain : SceneMain
     #region 광고 보여주기
     public void ShowAds()
     {
-        AdMobManager.instance.Init("ca-app-pub-3940256099942544/5224354917");
-        // 진짜 광고!!!!!!!!! 바꿔~~~~~!!!!!!!!!!!!!!!!!!
-        //AdMobManager.instance.Init("ca-app-pub-4572742510387968/3117467058");
+        AdMobManager.instance.Init();
 
         AdMobManager.instance.ShowGameOverAds();
         AdMobManager.instance.onHandleRewardedAdClosed = () => {
@@ -206,6 +204,7 @@ public class GameMain : SceneMain
             // 보상 주기
             Debug.LogFormat("{0} {1}", reward.Type, reward.Amount);
             player.playerLife.Hp = (float)(player.playerLife.MaxHp * (reward.Amount) / 100);
+            Debug.Log("hp -------------------> "+ player.playerLife.Hp);
         };
     }
     #endregion
