@@ -13,6 +13,7 @@ public class UIShop : UIBase
     public Button btnCloudLoad;
     public Button btnLoadCheck;
     public Button btnSaveCheck;
+    public Button btnReview;
     public GameObject panelCloudGo;
     public UnityAction onDataLoadComplete;
 
@@ -71,6 +72,10 @@ public class UIShop : UIBase
         this.btnLoadCheck.onClick.AddListener(() =>
         {
             onDataLoadComplete();
+        });
+        this.btnReview.onClick.AddListener(() =>
+        {
+            Application.OpenURL("market://details?id=com.subingo.animalrescue");
         });
     }
 

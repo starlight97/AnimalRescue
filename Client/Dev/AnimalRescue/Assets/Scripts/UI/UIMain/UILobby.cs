@@ -38,6 +38,7 @@ public class UILobby : UIBase
     public GameObject panelLoadCheckGo;
     public UnityAction onDataLoadComplete;
 
+    public Button btnReview;
 
     override public void Init()
     {
@@ -85,6 +86,11 @@ public class UILobby : UIBase
             this.onClickHero(id);
         };
 
+        this.btnReview.onClick.AddListener(() =>
+        {
+            Application.OpenURL("market://details?id=com.subingo.animalrescue");
+        });
+
         this.btnSaveCheck.onClick.AddListener(() =>
         {
             panelSaveCheckGo.gameObject.SetActive(false);
@@ -111,8 +117,6 @@ public class UILobby : UIBase
             InfoManager.instance.SetInfo(info);
             //var json = JsonConvert.SerializeObject(this.gameInfo);
         };
-
-
     }
 
     public void UiLobbyHeroStatsUIUpdate(string heroName, int damage, int hp, float moveSpeed)

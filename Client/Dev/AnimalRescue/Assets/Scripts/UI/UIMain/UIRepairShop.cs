@@ -13,6 +13,7 @@ public class UIRepairShop : UIBase
         Shop
     }
 
+    public Button btnReview;
     public Button btnCloudSave;
     public Button btnCloudLoad;
     public Button btnBack;
@@ -51,6 +52,10 @@ public class UIRepairShop : UIBase
         this.btnShop.onClick.AddListener(() =>
         {
             this.onClickBtn(eBtnRepairShop.Shop);
+        });
+        this.btnReview.onClick.AddListener(() =>
+        {
+            Application.OpenURL("market://details?id=com.subingo.animalrescue");
         });
 
         this.uiPowerUpStat = GameObject.FindObjectOfType<UIPowerUpStat>();
