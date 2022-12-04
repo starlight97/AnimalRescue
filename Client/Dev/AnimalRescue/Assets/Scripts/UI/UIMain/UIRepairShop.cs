@@ -13,6 +13,7 @@ public class UIRepairShop : UIBase
         Shop
     }
 
+    public Button btnAbout;
     public Button btnReview;
     public Button btnCloudSave;
     public Button btnCloudLoad;
@@ -30,6 +31,7 @@ public class UIRepairShop : UIBase
 
     private UIPowerUpStat uiPowerUpStat;
     private UIHeroDetailStats uiHeroDetailStats;
+    private UIAboutPanel uiAboutPanel;
 
     public ParticleSystem heartsParticleGo;
     public ParticleSystem starParticleGo;
@@ -57,11 +59,16 @@ public class UIRepairShop : UIBase
         {
             Application.OpenURL("market://details?id=com.subingo.animalrescue");
         });
-
+        this.btnAbout.onClick.AddListener(() =>
+        {
+            this.uiAboutPanel.ShowPanel();
+        });
         this.uiPowerUpStat = GameObject.FindObjectOfType<UIPowerUpStat>();
         this.uiHeroDetailStats = GameObject.FindObjectOfType<UIHeroDetailStats>();
+        this.uiAboutPanel = GameObject.FindObjectOfType<UIAboutPanel>();
         this.uiPowerUpStat.Init(heroId);
         this.uiHeroDetailStats.Init(heroId);
+        this.uiAboutPanel.Init();
 
         var heroData = DataManager.instance.GetData<HeroData>(heroId);
         var uiHeroGo = Instantiate(Resources.Load<GameObject>(heroData.ui_prefab_path), heroViewGo.transform);
@@ -122,8 +129,6 @@ public class UIRepairShop : UIBase
         {
             onDataLoadComplete();
         });
-
         this.uiHeroDetailStats.UpdateUI();
     }
-
 }

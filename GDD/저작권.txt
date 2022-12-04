@@ -1,17 +1,23 @@
-Snowland Loop.wav
+Animal Rescue Developed by Team Subingo
+
+
+
+<Sound Copyright>
+
+Snowland Loop by Matthew Pablo, CC-BY 3.0 License
 https://opengameart.org/content/snowland-town
 
-black-diamond
-https://opengameart.org/content/black-diamond
+4 Chiptunes(Adventure) by Juhani Junkala,
+CC0 License
+https://opengameart.org/content/4-chiptunes-adventure
 
-8bit Bossa
+8bit Bossa by Joth, CC0 License
 https://opengameart.org/content/bossa-nova
 
-Buy Something!
+Buy Something! by Cleyton Kauffman,
+CC-BY-SA 3.0, OGA-BY 3.0 Licenses
 https://opengameart.org/content/shop-theme
 
-weird_shop
-https://opengameart.org/content/weird-shop-gypsy-guitar
-
-Item Shop.mp3
+Item Shop by Controller Head, CC0 License
 https://opengameart.org/content/item-shop
+

@@ -4420,7 +4420,7 @@ GameObject:
   - component: {fileID: 8144154621537709299}
   - component: {fileID: 8144154621537709298}
   m_Layer: 5
-  m_Name: Button_BlueGray (2)
+  m_Name: BtnNotice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4733,7 +4733,7 @@ GameObject:
   - component: {fileID: 8144154622227966867}
   - component: {fileID: 8144154622227966866}
   m_Layer: 5
-  m_Name: Button_BlueGray (1)
+  m_Name: BtnAbout
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

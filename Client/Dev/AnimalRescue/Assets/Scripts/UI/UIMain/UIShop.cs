@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class UIShop : UIBase
 {
     private UIHeroShop uiHeroShop;
+    private UIAboutPanel uiAboutPanel;
     public UnityAction onClickLobby;
     public UnityAction onClickAdsBtn;
     public Button btnBack;
@@ -14,6 +15,7 @@ public class UIShop : UIBase
     public Button btnLoadCheck;
     public Button btnSaveCheck;
     public Button btnReview;
+    public Button btnAbout;
     public GameObject panelCloudGo;
     public UnityAction onDataLoadComplete;
 
@@ -24,8 +26,9 @@ public class UIShop : UIBase
     {
         base.Init();
         this.UIOptionInit();
-        this.uiHeroShop = GameObject.FindObjectOfType<UIHeroShop>();
 
+        this.uiHeroShop = GameObject.FindObjectOfType<UIHeroShop>();
+        this.uiAboutPanel = GameObject.FindObjectOfType<UIAboutPanel>();
 
         this.uiHeroShop.Init(0);
 
@@ -43,7 +46,6 @@ public class UIShop : UIBase
         {
             SoundManager.instance.PlaySound(SoundManager.eButtonAudio.Button1);
         };
-
         this.btnCloudSave.onClick.AddListener(() =>
         {
             GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
@@ -77,6 +79,11 @@ public class UIShop : UIBase
         {
             Application.OpenURL("market://details?id=com.subingo.animalrescue");
         });
+        this.btnAbout.onClick.AddListener(() =>
+        {
+            this.uiAboutPanel.ShowPanel();
+        });
+        this.uiAboutPanel.Init();
     }
 
     public Text GetTextGold()

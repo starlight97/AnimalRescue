@@ -25,6 +25,7 @@ public class UILobby : UIBase
 
     private UIHeroList uiHeroList;
     private UILobbyHeroStats uiLobbyHeroStats;
+    private UIAboutPanel uiAboutPanel;
 
     public Text gold;
     public Text diamond;
@@ -39,6 +40,7 @@ public class UILobby : UIBase
     public UnityAction onDataLoadComplete;
 
     public Button btnReview;
+    public Button btnAbout;
 
     override public void Init()
     {
@@ -47,6 +49,7 @@ public class UILobby : UIBase
 
         this.uiLobbyHeroStats = GameObject.FindObjectOfType<UILobbyHeroStats>();
         this.uiHeroList = GameObject.FindObjectOfType<UIHeroList>();
+        this.uiAboutPanel = GameObject.FindObjectOfType<UIAboutPanel>();
 
         this.btnGameStart.onClick.AddListener(() =>
         {
@@ -99,8 +102,13 @@ public class UILobby : UIBase
         {
             onDataLoadComplete();
         });
+        this.btnAbout.onClick.AddListener(() => 
+        {
+            this.uiAboutPanel.ShowPanel();        
+        });
         this.uiLobbyHeroStats.Init();
         this.uiHeroList.Init();
+        this.uiAboutPanel.Init();
 
         var info = InfoManager.instance.GetInfo();
         this.gold.text = info.playerInfo.gold.ToString();
