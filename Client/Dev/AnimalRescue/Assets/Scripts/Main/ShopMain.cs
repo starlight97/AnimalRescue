@@ -28,6 +28,7 @@ public class ShopMain : SceneMain
         this.uiShop.onClickAdsBtn = () => 
         {
             ShowAds();
+            this.uiShop.ShowRotateDots();
         };
 
         this.uiShop.onDataLoadComplete = () =>
@@ -45,6 +46,7 @@ public class ShopMain : SceneMain
         AdMobManager.instance.onHandleRewardedAdClosed = () => {
             // 로딩창 제거
             Debug.Log("onHandleRewardedAdClosed");
+            this.uiShop.HideRotateDots();
         };
         AdMobManager.instance.onHandleRewardedAdFailedToLoad = (args) => {
             // 로딩창 제거

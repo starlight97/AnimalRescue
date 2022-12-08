@@ -26,6 +26,7 @@ public class UILobby : UIBase
     private UIHeroList uiHeroList;
     private UILobbyHeroStats uiLobbyHeroStats;
     private UIAboutPanel uiAboutPanel;
+    private UIRotateDots uiRotateDots;
 
     public Text gold;
     public Text diamond;
@@ -50,6 +51,7 @@ public class UILobby : UIBase
         this.uiLobbyHeroStats = GameObject.FindObjectOfType<UILobbyHeroStats>();
         this.uiHeroList = GameObject.FindObjectOfType<UIHeroList>();
         this.uiAboutPanel = GameObject.FindObjectOfType<UIAboutPanel>();
+        this.uiRotateDots = GameObject.FindObjectOfType<UIRotateDots>();
 
         this.btnGameStart.onClick.AddListener(() =>
         {
@@ -77,10 +79,12 @@ public class UILobby : UIBase
         };
         this.btnCloudSave.onClick.AddListener(() =>
         {
+            uiRotateDots.Show();
             GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());            
         });
         this.btnCloudLoad.onClick.AddListener(() =>
         {
+            uiRotateDots.Show();
             GPGSManager.instance.LoadFromCloud();
         });
 
@@ -96,10 +100,12 @@ public class UILobby : UIBase
 
         this.btnSaveCheck.onClick.AddListener(() =>
         {
+            uiRotateDots.Hide();
             panelSaveCheckGo.gameObject.SetActive(false);
         });
         this.btnLoadCheck.onClick.AddListener(() =>
         {
+            uiRotateDots.Hide();
             onDataLoadComplete();
         });
         this.btnAbout.onClick.AddListener(() => 
@@ -109,6 +115,7 @@ public class UILobby : UIBase
         this.uiLobbyHeroStats.Init();
         this.uiHeroList.Init();
         this.uiAboutPanel.Init();
+        this.uiRotateDots.Init();
 
         var info = InfoManager.instance.GetInfo();
         this.gold.text = info.playerInfo.gold.ToString();
@@ -116,11 +123,13 @@ public class UILobby : UIBase
 
         GPGSManager.instance.onSavedCloud = () =>
         {
+            uiRotateDots.Hide();
             panelSaveCheckGo.gameObject.SetActive(true);
             //this.textGameInfo.text = status.ToString();
         };
         GPGSManager.instance.onLoadedCloud = (info) =>
         {
+            uiRotateDots.Hide();
             panelLoadCheckGo.gameObject.SetActive(true);
             InfoManager.instance.SetInfo(info);
             //var json = JsonConvert.SerializeObject(this.gameInfo);

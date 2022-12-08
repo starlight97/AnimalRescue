@@ -32,6 +32,7 @@ public class UIRepairShop : UIBase
     private UIPowerUpStat uiPowerUpStat;
     private UIHeroDetailStats uiHeroDetailStats;
     private UIAboutPanel uiAboutPanel;
+    private UIRotateDots uiRotateDots;
 
     public ParticleSystem heartsParticleGo;
     public ParticleSystem starParticleGo;
@@ -66,6 +67,8 @@ public class UIRepairShop : UIBase
         this.uiPowerUpStat = GameObject.FindObjectOfType<UIPowerUpStat>();
         this.uiHeroDetailStats = GameObject.FindObjectOfType<UIHeroDetailStats>();
         this.uiAboutPanel = GameObject.FindObjectOfType<UIAboutPanel>();
+        this.uiRotateDots = GameObject.FindObjectOfType<UIRotateDots>();
+                                                    
         this.uiPowerUpStat.Init(heroId);
         this.uiHeroDetailStats.Init(heroId);
         this.uiAboutPanel.Init();
@@ -102,20 +105,24 @@ public class UIRepairShop : UIBase
 
         this.btnCloudSave.onClick.AddListener(() =>
         {
+            uiRotateDots.Show();
             GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
         });
         this.btnCloudLoad.onClick.AddListener(() =>
         {
+            uiRotateDots.Show();
             GPGSManager.instance.LoadFromCloud();
         });
 
         GPGSManager.instance.onSavedCloud = () =>
         {
+            uiRotateDots.Hide();
             panelSaveCheckGo.gameObject.SetActive(true);
             //this.textGameInfo.text = status.ToString();
         };
         GPGSManager.instance.onLoadedCloud = (info) =>
         {
+            uiRotateDots.Hide();
             panelLoadCheckGo.gameObject.SetActive(true);
             InfoManager.instance.SetInfo(info);
             //var json = JsonConvert.SerializeObject(this.gameInfo);
@@ -130,5 +137,6 @@ public class UIRepairShop : UIBase
             onDataLoadComplete();
         });
         this.uiHeroDetailStats.UpdateUI();
+        this.uiRotateDots.Init();
     }
 }

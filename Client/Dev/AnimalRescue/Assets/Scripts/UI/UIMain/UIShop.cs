@@ -6,6 +6,7 @@ public class UIShop : UIBase
 {
     private UIHeroShop uiHeroShop;
     private UIAboutPanel uiAboutPanel;
+    private UIRotateDots uiRotateDots;
     public UnityAction onClickLobby;
     public UnityAction onClickAdsBtn;
     public Button btnBack;
@@ -29,6 +30,7 @@ public class UIShop : UIBase
 
         this.uiHeroShop = GameObject.FindObjectOfType<UIHeroShop>();
         this.uiAboutPanel = GameObject.FindObjectOfType<UIAboutPanel>();
+        this.uiRotateDots = GameObject.FindObjectOfType<UIRotateDots>();
 
         this.uiHeroShop.Init(0);
 
@@ -49,19 +51,23 @@ public class UIShop : UIBase
         this.btnCloudSave.onClick.AddListener(() =>
         {
             GPGSManager.instance.SaveToCloud(InfoManager.instance.GetInfo());
+            uiRotateDots.Show();
         });
         this.btnCloudLoad.onClick.AddListener(() =>
         {
             GPGSManager.instance.LoadFromCloud();
+            uiRotateDots.Show();
         });
 
         GPGSManager.instance.onSavedCloud = () =>
         {
+            uiRotateDots.Hide();
             panelSaveCheckGo.gameObject.SetActive(true);
             //this.textGameInfo.text = status.ToString();
         };
         GPGSManager.instance.onLoadedCloud = (info) =>
         {
+            uiRotateDots.Hide();
             panelLoadCheckGo.gameObject.SetActive(true);
             InfoManager.instance.SetInfo(info);
             //var json = JsonConvert.SerializeObject(this.gameInfo);
@@ -84,10 +90,21 @@ public class UIShop : UIBase
             this.uiAboutPanel.ShowPanel();
         });
         this.uiAboutPanel.Init();
+        this.uiRotateDots.Init();
     }
 
     public Text GetTextGold()
     {
         return uiHeroShop.textGold;
+    }
+
+    public void ShowRotateDots()
+    {
+        this.uiRotateDots.Show();
+    }
+
+    public void HideRotateDots()
+    {
+        this.uiRotateDots.Hide();
     }
 }
