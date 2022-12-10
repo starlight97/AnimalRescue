@@ -54,14 +54,18 @@ public class GameMain : SceneMain
         {
             this.uiGame.UpdateUIHpGauge(hp, maxHp);
         };
+        this.player.onGiveRiviveChance = () =>
+        {
+            // 광고 패널 띄우기
+            Pause();
+            this.uiGame.ShowRivivePanel(true);
+            this.uiGame.RunTimer();
+        };
+
         this.player.onDie = () =>
         {
-            #region 광고 있을 때
-            //Pause();
-            //this.uiGame.ShowRivivePanel();
-            //this.uiGame.RunTimer();
-            #endregion
-
+            this.weaponManager.gameObject.SetActive(false);
+            this.uiGame.ShowRivivePanel(false);
             var info = InfoManager.instance.GetInfo();
             var getGold = RecordManager.instance.GetGold();
 
@@ -72,6 +76,8 @@ public class GameMain : SceneMain
             SoundManager.instance.StopSound();
             Dispatch("onGameOver");
         };
+        #region #####################################################
+
         this.enemySpawner.onDieEnemy = (enemyid, experience) =>
         {
             if (dicKillEnemy.ContainsKey(enemyid) == false)
@@ -124,19 +130,23 @@ public class GameMain : SceneMain
             RecordManager.instance.SetPlayTime(time);
             this.uiGame.SetPlayTime(time);
         };
-        
-        #region 부활 패널 관련 액션
+        #endregion
         this.uiGame.onGameOver = () => 
         {
-            //Resume();
-            //var info = InfoManager.instance.GetInfo();
-            //info.playerInfo.gold += RecordManager.instance.GetGold();
-            //Dispatch("onGameOver");
+            Resume();
+
+            this.uiGame.ShowRivivePanel(false);
+            var enemys = this.enemySpawner.EnemyList;
+            foreach (var enemy in enemys)
+            {
+                enemy.StopAllCoroutines();
+            }
+            this.player.SetDieState(true);
         };
         this.uiGame.onClickAds = () =>
         {
-            // 광고 버튼 누르면 hp 절반 회복
-            //ShowAds();
+            ShowAds();
+            player.SetRiviveState(true);
         };
         this.uiGame.btnGameExit.onClick.AddListener(() =>
         {
@@ -151,8 +161,6 @@ public class GameMain : SceneMain
             SoundManager.instance.StopSound();
             Dispatch("onGameExit");
         });
-
-        #endregion
 
         this.uiGame.Init();
         this.player.Init(gameMainParam.heroId);
@@ -182,13 +190,15 @@ public class GameMain : SceneMain
     }
 
 
-    #region 광고 보여주기
     public void ShowAds()
     {
-        AdMobManager.instance.Init();
+        AdMobManager.instance.Init("ca-app-pub-4572742510387968/3117467058");
 
         AdMobManager.instance.ShowGameOverAds();
         AdMobManager.instance.onHandleRewardedAdClosed = () => {
+            Resume();
+            this.uiGame.HiderotateDots();
+            this.uiGame.ShowRivivePanel(false);
             // 로딩창 제거
             Debug.Log("onHandleRewardedAdClosed");
         };
@@ -202,10 +212,8 @@ public class GameMain : SceneMain
         };
         AdMobManager.instance.onHandleUserEarnedReward = (reward) => {
             // 보상 주기
-            Debug.LogFormat("{0} {1}", reward.Type, reward.Amount);
             player.playerLife.Hp = (float)(player.playerLife.MaxHp * (reward.Amount) / 100);
-            Debug.Log("hp -------------------> "+ player.playerLife.Hp);
+            this.uiGame.UpdateUIHpGauge(player.playerLife.Hp, player.playerLife.MaxHp);
         };
     }
-    #endregion
 }

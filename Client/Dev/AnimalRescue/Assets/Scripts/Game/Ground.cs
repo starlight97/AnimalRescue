@@ -10,10 +10,9 @@ public class Ground : MonoBehaviour
     void Start()
     {
         this.meshRenderers = this.transform.GetComponentsInChildren<MeshRenderer>();
-
+        var rand = Random.Range(0, textures.Count);
         foreach (var meshRenderer in meshRenderers)
         {
-            var rand = Random.Range(0, textures.Count);
             meshRenderer.material.mainTexture = textures[rand];
         }
     }

@@ -24,23 +24,25 @@ public class AdMobManager : MonoBehaviour
         instance = this;
     }
 
-    public void Init()
+    public void Init(string adUnitId)
     {
-//        //adUnitId 설정
-//#if UNITY_EDITOR
-//        //string adUnitId = "unused";
-//        //this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
-//        //this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
-//#elif UNITY_ANDROID
-//        string adUnitId = "ca-app-pub-4572742510387968/2132883982";
-//        //#elif UNITY_IPHONE
-//        //        string adUnitId = "";
-//#else
-//        string adUnitId = "unexpected_platform";
-//#endif
+        //        //adUnitId 설정
+        //#if UNITY_EDITOR
+        //        //string adUnitId = "unused";
+        //        //this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
+        //        //this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
+        //#elif UNITY_ANDROID
+        //        string adUnitId = "ca-app-pub-4572742510387968/2132883982";
+        //        //#elif UNITY_IPHONE
+        //        //        string adUnitId = "";
+        //#else
+        //        string adUnitId = "unexpected_platform";
+        //#endif
 
-        this.shopCoinRewardedAd = CreateAndLoadRewardedAd("ca-app-pub-4572742510387968/2132883982");
-        this.gameOverRewardedAd = CreateAndLoadRewardedAd("ca-app-pub-4572742510387968/3117467058");
+        if (adUnitId == "ca-app-pub-4572742510387968/2132883982")
+            this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
+        else if (adUnitId == "ca-app-pub-4572742510387968/3117467058")
+            this.gameOverRewardedAd = CreateAndLoadRewardedAd(adUnitId);
 
 
         // 모바일 광고 SDK를 초기화함. 

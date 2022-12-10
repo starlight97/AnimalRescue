@@ -7,6 +7,8 @@ using System.Timers;
 
 public class UIRivivePanel : MonoBehaviour
 {
+    private GameObject panelGo;
+
     public Button noBtn;
     public Button adsBtn;
     public Text timeText;
@@ -17,49 +19,51 @@ public class UIRivivePanel : MonoBehaviour
 
     private int cnt = 10;
     private float delta = 0;
+    private bool isStop = false;
+
     delegate void TimerEventFiredDelegate();
 
     public void Init()
     {
-        this.gameObject.SetActive(false);
+        this.panelGo = GameObject.Find("UIRivivePanel").transform.Find("Panel").gameObject;
+
+        this.panelGo.gameObject.SetActive(false);
 
         this.noBtn.onClick.AddListener(() => 
         {
             Debug.Log("no");
-            // 아니오 버튼 누르면 GameOverScene으로 이동해야 함
             onClickNoBtn();
         });
 
         this.adsBtn.onClick.AddListener(() => 
         {
             Debug.Log("ads");
-            // 광고 버튼 누르면 광고 띄워주고 HP 절반 채워줘야 함
+            this.isStop = true;
             onClickAdsBtn();
         });
-
-        // 광고를 본 후 죽었을 때는 팝업창 뜨지 않고 바로 GameOverScene으로 이동해야 함
 
     }
     
     public void ShowPanel()
     {
-        this.gameObject.SetActive(true);
+        this.panelGo.gameObject.SetActive(true);
     }
 
     public void HidePanel()
     {
-        this.gameObject.SetActive(false);
+        this.panelGo.gameObject.SetActive(false);
+    }
+
+    public void StopTimer()
+    {
+        isStop = true;
     }
 
     public void RiviveTimer()
     {
-        Timer timer = new Timer();
-        timer.Start();
-
-        timer.Interval = 1000;
-
-        timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);  //주기마다 실행되는 이벤트 등록
         StartCoroutine(this.TimerRoutine());
+        if (isStop)
+            StopAllCoroutines();
     }
 
     void timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
@@ -69,13 +73,27 @@ public class UIRivivePanel : MonoBehaviour
 
     private IEnumerator TimerRoutine()
     {
+        Timer timer = new Timer();
+        timer.Start();
+
+        timer.Interval = 1000;
+
+        timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);  //주기마다 실행되는 이벤트 등록
+
         while (true)
         {
             timeText.text = (cnt - delta).ToString();
             yield return null;
+            
+            if (isStop)
+            {
+                timer.Stop();
+                break;
+            }
             if (delta > 10f)
             {
                 onTimeOver();
+                timer.Stop();
                 break;
             }
         }

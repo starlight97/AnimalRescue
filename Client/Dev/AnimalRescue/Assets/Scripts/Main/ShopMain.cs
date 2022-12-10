@@ -41,12 +41,13 @@ public class ShopMain : SceneMain
 
     private void ShowAds()
     {
-        AdMobManager.instance.Init();
+        AdMobManager.instance.Init("ca-app-pub-4572742510387968/2132883982");
         AdMobManager.instance.ShowShopCoinAds();
         AdMobManager.instance.onHandleRewardedAdClosed = () => {
             // 로딩창 제거
             Debug.Log("onHandleRewardedAdClosed");
             this.uiShop.HideRotateDots();
+            this.uiShop.ShowGetGoldPanel();
         };
         AdMobManager.instance.onHandleRewardedAdFailedToLoad = (args) => {
             // 로딩창 제거

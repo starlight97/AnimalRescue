@@ -11,6 +11,7 @@ public class UIGame : UIBase
     private UIWeaponLevelUp uiWeaponLevelUp;
     private UIRivivePanel uiRivivePanel;
     private UIGameStatus uiGameStatus;
+    private UIRotateDots uiRotateDots;
     public UnityAction<int> onWeaponSelect;
     public UnityAction onGameOver;
     public UnityAction onClickAds;
@@ -25,6 +26,7 @@ public class UIGame : UIBase
         this.uiWeaponLevelUp = this.transform.Find("UIWeaponLevelUp").GetComponent<UIWeaponLevelUp>();
         this.uiRivivePanel = this.transform.Find("UIRivivePanel").GetComponent<UIRivivePanel>();
         this.uiGameStatus = this.transform.Find("UIGameStatus").GetComponent<UIGameStatus>();
+        this.uiRotateDots = this.transform.Find("UIRotateDots").GetComponent<UIRotateDots>();
 
         this.dimImage.gameObject.SetActive(false);
         
@@ -45,31 +47,32 @@ public class UIGame : UIBase
                 Resume();
         };
 
-        #region RiviveAction
+        // 아니오 누르거나 시간초가 다 되었을 때
         uiRivivePanel.onClickNoBtn = () => 
         {
             this.uiRivivePanel.HidePanel();
+            this.uiRivivePanel.StopTimer();
             this.onGameOver();
         };
-
-        uiRivivePanel.onClickAdsBtn = () =>
-        {
-            this.uiRivivePanel.HidePanel();
-            this.onClickAds();
-        };
-
         uiRivivePanel.onTimeOver = () => 
         {
             this.uiRivivePanel.HidePanel();
+            this.uiRivivePanel.StopTimer();
             this.onGameOver();
         };
-        #endregion
+        // 광고 버튼 눌렀을 때
+        uiRivivePanel.onClickAdsBtn = () =>
+        {
+            this.uiRotateDots.Show();
+            this.uiRivivePanel.StopTimer();
+            this.onClickAds();
+        };
 
         uiHpGauge.Init();
         uiWeaponLevelUp.Init();
         uiRivivePanel.Init();
         uiGameStatus.Init();
-        
+        uiRotateDots.Init();
     }
 
     public void FixedHpGaugePosition(Vector3 worldPos)
@@ -88,9 +91,12 @@ public class UIGame : UIBase
         this.dimImage.gameObject.SetActive(true);
     }
 
-    public void ShowRivivePanel()
+    public void ShowRivivePanel(bool value)
     {
-        this.uiRivivePanel.ShowPanel();
+        if (value)
+            this.uiRivivePanel.ShowPanel();
+        else
+            this.uiRivivePanel.HidePanel();
     }
 
     public void RunTimer()
@@ -121,5 +127,10 @@ public class UIGame : UIBase
     public void Pause()
     {
         Time.timeScale = 0f;
+    }
+
+    public void HiderotateDots()
+    {
+        this.uiRotateDots.Hide();
     }
 }

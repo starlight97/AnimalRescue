@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     public int Id { get; private set; }
 
     private GameObject heroGo;
+    private Transform hpGaugePoint;
 
     public PlayerLife playerLife = new PlayerLife();
     private PlayerMove playerMove;
@@ -24,11 +25,13 @@ public class Player : MonoBehaviour
     public UnityAction onDie;
     private Animator anim;
 
-    private Transform hpGaugePoint;
     public UnityAction<Vector3> onUpdateMove;
     public UnityAction<int> onLevelUp;
     public UnityAction<float, float> onUpdateHp;
-    private bool isDIe = false;
+    public UnityAction onGiveRiviveChance;
+
+    private bool isRivive = false;
+    private bool isDie = false;
 
     public void Init(int heroId)
     {
@@ -44,6 +47,7 @@ public class Player : MonoBehaviour
 
         this.hpGaugePoint = this.transform.Find("HpGaugePoint").GetComponent<Transform>();
         this.anim = this.GetComponentInChildren<Animator>();
+        anim.keepAnimatorControllerStateOnDisable = true;
         SetState(eStateType.Idle);
 
         this.playerStats = GetComponent<PlayerStats>();
@@ -91,11 +95,23 @@ public class Player : MonoBehaviour
 
     public void Hit(int damage)
     {
+        Debug.Log("으악 으악");
         this.playerLife.Hp -= damage;
 
         if (this.playerLife.Hp <= 0)
         {
-            this.Die();
+            // 광고 본 뒤 바로 죽어야함
+            if (isRivive)
+            {
+                this.isDie = true;
+                this.Die();
+                return;
+            }
+            // 처음 죽고 광고 패널 띄우기
+            else if (!isRivive && !isDie)
+            {
+                onGiveRiviveChance();
+            }
         }
         else
         {
@@ -104,6 +120,20 @@ public class Player : MonoBehaviour
             this.hitRoutine = StartCoroutine(HitRoutine());
             onUpdateHp(this.playerLife.Hp, this.playerLife.MaxHp);
         }
+    }
+    
+
+
+
+    public void SetRiviveState(bool state)
+    {
+        isRivive = state;
+    }
+
+    public void SetDieState(bool state)
+    {
+        isDie = state;
+        Die();
     }
 
     private IEnumerator HitRoutine()
@@ -116,15 +146,16 @@ public class Player : MonoBehaviour
 
     private void Die()
     {
-        if(isDIe == false)
+        if (isDie)
         {
+            this.playerMove.StopMove();
+
             StartCoroutine(DieRoutine());
         }
     }
 
     private IEnumerator DieRoutine()
     {
-        isDIe = true;
         SetState(eStateType.Die);
         var length = this.anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
         yield return new WaitForSeconds(length);
@@ -145,8 +176,6 @@ public class Player : MonoBehaviour
             this.Hit(enemy.damage);
         }
     }
-
-
 
     #region 자동 에임 부채꼴 범위
     // 시야 영역의 반지름과 시야 각도

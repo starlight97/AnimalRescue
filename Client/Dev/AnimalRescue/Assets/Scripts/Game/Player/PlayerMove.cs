@@ -53,6 +53,12 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public void StopMove()
+    {
+        this.moveRoutine = null;
+        this.floatingJoystick.gameObject.SetActive(false);
+    }
+
     private void LimitPosition()
     {
         var posX = this.transform.position.x;

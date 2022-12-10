@@ -17,11 +17,13 @@ public class UIShop : UIBase
     public Button btnSaveCheck;
     public Button btnReview;
     public Button btnAbout;
+    public Button btnGetGoldCheck;
     public GameObject panelCloudGo;
     public UnityAction onDataLoadComplete;
 
     public GameObject panelSaveCheckGo;
     public GameObject panelLoadCheckGo;
+    public GameObject panelGetGoldGo;
 
     override public void Init()
     {
@@ -89,6 +91,11 @@ public class UIShop : UIBase
         {
             this.uiAboutPanel.ShowPanel();
         });
+        this.btnGetGoldCheck.onClick.AddListener(() =>
+        {
+            this.panelGetGoldGo.gameObject.SetActive(false);
+        });
+
         this.uiAboutPanel.Init();
         this.uiRotateDots.Init();
     }
@@ -106,5 +113,10 @@ public class UIShop : UIBase
     public void HideRotateDots()
     {
         this.uiRotateDots.Hide();
+    }
+
+    public void ShowGetGoldPanel()
+    {
+        this.panelGetGoldGo.gameObject.SetActive(true);
     }
 }

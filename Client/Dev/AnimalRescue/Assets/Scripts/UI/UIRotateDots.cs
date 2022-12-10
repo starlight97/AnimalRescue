@@ -14,6 +14,7 @@ public class UIRotateDots : MonoBehaviour
 
     public void Show()
     {
+        Debug.Log("dots ");
         foreach (var img in arrChildImg)
         {
             img.gameObject.SetActive(true);
