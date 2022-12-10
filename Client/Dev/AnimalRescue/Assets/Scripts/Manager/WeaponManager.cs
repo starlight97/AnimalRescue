@@ -50,4 +50,10 @@ public class WeaponManager : MonoBehaviour
 
         return level;
     }
+
+    public void RemoveWeapons()
+    {
+        this.playerWeaponList.Clear();
+        
+    }
 }

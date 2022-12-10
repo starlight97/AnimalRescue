@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     public UnityAction<int> onLevelUp;
     public UnityAction<float, float> onUpdateHp;
     public UnityAction onGiveRiviveChance;
+    public UnityAction onGameOver;
 
     private bool isRivive = false;
     private bool isDie = false;
@@ -43,7 +44,6 @@ public class Player : MonoBehaviour
         this.heroGo = Instantiate(Resources.Load<GameObject>(heroData.prefab_path));
         this.heroGo.name = "model";
         this.heroGo.transform.parent = this.transform;
-
 
         this.hpGaugePoint = this.transform.Find("HpGaugePoint").GetComponent<Transform>();
         this.anim = this.GetComponentInChildren<Animator>();
@@ -95,7 +95,6 @@ public class Player : MonoBehaviour
 
     public void Hit(int damage)
     {
-        Debug.Log("으악 으악");
         this.playerLife.Hp -= damage;
 
         if (this.playerLife.Hp <= 0)
@@ -121,9 +120,6 @@ public class Player : MonoBehaviour
             onUpdateHp(this.playerLife.Hp, this.playerLife.MaxHp);
         }
     }
-    
-
-
 
     public void SetRiviveState(bool state)
     {
@@ -149,7 +145,6 @@ public class Player : MonoBehaviour
         if (isDie)
         {
             this.playerMove.StopMove();
-
             StartCoroutine(DieRoutine());
         }
     }
@@ -158,9 +153,11 @@ public class Player : MonoBehaviour
     {
         SetState(eStateType.Die);
         var length = this.anim.GetCurrentAnimatorClipInfo(0)[0].clip.length;
+        this.onGameOver();
         yield return new WaitForSeconds(length);
 
         this.onDie();
+        yield break;
     }
 
     private void SetState(eStateType state)
@@ -170,7 +167,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Enemy")
+        if (!isDie && collision.collider.tag == "Enemy")
         {
             Enemy enemy = collision.collider.GetComponent<Enemy>();
             this.Hit(enemy.damage);

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3850971073752685220}
   m_Layer: 0
   m_Name: CottonCandy
-  m_TagString: Untagged
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,10 +45,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: 2001
-  projectile_current_count: 0
   current_damage: 0
   current_attack_speed: 0
   level: 0
+  playerDamage: 0
   cottonCandyProjectilePrefab: {fileID: 3945423646787252163, guid: 60dc8e936bcc86642806d21423585599, type: 3}
   circleR: 5
   deg: 0

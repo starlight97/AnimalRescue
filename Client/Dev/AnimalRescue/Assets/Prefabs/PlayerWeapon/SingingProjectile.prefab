@@ -19127,7 +19127,7 @@ GameObject:
   - component: {fileID: 2969550787290377359}
   m_Layer: 1
   m_Name: SingingProjectile
-  m_TagString: Untagged
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

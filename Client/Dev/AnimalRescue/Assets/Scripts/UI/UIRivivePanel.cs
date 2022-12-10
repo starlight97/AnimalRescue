@@ -31,13 +31,11 @@ public class UIRivivePanel : MonoBehaviour
 
         this.noBtn.onClick.AddListener(() => 
         {
-            Debug.Log("no");
             onClickNoBtn();
         });
 
         this.adsBtn.onClick.AddListener(() => 
         {
-            Debug.Log("ads");
             this.isStop = true;
             onClickAdsBtn();
         });

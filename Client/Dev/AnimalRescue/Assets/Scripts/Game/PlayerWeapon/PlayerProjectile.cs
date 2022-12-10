@@ -66,5 +66,4 @@ public class PlayerProjectile : MonoBehaviour
             yield return null;
         }
     }
-
 }

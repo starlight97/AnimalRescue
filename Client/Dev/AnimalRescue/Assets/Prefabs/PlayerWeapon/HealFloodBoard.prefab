@@ -4895,8 +4895,8 @@ GameObject:
   - component: {fileID: 253926807132632197}
   - component: {fileID: 286755863814648039}
   m_Layer: 0
-  m_Name: Portal(Clone)
-  m_TagString: Untagged
+  m_Name: HealFloodBoard
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

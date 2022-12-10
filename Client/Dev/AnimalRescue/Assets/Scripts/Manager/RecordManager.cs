@@ -14,7 +14,6 @@ public class RecordManager
 
     private bool isNewTimeRecord = false;
     private bool isNewWaveRecord = false;
-
     private bool isNewHeroOpen = false;
 
     public int GetGold()

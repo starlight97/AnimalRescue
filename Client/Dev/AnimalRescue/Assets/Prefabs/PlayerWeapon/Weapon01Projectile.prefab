@@ -9665,7 +9665,7 @@ GameObject:
   - component: {fileID: 2074442962002414664}
   m_Layer: 0
   m_Name: Weapon01Projectile
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9778,3 +9778,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b26fe11ccd4e54488ec32e21cf2e9d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 0
+  attackAudio: {fileID: 0}

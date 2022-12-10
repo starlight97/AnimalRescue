@@ -9726,7 +9726,7 @@ GameObject:
   - component: {fileID: 5428977611413814112}
   m_Layer: 0
   m_Name: CottonCandyProjectile
-  m_TagString: Untagged
+  m_TagString: PlayerWeapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

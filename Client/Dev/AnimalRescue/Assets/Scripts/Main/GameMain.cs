@@ -61,10 +61,17 @@ public class GameMain : SceneMain
             this.uiGame.ShowRivivePanel(true);
             this.uiGame.RunTimer();
         };
+        this.player.onGameOver = () => 
+        {
+            var arrPlayerWeapon = GameObject.FindGameObjectsWithTag("PlayerWeapon");
+            foreach (var playerWeapon in arrPlayerWeapon)
+            {
+                Destroy(playerWeapon);
+            }
+        };
 
         this.player.onDie = () =>
         {
-            this.weaponManager.gameObject.SetActive(false);
             this.uiGame.ShowRivivePanel(false);
             var info = InfoManager.instance.GetInfo();
             var getGold = RecordManager.instance.GetGold();
@@ -72,12 +79,12 @@ public class GameMain : SceneMain
             RecordManager.instance.SaveKillEnemy(this.dicKillEnemy);
 
             info.playerInfo.gold += getGold;
+            Debug.Log("Get Gold : " + getGold);
+            Debug.Log("player info gold : " + info.playerInfo.gold);
             InfoManager.instance.SaveGame();
             SoundManager.instance.StopSound();
             Dispatch("onGameOver");
         };
-        #region #####################################################
-
         this.enemySpawner.onDieEnemy = (enemyid, experience) =>
         {
             if (dicKillEnemy.ContainsKey(enemyid) == false)
@@ -130,11 +137,9 @@ public class GameMain : SceneMain
             RecordManager.instance.SetPlayTime(time);
             this.uiGame.SetPlayTime(time);
         };
-        #endregion
         this.uiGame.onGameOver = () => 
         {
             Resume();
-
             this.uiGame.ShowRivivePanel(false);
             var enemys = this.enemySpawner.EnemyList;
             foreach (var enemy in enemys)
