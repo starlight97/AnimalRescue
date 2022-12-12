@@ -27,6 +27,11 @@ public class SoundManager : MonoBehaviour
         instance = this;
     }
 
+    void OnApplicationPause(bool pauseStatus)
+    {
+        AudioSettings.Reset(AudioSettings.GetConfiguration());
+    }
+
     public void Init()
     {
         bgmAudioSource = transform.Find("BGMAudio").GetComponent<AudioSource>();
