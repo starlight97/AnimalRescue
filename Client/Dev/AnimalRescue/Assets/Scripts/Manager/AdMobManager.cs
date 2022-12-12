@@ -24,8 +24,14 @@ public class AdMobManager : MonoBehaviour
         instance = this;
     }
 
+    void OnApplicationPause(bool pauseStatus)
+    {
+        MobileAds.SetApplicationVolume(pauseStatus ? 0f : 0.5f);
+    }
+
     public void Init(string adUnitId)
     {
+        MobileAds.SetiOSAppPauseOnBackground(true);
         //        //adUnitId 설정
         //#if UNITY_EDITOR
         //        //string adUnitId = "unused";
