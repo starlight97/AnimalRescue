@@ -26,9 +26,7 @@ public class AdMobManager : MonoBehaviour
 
     void OnApplicationPause(bool pauseStatus)
     {
-        Debug.Log("START OnApplicationPause : " + pauseStatus);
-        MobileAds.SetApplicationVolume(pauseStatus ? 0f : 0.5f);
-        Debug.Log("END OnApplicationPause : " + pauseStatus);
+        AudioSettings.Reset(AudioSettings.GetConfiguration());
     }
 
     public void Init(string adUnitId)

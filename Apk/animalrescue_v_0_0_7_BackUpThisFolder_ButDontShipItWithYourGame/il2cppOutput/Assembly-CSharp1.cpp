@@ -2921,6 +2921,21 @@ struct AnimatorClipInfo_t0C913173594C893E36282602F54ABD06AC1CFA03
 	float ___m_Weight_1;
 };
 
+// UnityEngine.AudioConfiguration
+struct AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D 
+{
+	// UnityEngine.AudioSpeakerMode UnityEngine.AudioConfiguration::speakerMode
+	int32_t ___speakerMode_0;
+	// System.Int32 UnityEngine.AudioConfiguration::dspBufferSize
+	int32_t ___dspBufferSize_1;
+	// System.Int32 UnityEngine.AudioConfiguration::sampleRate
+	int32_t ___sampleRate_2;
+	// System.Int32 UnityEngine.AudioConfiguration::numRealVoices
+	int32_t ___numRealVoices_3;
+	// System.Int32 UnityEngine.AudioConfiguration::numVirtualVoices
+	int32_t ___numVirtualVoices_4;
+};
+
 // System.Boolean
 struct Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22 
 {
@@ -7032,8 +7047,10 @@ inline void Func_1__ctor_mDFFAE9C73346372438B5B04C4558AC42F1A3DA22 (Func_1_t2BE7
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void WaitUntil__ctor_m2C925CF39695C35F4CB1AC997531F203AE1434DF (WaitUntil_tA1CD487C5811E7C1F8C4ADA85DF5F4EFDC1D41BD* __this, Func_1_t2BE7F58348C9CC544A8973B3A9E55541DE43C457* ___predicate0, const RuntimeMethod* method) ;
 // System.Void UITitleHero::RunAnimation()
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void UITitleHero_RunAnimation_m2FF1154AE18DDED2F56FC9AC60AF539ACFBFD71E (UITitleHero_tF1A9FE76575342D21EF9B983271C7E3F3BBC8617* __this, const RuntimeMethod* method) ;
-// System.Void GoogleMobileAds.Api.MobileAds::SetApplicationVolume(System.Single)
-IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MobileAds_SetApplicationVolume_m8C507EBE432A21C8B465B94463CB21F476659C46 (float ___volume0, const RuntimeMethod* method) ;
+// UnityEngine.AudioConfiguration UnityEngine.AudioSettings::GetConfiguration()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D AudioSettings_GetConfiguration_mA3C22FE4289FD1DFC538D63C27F7DE771C472A61 (const RuntimeMethod* method) ;
+// System.Boolean UnityEngine.AudioSettings::Reset(UnityEngine.AudioConfiguration)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioSettings_Reset_mB35E82F0A6A1C5AFD6D3167E4FCFB16B3DB463FC (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D ___config0, const RuntimeMethod* method) ;
 // System.Void GoogleMobileAds.Api.MobileAds::SetiOSAppPauseOnBackground(System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void MobileAds_SetiOSAppPauseOnBackground_m961FDABCDC48D83C9ED92DBD08E7C3EA56928D73 (bool ___pause0, const RuntimeMethod* method) ;
 // System.Boolean System.String::op_Equality(System.String,System.String)
@@ -13368,28 +13385,12 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdMobManager_Awake_m03401AFD0C81F63286C7
 // System.Void AdMobManager::OnApplicationPause(System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AdMobManager_OnApplicationPause_m9CF66C588F9F8F9429847F58B6CC7FD09EB4B001 (AdMobManager_t3C0F834E2FC790F4C764FA398B00FD080FB54352* __this, bool ___pauseStatus0, const RuntimeMethod* method) 
 {
-	float G_B3_0 = 0.0f;
 	{
-		// MobileAds.SetApplicationVolume(pauseStatus ? 0f : 0.5f);
-		bool L_0 = ___pauseStatus0;
-		if (L_0)
-		{
-			goto IL_000a;
-		}
-	}
-	{
-		G_B3_0 = (0.5f);
-		goto IL_000f;
-	}
-
-IL_000a:
-	{
-		G_B3_0 = (0.0f);
-	}
-
-IL_000f:
-	{
-		MobileAds_SetApplicationVolume_m8C507EBE432A21C8B465B94463CB21F476659C46(G_B3_0, NULL);
+		// AudioSettings.Reset(AudioSettings.GetConfiguration());
+		AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D L_0;
+		L_0 = AudioSettings_GetConfiguration_mA3C22FE4289FD1DFC538D63C27F7DE771C472A61(NULL);
+		bool L_1;
+		L_1 = AudioSettings_Reset_mB35E82F0A6A1C5AFD6D3167E4FCFB16B3DB463FC(L_0, NULL);
 		// }
 		return;
 	}

@@ -238,6 +238,21 @@ struct Mobile_t304A73480DF447472BDB16BA19A9E4FE2C8CB2DD_StaticFields
 	Action_1_t10DCB0C07D0D3C565CEACADC80D1152B35A45F6C* ___OnMuteStateChanged_2;
 };
 
+// UnityEngine.AudioConfiguration
+struct AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D 
+{
+	// UnityEngine.AudioSpeakerMode UnityEngine.AudioConfiguration::speakerMode
+	int32_t ___speakerMode_0;
+	// System.Int32 UnityEngine.AudioConfiguration::dspBufferSize
+	int32_t ___dspBufferSize_1;
+	// System.Int32 UnityEngine.AudioConfiguration::sampleRate
+	int32_t ___sampleRate_2;
+	// System.Int32 UnityEngine.AudioConfiguration::numRealVoices
+	int32_t ___numRealVoices_3;
+	// System.Int32 UnityEngine.AudioConfiguration::numVirtualVoices
+	int32_t ___numVirtualVoices_4;
+};
+
 // System.Boolean
 struct Boolean_t09A6377A54BE2F9E6985A8149F19234FD7DDFE22 
 {
@@ -616,6 +631,12 @@ struct SingleU5BU5D_t89DEFE97BCEDB5857010E79ECE0F52CF6E93B87C  : public RuntimeA
 // System.Void System.Action`1<System.Boolean>::Invoke(T)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void Action_1_Invoke_m69C8773D6967F3B224777183E24EA621CE056F8F_gshared_inline (Action_1_t10DCB0C07D0D3C565CEACADC80D1152B35A45F6C* __this, bool ___obj0, const RuntimeMethod* method) ;
 
+// System.Boolean UnityEngine.AudioSettings::SetConfiguration_Injected(UnityEngine.AudioConfiguration&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioSettings_SetConfiguration_Injected_m2DBB30666249C277FF9F17FE5D535EFDE2C4C212 (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D* ___config0, const RuntimeMethod* method) ;
+// System.Void UnityEngine.AudioSettings::GetConfiguration_Injected(UnityEngine.AudioConfiguration&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioSettings_GetConfiguration_Injected_mBEC7F92EC2EA0DC942D22F276F95BDC2C8D649F7 (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D* ___ret0, const RuntimeMethod* method) ;
+// System.Boolean UnityEngine.AudioSettings::SetConfiguration(UnityEngine.AudioConfiguration)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioSettings_SetConfiguration_m3C104E1CE1F944B1A5866EC62B4968E49FEA7372 (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D ___config0, const RuntimeMethod* method) ;
 // System.Void UnityEngine.AudioSettings/AudioConfigurationChangeHandler::Invoke(System.Boolean)
 IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void AudioConfigurationChangeHandler_Invoke_m4DC27DD11512481B60071B20284E6886DAE54DE2_inline (AudioConfigurationChangeHandler_tE071B0CBA3B3A77D3E41F5FCB65B4017885B3177* __this, bool ___deviceWasChanged0, const RuntimeMethod* method) ;
 // System.Void System.Action::Invoke()
@@ -684,6 +705,52 @@ IL2CPP_MANAGED_FORCE_INLINE IL2CPP_METHOD_ATTR void SampleFramesHandler_Invoke_m
 #pragma clang diagnostic ignored "-Winvalid-offsetof"
 #pragma clang diagnostic ignored "-Wunused-variable"
 #endif
+#ifdef __clang__
+#pragma clang diagnostic pop
+#endif
+#ifdef __clang__
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Winvalid-offsetof"
+#pragma clang diagnostic ignored "-Wunused-variable"
+#endif
+// System.Boolean UnityEngine.AudioSettings::SetConfiguration(UnityEngine.AudioConfiguration)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioSettings_SetConfiguration_m3C104E1CE1F944B1A5866EC62B4968E49FEA7372 (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D ___config0, const RuntimeMethod* method) 
+{
+	{
+		bool L_0;
+		L_0 = AudioSettings_SetConfiguration_Injected_m2DBB30666249C277FF9F17FE5D535EFDE2C4C212((&___config0), NULL);
+		return L_0;
+	}
+}
+// UnityEngine.AudioConfiguration UnityEngine.AudioSettings::GetConfiguration()
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D AudioSettings_GetConfiguration_mA3C22FE4289FD1DFC538D63C27F7DE771C472A61 (const RuntimeMethod* method) 
+{
+	AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D V_0;
+	memset((&V_0), 0, sizeof(V_0));
+	{
+		AudioSettings_GetConfiguration_Injected_mBEC7F92EC2EA0DC942D22F276F95BDC2C8D649F7((&V_0), NULL);
+		AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D L_0 = V_0;
+		return L_0;
+	}
+}
+// System.Boolean UnityEngine.AudioSettings::Reset(UnityEngine.AudioConfiguration)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioSettings_Reset_mB35E82F0A6A1C5AFD6D3167E4FCFB16B3DB463FC (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D ___config0, const RuntimeMethod* method) 
+{
+	bool V_0 = false;
+	{
+		AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D L_0 = ___config0;
+		bool L_1;
+		L_1 = AudioSettings_SetConfiguration_m3C104E1CE1F944B1A5866EC62B4968E49FEA7372(L_0, NULL);
+		V_0 = L_1;
+		goto IL_000a;
+	}
+
+IL_000a:
+	{
+		bool L_2 = V_0;
+		return L_2;
+	}
+}
 // System.Void UnityEngine.AudioSettings::InvokeOnAudioConfigurationChanged(System.Boolean)
 IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioSettings_InvokeOnAudioConfigurationChanged_m68920E152749F71573C3D10E20967B1850B6EFD8 (bool ___deviceWasChanged0, const RuntimeMethod* method) 
 {
@@ -806,6 +873,25 @@ IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioSettings_StopAudioOutput_mCC1E7BBBE
 	_il2cpp_icall_func = (AudioSettings_StopAudioOutput_mCC1E7BBBEB3E4E5968E6BB3CB16833CFC59A379F_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AudioSettings::StopAudioOutput()");
 	bool icallRetVal = _il2cpp_icall_func();
 	return icallRetVal;
+}
+// System.Boolean UnityEngine.AudioSettings::SetConfiguration_Injected(UnityEngine.AudioConfiguration&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR bool AudioSettings_SetConfiguration_Injected_m2DBB30666249C277FF9F17FE5D535EFDE2C4C212 (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D* ___config0, const RuntimeMethod* method) 
+{
+	typedef bool (*AudioSettings_SetConfiguration_Injected_m2DBB30666249C277FF9F17FE5D535EFDE2C4C212_ftn) (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D*);
+	static AudioSettings_SetConfiguration_Injected_m2DBB30666249C277FF9F17FE5D535EFDE2C4C212_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (AudioSettings_SetConfiguration_Injected_m2DBB30666249C277FF9F17FE5D535EFDE2C4C212_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AudioSettings::SetConfiguration_Injected(UnityEngine.AudioConfiguration&)");
+	bool icallRetVal = _il2cpp_icall_func(___config0);
+	return icallRetVal;
+}
+// System.Void UnityEngine.AudioSettings::GetConfiguration_Injected(UnityEngine.AudioConfiguration&)
+IL2CPP_EXTERN_C IL2CPP_METHOD_ATTR void AudioSettings_GetConfiguration_Injected_mBEC7F92EC2EA0DC942D22F276F95BDC2C8D649F7 (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D* ___ret0, const RuntimeMethod* method) 
+{
+	typedef void (*AudioSettings_GetConfiguration_Injected_mBEC7F92EC2EA0DC942D22F276F95BDC2C8D649F7_ftn) (AudioConfiguration_t4C8585EA98B6559B306B6FAD6A68088555394A5D*);
+	static AudioSettings_GetConfiguration_Injected_mBEC7F92EC2EA0DC942D22F276F95BDC2C8D649F7_ftn _il2cpp_icall_func;
+	if (!_il2cpp_icall_func)
+	_il2cpp_icall_func = (AudioSettings_GetConfiguration_Injected_mBEC7F92EC2EA0DC942D22F276F95BDC2C8D649F7_ftn)il2cpp_codegen_resolve_icall ("UnityEngine.AudioSettings::GetConfiguration_Injected(UnityEngine.AudioConfiguration&)");
+	_il2cpp_icall_func(___ret0);
 }
 #ifdef __clang__
 #pragma clang diagnostic pop
