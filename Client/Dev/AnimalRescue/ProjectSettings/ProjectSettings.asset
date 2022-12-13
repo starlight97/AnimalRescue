@@ -250,7 +250,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: I:/GitHub/AnimalRescue/Keystore/animalrescue.keystore
+  AndroidKeystoreName: C:/workspace/Unity/AnimalRescue/Keystore/animalrescue.keystore
   AndroidKeyaliasName: subingo
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

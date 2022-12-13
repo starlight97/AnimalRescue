@@ -73,14 +73,13 @@ public class GameMain : SceneMain
         this.player.onDie = () =>
         {
             this.uiGame.ShowRivivePanel(false);
+            this.uiGame.UpdateUIHpGauge(0, 0);
             var info = InfoManager.instance.GetInfo();
             var getGold = RecordManager.instance.GetGold();
 
             RecordManager.instance.SaveKillEnemy(this.dicKillEnemy);
-
             info.playerInfo.gold += getGold;
-            Debug.Log("Get Gold : " + getGold);
-            Debug.Log("player info gold : " + info.playerInfo.gold);
+
             InfoManager.instance.SaveGame();
             SoundManager.instance.StopSound();
             Dispatch("onGameOver");

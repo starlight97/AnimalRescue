@@ -6,7 +6,6 @@ using UnityEngine.Events;
 
 public class UIGame : UIBase
 {
-    private Image dimImage;
     private UIHpGauge uiHpGauge;
     private UIWeaponLevelUp uiWeaponLevelUp;
     private UIRivivePanel uiRivivePanel;
@@ -21,20 +20,17 @@ public class UIGame : UIBase
     {
         base.Init();
         this.UIOptionInit();
-        this.dimImage = this.transform.Find("dim").GetComponent<Image>();
         this.uiHpGauge = this.transform.Find("UIHpGauge").GetComponent<UIHpGauge>();
         this.uiWeaponLevelUp = this.transform.Find("UIWeaponLevelUp").GetComponent<UIWeaponLevelUp>();
         this.uiRivivePanel = this.transform.Find("UIRivivePanel").GetComponent<UIRivivePanel>();
         this.uiGameStatus = this.transform.Find("UIGameStatus").GetComponent<UIGameStatus>();
         this.uiRotateDots = this.transform.Find("UIRotateDots").GetComponent<UIRotateDots>();
 
-        this.dimImage.gameObject.SetActive(false);
         
         uiWeaponLevelUp.onWeaponSelect = (id) =>
         {
             this.onWeaponSelect(id);
             this.uiWeaponLevelUp.HideUI();
-            this.dimImage.gameObject.SetActive(false);
         };
 
         this.isShowPanelOption = (check) =>
@@ -88,7 +84,6 @@ public class UIGame : UIBase
     public void ShowWeaponLevelUp()
     {
         this.uiWeaponLevelUp.ShowUI();
-        this.dimImage.gameObject.SetActive(true);
     }
 
     public void ShowRivivePanel(bool value)

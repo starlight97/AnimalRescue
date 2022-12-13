@@ -55,6 +55,7 @@ public class PlayerMove : MonoBehaviour
 
     public void StopMove()
     {
+        this.moveSpeed = 0;
         this.moveRoutine = null;
         this.floatingJoystick.gameObject.SetActive(false);
     }
