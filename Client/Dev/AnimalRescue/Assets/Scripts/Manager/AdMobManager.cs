@@ -39,6 +39,7 @@ public class AdMobManager : MonoBehaviour
         //        string adUnitId = "unexpected_platform";
         //#endif
 
+        // test id: ca-app-pub-3940256099942544/5224354917
         if (adUnitId == "ca-app-pub-4572742510387968/2132883982")
             this.shopCoinRewardedAd = CreateAndLoadRewardedAd(adUnitId);
         else if (adUnitId == "ca-app-pub-4572742510387968/3117467058")
@@ -147,6 +148,7 @@ public class AdMobManager : MonoBehaviour
 
     public void ShowShopCoinAds()
     {
+        MobileAds.SetApplicationVolume(volume: 0.5f);
         StartCoroutine(this.ShowShopCoinAdsRoutine());
     }
 
@@ -179,6 +181,7 @@ public class AdMobManager : MonoBehaviour
 
     public void ShowGameOverAds()
     {
+        MobileAds.SetApplicationVolume(volume:0.5f);
         StartCoroutine(this.ShowGameOverAdsRoutine());
     }
 

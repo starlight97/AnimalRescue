@@ -12,6 +12,22 @@ public class OptionManager : MonoBehaviour
     public Slider bgmVolumeSlider;
     public Slider sfxVolumeSlider;
 
+    private void OnApplicationPause(bool pause)
+    {
+        AudioSettings.Reset(AudioSettings.GetConfiguration());
+        // 일시정지 했을 때 현재 슬라이드바 값을 저장하고 게임이 실행될 때 볼륨값 다시 세팅
+        if (pause)
+        {
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            float bgmVolume = PlayerPrefs.GetFloat("BgmVolume");
+            float sfxVolume = PlayerPrefs.GetFloat("SfxVolume");
+            AudioControl(bgmVolume, sfxVolume);
+        }
+    }
+
     public void Init()
     {
         if (PlayerPrefs.HasKey("BgmVolume") && PlayerPrefs.HasKey("SfxVolume"))
@@ -27,20 +43,19 @@ public class OptionManager : MonoBehaviour
 
         this.bgmVolumeSlider.onValueChanged.AddListener((value) =>
         {
-            AudioControl();
+            AudioControl(bgmVolumeSlider.value, sfxVolumeSlider.value);
         });
         this.sfxVolumeSlider.onValueChanged.AddListener((value) =>
         {
-            AudioControl();
+            AudioControl(bgmVolumeSlider.value, sfxVolumeSlider.value);
         });
-
-        AudioControl();
+        AudioControl(bgmVolumeSlider.value, sfxVolumeSlider.value);
     }
 
-    public void AudioControl()
+    public void AudioControl(float bgmValue, float sfxValue)
     {
-        float bgmVolume = bgmVolumeSlider.value;
-        float sfxVolume = sfxVolumeSlider.value;
+        float bgmVolume = bgmValue;
+        float sfxVolume = sfxValue;
 
         if (bgmVolume == -40f)
             bgmVolume = -80;

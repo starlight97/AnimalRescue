@@ -27,11 +27,6 @@ public class SoundManager : MonoBehaviour
         instance = this;
     }
 
-    void OnApplicationPause(bool pauseStatus)
-    {
-        AudioSettings.Reset(AudioSettings.GetConfiguration());
-    }
-
     public void Init()
     {
         bgmAudioSource = transform.Find("BGMAudio").GetComponent<AudioSource>();
@@ -49,10 +44,10 @@ public class SoundManager : MonoBehaviour
             bgmVolume = -20;
             sfxVolume = -20;
         }
-        AidioInit(bgmVolume, sfxVolume);
+        AudioInit(bgmVolume, sfxVolume);
     }
 
-    private void AidioInit(float bgmVolume, float sfxVolume)
+    private void AudioInit(float bgmVolume, float sfxVolume)
     {
         audioMixer.SetFloat("BGM", bgmVolume);
         audioMixer.SetFloat("SFX", sfxVolume);
@@ -78,6 +73,7 @@ public class SoundManager : MonoBehaviour
         bgmAudioSource.Stop();
         playSoundRoutine = null;
     }
+
     public void StopSound()
     {
         sfxAudioSource.Stop();
