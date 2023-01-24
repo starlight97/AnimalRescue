@@ -27,7 +27,6 @@ public class PlayerWeapon : MonoBehaviour
     virtual public void Upgrade()
     {        
         this.level++;
-        //this.current_damage = (int)((this.level * this.weaponData.increase_damage_per) * weaponData.damage);
         this.current_damage += (int)(this.weaponData.damage * this.weaponData.increase_damage_per );
     }
 

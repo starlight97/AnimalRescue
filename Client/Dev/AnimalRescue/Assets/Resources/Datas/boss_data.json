@@ -6,7 +6,7 @@
     "move_speed": 5,
     "max_hp": 15000,
     "attack_speed": 1.5,
-    "attack_range": 5,
+    "attack_range": 7,
     "prefab_name": "Prefabs\\Enemy\\Boss\\BossForestGuardian"
   },
   {
@@ -16,7 +16,7 @@
     "move_speed": 4,
     "max_hp": 15000,
     "attack_speed": 1.7,
-    "attack_range": 4,
+    "attack_range": 7,
     "prefab_name": "Prefabs\\Enemy\\Boss\\BossAncientWarrior"
   },
   {
@@ -26,7 +26,7 @@
     "move_speed": 3,
     "max_hp": 15000,
     "attack_speed": 2,
-    "attack_range": 6,
+    "attack_range": 7,
     "prefab_name": "Prefabs\\Enemy\\Boss\\BossElementalGolem"
   }
 ]
