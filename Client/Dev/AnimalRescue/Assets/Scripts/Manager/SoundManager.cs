@@ -69,7 +69,8 @@ public class SoundManager : MonoBehaviour
 
     public void StopBGMSound()
     {
-        StopCoroutine(playSoundRoutine);
+        if(playSoundRoutine != null)
+            StopCoroutine(playSoundRoutine);
         bgmAudioSource.Stop();
         playSoundRoutine = null;
     }

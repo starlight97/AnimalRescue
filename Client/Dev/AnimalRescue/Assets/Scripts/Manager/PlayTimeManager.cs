@@ -33,7 +33,7 @@ public class PlayTimeManager : MonoBehaviour
             t.Seconds);
 
             onPassesTime(time);
-            yield return null;
+            yield return YieldInstructionCache.WaitForSeconds(0.1f);
         }
     }
 }
