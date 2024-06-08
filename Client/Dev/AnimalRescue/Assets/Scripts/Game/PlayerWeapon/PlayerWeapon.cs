@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerWeapon : MonoBehaviour
+public abstract class PlayerWeapon : MonoBehaviour
 {
     public int id;
     public int current_damage;
@@ -22,7 +20,6 @@ public class PlayerWeapon : MonoBehaviour
         this.current_attack_speed = weaponData.attack_speed;
         this.level = 1;
     }
-
 
     virtual public void Upgrade()
     {        
